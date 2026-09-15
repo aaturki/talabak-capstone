@@ -1,0 +1,23 @@
+{
+  "version": "store-v1", "synthetic": true, "clock": "2026-09-15",
+  "policy": {"version": "policy-v1", "return_days": 14, "exchange_days": 14, "return_condition": "unopened", "currency": "SAR", "exchange_same_price_only": true},
+  "hours": {"branch": "Riyadh demo", "timezone": "Asia/Riyadh", "open": "10:00", "close": "22:00", "days": "Saturday–Thursday", "friday": "16:00–22:00"},
+  "catalog": [
+    {"sku": "SKU-H100", "name_ar": "سماعة صفاء", "name_en": "Safa headphones", "price": 200, "stock": 8},
+    {"sku": "SKU-H200", "name_ar": "سماعة نغم", "name_en": "Nagham headphones", "price": 200, "stock": 5},
+    {"sku": "SKU-H300", "name_ar": "سماعة مدى", "name_en": "Mada headphones", "price": 300, "stock": 0},
+    {"sku": "SKU-K100", "name_ar": "لوحة مفاتيح", "name_en": "Keyboard", "price": 150, "stock": 12}
+  ],
+  "orders": [
+    {"id": "ORD-1001", "customer_id": "CUST-A", "sku": "SKU-H100", "status": "delivered", "delivered_at": "2026-09-12", "condition": "unopened"},
+    {"id": "ORD-1002", "customer_id": "CUST-A", "sku": "SKU-K100", "status": "shipped", "delivered_at": null, "condition": "unopened"},
+    {"id": "ORD-1003", "customer_id": "CUST-A", "sku": "SKU-H100", "status": "delivered", "delivered_at": "2026-08-06", "condition": "unopened"},
+    {"id": "ORD-1004", "customer_id": "CUST-A", "sku": "SKU-H100", "status": "delivered", "delivered_at": "2026-09-13", "condition": "opened"},
+    {"id": "ORD-2001", "customer_id": "CUST-B", "sku": "SKU-H200", "status": "delivered", "delivered_at": "2026-09-10", "condition": "unopened"}
+  ],
+  "slots": [
+    {"id": "SLOT-001", "starts_at": "2026-09-16T11:00:00+03:00", "capacity": 1, "booked": 0},
+    {"id": "SLOT-002", "starts_at": "2026-09-16T12:00:00+03:00", "capacity": 1, "booked": 0},
+    {"id": "SLOT-003", "starts_at": "2026-09-16T13:00:00+03:00", "capacity": 1, "booked": 1}
+  ]
+}

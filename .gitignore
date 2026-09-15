@@ -1,0 +1,14 @@
+.env
+.env.*
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+runtime/
+artifacts/
+*.sqlite*
+*.db
+*.log
+human_labels.completed.csv
+
