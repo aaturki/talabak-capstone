@@ -1,0 +1,41 @@
+{
+  "settings": {
+    "max_attempts": 2,
+    "base_delay_s": 0.1,
+    "max_delay_s": 2.0,
+    "timeout_s": 10,
+    "max_output_tokens": 768
+  },
+  "routes": {
+    "primary": {
+      "provider": "openai_compatible",
+      "base_url": "http://127.0.0.1:8080/v1",
+      "model": "talabak-course-primary",
+      "evidence_mode": "simulator",
+      "simulation_tariff": {"input_usd_per_million": 1, "cached_input_usd_per_million": 0.25, "output_usd_per_million": 4}
+    },
+    "fallback": {
+      "provider": "openai_compatible",
+      "base_url": "http://127.0.0.1:8080/v1",
+      "model": "talabak-course-fallback",
+      "evidence_mode": "simulator",
+      "simulation_tariff": {"input_usd_per_million": 0.2, "cached_input_usd_per_million": 0.05, "output_usd_per_million": 0.8}
+    },
+    "judge": {
+      "provider": "openai_compatible",
+      "base_url": "http://127.0.0.1:8080/v1",
+      "model": "talabak-course-judge",
+      "evidence_mode": "simulator",
+      "simulation_tariff": {"input_usd_per_million": 1, "cached_input_usd_per_million": 0.25, "output_usd_per_million": 4}
+    },
+    "open_weight": {
+      "provider": "openai_compatible",
+      "base_url": "http://127.0.0.1:8080/v1",
+      "model": "talabak-course-open-weight-sim",
+      "evidence_mode": "simulator",
+      "simulation_tariff": {"input_usd_per_million": 0.1, "cached_input_usd_per_million": 0.025, "output_usd_per_million": 0.4}
+    }
+  },
+  "fallbacks": {"primary": ["fallback"], "fallback": [], "judge": ["fallback"], "open_weight": []},
+  "notice": "Every route is a deterministic local simulator. Tariffs are illustrative assumptions, not provider quotes, bills, or evidence of model quality. No commercial or open-weight model has run."
+}

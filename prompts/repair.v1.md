@@ -1,0 +1,2 @@
+# repair-v1
+The preceding structured response failed validation. Correct the JSON using the supplied validation-error categories and the original request. All required fields must be present. Preserve enum, type, length and cross-field constraints. Do not relax the schema or add unknown fields. If required customer facts are unknown, use null where allowed. Do not invent order identifiers or authorization.

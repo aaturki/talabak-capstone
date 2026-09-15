@@ -5,6 +5,8 @@ import hashlib
 import json
 import secrets
 import sqlite3
+import threading
+from functools import wraps
 from dataclasses import dataclass, field
 from datetime import date, datetime, timezone
 from pathlib import Path
@@ -18,6 +20,14 @@ def canonical(value):
 
 def digest(value):
     return hashlib.sha256(canonical(value).encode()).hexdigest()
+
+
+def serialized(method):
+    @wraps(method)
+    def call(self, *args, **kwargs):
+        with self.lock:
+            return method(self, *args, **kwargs)
+    return call
 
 
 @dataclass
@@ -51,6 +61,7 @@ class Store:
         self.fixture = Path(fixture or ROOT / "data/store.v1.json")
         self.data = json.loads(self.fixture.read_text(encoding="utf-8"))
         self.today = today or date.fromisoformat(self.data["clock"])
+        self.lock = threading.RLock()
         self.db = sqlite3.connect(str(path), check_same_thread=False)
         self.db.row_factory = sqlite3.Row
         self.db.executescript("""
@@ -118,9 +129,21 @@ class Store:
             return None
         s.confirmed_digest = None
         s.pending = {"digest": action_digest, "action": action, "turn": s.turn, "request": s.last_request}
-        summary = canonical(args)
-        return self.result(s, "confirmation_required", f"راجع الإجراء: {summary}\nاكتب «موافق» لتأكيد هذا الإجراء في الرسالة التالية.",
-                           f"Review this action: {summary}\nReply 'confirm' in your next message to authorize this exact action.", pending=True)
+        if name == "create_return_or_exchange":
+            ar_kind = "إرجاع" if args["kind"] == "return" else "استبدال"
+            ar_summary = f"{ar_kind} الطلب {args['order_id']}"
+            en_summary = f"{args['kind']} order {args['order_id']}"
+            if args.get("replacement_sku"):
+                ar_summary += f" بالمنتج {args['replacement_sku']}"
+                en_summary += f" with {args['replacement_sku']}"
+        else:
+            slot = self.db.execute("SELECT starts_at FROM slots WHERE id=?", (args["slot_id"],)).fetchone()
+            ar_summary = f"حجز موعد {args['slot_id']} في {slot['starts_at']}"
+            en_summary = f"Book appointment {args['slot_id']} at {slot['starts_at']}"
+        ar_summary += f". السبب: {args['reason']}"
+        en_summary += f". Reason: {args['reason']}"
+        return self.result(s, "confirmation_required", f"راجع الإجراء: {ar_summary}\nاكتب «موافق» لتأكيد هذا الإجراء في الرسالة التالية.",
+                           f"Review this action: {en_summary}\nReply 'confirm' in your next message to authorize this exact action.", pending=True)
 
     def _persist(self, s, name, args, *, order_id=None, slot_id=None):
         key = digest({"customer": s.customer_id, "tool": name, "args": args})
@@ -134,6 +157,7 @@ class Store:
         s.confirmed_digest = None
         return self.result(s, "created", f"تم تسجيل الطلب {action_id} بحالة قيد المعالجة.", f"Request {action_id} is recorded for processing.", action_id=action_id)
 
+    @serialized
     def create_return_or_exchange(self, s, kind, order_id, replacement_sku, reason):
         args = dict(kind=kind, order_id=order_id, replacement_sku=replacement_sku, reason=reason)
         if not s.authorize():
@@ -165,6 +189,7 @@ class Store:
                 self.db.execute("UPDATE products SET stock=stock-1 WHERE sku=? AND stock>0", (replacement_sku,))
             return result
 
+    @serialized
     def book_store_appointment(self, s, slot_id, reason):
         if not s.authorize():
             return self.denied(s)
