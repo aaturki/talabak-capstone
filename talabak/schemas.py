@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import json
+from pathlib import Path
 from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
@@ -78,6 +80,12 @@ TOOL_TYPES = {
 
 
 def tool_definitions():
+    metadata = json.loads((Path(__file__).resolve().parents[1] / "prompts/tools.v1.json").read_text(encoding="utf-8"))
+    descriptions = metadata["tools"]
+    if metadata.get("version") != "tools-v1" or set(descriptions) != set(TOOL_TYPES):
+        raise ValueError("Tool metadata must match the registered tools and version")
+    if any(not isinstance(value, str) or not value.strip() for value in descriptions.values()):
+        raise ValueError("Every tool requires a nonempty description")
     return [{"type": "function", "function": {
-        "name": name, "strict": True, "parameters": model.model_json_schema()
+        "name": name, "description": descriptions[name], "strict": True, "parameters": model.model_json_schema()
     }} for name, (model, _) in TOOL_TYPES.items()]

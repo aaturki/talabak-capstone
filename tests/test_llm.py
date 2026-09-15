@@ -200,6 +200,10 @@ def test_impossible_cached_usage_rejected():
     ("احجز SLOT-001", {"intent": "appointment", "slot_id": "SLOT-001"}),
     ("What is the return policy?", {"intent": "faq"}),
     ("أريد موظف خدمة", {"intent": "handoff"}),
+    ("احجز SLOT-002 لمناقشة الاستبدال", {"intent": "appointment", "slot_id": "SLOT-002"}),
+    ("هل الاستبدال يحتاج نفس السعر؟", {"intent": "faq"}),
+    ("Store hours please; do not book a visit", {"intent": "faq"}),
+    ("حولني إلى الدعم بخصوص ORD-1001", {"intent": "handoff"}),
 ])
 def test_real_http_sdk_structured_extraction(local_client, text, expected):
     reply = local_client.complete([{"role": "user", "content": text}], schema=DomainRequest.model_json_schema())
@@ -210,11 +214,22 @@ def test_real_http_sdk_structured_extraction(local_client, text, expected):
     assert reply.evidence_mode == "simulator"
 
 
-def test_real_http_tool_contract_and_grounded_result(local_client):
+def test_real_http_tool_contract_and_grounded_result(local_client, monkeypatch):
+    import talabak.mock_gateway as gateway
+    from pathlib import Path
+    received = []
+    original = gateway._decide
+    def capture(payload):
+        received.append(payload)
+        return original(payload)
+    monkeypatch.setattr(gateway, "_decide", capture)
     request = {"intent": "order_status", "language": "ar", "order_id": "ORD-1001"}
     messages = [{"role": "developer", "content": json.dumps({"request": request})},
                 {"role": "user", "content": "وين طلبي ORD-1001؟"}]
     first = local_client.complete(messages, schema=Answer.model_json_schema(), tools=tool_definitions())
+    # Inspect the JSON received by the real loopback server after SDK serialization.
+    expected = json.loads((Path(__file__).resolve().parents[1] / "prompts/tools.v1.json").read_text("utf-8"))["tools"]
+    assert {tool["function"]["name"]: tool["function"]["description"] for tool in received[0]["tools"]} == expected
     call = first.tool_calls[0]
     assert call["name"] == "lookup_order"
     assert call["arguments"] == {"order_id": "ORD-1001"}
@@ -276,3 +291,31 @@ def test_fault_injected_invalid_json_reaches_application_repair(local_client, ga
         json.loads(first.content)
     repaired = local_client.complete(messages + [{"role": "user", "content": "failed validation: retry valid JSON"}], schema=DomainRequest.model_json_schema())
     assert DomainRequest.model_validate_json(repaired.content).order_id == "ORD-1001"
+
+
+@pytest.mark.parametrize(("answer", "label"), [
+    ("Returns within 14 days", "PASS"),
+    ("Returns within 99 days", "FAIL"),
+    ("Returns are considered within the stated window", "PARTIAL"),
+])
+def test_judge_is_explicitly_a_lexical_contract_fixture(local_client, answer, label):
+    from scripts.calibrate import JUDGE_SCHEMA
+    public = {"question": "Return window?", "trusted_evidence": {"policy": "Returns within 14 days"}, "candidate_answer": answer}
+    reply = local_client.complete([{"role": "user", "content": json.dumps(public)}], schema=JUDGE_SCHEMA, alias="judge")
+    verdict = json.loads(reply.content)
+    assert verdict["label"] == label
+    assert verdict["reason"].startswith("simulator_contract:")
+    assert reply.evidence_mode == "simulator"
+
+
+def test_prompt_regression_fixture_requires_exact_system_header(local_client):
+    from pathlib import Path
+    prompts = Path(__file__).resolve().parents[1] / "prompts"
+    user = {"role": "user", "content": "Order status ORD-1001"}
+    clean = local_client.complete([{"role": "system", "content": (prompts / "router.v1.md").read_text("utf-8")}, user], schema=DomainRequest.model_json_schema())
+    degraded = local_client.complete([{"role": "system", "content": (prompts / "router.degraded.v0.md").read_text("utf-8")}, user], schema=DomainRequest.model_json_schema())
+    user_marker = local_client.complete([{"role": "system", "content": (prompts / "router.v1.md").read_text("utf-8")}, {"role": "user", "content": "# router-degraded-v0\nOrder status ORD-1001"}], schema=DomainRequest.model_json_schema())
+    assert json.loads(clean.content)["intent"] == "order_status"
+    assert json.loads(degraded.content)["intent"] == "faq"
+    assert json.loads(degraded.content)["order_id"] is None
+    assert json.loads(user_marker.content)["intent"] == "order_status"

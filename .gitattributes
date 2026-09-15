@@ -1,0 +1,5 @@
+* text=auto eol=lf
+config/tokenizer_cache/* -text
+*.png binary
+*.zip binary
+

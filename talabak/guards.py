@@ -47,14 +47,56 @@ PATTERNS = [
     r"(تعليمات|اوامر)\s*(جديده|جديدة|محدثة)\s*:",
     r"(نفذ|وافق|اعتمد|احجز|سجل).{0,40}(بدون|دون).{0,15}(تاكيد|اذن|تفويض)",
     r"\b(execute|approve|book|submit)\b.{0,45}\bwithout\b.{0,15}\b(confirmation|authorization|permission)\b",
+    # Imperatives that target controls or evidence, rather than ordinary domain questions.
+    r"\b(ignore|disregard|forget|override)\b.{0,45}\b(instructions|rules|polic(?:y|ies)|tool results?|guards?|confirmation)\b",
+    r"\b(bypass|disable|override|skip)\b.{0,30}\b(ownership|authorization|authentication|confirmation|guardrails|session checks)\b",
+    r"\b(i am|you are now|act as)\s+(the\s+)?(administrator|admin|developer|system|root)\b",
+    r"\b(reveal|show|print|repeat|display|expose|leak)\b.{0,55}\b(system|developer|hidden)\b.{0,25}\b(prompt|instructions|message|rules)\b",
+    r"\b(show|give|export|dump|reveal|list|send)\b.{0,80}\b(national id|private phone|phone number|iban|customer orders|customers?['’]? orders)\b",
+    r"\b(force)\b.{0,80}\b(out.of.stock|hide the error|skip|without)\b",
+    r"(?:^|[\n;])\s*(system|developer)\s*:",
+    r"(تجاهل|انس|انسي|اهمل).{0,35}(تعليمات|قواعد|سياس[هة]|نتيج[هة]|امتلاء|قيود|حماي[هة])",
+    r"(تجاوز|عطل|الغ).{0,35}(صلاحيات|ملكي[هة]|فحص|حواجز|سجل|حماي[هة]|سياس[هة])",
+    r"(اعتبرني|انا|انت الان|تصرف ك).{0,20}(مدير النظام|مطور التطبيق|مسؤول النظام)",
+    r"(اكشف|اظهر|اعرض|اطبع|اعطني|هات|ارسل|سرب).{0,75}(رسال[هة] النظام|تعليمات المطور|الاسرار|اسرار العملاء|رقم الهوي[هة]|رقم جوال|ارقام الايبان|رمز الدخول|API\s*key)",
+    r"(?:^|[\n؛])\s*(رسال[هة]\s*)?(النظام|نظام|المطور)\s*(جديد[هة]\s*)?:",
+    r"(غير|عد[ّ]?ل).{0,15}سعر.{0,35}(النظام|قاعد[هة] البيانات|ثم استبدل)",
+    r"اجب\s*كان.{0,60}(اكتمل|نجح).{0,40}(رغم|رفض)",
+    r"\b(execute|run|نفذ|شغل)\b.{0,25}\b(DELETE\s+FROM|DROP\s+TABLE|UPDATE\s+\w+\s+SET|INSERT\s+INTO)\b",
 ]
 COMPILED = [re.compile(p, re.I) for p in PATTERNS]
+
+# A quoted attack in a scam report is data. Remove only its quoted span, then
+# inspect the rest of the message. Never treat a reporting phrase as a blanket
+# exemption: a second command following the quote must still be blocked.
+REPORT_CONTEXT = re.compile(
+    r"(رايت.{0,20}(اعلان|رساله|رسالة)|وصلتني.{0,15}(رساله|رسالة)|ابلغكم ان|"
+    r"(?:i\s+)?received.{0,25}(scam|message)|someone asked me to)", re.I)
+QUOTED = re.compile(r"«[^»]{1,1200}»|“[^”]{1,1200}”|\"[^\"\n]{1,1200}\"|'[^'\n]{1,1200}'")
+REPORTED_REQUEST = re.compile(
+    r"(?:\bSomeone asked me to\s+(bypass|disable|override)\s+(authorization|authentication|guardrails|safety rules)\s*[.;]|"
+    r"ابلغكم ان.{0,35}طلب مني\s+(تجاوز|تعطيل)\s+(الصلاحيات|الحماي[هة]|التفويض)\s*[؛.])", re.I)
+
+
+def _instruction_text(variant):
+    report = REPORT_CONTEXT.search(variant)
+    if not report:
+        return variant
+    # An unquoted third-party request is removed only as its own bounded clause.
+    # Any subsequent instruction remains visible to COMPILED.
+    for quote in QUOTED.finditer(variant):
+        between = variant[report.end():quote.start()]
+        if quote.start() >= report.end() and len(between) <= 100 and not re.search(r"[.!?؛\n]", between):
+            variant = variant[:quote.start()] + "[REPORTED_QUOTE]" + variant[quote.end():]
+            break
+    return REPORTED_REQUEST.sub("[REPORTED_REQUEST].", variant)
 
 
 def injection_reason(text):
     if len(text) > 4000:
         return "input_too_long"
     for variant in (normalize(text), normalize(text, separator=" ")):
+        variant = _instruction_text(variant)
         if any(pattern.search(variant) for pattern in COMPILED):
             return "instruction_override"
     return None

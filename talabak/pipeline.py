@@ -9,6 +9,7 @@ from .domain import ROOT, Session, Store, canonical, digest
 from .guards import detect_language, injection_reason, mask_pii, output_reason, refusal
 from .schemas import Answer, DomainRequest, GuardDecision, TOOL_TYPES, tool_definitions
 from .llm import ModelClient, ModelError
+from .cache import SemanticCache
 
 SAFE_ERROR_CODES = {"structured_validation_exhausted", "ungrounded_model_answer", "too_many_tool_calls", "terminal_session", "unknown_tool", "tool_intent_mismatch", "tool_order_mismatch", "tool_action_mismatch", "tool_loop_limit", "unsafe_structured_output"}
 
@@ -31,18 +32,22 @@ class Result:
 class Application:
     STAGES = ("input_guard", "route_extract", "tools", "output_guard", "deliver")
 
-    def __init__(self, client: ModelClient, store=None, *, cache_enabled=True, alias="primary", max_tool_rounds=4, audit_path=None):
+    def __init__(self, client: ModelClient, store=None, *, cache_enabled=True, alias="primary", max_tool_rounds=4, audit_path=None, semantic_enabled=False):
         self.client = client
         self.store = store or Store()
         self.alias = alias
         self.max_tool_rounds = max_tool_rounds
         self.cache_enabled = cache_enabled
         self.cache = {}
+        self.semantic = SemanticCache(threshold=1.0) if semantic_enabled else None
         self.audit_path = Path(audit_path) if audit_path else None
         self.prompts = {name: (ROOT / f"prompts/{name}.v1.md").read_text(encoding="utf-8")
                         for name in ("router", "workflow", "guard", "repair")}
-        self.prompt_version = digest(self.prompts)
+        self.refresh_prompt_version()
         self.canary = "TALABAK_CANARY_7C84F52A"
+
+    def refresh_prompt_version(self):
+        self.prompt_version = digest({"prompts":self.prompts,"tools":tool_definitions()})
 
     def _call(self, messages, result, *, stage, schema=None, tools=None, alias=None):
         started = time.perf_counter()
@@ -88,9 +93,13 @@ class Application:
         return self._structured([{"role":"system", "content":self.prompts["router"]}, {"role":"user", "content":text}], DomainRequest, result, stage="route_extract")
 
     def _cache_key(self, text, session):
-        return digest({"text":text, "customer":session.customer_id, "session":session.session_id,
+        return digest({"text":text, **self._cache_scope(session)})
+
+    def _cache_scope(self, session):
+        return {"customer":session.customer_id, "session":session.session_id,
                        "can_act":session.can_act, "language":session.language, "pending":session.pending,
-                       "prompts":self.prompt_version, "alias":self.alias, "data":self.store.fingerprint()})
+                       "prompts":self.prompt_version, "alias":self.alias,
+                       "model_config":getattr(self.client,"config",None), "data":self.store.fingerprint()}
 
     def _apply_tool_result(self, data, result):
         codes = {"ok":"answer", "not_authorized":"denied", "policy_denied":"denied", "unavailable":"denied"}
@@ -118,6 +127,8 @@ class Application:
                 if session.terminal:
                     raise ValueError("terminal_session")
                 name = call["name"]
+                event = {"stage":"tools", "name":name if name in TOOL_TYPES else "unknown", "risk":TOOL_TYPES[name][1] if name in TOOL_TYPES else "unknown", "iteration":iteration, "code":"rejected", "executed":False}
+                result.trace.append(event)
                 if name not in TOOL_TYPES:
                     raise ValueError("unknown_tool")
                 model, risk = TOOL_TYPES[name]
@@ -135,8 +146,7 @@ class Application:
                 if name == "book_store_appointment" and (args.slot_id != request.slot_id or args.reason != request.reason):
                     raise ValueError("tool_action_mismatch")
                 data = getattr(self.store, name)(session, **args.model_dump())
-                result.trace.append({"stage":"tools", "name":name, "risk":risk, "iteration":iteration, "code":data["code"],
-                                     "authorized":session.authorize(), "args_sha256":digest(args.model_dump())})
+                event.update({"code":data["code"], "executed":True, "authorized":data['code']!='not_authorized', "args_sha256":digest(args.model_dump())})
                 reason = output_reason(canonical(data), self.canary)
                 if reason:
                     result.trace.append({"stage":"output_guard", "blocked":True, "reason":reason, "source":"tool"})
@@ -181,7 +191,15 @@ class Application:
                 result.status = "handoff"
                 result.message = "انتهى المسار الآلي لهذه الجلسة." if language == "ar" else "Automation has ended for this session."
             else:
-                safe, blocked = self.input_guard(text, result, language)
+                safe = mask_pii(text)
+                key = self._cache_key(safe, session)
+                early = self.cache.get(key) if self.cache_enabled and restored is None and not injection_reason(text) else None
+                if early:
+                    result.trace.append({"stage":"input_guard", "layer":"deterministic", "blocked":False})
+                    result.trace.append({"stage":"input_guard", "layer":"cached_classifier", "blocked":False})
+                    blocked = False
+                else:
+                    safe, blocked = self.input_guard(text, result, language)
                 if blocked:
                     session.pending = None
                     result.status, result.message = "blocked", refusal(language)
@@ -190,10 +208,10 @@ class Application:
                     result.message = "لا يوجد إجراء ينتظر التأكيد. اذكر الطلب الذي تريد تنفيذه أولًا." if language == "ar" else "No action is awaiting confirmation. Describe the action first."
                 else:
                     key = self._cache_key(safe, session)
-                    cached = self.cache.get(key) if self.cache_enabled else None
+                    cached = early or (self.semantic.get(safe,self._cache_scope(session)) if self.cache_enabled and self.semantic else None)
                     if cached:
                         result.status, result.message, result.citations, result.request = copy.deepcopy(cached)
-                        result.trace.append({"stage":"route_extract", "event":"response_cache_hit", "tier":"exact"})
+                        result.trace.append({"stage":"route_extract", "event":"response_cache_hit", "tier":"exact" if early else "semantic"})
                     else:
                         request = DomainRequest.model_validate(restored) if restored else self.route_extract(safe, result)
                         if output_reason(canonical(request.model_dump()), self.canary):
@@ -218,8 +236,12 @@ class Application:
                             self._apply_tool_result(data, result)
                             if self.cache_enabled:
                                 self.cache[key] = (result.status, result.message, result.citations, result.request)
+                                if self.semantic:
+                                    self.semantic.put(safe,self._cache_scope(session),self.cache[key])
                         else:
                             self.tools(request, session, result)
+                            if self.cache_enabled and request.intent == "order_status" and result.status == "answer":
+                                self.cache[key] = (result.status, result.message, result.citations, result.request)
             self.output_guard(result, session)
         except Exception as exc:
             # Fail closed without exposing stack traces, payloads, credentials or provider body.

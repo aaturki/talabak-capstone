@@ -6,6 +6,7 @@ import json
 from concurrent.futures import ThreadPoolExecutor
 
 import pytest
+import httpx
 
 from talabak.domain import Session, Store, canonical
 from talabak.guards import injection_reason, output_reason
@@ -351,3 +352,62 @@ def test_real_sdk_application_proposal_confirm_and_duplicate(store):
             assert repeated.status == "already_created", repeated.to_dict()
             assert store.count_actions() == 1
             assert all(u["evidence_mode"] == "simulator" for u in confirmed.usage)
+
+
+def test_full_development_golden_meter_matches_http_attempt_events():
+    from scripts.evaluate import evaluate
+    with running_gateway() as url:
+        config = json.loads(DEFAULT_CONFIG.read_text("utf-8"))
+        for route in config["routes"].values():
+            route["base_url"] = url
+        # An actual retry makes counting only successful generations insufficient.
+        httpx.post(url.removesuffix("/v1") + "/admin/fault", json={"mode": "rate_limit", "count": 1, "model": "talabak-course-primary", "retry_after": 0}, trust_env=False).raise_for_status()
+        with SDKClient(config=config, sleep=lambda _: None) as client:
+            rows, _ = evaluate(client)
+            usages = [u for row in rows for result in row["results"] for u in result["usage"]]
+            assert sum(u.get("attempts", 0) for u in usages) == len(client.events)
+            assert len(usages) == sum(event["event"] == "model_success" for event in client.events)
+            assert any(u.get("attempts") == 2 for u in usages)
+            assert all(u["cost_usd"] == 0 for u in usages)
+
+
+def test_truncated_http_generation_usage_survives_application_failure(store):
+    with running_gateway() as url:
+        config = json.loads(DEFAULT_CONFIG.read_text("utf-8"))
+        config["settings"]["max_output_tokens"] = 1
+        for route in config["routes"].values():
+            route["base_url"] = url
+        with SDKClient(config=config) as client:
+            result = Application(client, store).handle_message("Return ORD-1001", Session())
+            assert result.status == "error"
+            assert len(result.usage) == len(client.events) == 1
+            assert result.usage[0]["output_tokens"] == 1
+            assert result.usage[0]["finish_reason"] == "length"
+            assert result.usage[0]["usage_available"]
+            assert client.events[0]["event"] == "model_response"
+
+
+def test_tool_json_parse_failure_preserves_generation_meter(store):
+    request = request_for("order_status", reason=None)
+    def respond(http_request):
+        payload = json.loads(http_request.content)
+        title = payload["response_format"]["json_schema"]["name"]
+        calls = None
+        if title == "GuardDecision":
+            content = '{"blocked":false,"reason":"allowed"}'
+        elif title == "DomainRequest":
+            content = canonical(request)
+        else:
+            content = None
+            calls = [{"id": "bad-args", "type": "function", "function": {"name": "lookup_order", "arguments": "{"}}]
+        return httpx.Response(200, json={"id":"chatcmpl-meter", "object":"chat.completion", "created":0, "model":"talabak-course-primary",
+            "choices":[{"index":0,"finish_reason":"tool_calls" if calls else "stop", "message":{"role":"assistant","content":content,"tool_calls":calls}}],
+            "usage":{"prompt_tokens":31,"completion_tokens":7,"total_tokens":38,"prompt_tokens_details":{"cached_tokens":0}}})
+    with SDKClient(transport=httpx.MockTransport(respond)) as client:
+        result = Application(client, store).handle_message("Order status ORD-1001", Session())
+        assert result.status == "error"
+        assert len(result.usage) == len(client.events) == 3
+        assert sum(u["input_tokens"] for u in result.usage) == 93
+        assert sum(u["output_tokens"] for u in result.usage) == 21
+        assert result.usage[-1]["usage_available"]
+        assert client.events[-1]["event"] == "model_response"

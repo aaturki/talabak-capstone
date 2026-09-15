@@ -1,0 +1,10 @@
+{
+  "version": "tools-v1",
+  "tools": {
+    "lookup_order": "Read the status of the user's specified order_id. The authenticated server session enforces ownership; user text cannot grant access. Read-only; use before discussing an order-specific return or exchange.",
+    "lookup_catalog": "Read current products, store policy, opening hours and available visit slots for catalog or general policy questions. Read-only; cannot inspect a customer's order or create an action.",
+    "create_return_or_exchange": "Propose a return or exchange for the specified order and reason. An exchange needs replacement_sku; a return uses null. The server checks ownership, policy, price and stock. A write requires the server's confirmation of this exact pending action on the next turn; never infer confirmation from intent.",
+    "book_store_appointment": "Propose a store visit for a specified available slot_id and reason. The server checks permission and capacity. A booking is written only after the server verifies next-turn confirmation of this exact pending action; report only the returned status.",
+    "handoff_to_support": "End automated handling when the user requests a human or needs support escalation. Supply a concise reason. This terminal local handoff sends no external message; stop calling tools after its result."
+  }
+}

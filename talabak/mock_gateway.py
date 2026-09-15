@@ -96,27 +96,69 @@ def _extract(text: str) -> dict:
     slot = re.search(r"\bSLOT-([0-9]{3})\b", low, re.I)
     has = lambda words: any(w in low for w in words)
     wants_policy = has(["سياس", "شروط", "كم يوم", "مدة الارجاع", "مده الارجاع", "policy", "return window"])
-    if has(["موظف", "شكوي", "شكوى", "دعم بشري", "human", "support agent", "complaint", "representative"]):
+    return_topic = has(["ارجاع", "استبدال", "return", "exchange"])
+    policy_question = return_topic and bool(re.search(r"^(هل\b|كم\b|متي\b|how many\b|does\b|what\b)", low))
+    asks_hours = has(["ساع", "دوام", "مواعيد", "وقت", "اغلاق", "افتتاح", "opening", "closing", "hours"])
+    negates_booking = has(["لا تحجز", "لا اريد حجز", "not a booking", "do not book", "don't book"])
+    wants_human = has(["موظف", "شكوي", "شكوى", "شكواي", "دعم بشري", "انسان", "صعد", "human", "support agent", "support employee", "complaint", "representative", "escalate"])
+    wants_human = wants_human or (has(["حول", "transfer", "connect"]) and has(["الدعم", "خدمة العملاء", "support"]))
+    if wants_human:
         intent = "handoff"
-    elif wants_policy and not order:
+    elif ((wants_policy or policy_question) and not order) or (asks_hours and negates_booking):
         intent = "faq"
+    elif has(["احجز", "حجز", "appointment", "book", "موعد زياره", "موعد زيارة"]) or slot:
+        # Booking a visit to discuss a return is still an appointment, not a return action.
+        intent = "appointment"
     elif has(["استبد", "بدل", "exchange", "replace", "replacement"]):
         intent = "exchange"
     elif has(["ارجع", "ارجاع", "رجع", "return", "refund"]):
         intent = "return"
-    elif has(["احجز", "حجز", "appointment", "book", "موعد زياره", "موعد زيارة"]) or slot:
-        intent = "appointment"
     elif order or has(["وين طلب", "وين وصل", "حالة طلب", "حاله طلب", "حالة الطلب", "حاله الطلب", "طلبي", "تتبع", "order status", "track", "where is my order", "delivery"]):
         intent = "order_status"
     else:
         intent = "faq"
-    recognized_faq = has(["ساع", "دوام", "مواعيد", "متجر", "منتج", "سعر", "كتالوج", "hours", "catalog", "price", "product", "store"])
+    recognized_faq = asks_hours or has(["متجر", "منتج", "سعر", "كتالوج", "catalog", "price", "product", "store"])
     return {"intent": intent, "language": "ar" if re.search(r"[\u0600-\u06ff]", text) else "en",
             "order_id": f"ORD-{order[1]}" if order else None,
-            "replacement_sku": f"SKU-{sku[1].upper()}" if sku else None,
-            "slot_id": f"SLOT-{slot[1]}" if slot else None,
+            "replacement_sku": f"SKU-{sku[1].upper()}" if sku and intent == "exchange" else None,
+            "slot_id": f"SLOT-{slot[1]}" if slot and intent == "appointment" else None,
             "reason": text[:240] if intent in {"return", "exchange", "appointment", "handoff"} else None,
-            "confidence": 0.98 if intent != "faq" or recognized_faq or wants_policy else 0.2}
+            "confidence": 0.98 if intent != "faq" or recognized_faq or wants_policy or policy_question else 0.2}
+
+
+def _judge_contract(text: str) -> dict:
+    """A deliberately weak lexical judge fixture, never human calibration.
+
+    It reads only the public blinded contract and cannot inspect IDs, labels,
+    expected results, or application data. PASS requires verbatim source text;
+    overlap alone is PARTIAL. This is a plumbing demonstration, not an LLM judge.
+    """
+    try:
+        value = json.loads(text)
+        evidence, candidate = value["trusted_evidence"], value["candidate_answer"]
+    except (ValueError, KeyError, TypeError):
+        return {"label": "FAIL", "reason": "simulator_contract: invalid public judge payload"}
+    if not isinstance(candidate, str) or not candidate.strip():
+        return {"label": "FAIL", "reason": "simulator_contract: empty candidate"}
+    def strings(obj):
+        if isinstance(obj, str):
+            return [obj]
+        if isinstance(obj, list):
+            return [text for child in obj for text in strings(child)]
+        if isinstance(obj, dict):
+            return [text for child in obj.values() for text in strings(child)]
+        return []
+    if candidate.strip() in strings(evidence):
+        return {"label": "PASS", "reason": "simulator_contract: candidate equals a trusted evidence string"}
+    source = _normalize(_dump(evidence))
+    numbers = re.findall(r"\d+", _normalize(candidate))
+    if any(number not in source for number in numbers):
+        return {"label": "FAIL", "reason": "simulator_contract: candidate contains a number absent from evidence"}
+    words = {w for w in re.findall(r"\w+", _normalize(candidate)) if len(w) > 3}
+    overlap = sum(word in source for word in words)
+    if overlap:
+        return {"label": "PARTIAL", "reason": "simulator_contract: lexical overlap only; semantic correctness unverified"}
+    return {"label": "FAIL", "reason": "simulator_contract: no verifiable lexical support"}
 
 
 def _context(messages: list[dict]) -> dict:
@@ -150,7 +192,14 @@ def _decide(payload: dict) -> tuple[str | None, list[dict]]:
     fmt = (payload.get("response_format") or {}).get("json_schema", {})
     title = fmt.get("name", "")
     if title == "DomainRequest":
+        systems = [m.get("content", "") for m in messages if m.get("role") == "system"]
+        if any(isinstance(text, str) and text.splitlines()[:1] == ["# router-degraded-v0"] for text in systems):
+            return _dump({"intent": "faq", "language": "ar" if re.search(r"[\u0600-\u06ff]", user_text) else "en",
+                          "order_id": None, "replacement_sku": None, "slot_id": None,
+                          "reason": None, "confidence": 0.98}), []
         return _dump(_extract(user_text)), []
+    if title == "JudgeVerdict":
+        return _dump(_judge_contract(user_text)), []
     if title == "GuardDecision":
         low = _normalize(user_text)
         blocked = any(x in low for x in ["ignore previous", "ignore all instructions", "تجاهل التعليمات", "system prompt", "اكشف تعليمات", "bypass authorization"])

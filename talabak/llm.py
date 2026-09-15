@@ -175,6 +175,11 @@ class SDKClient:
                         event["delay_s"] = min(self.max_delay, wait)
                         self._sleep(event["delay_s"])
                     continue
+                # Preserve the received generation even when local validation rejects
+                # its content. One event per HTTP attempt makes meter audits possible.
+                received_event = {"event": "model_response", "alias": hop, "attempts": attempts,
+                                  "fallback_used": hop_index > 0, "accepted": False}
+                self.events.append(received_event)
                 usage = response.usage
                 input_tokens = int(getattr(usage, "prompt_tokens", 0) or 0)
                 output_tokens = int(getattr(usage, "completion_tokens", 0) or 0)
@@ -206,7 +211,6 @@ class SDKClient:
                     if not isinstance(arguments, dict):
                         raise ModelError("Tool arguments must be an object", attempts=attempts, usage=meter)
                     calls.append({"id": call.id, "name": call.function.name, "arguments": arguments})
-                self.events.append({"event": "model_success", "alias": hop, "attempts": attempts,
-                                    "fallback_used": hop_index > 0})
+                received_event.update(event="model_success", accepted=True)
                 return ModelReply(choice.message.content, calls, meter, response.model, "simulator")
         raise ModelError("All configured simulator routes unavailable", status=last_status, attempts=attempts)

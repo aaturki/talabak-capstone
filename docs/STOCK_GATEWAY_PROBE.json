@@ -1,0 +1,153 @@
+{
+  "verified_at_utc": "2026-09-15T18:36:33.404636+00:00",
+  "source_repo": "https://github.com/MohammadYusif/llm-application-engineering",
+  "source_commit": "de2ff3c0d8758c77d85c944e2d6f133647b84a91",
+  "main_py_sha256": "da0e2b06fe1bcbc6b2fea36eb64fd4084fff5fb8c45aaaf3246564f0c3579b3f",
+  "brain_py_sha256": "8058acd7aae28aac08f58f0572a3d8b197ca36ba25b11cd7645654c82da529d4",
+  "transport": "OpenAI Python SDK over HTTP to stock gateway on loopback ephemeral port",
+  "health": {
+    "ok": true,
+    "models": [
+      "course-flagship",
+      "course-small",
+      "course-anthropic",
+      "murshid-onprem"
+    ],
+    "speed": 0.2,
+    "fast": true
+  },
+  "stock_municipal_tool_reply": {
+    "id": "chatcmpl-f4fcc073f6454be4",
+    "choices": [
+      {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": null,
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "call_8cdd74e93b96",
+              "function": {
+                "arguments": "{\"reference\": \"CR12345678\"}",
+                "name": "check_application_status"
+              },
+              "type": "function"
+            }
+          ]
+        }
+      }
+    ],
+    "created": 1789497393,
+    "model": "course-flagship",
+    "object": "chat.completion",
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": null,
+    "usage": {
+      "completion_tokens": 24,
+      "prompt_tokens": 14,
+      "total_tokens": 38,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0
+      }
+    }
+  },
+  "retail_tool_reply": {
+    "id": "chatcmpl-c0615f380c9948e9",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "Of course — the fee for that service is SAR 75 and it usually takes about three working days. You can complete it in the portal.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1789497393,
+    "model": "course-flagship",
+    "object": "chat.completion",
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": null,
+    "usage": {
+      "completion_tokens": 29,
+      "prompt_tokens": 15,
+      "total_tokens": 44,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0
+      }
+    }
+  },
+  "retail_schema_reply": {
+    "id": "chatcmpl-2f4c8921e5d645e9",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "Of course — the fee for that service is SAR 75 and it usually takes about three working days. You can complete it in the portal.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1789497393,
+    "model": "course-flagship",
+    "object": "chat.completion",
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": null,
+    "usage": {
+      "completion_tokens": 29,
+      "prompt_tokens": 15,
+      "total_tokens": 44,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0
+      }
+    }
+  },
+  "stats": {
+    "requests": 3,
+    "input_tokens": 44,
+    "output_tokens": 82,
+    "cached_input_tokens": 0,
+    "cache_hits": 0,
+    "faults_served": 0,
+    "by_model": {
+      "course-flagship": 3
+    },
+    "fault": {
+      "mode": "off"
+    },
+    "prefixes_cached": 0
+  },
+  "spend_usd": 0,
+  "conclusion": "Stock municipal tool contract works; retail tool and DomainRequest schema are unsupported. Talabak adds clearly labeled deterministic retail rules; this probe is not model-quality evidence."
+}
