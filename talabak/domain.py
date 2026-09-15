@@ -4,6 +4,7 @@ from __future__ import annotations
 import hashlib
 import json
 import secrets
+import re
 import sqlite3
 import threading
 from functools import wraps
@@ -119,6 +120,16 @@ class Store:
         days = self.data["policy"]["return_days"]
         ar = f"سياسة المتجر التجريبي: الإرجاع والاستبدال خلال {days} يومًا من التسليم للمنتج غير المفتوح. الاستبدال لمنتج بالسعر نفسه وحسب المخزون. المواعيد: السبت إلى الخميس 10:00–22:00، الجمعة 16:00–22:00 بتوقيت الرياض."
         en = f"Demo store policy: returns and exchanges within {days} days of delivery for unopened items. Exchanges require equal price and available stock. Hours: Saturday–Thursday 10:00–22:00, Friday 16:00–22:00 Riyadh time."
+        identifiers = set(re.findall(r"SKU-[A-Z0-9]+",query.upper()))
+        wants_products = bool(identifiers) or bool(re.search(r"سعر|اسعار|مخزون|كتالوج|price|stock|catalog",query,re.I))
+        if wants_products:
+            selected = [p for p in products if not identifiers or p['sku'] in identifiers]
+            if selected:
+                ar += "\n" + "\n".join(f"{p['name_ar']} ({p['sku']}): {p['price']} ر.س؛ المخزون المتاح {p['stock']}." for p in selected)
+                en += "\n" + "\n".join(f"{p['name_en']} ({p['sku']}): SAR {p['price']}; available stock {p['stock']}." for p in selected)
+            else:
+                ar += "\nلم أعثر على هذا المنتج في الكتالوج الحالي."
+                en += "\nThat product was not found in the current catalog."
         return self.result(s, "ok", ar, en, sources=["policy-v1", "catalog-v1", "hours-v1"], products=products, slots=slots)
 
     def _propose_or_confirm(self, s, name, args):

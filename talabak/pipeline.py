@@ -6,7 +6,7 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from pydantic import ValidationError
 from .domain import ROOT, Session, Store, canonical, digest
-from .guards import detect_language, injection_reason, mask_pii, output_reason, refusal
+from .guards import detect_language, injection_reason, mask_pii, normalize, output_reason, refusal
 from .schemas import Answer, DomainRequest, GuardDecision, TOOL_TYPES, tool_definitions
 from .llm import ModelClient, ModelError
 from .cache import SemanticCache
@@ -84,7 +84,7 @@ class Application:
         result.trace.append({"stage":"input_guard", "layer":"deterministic", "blocked":bool(reason), "reason":reason})
         if reason:
             return safe, True
-        result.trace.append({"stage":"input_guard", "layer":"pii", "redacted":safe != text})
+        result.trace.append({"stage":"input_guard", "layer":"pii", "redacted":safe != normalize(text), "normalized":normalize(text) != text})
         verdict = self._structured([{"role":"system", "content":self.prompts["guard"]}, {"role":"user", "content":safe}], GuardDecision, result, stage="input_guard")
         result.trace.append({"stage":"input_guard", "layer":"classifier", "blocked":verdict.blocked})
         return safe, verdict.blocked
