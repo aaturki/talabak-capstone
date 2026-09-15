@@ -1,21 +1,21 @@
-# حدود السياق | Context budget
+# Context budget
 
-## ما نحدّه ولماذا
+## What is bounded, and why
 
-كل استدعاء يولّد خرجًا ضمن `max_output_tokens` المقيد في `config/models.json`؛ القيمة المشحونة الأولية768. تعاد قراءة القيمة الفعلية أثناء القياس. حد الخرج ليس قياسًا لاستهلاك السياق؛ رموز التعليمات والبيانات وschemas ونتائج الأدوات تدخل أيضًا في الطلب.
+Each model call uses the `max_output_tokens` bound in `config/models.json`. The initial shipped value is 768; measurement reads the current setting. An output limit does not measure total context usage: instructions, data, schemas and tool results also contribute to the request.
 
-حالة الإجراءات في `Session` وقاعدة المتجر، خارج تعليمات النموذج. يحتفظ التطبيق بالطلب الأخير والإجراء المعلق وبصمة التأكيد، ولا ينشئ ذاكرة غير محدودة للمحادثة. يعتمد تذكر العملية على بيانات جلسة واضحة، وليس وعدًا بأن نموذج المحاكاة يتذكر كل ما قيل. يوثق الاختبار حدود التأكيد وما يحدث عند تغير الموضوع أو البيانات.
+Action state lives in `Session` and the store database, outside model instructions. The application retains the last request, pending action and confirmation digest without building unlimited conversation history. Remembering an action depends on explicit session data, not an assumption that the simulator remembers everything said. Tests document confirmation limits and the effects of changing topics or data.
 
-## طريقة القياس
+## Measurement method
 
-يشغّل `scripts/context_budget.py` بعد اكتمال الملفات لقياس:
+Run `scripts/context_budget.py` after the source files are ready. It measures:
 
-- عدد رموز كل ملف prompt باستخدام `o200k_base` الذي يستعمله المحاكي.
-- حجم ملف المتجر الاصطناعي، ونسخة JSON الفعلية من `tool_definitions()` بعد تحميل أوصاف الأدوات وschemas.
-- المجموع المحسوب من المكونات وحد الخرج، مع تحديد أن JSON/tool envelope وطريقة بناء الطلب قد تضيف كلفة أخرى.
+- Each prompt file using the simulator's `o200k_base` tokenizer.
+- The fictional store file and the actual JSON rendered by `tool_definitions()` after loading descriptions and schemas.
+- The component inventory sum and configured output bound. JSON/tool envelopes and request construction may contribute additional tokens.
 
-النتيجة `artifacts/context_budget.json`، وتُعرض في الدفتر. العد المستقل للملفات فحص لحجم المكونات؛ `usage.prompt_tokens` في سجل الطلب الفعلي هو دليل ما وصل إلى المحاكي. عند التشغيل على نموذج حي يلزم tokenizer النموذج نفسه أو count-tokens الخاص بالمزود؛ لا تنقل نسبة عربية/إنجليزية من المرجع.
+The result is saved to `artifacts/context_budget.json` and displayed in the notebook. Counting files separately measures component size. The actual request's `usage.prompt_tokens` records what reached the simulator. A live model requires its own tokenizer or provider token-counting endpoint; do not reuse a reference project's Arabic/English ratio.
 
-## حدود الدليل
+## Evidence limits
 
-المحاكي لا يثبت نافذة سياق أو زمن prefill لنموذج حي. لا نضع رقم context-window تجاري أو نسبة overflow دون تشغيل موثق. القيم المدونة هنا توضح منهج القياس؛ أحدث الأرقام تؤخذ من artifact الناتج لا من تقدير يدوي.
+The simulator does not establish a live model's context window or prefill latency. No commercial context-window size or overflow rate is claimed without a documented run. This document describes the method; use the generated artifact for current values rather than a manual estimate.

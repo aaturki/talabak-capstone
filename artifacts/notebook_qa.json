@@ -1,22 +1,27 @@
 {
-  "checked_at_utc": "2026-09-15T20:42:02.084563+00:00",
+  "checked_at_utc": "2026-09-15T21:09:03.339953+00:00",
   "status": "PASS",
-  "test_summary": "239 passed, 2 warnings in 10.61s",
-  "individually_named_passed_tests": 239,
+  "test_summary": "224 passed in 6.59s",
+  "individually_named_passed_tests": 224,
   "widget_callbacks_executed": true,
-  "notebook_sha256": "1949fb9984ee00bfe71e43d7922cc054074de3561d22a128da8a403c5f722804",
-  "source_bundle_sha256": "36a37209f4049838baa4f7382b997ee9fe578f6a84aa2b7d7f71396634cca91a",
+  "notebook_sha256": "7915aed31fce6badffbfa5468a4af7721e26dd97598407de28ff82e63a463c8a",
+  "source_bundle_sha256": "f96b3aae2e01e58c4c5158b6d19f47903827d2310c01e6334405d7e74860bea4",
   "source_matches_current_project": true,
-  "preview_sha256": "1964d8e7ed026dcfa8eb1ea7fd58a399213aa61a5af9dd8a4b1e6a2782dac58b",
+  "preview_sha256": "91d3734726494f0adbb24b1333834eebefb3f725bd9752b4e874600e51b34bc5",
+  "preview_role": "QA only; not a submission artifact",
   "visual_review": {
-    "surface": "Codex in-app browser, localhost HTML preview",
+    "surface": "Chrome through CUA; localhost static notebook preview",
+    "reviewed_at_utc": "2026-09-15T21:09:03.1041355Z",
+    "source_bundle_sha256": "f96b3aae2e01e58c4c5158b6d19f47903827d2310c01e6334405d7e74860bea4",
+    "documentation_language": "English",
     "reviewed": [
-      "title and setup",
-      "evaluation results and slice table",
-      "ending and conversation notice"
+      "English header and setup screenshot",
+      "English evaluation report, stratum table and evidence-section screenshots",
+      "Conversation and submission-status text in the current accessibility tree"
     ],
-    "result": "Readable headings, isolated Arabic/Latin numbers, tables contained, long outputs scrollable; no live controls implied by static preview",
-    "live_notebook_frontend_clicks": "NOT_RUN; widget callbacks invoked and asserted inside the fresh kernel"
+    "result": "PASS: English prose uses left-to-right layout; inspected headings, tables and report text are readable. Preview is QA only and remains under work.",
+    "live_notebook_frontend_clicks": "NOT_RUN; English Send and New session controls verified by language QA; send/confirmation/reset callbacks passed in the fresh kernel",
+    "actual_colab_runtime": "NOT_RUN"
   },
   "unverified": [
     "actual fresh Google Colab runtime",

@@ -66,39 +66,39 @@ def demo_run(client):
 def generate_reports(report,root):
     primary=report['evaluations']['primary']; alternate=report['evaluations']['open_weight'];guard=report['guards']
     overall=primary['overall']; safety=primary['safety']
-    text=["# تقرير التقييم — طلبك", "",f"تولّد في {report['created_at_utc']} من تشغيل التطبيق الفعلي عبر SDK إلى محاكي محلي.","",
-          "**هذا تقرير محاكاة محلية. لم يُشغّل نموذج لغوي حي تجاري أو مفتوح الأوزان. الإنفاق الخارجي صفر.**","",
-          "## النتيجة","",f"- Golden: **{overall['passed']}/{overall['n']}**؛ حالات السلامة: **{safety['n']-safety['failed']}/{safety['n']}**.",
-          f"- حجب الهجمات: **{guard['attack_block_rate']:.1%}** من {guard['attack_n']}؛ الحجب الخاطئ: **{guard['legitimate_false_positive_rate']:.1%}** من {guard['legitimate_n']}.",
-          f"- بوابة التراجع النظيفة: **{report['regression']['clean']['status']}**؛ التغيير المتعمد: **{report['regression']['degraded']['status']}**.",
-          f"- تجارب الأعطال والإصلاح: **{'PASS' if report['faults']['all_passed'] else 'FAIL'}**.","",
-          "## المقارنة حسب الشرائح","","الاسمان أدناه إعدادان للمحاكي نفسه؛ ليست هذه مقارنة جودة نموذجين حقيقيين.","",
-          "| البعد | الشريحة | primary ناجح/عدد | open_weight simulator ناجح/عدد |","|---|---|---:|---:|"]
+    text=["# Evaluation Report — Talabak", "",f"Generated at {report['created_at_utc']} from an actual application run through the SDK to a local simulator.","",
+          "**This report contains local simulator evidence. No live commercial or open-weight language model was run. External spend is zero.**","",
+          "## Results","",f"- Golden cases: **{overall['passed']}/{overall['n']}**; safety cases: **{safety['n']-safety['failed']}/{safety['n']}**.",
+          f"- Attack block rate: **{guard['attack_block_rate']:.1%}** across {guard['attack_n']} attacks; false-positive rate: **{guard['legitimate_false_positive_rate']:.1%}** across {guard['legitimate_n']} legitimate requests.",
+          f"- Clean regression gate: **{report['regression']['clean']['status']}**; deliberately degraded configuration: **{report['regression']['degraded']['status']}**.",
+          f"- Fault and repair drills: **{'PASS' if report['faults']['all_passed'] else 'FAIL'}**.","",
+          "## Comparison by stratum","","The names below identify two configurations of the same simulator. This is not a quality comparison of two real models.","",
+          "| Dimension | Stratum | primary passed/total | open_weight simulator passed/total |","|---|---|---:|---:|"]
     for dimension,slices in primary['slices'].items():
         for label,row in slices.items():
             other=alternate['slices'][dimension][label]
             text.append(f"| {dimension} | {label} | {row['passed']}/{row['n']} | {other['passed']}/{other['n']} |")
-    text += ["","## ما تثبته أقسام المشروع","",
-             "1. **البنية:** Protocol وحد SDK واحد، aliases من config، إعادة محاولة وتحويل احتياطي جُرّبا تحت أعطال مكتوبة.",
-             "2. **المخرجات والأدوات:** Pydantic وschema لدى البوابة، validate/retry/repair، حلقات أدوات فعلية؛ قاعدة البيانات تتحقق من الملكية والسياسة والتأكيد المرتبط بالإجراء.",
-             "3. **الحواجز:** تطبيع عربي/إنجليزي وحجب حتمي وإخفاء PII قبل النموذج والسجل، ثم مصنف محاكى؛ فحص الخرج ونتائج الأدوات والمراجع.",
-             "4. **التقييم:** 144 حالة أصلية ثابتة ذات شرائح؛ التقييم يشغّل handle_message نفسه. المقيم المحاكى يختبر العقد فقط؛ κ البشرية غير متاحة.",
-             "5. **التكلفة:** usage مرصود والتكلفة الافتراضية منفصلة عن الصرف الحقيقي. تجربة التخزين موثقة في BENCHMARKS.md مع حكم التقييم لكل خطوة.",
-             "6. **المقارنة:** جُرّب تبديل إعدادات المحاكي؛ المقارنة الحية والتعادل من throughput مقاس لم يتوفرا.",
-             "7. **التشغيل:** runner محلي وواجهة ودفتر بمصدر مضمّن. نجاح النواة المحلية لا يثبت Run all داخل Colab حتى يُجرّب هناك.","",
-             "## الحكم والمعايرة البشرية","", "تُحفظ أحكام المحاكي لكل بُعد في ملفات مستقلة. labels البشرية فارغة؛ لا agreement ولا κ مختلقة، ولا مقيم غير معاير يمنع قبول التغييرات. يلزم وسم بشري فعلي لمخرجات نموذج حي، ثم حساب المعايرة على النسخة نفسها.","",
-             "## الحدود والأعمال الباقية","", "- جميع بيانات المتجر والعملاء اصطناعية؛ الشخصيات التجريبية ليست نظام تسجيل دخول إنتاجيًا.",
-             "- المجموعة كُتبت أثناء التطوير، وليست اختبارًا مستقلًا لذكاء نموذج. توقعاتها تحتاج مراجعة صاحب المشروع.",
-             "- المحاكي الخاص بالمسار D شيفرة حتمية مستوحاة من عقد بوابة المقرر؛ ليس نسخة Murshid قياسية ولا نموذجًا لغويًا.",
-             "- لم تثبت جودة تجارية/مفتوحة الأوزان، أو cache حقيقي لدى مزود، أو كلفة تشغيل فعلية، أو إنتاجية عتاد LLM.",
-             "- الوقت والتكلفة الافتراضية هنا لطلبات HTTP وقواعد المحاكي، ولا يجوز تعميمهما على نموذج حي.",
-             "- تواريخ الدفعة، ومراجعة زملاء موقعة، وتشغيل Colab الفعلي، وGitHub/التسليم ما زالت غير مكتملة. لا نشر أو تسليم دون طلب المستخدم.","",
-             "## الأدلة القابلة للتتبع","", "- artifacts/report.json وartifacts/primary/results.jsonl: النتيجة وربط كل حالة بمخرجاتها واستعمالها.",
-             "- artifacts/open_weight: إعادة تشغيل مجموعة البيانات ذاتها بإعداد بديل محاكى.",
-             "- artifacts/degraded وartifacts/faults.json: التراجع المتعمد وأعطال الربط.",
-             "- artifacts/calibration.json وartifacts/human_labels.template.csv: حالة المعايرة بلا ملء مصطنع.",
-             "- eval/baseline.simulator.json: خط أساس محفوظ من تشغيل ناجح سابق؛ لا يُحدّثه runner تلقائيًا.",
-             "- RUBRIC_EVIDENCE.md: ربط البنود بمصادرها وحدود كل دليل."]
+    text += ["","## Evidence for each project section","",
+             "1. **Architecture:** A Protocol and a single SDK boundary, configuration-based aliases, and retry/fallback behavior exercised under scripted faults.",
+             "2. **Structured outputs and tools:** Pydantic validation and gateway schema enforcement, validate/retry/repair, and actual tool loops. The database enforces ownership, policy, and confirmation bound to the specific action.",
+             "3. **Guardrails:** Arabic/English normalization, deterministic blocking, and PII masking before model calls and logging, followed by a simulated classifier. Outputs, tool results, and citations are checked.",
+             "4. **Evaluation:** 144 original, fixed cases with explicit strata. Evaluation runs the same handle_message entrypoint. The simulated judge tests the interface contract only; human-calibrated κ is unavailable.",
+             "5. **Cost:** Observed usage and illustrative tariff estimates are separated from actual spend. BENCHMARKS.md documents the cache experiment with an evaluation verdict for every step.",
+             "6. **Model comparison:** Switching simulator configurations was tested. A live model comparison and break-even analysis based on measured throughput remain unavailable.",
+             "7. **Operation:** One notebook contains the conversation, tests, and reports, with a setup cell that starts the simulator automatically. Embedded source supports local review; repository cloning and evidence of Run all in Colab await authorized publication.","",
+             "## Judge and human calibration","", "Simulated judgments are saved separately for each dimension. Human labels remain blank: no agreement or κ values are fabricated, and an uncalibrated judge does not gate change acceptance. Actual human labeling of live-model outputs is required, followed by calibration against the same output version.","",
+             "## Limitations and remaining work","", "- All store and customer data are synthetic. Demo identities are not a production authentication system.",
+             "- The dataset was authored during development; it is not an independent test of model intelligence. Its expected outcomes require the project owner's review.",
+             "- The Track D simulator is deterministic code inspired by the course gateway contract. It is neither an unmodified Murshid implementation nor a language model.",
+             "- Commercial/open-weight model quality, actual provider caching, real operating cost, and LLM hardware throughput have not been established.",
+             "- Timing and illustrative cost estimates here describe HTTP requests and simulator rules. They must not be generalized to a live model.",
+             "- Cohort dates, signed peer review, an actual Colab run, and GitHub publication/submission remain incomplete. Nothing is published or submitted without the user's request.","",
+             "## Traceable evidence","", "- artifacts/report.json and artifacts/primary/results.jsonl: aggregate results and each case's outputs and usage.",
+             "- artifacts/open_weight: the same dataset rerun using an alternative simulator configuration.",
+             "- artifacts/degraded and artifacts/faults.json: deliberate regression and connection fault drills.",
+             "- artifacts/calibration.json and artifacts/human_labels.template.csv: calibration status with no fabricated labels.",
+             "- eval/baseline.simulator.json: a saved baseline from a previous successful run; the runner does not update it automatically.",
+             "- RUBRIC_EVIDENCE.md: requirements mapped to their sources and the limits of each piece of evidence."]
     (root/'EVALUATION_REPORT.md').write_text('\n'.join(text)+'\n',encoding='utf-8')
     bench=["# BENCHMARKS — simulator evidence only","",f"Generated: {report['created_at_utc']}","",
            "These are measured loopback request times and tokenizer counts. Configured tariffs are illustrative assumptions; actual external API spend is $0. No model-performance or commercial-pricing claim is made.","",

@@ -1,64 +1,68 @@
-# سجل القرارات | Decisions
+# Decision log
 
-هذا السجل يشرح اختيارات التنفيذ المحلية. نتائج التجارب تُقرأ من ملفات التشغيل والتقرير؛ لا تُستبدل بأهداف تصميمية.
+This log explains local implementation choices. Experimental results come from execution artifacts and reports; design intentions do not substitute for measurements.
 
-## ADR-001 — Track D وبنية المسار
+## ADR-001 — Track D and the pipeline
 
-اختير المسار D لأن المهمة تجمع أسئلة بسيطة عن السياسة مع إجراءات تغيّر حالة طلب أو موعد. يفصل التطبيق الحواجز عن توجيه الطلب، ثم الأسئلة المستندة إلى المتجر عن الأدوات وعن التحويل للدعم. يعمل التقييم والعرض والمحادثة من نقطة التطبيق نفسها. هذا يسمح باختبار كل مرحلة وبقياس تكلفة النموذج الذي استُدعي بالفعل.
+Track D combines policy questions with actions that change an order or appointment. The application separates guards, routing, grounded store answers, tools and support handoff. Evaluation, demonstrations and conversation use the same application entry point. Each stage can therefore be tested, and costs attributed to model calls actually made.
 
-اسم «طلبك» ومتجر الإلكترونيات وSQLite اختيارات للمشروع، لا شروط من المدرّب. النطاق يشمل إنشاء طلب معالجة إرجاع/استبدال وحجز تجريبي؛ لا ينفّذ رد أموال أو شحنًا فعليًا.
+The Talabak name, electronics-store domain and SQLite database are project choices, not instructor requirements. The scope covers local requests for return/exchange processing and demonstration bookings. It does not issue refunds or ship products.
 
-## ADR-002 — حد النموذج والمحاكي الافتراضي
+## ADR-002 — Model boundary and default simulator
 
-واجهة `ModelClient` تفصل التطبيق عن SDK؛ التنفيذ الذي يستدعي SDK في `talabak/llm.py`. تُقرأ أسماء النماذج والحدود من الإعدادات. البوابة المحلية تنفّذ عقد HTTP بدل تجاوز الحد باستدعاء مباشر لمنطق المحاكي، وبذلك يمكن اختبار schema والأدوات والاستهلاك والأخطاء عبر المسار نفسه.
+`ModelClient` separates the application from the SDK. The SDK implementation is in `talabak/llm.py`; model names and bounds come from configuration. The local gateway implements the HTTP contract, so schema, tools, usage and errors are tested through that boundary rather than direct calls into simulator logic.
 
-كل مسار افتراضي محاكاة، بما فيه `open_weight` و`judge`. لا يوجد وصول مؤكد إلى بوابة صفية حقيقية، ولا تفويض بإنفاق مزود خارجي. يمنع البناء المحلي URLs الخارجية ولا يقرأ مفاتيح مزود من البيئة. عند توفر تفويض ووصول حقيقيين يحتاج تشغيل المقارنة الحية تهيئة موثقة ومراجعة سياسة الاتصال، ثم إعادة التقييم نفسه؛ لا يكفي تغيير الاسم المعروض لنصبح في وضع حي.
+Every default route is simulated, including `open_weight` and `judge`. Access to a live classroom gateway has not been confirmed, and external spending has not been authorized. This build rejects external URLs and ignores environment credentials. A live comparison requires authorized access, documented configuration, review of the connection policy and the same evaluation rerun. Renaming an alias does not create a live model run.
 
-## ADR-003 — الصلاحية والتأكيد وحفظ الحالة
+## ADR-003 — Authority, confirmation and persistent state
 
-ملكية الطلب وصلاحية الإجراء تُقرآن من الجلسة والسجل المحلي. لا يستطيع النموذج منح نفسه صلاحية باستخدام وسيطة أو جملة. التأكيد مرتبط بالإجراء ووسائطه والعميل والجلسة وبصمة البيانات، وينطبق على الرسالة التالية فقط. إذا تغيرت البيانات أو الإجراء لا تنفّذ موافقة قديمة عملية جديدة.
+Order ownership and action authority come from the session and local records. The model cannot grant itself authority through an argument or sentence. Confirmation binds the action, arguments, customer, session and data digest, and applies only to the next message. Changing the data or action invalidates earlier confirmation.
 
-SQLite تحتفظ بالإجراءات وقيود التفرد والسعة. فحص الأهلية والمخزون/الموعد والتنفيذ داخل المعاملة يمنع التسجيل المكرر أو تجاوز السعة. هوية الجلسة الحالية محاكاة موثوقة للاختبار، وليست بديلًا عن تسجيل دخول إنتاجي. يلزم مزود هوية فعلي قبل أي استخدام خارجي.
+SQLite stores actions and enforces uniqueness and capacity. Eligibility, stock/appointment checks and execution occur in a transaction to prevent duplicate records or overselling. The trusted demonstration session does not replace production authentication; an actual identity provider is needed before external use.
 
-## ADR-004 — Pydantic وملفات التعليمات
+## ADR-004 — Pydantic and versioned instructions
 
-المجالات المغلقة تستخدم enums، والحقول غير المقدمة تظل فارغة بدل اختراع قيمة. إرسال JSON Schema إلى المزود لا يلغي التحقق الدلالي في Pydantic. أول إخفاق يرجع أخطاء محددة للإصلاح، ثم ينتهي المسار بعد حد معلوم. الاختبارات يجب أن تتضمن نجاحًا وإصلاحًا وفشلًا نهائيًا.
+Closed domains use enums. Unspecified fields stay empty instead of being invented. JSON Schema does not replace semantic validation in Pydantic. A first failure returns specific validation errors for repair, and processing stops after bounded attempts. Tests cover success, successful repair and final failure.
 
-التعليمات ملفات ذات إصدارات ويُسجل الإصدار المستخدم. يشمل ذلك تعليمات الإصلاح والمقيم؛ لا تُعدّل النسخة القديمة خفية عند تجربة تغيير. قسمت أبعاد الحكم إلى groundedness وcompleteness كي لا تعطي المكالمة درجة مبهمة لعدة صفات معًا.
+Instructions are versioned files, and the served version is recorded. Repair and judge instructions follow the same rule; an experiment must not silently change an older version. Groundedness and completeness are separate judge dimensions so one call does not return an ambiguous combined score.
 
-## ADR-005 — السلامة قبل النموذج وعند الخروج
+## ADR-005 — Safety before model calls and delivery
 
-التطبيع والكشف الحتمي وطمس المعلومات الشخصية تسبق أي استدعاء نموذج أو سجل نصي. يراجع جدار الخروج التسرب والبيانات الشخصية والتعليمات المنقولة. الرفض لا يكرر النص المهاجم. الأدلة هي حالات هجوم ومشروعة معًا واختبارات عدم تغيير حالة الطلب؛ لا تكفي نسبة منع مرتفعة بلا false-positive rate.
+Normalization, deterministic detection and PII masking precede model calls and text logging. The outbound guard checks leaks, personal data and relayed instructions. Refusals do not repeat attack text. Evidence includes attack and legitimate corpora together, plus assertions that rejected requests do not change order state. A high block rate alone is insufficient without a false-positive rate.
 
-هذه حواجز ضمن نطاق بيانات الاختبار، وليست برهانًا على منع كل صياغة هجوم ممكنة. الجلسة الموثوقة والسياسة في الكود تبقيان خط الدفاع حتى لو فشل فهم النموذج.
+These guards are tested within the stated dataset scope; they do not prove protection against every possible attack wording. Trusted session authority and code-enforced policy remain defenses when model interpretation fails.
 
-## ADR-006 — التقييم وأمان خط الأساس
+## ADR-006 — Evaluation and baseline integrity
 
-بُنيت بيانات المشروع من المجال والعمليات نفسها مع فصل مصادر الحالات وتوقعاتها عن جواب النظام. صفحة Capstone تنص على40حالة على الأقل، بينما Lab5 في «Your turn» يطلب120؛ نعتمد120حالة ذات معنى أو أكثر لتغطية الصيغتين، مع أغلبية عربية وشرائح واضحة. لا نعدل التوقعات لتحويل إخفاق إلى نجاح بلا سبب مجال موثق.
+Project data was authored around its domain and operations, with source cases and expectations separated from system answers. The Capstone page requires at least 40 golden cases; Lab 5's “Your turn” requires 120. At least 120 meaningful cases, an Arabic majority and explicit strata cover both statements. Expectations must not be changed solely to turn failure into success without a documented domain reason.
 
-السلامة حتمية ويجب أن تنجح100%. بوابة التراجع تقارن ملفات نتائج محفوظة قبل التغيير وتعرض أسباب الفشل حسب الشرائح. حكم النموذج مؤشر جودة منفصل، ويظل غير مؤهل للمعايرة البشرية حتى توجد وسوم فعلية ومعرّفات محكمين ومطابقة للمخرجات وκ محسوبة. لا توصف وسوم مولدة آليًا بأنها بشرية.
+Safety checks are deterministic and must pass 100%. The regression gate compares saved results from before a change and reports failures by slice. Model judgment is a separate quality signal. Human calibration remains unestablished until genuine labels, annotator identifiers, matching output versions and calculated κ are available. Automatically generated labels are never described as human labels.
 
-## ADR-007 — التخزين والتكلفة والزمن
+## ADR-007 — Caching, cost and latency
 
-تدخل نسخة المصدر والسياسة والنموذج والوسائط والسياق المؤثر في مفتاح cache. محتوى العميل وإجراءات الطلب لا يجوز إعادة استعمالها لعميل آخر. أي tier دلالي يحتاج عتبة مقاسة وnear-miss suite؛ إن لم يوجد دليل قياس يبقى هذا البند فجوة معلنة.
+Cache keys include relevant source and policy versions, model, arguments and context. Customer content and order actions must not be reused across customers. A semantic tier requires a measured threshold and near-miss suite; otherwise that requirement remains an explicit gap.
 
-تفصل السجلات الإنفاق الحقيقي، وهو صفر في المحاكي، عن التكلفة التعليمية المحسوبة من usage وتعرفة افتراضية. المقارنة قبل/بعد تحتاج البيانات نفسها وحكم التقييم بجانب كل إعداد. التخزين والزمن المقاسان محليًا لا يثبتان أسعار أو سرعة مزود حي. لا يوصى باستضافة GPU ولا تُحسب نقطة تعادل حقيقية قبل قياس throughput وحالة العتاد والتزامن وكلفة الساعة.
+Logs separate actual spending, which is zero in simulator mode, from illustrative cost calculated using usage and an assumed tariff. Before/after comparisons require the same data and an evaluation verdict for each configuration. Local cache and latency measurements do not establish live prices or speed. No GPU hosting recommendation or measured break-even is made before throughput, hardware conditions, concurrency and hourly cost are available.
 
-## ADR-008 — قرار عُكس ولماذا
+## ADR-008 — A decision reversed after measurement
 
-كان تفعيل التخزين الدلالي مرشحًا للتحسين بعد بناء المطابقة التامة. قارناهما فعليًا على حمل ثابت من124طلبًا اصطناعيًا متكررًا، مع إعادة تقييم المجموعة كاملة لكل إعداد. استعمل exact84استدعاء مقابل86مع tierالدلالي؛ نجح التقييم في الحالتين. احتاجت المطابقة الدلالية فحص الحاجز للنص الجديد، فلم تتحول كل إصابة إضافية إلى وفر صافٍ.
+After exact matching was implemented, enabling semantic caching was a candidate optimization. Both were measured on 124 repetitive synthetic requests, with a complete golden evaluation per configuration. Exact matching used 84 model calls; adding the semantic tier used 86. Both passed evaluation. Semantic matching required a guard call for new wording, so additional hits did not all produce net savings.
 
-لذلك عدلنا اختيار الإعداد الافتراضي إلى exact وحده وأبقينا tierالدلالي قابلًا للتجربة ومعطّلًا افتراضيًا. هذه مفاضلة بين إعادة استعمال أوسع وكلفة فحص أعلى، مستندة إلى `artifacts/cache_benchmark.json`. القياس على المحاكي وحمل مصمم للتكرار؛ يجب إعادة القرار مع نموذج ومرور حقيقيين.
+The default was changed to exact matching alone. The semantic tier remains available for experiments and is disabled by default. This trades broader reuse against checking cost, based on `artifacts/cache_benchmark.json`. The measurement uses a simulator and deliberately repetitive traffic; revisit the decision with real models and traffic.
 
-## ADR-009 — حزمة التنفيذ والنشر
+## ADR-009 — One notebook for submission
 
-الدفتر يحتوي ملفات المصدر والبيانات والاختبارات داخل payload مضغوط وبصمة SHA-256. يختار منفذ loopback متاحًا ومجلد تشغيل جديدًا، فتزول الحاجة إلى repository عام عند المراجعة المحلية. يتطلب تثبيت المكتبات اتصالًا أوليًا بالإنترنت. لا يجوز وصف نجاح nbclient المحلي بأنه إثبات Colab؛ يسجل كل منهما منفصلًا.
+The submission is one Colab notebook that reaches an internal conversation through **Run all**. Its first setup cell installs dependencies, starts the backend and verifies readiness. The separate website created during development was removed from submission scope. The reviewer needs no Docker setup, CI pipeline or manual local installation.
 
-README يحمل الاسم الكامل الذي قدمه المستخدم؛ تواريخ الدفعة تنتظر البيان الصحيح. لا نشر ولا push ولا تسليم ولا تواصل مع المدرّب أو الزملاء ضمن التفويض الحالي. تحضير الملفات والتاريخ المحلي يسبق قرار النشر اللاحق.
+The notebook embeds source, data and tests in a compressed payload with a SHA-256 digest. It selects an available loopback port and extracts a new working directory, allowing local review without a public repository. Initial dependency installation needs Internet access. Local `nbclient` success and actual Colab success are separate evidence categories.
 
-## التوصية الحالية
+Embedding source is a choice for this review snapshot. The course template clones the project's repository in Colab. A real URL can be added after authorized publication and tested in a fresh runtime. Neither that clone nor an actual Colab run has been performed.
 
-أكمل المراجعة المحلية على المحاكي، ثم افحص النتائج والفجوات بندًا بندًا. اختيار النموذج التجاري أو المفتوح لم يُحسم بقياس حي؛ تسمية مسار في config ليست توصية تشغيل. عند توفر الوصول المصرح به نعيد مجموعة التقييم نفسها والتكلفة والزمن، ثم نبني التوصية وbreak-even من الأدلة.
+The README uses the owner's exact supplied name, تركي أحمد الصليع. Cohort dates await the correct information. Current authorization covers local preparation and history; it does not include publication, push, submission or contacting the instructor or peers.
+
+## Current recommendation
+
+Review local simulator results and gaps requirement by requirement. A live commercial/open-weight choice has not been established through measurements; an alias is not a deployment recommendation. When authorized access is available, rerun the same evaluation, cost and latency measurements, then derive the recommendation and break-even from that evidence.
 
 ## References
 

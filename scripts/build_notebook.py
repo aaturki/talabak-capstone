@@ -19,7 +19,7 @@ import nbformat
 
 
 ROOT = Path(__file__).resolve().parents[1]
-INCLUDE_DIRS = {"talabak", "config", "data", "prompts", "tests", "scripts", "docs", "web", "eval"}
+INCLUDE_DIRS = {"talabak", "config", "data", "prompts", "tests", "scripts", "docs", "eval"}
 INCLUDE_ROOT = {"README.md", "RUBRIC_EVIDENCE.md", "requirements.txt", "requirements.lock", "pyproject.toml", "pytest.ini", ".gitignore"}
 EXCLUDE_DIRS = {"__pycache__", ".pytest_cache", ".git", ".venv", "artifacts", "node_modules"}
 
@@ -34,7 +34,7 @@ def collect_bundle(root: Path) -> tuple[bytes, dict]:
             continue
         if any(part in EXCLUDE_DIRS for part in rel.parts) or path.suffix in {".pyc", ".ipynb", ".log"}:
             continue
-        if path.suffix == ".html" and rel.parts[0] != "web":
+        if path.suffix == ".html":
             continue
         if (len(rel.parts) == 1 and rel.name not in INCLUDE_ROOT) or (len(rel.parts) > 1 and rel.parts[0] not in INCLUDE_DIRS):
             continue
@@ -70,32 +70,58 @@ def build(root: Path, output: Path) -> dict:
         cells.append(cell)
 
     md('''
-    # طلبك | Talabak — Track D
+    # Talabak — Track D: Retail Order Support
 
     **تركي أحمد الصليع · SDAIA Academy · SDA-AIE-213, LLM Application Engineering**  
-    تواريخ الدفعة: بانتظار المعلومة الصحيحة قبل التسليم.
+    Cohort dates: to be supplied before submission.
 
-    ## الهدف
+    ## Project overview
 
-    مساعد عربي/إنجليزي للطلبات والإرجاع والاستبدال ومواعيد المتجر، مع اختبارات وأدلة قابلة لإعادة التشغيل.
-    افتح الدفتر واختر **Runtime → Run all**. لا مفتاح مزود ولا GPU؛ تثبيت المكتبات أول مرة يحتاج الإنترنت.
-    الملفات المضمّنة هي المصدر الذي تنفذه الخلايا، وتُفك في مجلد جديد. لا يعتمد التشغيل على GitHub أو ملفات جلسة سابقة.
+    An Arabic/English assistant for order status, returns, exchanges and store appointments, with reproducible tests and evaluation evidence.
+    Choose **Runtime → Run all**. No provider API key or GPU is required; the first dependency installation needs internet access.
+    This notebook contains the conversation, demonstrations, tests and reports. For local review, it extracts its embedded source snapshot into a fresh directory.
+    The course's repository-clone setup and a fresh Google Colab run remain unverified. No repository has been published.
 
-    **حدود الدليل:** كل مسار نموذج محاكي محلي. لا تثبت هذه النتائج جودة نموذج تجاري/مفتوح الأوزان أو معايرة بشرية أو throughput لعتاد نماذج.
-    نجاح هذا الدفتر محليًا لا يُعد دليل تشغيل Colab حتى يُشغّل هناك فعلًا. تُعرض الفجوات مع النتائج.
+    **Evidence scope:** all model routes use a local simulator. These results do not establish live commercial/open-weight model quality, human judge calibration or measured LLM hardware throughput.
+    A successful local notebook run is recorded separately from actual Colab verification.
 
-    [الدورة](https://mohammadyusif.github.io/llm-application-engineering/) ·
+    [Course](https://mohammadyusif.github.io/llm-application-engineering/) ·
     [Capstone](https://mohammadyusif.github.io/llm-application-engineering/capstone.html) ·
     [SDAIA Academy](https://github.com/SDAIAAcademy)
     ''')
     md('''
-    ## 1. إعداد مستقل
+    ## 1. Setup
 
-    تتحقق الخلية من بصمة الحزمة، تستخرج الملفات في مجلد مؤقت جديد، ثم تثبت الإصدارات المقيدة عند الحاجة.
-    كود البيانات المضغوطة طويل فقط لأنه يحمل التطبيق؛ يمكن طي هذه الخلية.
+    Verify the source hash, extract the files into a fresh temporary directory and install pinned dependencies when needed.
+    Start the backend and SDK client, then check `/v1/models` before running any demonstration. Rerunning this cell closes the previous notebook backend and client first.
+    The long encoded payload contains the application source; this cell can be collapsed.
     ''')
     bootstrap = '''
-import base64, hashlib, importlib.metadata, io, json, os, pathlib, subprocess, sys, tempfile, zipfile
+import atexit, base64, contextlib, copy, hashlib, importlib.metadata, io, json, os, pathlib, subprocess, sys, tempfile, urllib.request, zipfile
+previous_runtime = globals().pop("_talabak_runtime", None)
+if previous_runtime is not None:
+    atexit.unregister(previous_runtime.close)
+    previous_runtime.close()
+else:
+    previous_client = globals().get("client")
+    previous_gateway = globals().get("gateway_context")
+    if previous_client is not None:
+        atexit.unregister(previous_client.close)
+        previous_client.close()
+    if previous_gateway is not None:
+        atexit.unregister(previous_gateway.__exit__)
+        previous_gateway.__exit__(None, None, None)
+for previous_control in (globals().get("send_button"), globals().get("reset_button")):
+    if previous_control is not None:
+        previous_control.disabled = True
+previous_root = globals().get("RUN_ROOT")
+if previous_root is not None:
+    sys.path[:] = [entry for entry in sys.path if entry != str(previous_root)]
+    for module_name, module in list(sys.modules.items()):
+        module_file = getattr(module, "__file__", None)
+        if module_file and pathlib.Path(module_file).resolve().is_relative_to(previous_root):
+            del sys.modules[module_name]
+client = gateway_context = None
 SOURCE_BUNDLE = "__PAYLOAD__"
 SOURCE_SHA256 = "__SHA__"
 packed = base64.b64decode(SOURCE_BUNDLE)
@@ -132,18 +158,41 @@ if needs_install:
         print(install.stdout[-4000:]); print(install.stderr[-6000:])
         raise RuntimeError("Pinned dependency installation failed; details above")
 from IPython.display import Markdown, display
+from talabak.mock_gateway import running_gateway
+from talabak.llm import SDKClient, ModelClient
+config = json.loads((RUN_ROOT / "config/models.json").read_text("utf-8"))
+runtime_config = copy.deepcopy(config)
+_talabak_runtime = contextlib.ExitStack()
+try:
+    gateway_context = running_gateway(port=0)
+    gateway_url = _talabak_runtime.enter_context(gateway_context)
+    for route in runtime_config["routes"].values():
+        route["base_url"] = gateway_url
+    with urllib.request.urlopen(gateway_url + "/models", timeout=10) as response:
+        assert response.status == 200, "Gateway model-list health check failed"
+        gateway_health = json.load(response)
+    assert gateway_health.get("object") == "list" and gateway_health.get("data"), "No model aliases advertised"
+    client = SDKClient(config=runtime_config)
+    _talabak_runtime.callback(client.close)
+    assert isinstance(client, ModelClient)
+except BaseException:
+    _talabak_runtime.close()
+    raise
+atexit.register(_talabak_runtime.close)
 print("Source SHA-256:", SOURCE_SHA256)
 print("Fresh run directory:", RUN_ROOT)
 print("Python:", sys.version.split()[0])
 print("Mode: local simulator; external provider spend: zero")
+print("PASS: GET /v1/models; gateway and SDK client ready:", gateway_url)
+print("Advertised models:", ", ".join(item["id"] for item in gateway_health["data"]))
 '''.replace('__PAYLOAD__', payload).replace('__SHA__', manifest['sha256'])
     code(bootstrap, hidden=True)
 
     md('''
-    ## 2. حد النموذج والملفات
+    ## 2. Model boundary and configuration
 
-    يفحص هذا التأكيد AST أن استيراد SDK محصور في ملف adapter. إعداد النموذج عبر aliases؛ التطبيق يستدعي الواجهة فقط.
-    تُختبر الحماية الوظيفية للحد في مجموعة الاختبارات التالية.
+    Inspect the Python syntax tree to verify that provider SDK imports stay inside the adapter. Model routes are configured through aliases; the application depends on the client interface.
+    The following test suite checks the boundary's behavior.
     ''')
     code('''
     import ast
@@ -166,28 +215,32 @@ print("Mode: local simulator; external provider spend: zero")
     ''')
 
     md('''
-    ## 3. الاختبارات المحلية
+    ## 3. Automated tests
 
-    الاختبارات تقيس العقود والسلامة والتفويض والتأكيد والتكرار والحواجز. تنفذ ضد المصدر المضمّن في عملية مستقلة.
-    تتوقف هذه الخلية إذا فشل اختبار؛ لا تحول الفشل إلى تقرير نجاح.
+    Run contract, safety, authorization, confirmation, idempotency and guard tests against the embedded source in a separate process.
+    A failed test stops this cell. The test log and JUnit XML are saved with the run artifacts.
     ''')
     code('''
-    def run_command(arguments):
+    def run_command(arguments, log_path=None):
         completed = subprocess.run([sys.executable, *arguments], cwd=RUN_ROOT, capture_output=True,
                                    text=True, encoding="utf-8", errors="replace")
+        if log_path is not None:
+            log_path.write_text(completed.stdout + completed.stderr, "utf-8")
         print(completed.stdout)
         if completed.returncode:
             print(completed.stderr[-6000:])
             raise RuntimeError(f"Command failed with exit code {completed.returncode}: {arguments}")
         return completed
-    test_run = run_command(["-m", "pytest", "-o", "addopts=", "-v", "--tb=short"])
+    (RUN_ROOT / "artifacts").mkdir(exist_ok=True)
+    test_run = run_command(["-m", "pytest", "-o", "addopts=", "-v", "--tb=short", "--junitxml=artifacts/pytest.xml"],
+                           log_path=RUN_ROOT / "artifacts/pytest.txt")
     ''')
 
     md('''
-    ## 4. التقييم وإنتاج الأدلة
+    ## 4. Evaluation and evidence generation
 
-    يشغّل runner مجموعة المشروع عبر مسار التطبيق، ويكتب ملفات النتائج بدل الاعتماد على أرقام منسوخة.
-    المرجع الأول لنجاح كل مطلب هو أثر التشغيل المحدد؛ التشغيل المحلي لا يمنح تلقائيًا درجات المقارنة الحية أو المعايرة البشرية.
+    Evaluate the project's dataset through the application and generate reports from the recorded results.
+    Each claim must be supported by its run evidence. Local simulator results do not establish a live model comparison or human calibration.
     ''')
     code('''
     full_run = run_command(["scripts/run_all.py", "--skip-tests"])
@@ -205,35 +258,24 @@ print("Mode: local simulator; external provider spend: zero")
     ''')
 
     md('''
-    ## 5. تشغيل البوابة للمراحل والعروض
+    ## 5. Five-stage pipeline
 
-    منفذ loopback متاح تلقائيًا، وبوابة خاصة بهذه الجلسة. جميع أسماء النماذج تبقى من config.
-    يمكن قراءة السجلات الموجزة لمعرفة أي alias أجاب وهل حدث fallback.
+    Reuse the backend and client started in the setup cell, and initialize the demonstration store and application.
+    The traces identify the responding alias and any fallback. Each stage is exercised separately below.
     ''')
     code('''
-    import atexit, copy, urllib.request
-    from talabak.mock_gateway import running_gateway
-    from talabak.llm import SDKClient, ModelClient
     from talabak.domain import Store, Session
     from talabak.pipeline import Application, Result
-    gateway_context = running_gateway(port=0)
-    gateway_url = gateway_context.__enter__()
-    atexit.register(gateway_context.__exit__, None, None, None)
-    runtime_config = copy.deepcopy(config)
-    for route in runtime_config["routes"].values():
-        route["base_url"] = gateway_url
-    client = SDKClient(config=runtime_config)
-    atexit.register(client.close)
     assert isinstance(client, ModelClient)
-    print("Simulator:", gateway_url)
+    print("Using setup gateway:", gateway_url)
     stage_store = Store(":memory:")
     stage_app = Application(client, stage_store)
     ''')
 
     md('''
-    ### المرحلة 1 — input_guard
+    ### Stage 1 — input_guard
 
-    رسالة اختبار صغيرة تمر وحدها عبر الجدار. لا تُعرض القيمة الشخصية الأصلية في الناتج أو سجل النموذج.
+    Pass an Arabic test message containing a synthetic phone number through the input guard. Verify that the number is masked before it reaches the classifier or model log.
     ''')
     code('''
     stage_input_result = Result(status="pending", message="")
@@ -243,9 +285,9 @@ print("Mode: local simulator; external provider spend: zero")
     ''')
 
     md('''
-    ### المرحلة 2 — route_extract
+    ### Stage 2 — route_extract
 
-    تُستخرج النية بعقد Pydantic عبر schema المرسل إلى البوابة.
+    Extract the intent into a Pydantic contract using the schema sent to the backend.
     ''')
     code('''
     stage_route_result = Result(status="pending", message="")
@@ -256,9 +298,9 @@ print("Mode: local simulator; external provider spend: zero")
     ''')
 
     md('''
-    ### المرحلة 3 — tools
+    ### Stage 3 — tools
 
-    يطلب النموذج الأداة، ثم ينفذها التطبيق ويعيد النتيجة المرتبطة بمعرّف المكالمة. هذا مثال قراءة مستقلة.
+    The model requests a tool, the application executes it, and the result is returned with the matching call ID. This example performs an authorized order lookup.
     ''')
     code('''
     stage_tool_result = Result(status="pending", message="")
@@ -272,9 +314,9 @@ print("Mode: local simulator; external provider spend: zero")
     ''')
 
     md('''
-    ### المرحلة 4 — output_guard
+    ### Stage 4 — output_guard
 
-    خرج مسرّب مقصود يختبر الجدار وحده؛ يستبدل النص قبل عرضه للمستخدم.
+    Deliberately place the internal canary in a response. Verify that the output guard replaces the response before delivery.
     ''')
     code('''
     outbound_probe = Result(status="answer", message=stage_app.canary)
@@ -285,9 +327,9 @@ print("Mode: local simulator; external provider spend: zero")
     ''')
 
     md('''
-    ### المرحلة 5 — deliver
+    ### Stage 5 — deliver
 
-    النتيجة النهائية تحمل الرسالة والحالة والأدلة المسموح بها. يستدعي المثال وظيفة التسليم مستقلة ثم يعرض نتيجة آمنة.
+    Deliver the final message, status and allowed evidence. This cell calls the delivery stage independently and checks the result for canary leakage.
     ''')
     code('''
     delivered_result = stage_app.deliver(stage_tool_result)
@@ -299,15 +341,16 @@ print("Mode: local simulator; external provider spend: zero")
     ''')
 
     md('''
-    ## 6. العروض الأربعة
+    ## 6. Four required demonstrations
 
-    لكل عرض متجر وجلسة جديدان حتى لا تغير عملية سابقة نتيجة التالية. هذه العروض تنفّذ `handle_message` نفسها.
+    Demonstrate a grounded answer, a confirmed tool action, a refused attack and graceful fallback under an injected fault.
+    Each demonstration uses a fresh store and session so earlier actions cannot affect it. All four call the same `handle_message` application path.
     ''')
     code('''
     def demo_turn(application, session, text):
         result = application.handle_message(text, session)
-        print("المستخدم:", text)
-        print("طلبك:", result.message)
+        print("User:", text)
+        print("Talabak:", result.message)
         print("status:", result.status, "| evidence:", result.evidence_mode)
         return result
     demo_store = Store(":memory:")
@@ -351,9 +394,9 @@ print("Mode: local simulator; external provider spend: zero")
     ''')
 
     md('''
-    ## 7. حدود السياق والقرارات
+    ## 7. Context budget and design decisions
 
-    العد التالي خاص بـ tokenizer المحاكي. لا يمثل نافذة سياق أو زمن معالجة نموذج حي.
+    Count tokens using the simulator's tokenizer and display the design decisions. These counts do not establish a live model's context limit or processing time.
     ''')
     code('''
     from scripts.context_budget import measure
@@ -369,9 +412,9 @@ print("Mode: local simulator; external provider spend: zero")
     ''')
 
     md('''
-    ## 8. التقارير الناتجة وحدودها
+    ## 8. Generated reports and limitations
 
-    تعرض هذه الخلية التقرير من الملفات التي كتبها التشغيل. إذا كانت المقارنة الحية أو التصنيفات البشرية أو throughput غير مقاسة، تبقى غير مثبتة مهما نجحت اختبارات المحاكي.
+    Display the reports generated by this run. Live model comparisons, human labels and hardware throughput remain unverified until the corresponding measurements exist.
     ''')
     code('''
     report_candidates = [RUN_ROOT / "EVALUATION_REPORT.md", RUN_ROOT / "BENCHMARKS.md",
@@ -387,10 +430,10 @@ print("Mode: local simulator; external provider spend: zero")
     ''')
 
     md('''
-    ## 9. المحادثة التفاعلية
+    ## 9. Interactive conversation
 
-    الجلسة الحالية عميل تجريبي `CUST-A`. جرّب `وين وصل طلبي ORD-1002؟` أو طلب إرجاع `ORD-1001` ثم `موافق`.
-    زر **جلسة جديدة** يعيد المتجر والجلسة؛ لا يتصل بمتجر أو موظف خارج هذا الدفتر.
+    The current session belongs to the fictional customer `CUST-A`. Try `Where is my order ORD-1002?` or the Arabic equivalent `وين وصل طلبي ORD-1002؟`.
+    For a return, request `ORD-1001` and confirm the proposed action in the next turn. **New session** resets the store and conversation; it does not contact an external retailer or employee.
     ''')
     code('''
     chat_store = Store(":memory:")
@@ -399,9 +442,9 @@ print("Mode: local simulator; external provider spend: zero")
         return demo_turn(chat_app, chat_session, text)
     try:
         import ipywidgets as widgets
-        chat_input = widgets.Textarea(placeholder="اكتب طلبك / Type your request", layout=widgets.Layout(width="100%", height="75px"))
-        send_button = widgets.Button(description="إرسال / Send", button_style="primary")
-        reset_button = widgets.Button(description="جلسة جديدة")
+        chat_input = widgets.Textarea(placeholder="Type your request in English or Arabic", layout=widgets.Layout(width="100%", height="75px"))
+        send_button = widgets.Button(description="Send", button_style="primary")
+        reset_button = widgets.Button(description="New session")
         chat_output = widgets.Output(layout=widgets.Layout(border="1px solid #dde4eb", padding="12px"))
         def submit_chat(_):
             text = chat_input.value.strip()
@@ -433,22 +476,26 @@ print("Mode: local simulator; external provider spend: zero")
         assert chat_store.count_actions() == 0 and chat_input.value == ""
         print("PASS: widget send/confirmation/reset callbacks; fresh conversation ready")
     except ImportError:
-        print("Widget library unavailable; use chat('وين وصل طلبي ORD-1002؟') in a new cell.")
+        print("Widget library unavailable; call chat('Where is my order ORD-1002?') in a new cell.")
     print("Conversation ready. Local simulator only.")
     ''')
 
     md('''
-    ## قبل التسليم
+    ## Submission status
 
-    أعد تشغيل الدفتر من بيئة جديدة، واقرأ الإخفاقات والفجوات بدل اعتماد وجود الملفات. أدرج تواريخ الدفعة الصحيحة، وأرفق أي تشغيل حي أو معايرة بشرية أو مراجعة زملاء عند توفرها.
-    النشر على GitHub والتسليم للمنصة يحتاجان تعليمات صاحب المشروع الصريحة؛ هذا الدفتر حزمة مراجعة محلية.
+    Rerun the notebook in a fresh environment and review the failures and evidence gaps. Add the correct cohort dates and attach any live model runs, human calibration or peer review when available.
+    This is a local review snapshot. Repository publication and course submission remain pending the project owner's explicit instruction.
     ''')
 
     notebook = nbformat.v4.new_notebook(cells=cells)
     notebook.metadata.update({"kernelspec":{"display_name":"Python 3", "language":"python", "name":"python3"},
                               "language_info":{"name":"python", "version":"3.12"},
                               "talabak":{"built_at_utc":datetime.now(timezone.utc).isoformat(), "bundle":manifest,
-                                           "execution_status":"not_yet_executed", "mode":"local_simulator"}})
+                                           "execution_status":"not_yet_executed", "mode":"local_simulator",
+                                           "submission_format":"single_colab_notebook",
+                                           "source_snapshot":"embedded_local_review_only",
+                                           "project_repository_clone":"NOT_VERIFIED",
+                                           "actual_colab_runtime":"NOT_RUN"}})
     nbformat.validate(notebook)
     output.parent.mkdir(parents=True, exist_ok=True)
     nbformat.write(notebook, output)

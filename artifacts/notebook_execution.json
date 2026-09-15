@@ -1,30 +1,30 @@
 {
   "status": "PASS",
-  "finished_at_utc": "2026-09-15T20:40:24.405039+00:00",
-  "duration_s": 31.294681300001685,
+  "finished_at_utc": "2026-09-15T21:07:20.468195+00:00",
+  "duration_s": 26.854604099993594,
   "python": "C:\\Users\\Turki\\Documents\\Codex\\2026-09-15\\llm-capstone-local\\.venv\\Scripts\\python.exe",
   "kernel": "talabak-local (workspace-local kernelspec)",
   "scope": "New kernel; notebook extracted a new embedded-source directory; default simulator only",
   "code_cells": 17,
   "executed_code_cells": 17,
   "error_outputs": 0,
-  "source_bundle_sha256": "36a37209f4049838baa4f7382b997ee9fe578f6a84aa2b7d7f71396634cca91a",
-  "notebook_sha256": "1949fb9984ee00bfe71e43d7922cc054074de3561d22a128da8a403c5f722804",
+  "source_bundle_sha256": "f96b3aae2e01e58c4c5158b6d19f47903827d2310c01e6334405d7e74860bea4",
+  "notebook_sha256": "7915aed31fce6badffbfa5468a4af7721e26dd97598407de28ff82e63a463c8a",
   "colab_fresh_runtime": "NOT_RUN",
   "live_model_calls": "NOT_RUN",
   "error": null,
   "source_comparison": {
     "source_matches_current_project": true,
-    "embedded_files": 61,
-    "current_files": 61,
+    "embedded_files": 56,
+    "current_files": 56,
     "changed": [],
     "new_since_bundle": [],
     "missing_since_bundle": [],
-    "current_bundle_sha256": "36a37209f4049838baa4f7382b997ee9fe578f6a84aa2b7d7f71396634cca91a"
+    "current_bundle_sha256": "f96b3aae2e01e58c4c5158b6d19f47903827d2310c01e6334405d7e74860bea4"
   },
   "qa": {
-    "test_summary": "239 passed, 2 warnings in 10.61s",
-    "individually_named_passed_tests": 239,
+    "test_summary": "224 passed in 6.59s",
+    "individually_named_passed_tests": 224,
     "widget_callbacks_executed": true
   }
 }

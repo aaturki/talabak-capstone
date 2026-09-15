@@ -1,83 +1,67 @@
-# طلبك | Talabak
+# Talabak
 
-مساعد عربي/إنجليزي لخدمة طلبات متجر تجريبي: حالة الطلب، الإرجاع، الاستبدال ومواعيد الفرع. ينفّذ إجراءات محفوظة محليًا بعد فحص صلاحية الجلسة وتأكيد المستخدم للإجراء المحدد.
+An Arabic/English assistant for a fictional retail store: order status, returns, exchanges and store appointments. It saves actions locally after checking session authority and receiving confirmation for the specific proposed action.
 
-**إعداد:** تركي أحمد الصليع  
-**البرنامج:** SDAIA Academy — SDA-AIE-213, LLM Application Engineering  
-**تواريخ الدفعة:** لم تُزوَّد بعد؛ يلزم إدراج التواريخ الصحيحة قبل التسليم.  
-**المسار:** D — Retail order support  
-**المرجع:** [موقع الدورة](https://mohammadyusif.github.io/llm-application-engineering/) · [متطلبات المشروع](https://mohammadyusif.github.io/llm-application-engineering/capstone.html) · [SDAIA Academy](https://github.com/SDAIAAcademy)
+**Owner:** تركي أحمد الصليع  
+**Programme:** SDAIA Academy — SDA-AIE-213, LLM Application Engineering  
+**Cohort dates:** Not supplied; enter the correct dates before submission.  
+**Track:** D — Retail order support  
+**References:** [Course](https://mohammadyusif.github.io/llm-application-engineering/) · [Capstone requirements](https://mohammadyusif.github.io/llm-application-engineering/capstone.html) · [SDAIA Academy](https://github.com/SDAIAAcademy)
 
-## التشغيل
+## Submission and execution: one notebook
 
-افتح `Talabak_Capstone.ipynb` في Jupyter أو ارفع **الدفتر وحده** إلى Google Colab، ثم اختر **Runtime → Run all**. يتضمن الدفتر نسخة مضغوطة من ملفات التطبيق والبيانات والاختبارات؛ ينشئ مجلد تشغيل جديدًا، يثبت المكتبات المقيدة في `requirements.txt`، ويشغّل المحاكي محليًا. لا يحتاج إلى مفتاح مزود أو GPU. تثبيت المكتبات أول مرة يحتاج اتصالًا بالإنترنت. النجاح داخل Colab لا يُدَّعى إلا بعد توثيق تشغيله هناك.
+Open `Talabak_Capstone.ipynb` in Jupyter, or upload **only that notebook** to Google Colab and select **Runtime → Run all**. The notebook embeds the application, data and tests. Its first setup cell extracts a new working directory, installs the versions pinned in `requirements.txt`, starts the local simulator and checks readiness. No provider key or GPU is required. Initial dependency installation needs Internet access. Actual Colab success must be documented by running it there.
 
-يصل الدفتر إلى محادثة تفاعلية وأربع عروض واختبارات وتقارير قابلة للفحص. مخرجات الاختبارات والنتائج داخل الدفتر هي الدليل؛ وجود الخلايا وحده لا يثبت نجاح تشغيلها.
+The notebook provides the conversation, four demonstrations, tests and generated reports. Saved execution outputs provide the evidence; cells alone do not establish success. The reviewer needs no separate website, Docker setup, CI pipeline or manual local installation.
 
-للتشغيل المحلي من مجلد الحزمة باستخدام Python 3.12:
+This version is an **embedded-source snapshot for local review**. The course template clones the project's repository in Colab. Adding the real repository URL and verifying that setup in a fresh Colab runtime remain pending authorized publication. No URL is invented, and extracting an archive does not prove that a clone occurred. Adjacent source files are development materials, not additional submissions.
 
-```console
-python -m pip install -r requirements.txt
-python scripts/run_all.py
-python scripts/serve.py
-```
+## Quick conversation examples
 
-يفتح الأمر الأخير الواجهة على [127.0.0.1:8765](http://127.0.0.1:8765). نتائج التحقق تُحفظ في `artifacts/` والتقريرين `EVALUATION_REPORT.md` و`BENCHMARKS.md`. السجل المحلي للعرض داخل `runtime/`؛ بياناته اصطناعية وتبقى بين مرات تشغيل الواجهة.
+The default session represents fictional customer `CUST-A`: a trusted demonstration identity, not production authentication.
 
-## تجربة سريعة
-
-الجلسة الافتراضية عميل تجريبي `CUST-A`؛ هذه هوية عرض محلية، وليست تسجيل دخول إنتاجيًا.
-
-| اكتب | السلوك المقصود |
+| Enter | Expected behaviour |
 |---|---|
-| وين وصل طلبي ORD-1002؟ | يعرض حالة الطلب المملوك للجلسة. |
-| أبغى أرجع الطلب ORD-1001 لأن المنتج غير مناسب | يفحص سياسة المتجر ويعرض الإجراء للتأكيد. |
-| موافق | ينفّذ الإجراء الذي عُرض في الرسالة السابقة فقط. |
-| أبغى استبدل ORD-1001 بالمنتج SKU-H200 | يفحص الملكية والأهلية والسعر والمخزون قبل التأكيد. |
-| احجز لي موعد SLOT-001 | يفحص السعة ثم يطلب التأكيد. |
-| ما مواعيد المتجر؟ | يجيب من بيانات المتجر التجريبية. |
-| أريد التحدث إلى موظف | ينهي المسار الآلي محليًا؛ لا يرسل رسالة إلى شخص خارج التطبيق. |
+| Where is my order ORD-1002? | Show the status of an order owned by the session. |
+| I want to return ORD-1001 because the product is unsuitable. | Check policy and propose the action for confirmation. |
+| Confirm | Execute only the action proposed in the preceding message. |
+| Exchange ORD-1001 with SKU-H200. | Check ownership, eligibility, price and stock before confirmation. |
+| Book an appointment SLOT-001. | Check capacity, then request confirmation. |
+| What are the store hours? | Answer from the fictional store's data. |
+| I want to speak to support. | End the automated path locally; send no external message to a person. |
 
-جرّب كل إجراء جديد بجلسة/قاعدة عرض جديدة إذا سبق إنشاء معالجة لنفس الطلب. التكرار لا ينشئ إرجاعًا أو حجزًا ثانيًا.
+Use a new demonstration session/store for a new action if that order has already been processed. Repeating confirmation must not create a second return or appointment. The notebook also demonstrates Arabic customer messages.
 
-## ماذا يثبت التشغيل المحلي؟
+## What local execution establishes
 
-المشروع يستدعي OpenAI SDK فعليًا عبر HTTP إلى **محاكي على loopback**. تعيد البوابة أشكال `tool_calls` و`usage` و`json_schema`، وتدعم أعطالًا مقصودة لاختبار الإصلاح وإعادة المحاولة والتحويل الاحتياطي. أسماء primary/open_weight/judge في الإعدادات تصف مسارات محاكاة.
+The application makes real OpenAI SDK calls over HTTP to a **loopback simulator**. The gateway implements `tool_calls`, `usage` and `json_schema` response shapes and deliberate faults for repair, retry and fallback tests. Configuration aliases such as `primary`, `open_weight` and `judge` all select simulated routes.
 
-| نوع الدليل | الحالة التي يجب قراءتها |
+| Evidence | Interpretation |
 |---|---|
-| عقود SDK والأدوات وPydantic والحواجز والبوابة والتخزين | تثبتها نتائج الاختبارات المحلية المرفقة عند نجاحها. |
-| تكلفة المحاكي | الإنفاق على مزود خارجي صفر؛ `simulated_cost_usd` تقدير بتعرفة تعليمية منفصلة. |
-| جودة نموذج تجاري مقابل نموذج مفتوح الأوزان | تحتاج تشغيل النموذجين الحقيقيين على المجموعة نفسها؛ المحاكي لا يثبتها. |
-| معايرة المقيم | تحتاج تصنيفات بشرية حقيقية وκ محسوبة؛ النموذج/المساعد لا يملأ وسوم البشر. |
-| تعادل الاستضافة الذاتية | يحتاج throughput مقاسًا على عتاد محدد؛ زمن المحاكي ليس throughput لنموذج. |
-| مراجعة الزملاء وتواريخ الدفعة | تبقى معلومات خارجية حتى تتوفر أدلتها. |
+| SDK, tools, Pydantic, guards, gateway and persistence | Supported by the attached local tests when those tests pass. |
+| Simulator cost | External provider spending is zero; `simulated_cost_usd` uses a separate illustrative tariff. |
+| Commercial versus open-weight quality | Requires two actual models on the same dataset. The simulator does not establish it. |
+| Judge calibration | Requires genuine human labels and calculated agreement/κ. The assistant does not fill human labels. |
+| Self-hosting break-even | Requires measured throughput on identified hardware. Simulator latency is not LLM throughput. |
+| Peer review and cohort dates | Require external information or evidence not yet supplied. |
 
-التقرير الناتج عن كل تشغيل يحدد ما نجح وما فشل وما لم يُقَس. لا يتضمن المشروع ضمانًا للدرجة. النشر على GitHub أو التسليم للمنصة مؤجل حتى يطلب صاحبه ذلك صراحة.
+Reports separate passed checks, failures and unmeasured items. No grade is guaranteed. GitHub publication and platform submission require the owner's explicit instruction.
 
-## البنية
+## Source layout
 
 ```text
-Talabak_Capstone.ipynb   دفتر مستقل يحوي الحزمة ويعيد تشغيل الأدلة
-config/                أسماء المسارات والحدود والتعرفة التعليمية
-data/                  متجر اصطناعي ومجموعات التقييم الأصلية
-prompts/               تعليمات وعقود حكم ذات إصدارات
-talabak/               حد النموذج، المحاكي، السياسات ومسار التطبيق
-tests/                 اختبارات العقود والسلامة والسلوك
-scripts/               تشغيل التقييم والمعايرة وبناء الدفتر
-docs/                  القرارات وحدود السياق وأدلة التشغيل
+Talabak_Capstone.ipynb   Single notebook with source and runnable evidence
+config/                Route aliases, bounds and illustrative tariffs
+data/                  Fictional store and original evaluation datasets
+prompts/               Versioned instructions and judge contracts
+talabak/               Model boundary, simulator, policies and pipeline
+tests/                 Contract, safety and behaviour tests
+scripts/               Evaluation, calibration and notebook generation
+docs/                  Decisions, context budget and evidence documentation
 ```
 
-راجع [DECISIONS.md](docs/DECISIONS.md) للأسباب والمفاضلات و[CONTEXT_BUDGET.md](docs/CONTEXT_BUDGET.md) لحدود السياق وطريقة القياس. البيانات والأسعار والسياسات والعملاء والطلبات **اصطناعية**، والساعة المرجعية للمتجر مثبتة داخل البيانات كي تتكرر اختبارات الأهلية والمواعيد.
-
-## English quick guide
-
-Talabak is an Arabic/English Track D retail order-support capstone by **تركي أحمد الصليع**, built for SDAIA Academy's SDA-AIE-213 programme. It demonstrates order status, returns, exchanges and store appointments using fictional data and a local SQLite store. Cohort dates are awaiting confirmation.
-
-Open the standalone notebook and choose **Run all**. It extracts its embedded source bundle, installs pinned dependencies and starts a local simulator without provider credentials or a GPU. The first dependency installation needs network access. The interactive conversation, executed tests and run-derived reports form the local evidence.
-
-All configured model routes are simulated. External provider spend is zero; illustrative token-cost estimates are labelled separately. Commercial/open-weight quality, genuine human calibration, measured self-host throughput and actual fresh-Colab execution must each carry their own evidence before being claimed.
+See [DECISIONS.md](docs/DECISIONS.md) for trade-offs and [CONTEXT_BUDGET.md](docs/CONTEXT_BUDGET.md) for measurement. Store data, prices, policies, customers and orders are **synthetic**. The reference clock is fixed in the data so eligibility and appointment checks remain reproducible.
 
 ## Attribution
 
-The course [Murshid reference implementation](https://github.com/MohammadYusif/llm-application-engineering) informed the model boundary, layered pipeline, repair loop, evaluation and cost-evidence disciplines. Talabak uses its own retail domain, tools, policy data, guard cases and evaluation data. Course or student benchmark numbers are not reused as this project's results. See the separate course audit for exact requirement sources and the differences between Capstone and Lab 5's golden-set sizes.
+The course [Murshid reference implementation](https://github.com/MohammadYusif/llm-application-engineering) informed the model boundary, layered pipeline, repair loop, evaluation and cost-evidence practices. Talabak has its own retail domain, tools, policy data, guard cases and evaluation data. Course or student benchmark numbers are not reused as this project's results. The separate course audit records precise sources and the difference between the Capstone and Lab 5 golden-set minimums.
