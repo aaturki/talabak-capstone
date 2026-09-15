@@ -1,0 +1,253 @@
+{
+  "overall": {
+    "n": 144,
+    "passed": 144,
+    "pass_rate": 1.0,
+    "latency_ms_p50": 11.198200008948334,
+    "latency_ms_p95": 30.385100006242283,
+    "model_calls": 502,
+    "input_tokens": 334769,
+    "output_tokens": 18196,
+    "cached_tokens": 0,
+    "cost_usd": 0.0,
+    "simulated_cost_usd": 0.0407553
+  },
+  "slices": {
+    "intent": {
+      "appointment": {
+        "n": 24,
+        "passed": 24,
+        "pass_rate": 1.0,
+        "latency_ms_p50": 13.763399998424575,
+        "latency_ms_p95": 36.78379999473691,
+        "model_calls": 97,
+        "input_tokens": 63348,
+        "output_tokens": 3630,
+        "cached_tokens": 0,
+        "cost_usd": 0.0,
+        "simulated_cost_usd": 0.0077868
+      },
+      "exchange": {
+        "n": 24,
+        "passed": 24,
+        "pass_rate": 1.0,
+        "latency_ms_p50": 17.196300002979115,
+        "latency_ms_p95": 35.9180999948876,
+        "model_calls": 108,
+        "input_tokens": 84468,
+        "output_tokens": 4628,
+        "cached_tokens": 0,
+        "cost_usd": 0.0,
+        "simulated_cost_usd": 0.010298
+      },
+      "faq": {
+        "n": 24,
+        "passed": 24,
+        "pass_rate": 1.0,
+        "latency_ms_p50": 8.151200003339909,
+        "latency_ms_p95": 10.29710000148043,
+        "model_calls": 40,
+        "input_tokens": 13022,
+        "output_tokens": 880,
+        "cached_tokens": 0,
+        "cost_usd": 0.0,
+        "simulated_cost_usd": 0.0016542
+      },
+      "handoff": {
+        "n": 24,
+        "passed": 24,
+        "pass_rate": 1.0,
+        "latency_ms_p50": 10.20740000240039,
+        "latency_ms_p95": 22.099299996625632,
+        "model_calls": 69,
+        "input_tokens": 38690,
+        "output_tokens": 2407,
+        "cached_tokens": 0,
+        "cost_usd": 0.0,
+        "simulated_cost_usd": 0.0048318
+      },
+      "order_status": {
+        "n": 24,
+        "passed": 24,
+        "pass_rate": 1.0,
+        "latency_ms_p50": 11.927900006412528,
+        "latency_ms_p95": 14.089900010731071,
+        "model_calls": 74,
+        "input_tokens": 47330,
+        "output_tokens": 2056,
+        "cached_tokens": 0,
+        "cost_usd": 0.0,
+        "simulated_cost_usd": 0.0055554
+      },
+      "return": {
+        "n": 24,
+        "passed": 24,
+        "pass_rate": 1.0,
+        "latency_ms_p50": 18.4921000036411,
+        "latency_ms_p95": 35.594599990872666,
+        "model_calls": 114,
+        "input_tokens": 87911,
+        "output_tokens": 4595,
+        "cached_tokens": 0,
+        "cost_usd": 0.0,
+        "simulated_cost_usd": 0.0106291
+      }
+    },
+    "language": {
+      "ar": {
+        "n": 96,
+        "passed": 96,
+        "pass_rate": 1.0,
+        "latency_ms_p50": 10.909600008744746,
+        "latency_ms_p95": 35.594599990872666,
+        "model_calls": 303,
+        "input_tokens": 203404,
+        "output_tokens": 11213,
+        "cached_tokens": 0,
+        "cost_usd": 0.0,
+        "simulated_cost_usd": 0.0248256
+      },
+      "en": {
+        "n": 48,
+        "passed": 48,
+        "pass_rate": 1.0,
+        "latency_ms_p50": 11.927900006412528,
+        "latency_ms_p95": 30.385100006242283,
+        "model_calls": 199,
+        "input_tokens": 131365,
+        "output_tokens": 6983,
+        "cached_tokens": 0,
+        "cost_usd": 0.0,
+        "simulated_cost_usd": 0.0159297
+      }
+    },
+    "difficulty": {
+      "easy": {
+        "n": 23,
+        "passed": 23,
+        "pass_rate": 1.0,
+        "latency_ms_p50": 9.114600004977547,
+        "latency_ms_p95": 19.827799987979233,
+        "model_calls": 64,
+        "input_tokens": 33892,
+        "output_tokens": 2087,
+        "cached_tokens": 0,
+        "cost_usd": 0.0,
+        "simulated_cost_usd": 0.004224
+      },
+      "hard": {
+        "n": 29,
+        "passed": 29,
+        "pass_rate": 1.0,
+        "latency_ms_p50": 0.9416000102646649,
+        "latency_ms_p95": 26.184200003626756,
+        "model_calls": 21,
+        "input_tokens": 10332,
+        "output_tokens": 662,
+        "cached_tokens": 0,
+        "cost_usd": 0.0,
+        "simulated_cost_usd": 0.001298
+      },
+      "medium": {
+        "n": 92,
+        "passed": 92,
+        "pass_rate": 1.0,
+        "latency_ms_p50": 13.678999996045604,
+        "latency_ms_p95": 35.9180999948876,
+        "model_calls": 417,
+        "input_tokens": 290545,
+        "output_tokens": 15447,
+        "cached_tokens": 0,
+        "cost_usd": 0.0,
+        "simulated_cost_usd": 0.0352333
+      }
+    },
+    "risk": {
+      "high": {
+        "n": 78,
+        "passed": 78,
+        "pass_rate": 1.0,
+        "latency_ms_p50": 13.376599992625415,
+        "latency_ms_p95": 36.78379999473691,
+        "model_calls": 279,
+        "input_tokens": 200971,
+        "output_tokens": 10527,
+        "cached_tokens": 0,
+        "cost_usd": 0.0,
+        "simulated_cost_usd": 0.0243079
+      },
+      "low": {
+        "n": 29,
+        "passed": 29,
+        "pass_rate": 1.0,
+        "latency_ms_p50": 8.89340000867378,
+        "latency_ms_p95": 13.857000012649223,
+        "model_calls": 74,
+        "input_tokens": 35086,
+        "output_tokens": 1842,
+        "cached_tokens": 0,
+        "cost_usd": 0.0,
+        "simulated_cost_usd": 0.0042454
+      },
+      "medium": {
+        "n": 37,
+        "passed": 37,
+        "pass_rate": 1.0,
+        "latency_ms_p50": 10.909600008744746,
+        "latency_ms_p95": 35.594599990872666,
+        "model_calls": 149,
+        "input_tokens": 98712,
+        "output_tokens": 5827,
+        "cached_tokens": 0,
+        "cost_usd": 0.0,
+        "simulated_cost_usd": 0.012202
+      }
+    }
+  },
+  "safety": {
+    "n": 78,
+    "passed": 78,
+    "failed": 0,
+    "pass_rate": 1.0
+  },
+  "evidence_modes": [
+    "simulator"
+  ],
+  "failed_case_ids": [],
+  "limits": "Simulator token counts/tariffs are not provider bills or real model quality. Latency is this local harness run, not a measured self-hosted LLM throughput.",
+  "created_at_utc": "2026-09-15T20:39:22.594890+00:00",
+  "alias": "open_weight",
+  "cache_enabled": true,
+  "dataset_audit": {
+    "n": 144,
+    "strata": {
+      "intent": {
+        "faq": 24,
+        "order_status": 24,
+        "return": 24,
+        "exchange": 24,
+        "appointment": 24,
+        "handoff": 24
+      },
+      "language": {
+        "ar": 96,
+        "en": 48
+      },
+      "difficulty": {
+        "easy": 23,
+        "medium": 92,
+        "hard": 29
+      },
+      "risk": {
+        "low": 29,
+        "high": 78,
+        "medium": 37
+      }
+    },
+    "exact_duplicate_contexts": 0,
+    "authorship": "original synthetic agent-authored cases; owner review pending",
+    "independence": "Authored during application development; not an external blind benchmark"
+  },
+  "dataset_sha256": "41174e930a60f155f3c05b0e1dc441322e1df94dbae2277be2605855b377eb69",
+  "fixture_sha256": "1b3b16d36469dcb8037593961abd7f71489c0ac247ae86816280f5e6b4adb663"
+}

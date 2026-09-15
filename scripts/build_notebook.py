@@ -175,12 +175,12 @@ print("Mode: local simulator; external provider spend: zero")
     def run_command(arguments):
         completed = subprocess.run([sys.executable, *arguments], cwd=RUN_ROOT, capture_output=True,
                                    text=True, encoding="utf-8", errors="replace")
-        print(completed.stdout[-25000:])
+        print(completed.stdout)
         if completed.returncode:
             print(completed.stderr[-6000:])
             raise RuntimeError(f"Command failed with exit code {completed.returncode}: {arguments}")
         return completed
-    test_run = run_command(["-m", "pytest", "-v", "--tb=short"])
+    test_run = run_command(["-m", "pytest", "-o", "addopts=", "-v", "--tb=short"])
     ''')
 
     md('''
@@ -196,7 +196,12 @@ print("Mode: local simulator; external provider spend: zero")
     report_path = RUN_ROOT / "artifacts/report.json"
     if report_path.exists():
         run_report = json.loads(report_path.read_text("utf-8"))
-        print(json.dumps(run_report, ensure_ascii=False, indent=2)[:12000])
+        compact_report = {key: run_report.get(key) for key in (
+            "created_at_utc", "evidence_mode", "live_models", "human_calibration", "self_host_throughput")}
+        compact_report["evaluations"] = {alias: {key: result[key] for key in ("overall", "safety")}
+                                         for alias, result in run_report["evaluations"].items()}
+        print(json.dumps(compact_report, ensure_ascii=False, indent=2))
+        print("Full unabridged report:", report_path)
     ''')
 
     md('''
@@ -418,6 +423,15 @@ print("Mode: local simulator; external provider spend: zero")
         send_button.on_click(submit_chat)
         reset_button.on_click(reset_chat)
         display(widgets.VBox([chat_input, widgets.HBox([send_button, reset_button]), chat_output]))
+        chat_input.value = "أبغى أرجع ORD-1001 لأن المنتج غير مناسب"
+        send_button.click()
+        assert chat_store.count_actions() == 0, "Widget must wait for confirmation"
+        chat_input.value = "موافق"
+        send_button.click()
+        assert chat_store.count_actions() == 1, "Widget confirmation must persist one action"
+        reset_button.click()
+        assert chat_store.count_actions() == 0 and chat_input.value == ""
+        print("PASS: widget send/confirmation/reset callbacks; fresh conversation ready")
     except ImportError:
         print("Widget library unavailable; use chat('وين وصل طلبي ORD-1002؟') in a new cell.")
     print("Conversation ready. Local simulator only.")
