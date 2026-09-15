@@ -1,7 +1,7 @@
 """Evaluate the same Application.handle_message used by the conversation UI.
 
 Authored expectations are read-only inputs. Results are never used to rewrite
-them or to silently create a baseline. The shipped clients are simulators.
+them or to silently create a baseline. The default configuration is a simulator.
 """
 from __future__ import annotations
 
@@ -120,15 +120,23 @@ def summarize(rows: list[dict]) -> dict:
     def metrics(group):
         latencies = [row["latency_ms"] for row in group]
         usage = [item for row in group for result in row["results"] for item in result.get("usage", [])]
+        # A provider omitting usage or an invoice does not mean it charged zero.
+        fields = ("input_tokens", "output_tokens", "cached_tokens", "cost_usd",
+                  "simulated_cost_usd", "estimated_cost_usd")
+        totals, coverage = {}, {}
+        for key in fields:
+            values = [item.get(key) for item in usage]
+            known = [value for value in values if isinstance(value, (int, float)) and not isinstance(value, bool)
+                     and math.isfinite(value) and value >= 0]
+            # Old simulator records predate the explicit estimated-cost field.
+            totals[key] = sum(known) if len(known) == len(values) else None
+            coverage[key] = {"known": len(known), "unknown": len(values) - len(known),
+                             "known_total": sum(known)}
         return {"n": len(group), "passed": sum(row["passed"] for row in group),
                 "pass_rate": sum(row["passed"] for row in group) / len(group) if group else None,
                 "latency_ms_p50": percentile(latencies, .5), "latency_ms_p95": percentile(latencies, .95),
                 "model_calls": len(usage),
-                "input_tokens": sum(item.get("input_tokens", 0) for item in usage),
-                "output_tokens": sum(item.get("output_tokens", 0) for item in usage),
-                "cached_tokens": sum(item.get("cached_tokens", 0) for item in usage),
-                "cost_usd": sum(item.get("cost_usd", 0) for item in usage),
-                "simulated_cost_usd": sum(item.get("simulated_cost_usd", 0) for item in usage)}
+                **totals, "usage_coverage": coverage}
     slices = {}
     for key in ("intent", "language", "difficulty", "risk"):
         slices[key] = {value: metrics([row for row in rows if row[key] == value])

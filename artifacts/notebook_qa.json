@@ -1,32 +1,38 @@
 {
-  "checked_at_utc": "2026-09-15T21:09:03.339953+00:00",
   "status": "PASS",
-  "test_summary": "224 passed in 6.59s",
-  "individually_named_passed_tests": 224,
-  "widget_callbacks_executed": true,
-  "notebook_sha256": "7915aed31fce6badffbfa5468a4af7721e26dd97598407de28ff82e63a463c8a",
-  "source_bundle_sha256": "f96b3aae2e01e58c4c5158b6d19f47903827d2310c01e6334405d7e74860bea4",
-  "source_matches_current_project": true,
-  "preview_sha256": "91d3734726494f0adbb24b1333834eebefb3f725bd9752b4e874600e51b34bc5",
-  "preview_role": "QA only; not a submission artifact",
-  "visual_review": {
-    "surface": "Chrome through CUA; localhost static notebook preview",
-    "reviewed_at_utc": "2026-09-15T21:09:03.1041355Z",
-    "source_bundle_sha256": "f96b3aae2e01e58c4c5158b6d19f47903827d2310c01e6334405d7e74860bea4",
-    "documentation_language": "English",
-    "reviewed": [
-      "English header and setup screenshot",
-      "English evaluation report, stratum table and evidence-section screenshots",
-      "Conversation and submission-status text in the current accessibility tree"
-    ],
-    "result": "PASS: English prose uses left-to-right layout; inspected headings, tables and report text are readable. Preview is QA only and remains under work.",
-    "live_notebook_frontend_clicks": "NOT_RUN; English Send and New session controls verified by language QA; send/confirmation/reset callbacks passed in the fresh kernel",
-    "actual_colab_runtime": "NOT_RUN"
+  "checked_at_utc": "2026-09-16T01:30:27.213867+03:00",
+  "checks": {
+    "fresh_local_kernel": true,
+    "all_code_cells_executed": true,
+    "zero_cell_errors": true,
+    "source_matches_current_project": true,
+    "all_pytest_cases_passed": true,
+    "english_documentation": true,
+    "seven_rubric_sections": true,
+    "no_encoded_source_payload": true,
+    "live_defaults_disabled": true,
+    "widget_send_confirm_reset_executed": true
   },
-  "unverified": [
-    "actual fresh Google Colab runtime",
-    "live model quality",
-    "genuine human judge calibration",
-    "measured self-host LLM throughput"
-  ]
+  "passed_test_count": 306,
+  "code_cells": 23,
+  "notebook_bytes": 102207,
+  "notebook_sha256": "70faa4bfee62fbeb358255a499a38835e25aa03bd2b4f7a3496c6cd9d764eabd",
+  "source_manifest_sha256": "5122a1150ab0b44a6aa8af1c66e4271ca044121c9eecdaf0c5493889415f1c98",
+  "actual_colab_runtime": "NOT_RUN",
+  "live_model_calls": "NOT_RUN",
+  "visual_review": {
+    "status": "PASS",
+    "surface": "Chrome via CUA; local static preview of executed notebook",
+    "checked_at_utc": "2026-09-15T22:31:44.9759379Z",
+    "reviewed": [
+      "English title and visible setup",
+      "Evaluation report and stratum table",
+      "Cache table and live opt-in section",
+      "Bilingual demonstrations",
+      "Conversation callback result and final readiness notes"
+    ],
+    "result": "Headings, code and tables are readable. Static preview does not exercise a live notebook frontend.",
+    "actual_colab_runtime": "NOT_RUN",
+    "widget_callback_execution": "PASS in fresh local kernel; no browser widget clicks claimed"
+  }
 }

@@ -18,7 +18,7 @@ Execution references: `Talabak_Capstone.ipynb`, `artifacts/report.json`, `EVALUA
 |---|---:|---|---|
 | 1.1 | 3 | `talabak/llm.py`; `test_real_http_sdk_structured_extraction`, `test_real_http_tool_contract_and_grounded_result`; notebook SDK demonstrations. | Actual SDK calls reach a local simulator. They establish library/contract use, not a live OpenAI model run. |
 | 1.2 | 4 | `ModelClient` Protocol; application dependency on it; notebook AST assertion; SDK and fake-client tests. | Read the executed assertion and latest test results. |
-| 1.3 | 4 | `config/models.json`, `SDKClient(config=...)`, alternate aliases in local comparisons. | Every route is simulated. This build rejects external connections; live switching has not been tested. |
+| 1.3 | 4 | `config/models.json`, separate live profile, `SDKClient(config=..., allow_live=True)`, injected-transport compatibility tests. | Default routes remain simulated. Live integration is prepared; actual provider/model selection and live switching evidence remain pending. |
 | 1.4 | 2 | Retry-After/backoff tests, `test_real_http_529_fallback`, notebook and runner fault demonstrations. | Deliberately injected local HTTP failures establish retry policy, not live-provider availability. |
 | 1.5 | 2 | [DECISIONS.md](docs/DECISIONS.md): track, architecture, sessions, simulator, costs and a reversed decision. | A measured live-model recommendation and break-even still lack external evidence. |
 
@@ -49,7 +49,7 @@ Execution references: `Talabak_Capstone.ipynb`, `artifacts/report.json`, `EVALUA
 | 4.1 | 5 | `data/golden.v1.jsonl`, data audit in `scripts/evaluate.py`, `test_frozen_golden_has_meaningful_strata_and_explicit_expectations`. | 144 original synthetic cases authored during development: 96 Arabic, 48 English, 24 per intent. Owner review of expectations is pending; this is not an external blind benchmark. |
 | 4.2 | 4 | `evaluate(client, ...)` constructs `Application` and runs cases through `handle_message`; per-case `results.jsonl`. | Establishes application evaluation on the simulator. Use the latest `summary.json` for authoritative counts/rates. |
 | 4.3 | 3 | Status/tool/database/PII/leak assertions; `test_forged_success_cannot_pass_by_answer_text_alone`. | There are 78 high-risk cases. The required 100% safety result cannot be inferred from average success. Read the run report. |
-| 4.4 | 3 | `prompts/judge.groundedness.*.md`, `judge.completeness.v1.md`, separate `run_judge` contract, ID/human-label masking test. | The judge is deterministic and lexical, not a live LLM. These are preparation and contract tests, not established language-judge quality. |
+| 4.4 | 3 | `prompts/judge.groundedness.*.md`, `judge.completeness.v1.md`, `run_judge`, live review workflow and ID/human-label masking tests. | Default judgments are simulated. Live judging is prepared but remains unexecuted until a real provider is selected. |
 | 4.5 | 3 | `calibrate.py` computes agreement, κ and confusion matrices and checks hashes; label CSV remains blank until humans label it. | **Missing:** genuine human labels and live calibration. Synthetic κ-function tests are not human calibration. |
 | 4.6 | 2 | Saved `eval/baseline.simulator.json`; clean/seeded gates; slice-regression and changed-golden rejection tests. | The baseline must predate regression and have traceable local history. Recreating it inside the same comparison does not satisfy this requirement. |
 
@@ -57,8 +57,8 @@ Execution references: `Talabak_Capstone.ipynb`, `artifacts/report.json`, `EVALUA
 
 | ID | Weight | Evidence location | Limits |
 |---|---:|---|---|
-| 5.1 | 4 | SDK usage and `Result.usage` across guard/router/tools/repair; `test_usage_distinguishes_cash_from_simulated_tariff`; coverage report. | `cost_usd=0` is actual external API spending; `simulated_cost_usd` uses an illustrative tariff. No live prices or invented usage for failed calls lacking usage. |
-| 5.2 | 3 | HTTP cold/warm, TTL and prefix/model-change tests; response `cached_tokens`. | A long-prefix test observes a hit, but measured application traffic has 0% cached input because prefixes are short. The ≥65% target is unmet; live caching is unverified. |
+| 5.1 | 4 | SDK usage and `Result.usage` across guard/router/tools/repair; response-attempt accounting and live-boundary tests. | Simulator spend is zero. Live `estimated_cost_usd` requires returned usage and supplied dated tariffs; invoices and missing usage remain unknown. |
+| 5.2 | 3 | HTTP cold/warm tests; `scripts/live_benchmark.py` observes provider cached tokens with response caching disabled. | The default simulator application measured 0% cached input. Optional public-context optimization is prepared; the ≥65% live target is unverified. |
 | 5.3 | 2 | Prompt files and payloads; prefix hash versus changing tail; prefix-change benchmark. | [CONTEXT_BUDGET.md](docs/CONTEXT_BUDGET.md) distinguishes component inventory from actual request usage. The local tokenizer is `o200k_base`. |
 | 5.4 | 3 | Exact key in the pipeline; `cache.py`, `near_miss.v1.jsonl`, threshold/scope/version/entity/key-isolation experiments. | The semantic tier uses deterministic local concept vectors, not an embedding model. Zero wrong hits requires the actual pair experiment and its coverage, not an assertion in prose. |
 | 5.5 | 3 | Generated `BENCHMARKS.md`: before/after configuration, replay and quality verdict per step. Exact matching reduced illustrative tariff cost by 75% on 124 repeated requests in the inspected run. | This is a simulator estimate on intentionally repetitive traffic. Actual spending was zero before and after, so monetary savings percentage is undefined. Do not describe 75% as provider savings. |
@@ -67,16 +67,16 @@ Execution references: `Talabak_Capstone.ipynb`, `artifacts/report.json`, `EVALUA
 
 | ID | Weight | Evidence location | Limits |
 |---|---:|---|---|
-| 6.1 | 4 | Multiple aliases run on the same golden set; configuration differences recorded in the report. | **Live evidence missing:** every alias points to simulator rules; two actual models were not run. |
+| 6.1 | 4 | `scripts/live_evaluate.py` runs configured commercial and open-weight routes over the same golden set and records requested/served models. | **Live evidence missing:** the path is prepared and locally tested; two actual models have not been run. |
 | 6.2 | 3 | Per-route language/intent/difficulty/risk slices plus usage, cost and latency. | Establishes comparison structure only. Commercial/open-weight quality depends on the live evidence in 6.1. |
-| 6.3 | 3 | Measurement method in the decision log and required throughput-input schema. | **Missing:** GPU/LLM throughput on project traffic and a measured live break-even. Simulator milliseconds cannot substitute for throughput. |
+| 6.3 | 3 | `measure_self_host` executes application traffic concurrently on an identified self-host endpoint; `scripts/breakeven.py` validates matched measurement inputs. | **Missing:** actual hardware/runtime selection, measured throughput and economic inputs. Hosted API latency or test transports cannot substitute for self-host evidence. |
 
 ## 7. Application completeness — 10 points
 
 | ID | Weight | Evidence location | Limits |
 |---|---:|---|---|
 | 7.1 | 4 | [README](README.md), one notebook with conversation and four demonstrations with recorded state. | Full owner name is present; cohort dates are unavailable. This is a local review snapshot. Project-repository cloning and fresh Colab Run all remain pending authorized publication. |
-| 7.2 | 3 | `Talabak_Capstone.ipynb` with a hashed embedded bundle and new directory; `scripts/run_all.py` local entry point. | **Actual Colab execution unverified.** A fresh local kernel establishes local execution only. |
+| 7.2 | 3 | `Talabak_Capstone.ipynb` with course-style repository cloning and a readable source manifest; `scripts/run_all.py` local entry point. | **Actual Colab execution unverified.** The real repository URL/revision and fresh hosted run remain pending. Local success establishes local execution only. |
 | 7.3 | 3 | Runner-generated `EVALUATION_REPORT.md` and `BENCHMARKS.md`, with evidence paths and limits. | Live, human, throughput, cohort and peer-review items remain incomplete wherever evidence is absent. |
 
 ## Additional requirements without a separate rubric item

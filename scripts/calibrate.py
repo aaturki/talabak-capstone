@@ -105,6 +105,8 @@ def run_judge(client: Any, items: list[dict], rubric_path: Path, *, alias: str =
                                       ("id", "language", "question", "evidence", "answer")})}
         try:
             reply = client.complete(judge_payload(item, rubric), schema=JUDGE_SCHEMA, alias=alias)
+            # Invalid judge JSON still consumed a model response; preserve its meter.
+            row.update(evidence_mode=reply.evidence_mode, model=reply.model, usage=reply.usage)
             value = json.loads(reply.content or "null")
             if (not isinstance(value, dict) or set(value) != {"label", "reason"}
                     or value["label"] not in LABELS or not isinstance(value["reason"], str)):
@@ -112,8 +114,11 @@ def run_judge(client: Any, items: list[dict], rubric_path: Path, *, alias: str =
             row.update(value)
             row.update(evidence_mode=reply.evidence_mode, model=reply.model, usage=reply.usage, valid=True)
         except Exception as exc:
+            if getattr(exc, "usage", None):
+                row["usage"] = exc.usage
+                row["evidence_mode"] = exc.usage.get("evidence_mode", "unknown")
             row.update(label=None, reason="", valid=False,
-                       error_type=type(exc).__name__, evidence_mode="unknown")
+                       error_type=type(exc).__name__, evidence_mode=row.get("evidence_mode", "unknown"))
         results.append(row)
     return results
 

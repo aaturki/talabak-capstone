@@ -1,0 +1,48 @@
+{
+  "notice": "NOT READY TO RUN. Select providers, endpoints, served model IDs, capabilities, named secrets, and optional budgets later. No model, provider price, or key has been chosen. The default config remains models.json (local simulator).",
+  "settings": {
+    "max_attempts": 2,
+    "base_delay_s": 0.5,
+    "max_delay_s": 2.0,
+    "timeout_s": 60,
+    "max_output_tokens": 768,
+    "budget": {"max_calls": null, "max_estimated_cost_usd": null}
+  },
+  "routes": {
+    "primary": {
+      "provider": "openai_compatible",
+      "base_url": null,
+      "model": null,
+      "evidence_mode": "live_commercial",
+      "auth": {"type": "env", "name": "TALABAK_COMMERCIAL_API_KEY"},
+      "capabilities": {"json_schema": null, "tools": null, "schema_with_tools": null, "parallel_tool_calls": null, "temperature": null, "developer_role": true, "token_parameter": null},
+      "temperature": null,
+      "max_input_tokens": null,
+      "tariff": {"input_usd_per_million": null, "cached_input_usd_per_million": null, "output_usd_per_million": null, "source_url": null, "verified_at": null}
+    },
+    "open_weight": {
+      "provider": "openai_compatible",
+      "deployment": null,
+      "base_url": null,
+      "model": null,
+      "evidence_mode": "live_open_weight",
+      "auth": {"type": "env", "name": "TALABAK_OPEN_WEIGHT_API_KEY"},
+      "capabilities": {"json_schema": null, "tools": null, "schema_with_tools": null, "parallel_tool_calls": null, "temperature": null, "developer_role": true, "token_parameter": null},
+      "temperature": null,
+      "max_input_tokens": null,
+      "tariff": {"input_usd_per_million": null, "cached_input_usd_per_million": null, "output_usd_per_million": null, "source_url": null, "verified_at": null}
+    },
+    "judge": {
+      "provider": "openai_compatible",
+      "base_url": null,
+      "model": null,
+      "evidence_mode": "live_commercial",
+      "auth": {"type": "env", "name": "TALABAK_JUDGE_API_KEY"},
+      "capabilities": {"json_schema": null, "tools": null, "schema_with_tools": null, "parallel_tool_calls": null, "temperature": null, "developer_role": true, "token_parameter": null},
+      "temperature": null,
+      "max_input_tokens": null,
+      "tariff": {"input_usd_per_million": null, "cached_input_usd_per_million": null, "output_usd_per_million": null, "source_url": null, "verified_at": null}
+    }
+  },
+  "fallbacks": {"primary": [], "open_weight": [], "judge": []}
+}

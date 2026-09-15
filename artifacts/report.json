@@ -1,5 +1,5 @@
 {
-  "created_at_utc": "2026-09-15T21:07:19.075987+00:00",
+  "created_at_utc": "2026-09-15T22:30:16.208561+00:00",
   "python": "3.12.14",
   "evidence_mode": "simulator",
   "tests": {
@@ -11,14 +11,47 @@
         "n": 144,
         "passed": 144,
         "pass_rate": 1.0,
-        "latency_ms_p50": 10.538000002270564,
-        "latency_ms_p95": 33.47939999366645,
+        "latency_ms_p50": 11.308500004815869,
+        "latency_ms_p95": 33.76379999099299,
         "model_calls": 502,
         "input_tokens": 334627,
         "output_tokens": 18147,
         "cached_tokens": 0,
         "cost_usd": 0.0,
-        "simulated_cost_usd": 0.407215
+        "simulated_cost_usd": 0.407215,
+        "estimated_cost_usd": null,
+        "usage_coverage": {
+          "input_tokens": {
+            "known": 502,
+            "unknown": 0,
+            "known_total": 334627
+          },
+          "output_tokens": {
+            "known": 502,
+            "unknown": 0,
+            "known_total": 18147
+          },
+          "cached_tokens": {
+            "known": 502,
+            "unknown": 0,
+            "known_total": 0
+          },
+          "cost_usd": {
+            "known": 502,
+            "unknown": 0,
+            "known_total": 0.0
+          },
+          "simulated_cost_usd": {
+            "known": 502,
+            "unknown": 0,
+            "known_total": 0.407215
+          },
+          "estimated_cost_usd": {
+            "known": 0,
+            "unknown": 502,
+            "known_total": 0
+          }
+        }
       },
       "slices": {
         "intent": {
@@ -26,79 +59,277 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 12.807799997972324,
-            "latency_ms_p95": 33.47939999366645,
+            "latency_ms_p50": 12.568399994052015,
+            "latency_ms_p95": 33.76379999099299,
             "model_calls": 97,
-            "input_tokens": 63320,
-            "output_tokens": 3616,
+            "input_tokens": 63314,
+            "output_tokens": 3613,
             "cached_tokens": 0,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.077784
+            "simulated_cost_usd": 0.077766,
+            "estimated_cost_usd": null,
+            "usage_coverage": {
+              "input_tokens": {
+                "known": 97,
+                "unknown": 0,
+                "known_total": 63314
+              },
+              "output_tokens": {
+                "known": 97,
+                "unknown": 0,
+                "known_total": 3613
+              },
+              "cached_tokens": {
+                "known": 97,
+                "unknown": 0,
+                "known_total": 0
+              },
+              "cost_usd": {
+                "known": 97,
+                "unknown": 0,
+                "known_total": 0.0
+              },
+              "simulated_cost_usd": {
+                "known": 97,
+                "unknown": 0,
+                "known_total": 0.077766
+              },
+              "estimated_cost_usd": {
+                "known": 0,
+                "unknown": 97,
+                "known_total": 0
+              }
+            }
           },
           "exchange": {
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 16.378500004066154,
-            "latency_ms_p95": 35.243699996499345,
+            "latency_ms_p50": 16.00740000139922,
+            "latency_ms_p95": 35.24479999032337,
             "model_calls": 108,
-            "input_tokens": 84426,
-            "output_tokens": 4607,
+            "input_tokens": 84434,
+            "output_tokens": 4611,
             "cached_tokens": 0,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.102854
+            "simulated_cost_usd": 0.102878,
+            "estimated_cost_usd": null,
+            "usage_coverage": {
+              "input_tokens": {
+                "known": 108,
+                "unknown": 0,
+                "known_total": 84434
+              },
+              "output_tokens": {
+                "known": 108,
+                "unknown": 0,
+                "known_total": 4611
+              },
+              "cached_tokens": {
+                "known": 108,
+                "unknown": 0,
+                "known_total": 0
+              },
+              "cost_usd": {
+                "known": 108,
+                "unknown": 0,
+                "known_total": 0.0
+              },
+              "simulated_cost_usd": {
+                "known": 108,
+                "unknown": 0,
+                "known_total": 0.102878
+              },
+              "estimated_cost_usd": {
+                "known": 0,
+                "unknown": 108,
+                "known_total": 0
+              }
+            }
           },
           "faq": {
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 7.781799999065697,
-            "latency_ms_p95": 8.796399997663684,
+            "latency_ms_p50": 7.798299993737601,
+            "latency_ms_p95": 9.096399997361004,
             "model_calls": 40,
             "input_tokens": 13022,
             "output_tokens": 880,
             "cached_tokens": 0,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.016542
+            "simulated_cost_usd": 0.016542,
+            "estimated_cost_usd": null,
+            "usage_coverage": {
+              "input_tokens": {
+                "known": 40,
+                "unknown": 0,
+                "known_total": 13022
+              },
+              "output_tokens": {
+                "known": 40,
+                "unknown": 0,
+                "known_total": 880
+              },
+              "cached_tokens": {
+                "known": 40,
+                "unknown": 0,
+                "known_total": 0
+              },
+              "cost_usd": {
+                "known": 40,
+                "unknown": 0,
+                "known_total": 0.0
+              },
+              "simulated_cost_usd": {
+                "known": 40,
+                "unknown": 0,
+                "known_total": 0.016542
+              },
+              "estimated_cost_usd": {
+                "known": 0,
+                "unknown": 40,
+                "known_total": 0
+              }
+            }
           },
           "handoff": {
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 9.976999994250946,
-            "latency_ms_p95": 20.82400000654161,
+            "latency_ms_p50": 9.86610000836663,
+            "latency_ms_p95": 20.45499999076128,
             "model_calls": 69,
             "input_tokens": 38676,
             "output_tokens": 2398,
             "cached_tokens": 0,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.048268
+            "simulated_cost_usd": 0.048268,
+            "estimated_cost_usd": null,
+            "usage_coverage": {
+              "input_tokens": {
+                "known": 69,
+                "unknown": 0,
+                "known_total": 38676
+              },
+              "output_tokens": {
+                "known": 69,
+                "unknown": 0,
+                "known_total": 2398
+              },
+              "cached_tokens": {
+                "known": 69,
+                "unknown": 0,
+                "known_total": 0
+              },
+              "cost_usd": {
+                "known": 69,
+                "unknown": 0,
+                "known_total": 0.0
+              },
+              "simulated_cost_usd": {
+                "known": 69,
+                "unknown": 0,
+                "known_total": 0.048268
+              },
+              "estimated_cost_usd": {
+                "known": 0,
+                "unknown": 69,
+                "known_total": 0
+              }
+            }
           },
           "order_status": {
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 11.792400007834658,
-            "latency_ms_p95": 14.915899999323301,
+            "latency_ms_p50": 11.598900004173629,
+            "latency_ms_p95": 14.674799997010268,
             "model_calls": 74,
             "input_tokens": 47358,
             "output_tokens": 2070,
             "cached_tokens": 0,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.055638
+            "simulated_cost_usd": 0.055638,
+            "estimated_cost_usd": null,
+            "usage_coverage": {
+              "input_tokens": {
+                "known": 74,
+                "unknown": 0,
+                "known_total": 47358
+              },
+              "output_tokens": {
+                "known": 74,
+                "unknown": 0,
+                "known_total": 2070
+              },
+              "cached_tokens": {
+                "known": 74,
+                "unknown": 0,
+                "known_total": 0
+              },
+              "cost_usd": {
+                "known": 74,
+                "unknown": 0,
+                "known_total": 0.0
+              },
+              "simulated_cost_usd": {
+                "known": 74,
+                "unknown": 0,
+                "known_total": 0.055638
+              },
+              "estimated_cost_usd": {
+                "known": 0,
+                "unknown": 74,
+                "known_total": 0
+              }
+            }
           },
           "return": {
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 17.77770000626333,
-            "latency_ms_p95": 34.5757000031881,
+            "latency_ms_p50": 17.840300002717413,
+            "latency_ms_p95": 35.18190000613686,
             "model_calls": 114,
-            "input_tokens": 87825,
-            "output_tokens": 4576,
+            "input_tokens": 87823,
+            "output_tokens": 4575,
             "cached_tokens": 0,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.106129
+            "simulated_cost_usd": 0.106123,
+            "estimated_cost_usd": null,
+            "usage_coverage": {
+              "input_tokens": {
+                "known": 114,
+                "unknown": 0,
+                "known_total": 87823
+              },
+              "output_tokens": {
+                "known": 114,
+                "unknown": 0,
+                "known_total": 4575
+              },
+              "cached_tokens": {
+                "known": 114,
+                "unknown": 0,
+                "known_total": 0
+              },
+              "cost_usd": {
+                "known": 114,
+                "unknown": 0,
+                "known_total": 0.0
+              },
+              "simulated_cost_usd": {
+                "known": 114,
+                "unknown": 0,
+                "known_total": 0.106123
+              },
+              "estimated_cost_usd": {
+                "known": 0,
+                "unknown": 114,
+                "known_total": 0
+              }
+            }
           }
         },
         "language": {
@@ -106,27 +337,93 @@
             "n": 96,
             "passed": 96,
             "pass_rate": 1.0,
-            "latency_ms_p50": 10.265500008244999,
-            "latency_ms_p95": 39.44579999370035,
+            "latency_ms_p50": 10.460999998031184,
+            "latency_ms_p95": 39.6723000012571,
             "model_calls": 303,
-            "input_tokens": 203276,
-            "output_tokens": 11172,
+            "input_tokens": 203282,
+            "output_tokens": 11175,
             "cached_tokens": 0,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.247964
+            "simulated_cost_usd": 0.247982,
+            "estimated_cost_usd": null,
+            "usage_coverage": {
+              "input_tokens": {
+                "known": 303,
+                "unknown": 0,
+                "known_total": 203282
+              },
+              "output_tokens": {
+                "known": 303,
+                "unknown": 0,
+                "known_total": 11175
+              },
+              "cached_tokens": {
+                "known": 303,
+                "unknown": 0,
+                "known_total": 0
+              },
+              "cost_usd": {
+                "known": 303,
+                "unknown": 0,
+                "known_total": 0.0
+              },
+              "simulated_cost_usd": {
+                "known": 303,
+                "unknown": 0,
+                "known_total": 0.247982
+              },
+              "estimated_cost_usd": {
+                "known": 0,
+                "unknown": 303,
+                "known_total": 0
+              }
+            }
           },
           "en": {
             "n": 48,
             "passed": 48,
             "pass_rate": 1.0,
-            "latency_ms_p50": 11.70550000097137,
-            "latency_ms_p95": 29.963599998154677,
+            "latency_ms_p50": 11.427400007960387,
+            "latency_ms_p95": 29.09640000143554,
             "model_calls": 199,
-            "input_tokens": 131351,
-            "output_tokens": 6975,
+            "input_tokens": 131345,
+            "output_tokens": 6972,
             "cached_tokens": 0,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.159251
+            "simulated_cost_usd": 0.159233,
+            "estimated_cost_usd": null,
+            "usage_coverage": {
+              "input_tokens": {
+                "known": 199,
+                "unknown": 0,
+                "known_total": 131345
+              },
+              "output_tokens": {
+                "known": 199,
+                "unknown": 0,
+                "known_total": 6972
+              },
+              "cached_tokens": {
+                "known": 199,
+                "unknown": 0,
+                "known_total": 0
+              },
+              "cost_usd": {
+                "known": 199,
+                "unknown": 0,
+                "known_total": 0.0
+              },
+              "simulated_cost_usd": {
+                "known": 199,
+                "unknown": 0,
+                "known_total": 0.159233
+              },
+              "estimated_cost_usd": {
+                "known": 0,
+                "unknown": 199,
+                "known_total": 0
+              }
+            }
           }
         },
         "difficulty": {
@@ -134,40 +431,139 @@
             "n": 23,
             "passed": 23,
             "pass_rate": 1.0,
-            "latency_ms_p50": 8.344000001670793,
-            "latency_ms_p95": 19.697700001415797,
+            "latency_ms_p50": 8.318299995153211,
+            "latency_ms_p95": 19.649399997433648,
             "model_calls": 64,
             "input_tokens": 33900,
             "output_tokens": 2090,
             "cached_tokens": 0,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.04226
+            "simulated_cost_usd": 0.04226,
+            "estimated_cost_usd": null,
+            "usage_coverage": {
+              "input_tokens": {
+                "known": 64,
+                "unknown": 0,
+                "known_total": 33900
+              },
+              "output_tokens": {
+                "known": 64,
+                "unknown": 0,
+                "known_total": 2090
+              },
+              "cached_tokens": {
+                "known": 64,
+                "unknown": 0,
+                "known_total": 0
+              },
+              "cost_usd": {
+                "known": 64,
+                "unknown": 0,
+                "known_total": 0.0
+              },
+              "simulated_cost_usd": {
+                "known": 64,
+                "unknown": 0,
+                "known_total": 0.04226
+              },
+              "estimated_cost_usd": {
+                "known": 0,
+                "unknown": 64,
+                "known_total": 0
+              }
+            }
           },
           "hard": {
             "n": 29,
             "passed": 29,
             "pass_rate": 1.0,
-            "latency_ms_p50": 0.9858999983407557,
-            "latency_ms_p95": 25.46730000176467,
+            "latency_ms_p50": 0.9143000061158091,
+            "latency_ms_p95": 25.224500001058914,
             "model_calls": 21,
             "input_tokens": 10332,
             "output_tokens": 660,
             "cached_tokens": 0,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.012972
+            "simulated_cost_usd": 0.012972,
+            "estimated_cost_usd": null,
+            "usage_coverage": {
+              "input_tokens": {
+                "known": 21,
+                "unknown": 0,
+                "known_total": 10332
+              },
+              "output_tokens": {
+                "known": 21,
+                "unknown": 0,
+                "known_total": 660
+              },
+              "cached_tokens": {
+                "known": 21,
+                "unknown": 0,
+                "known_total": 0
+              },
+              "cost_usd": {
+                "known": 21,
+                "unknown": 0,
+                "known_total": 0.0
+              },
+              "simulated_cost_usd": {
+                "known": 21,
+                "unknown": 0,
+                "known_total": 0.012972
+              },
+              "estimated_cost_usd": {
+                "known": 0,
+                "unknown": 21,
+                "known_total": 0
+              }
+            }
           },
           "medium": {
             "n": 92,
             "passed": 92,
             "pass_rate": 1.0,
-            "latency_ms_p50": 13.53219999873545,
-            "latency_ms_p95": 35.243699996499345,
+            "latency_ms_p50": 13.771799989626743,
+            "latency_ms_p95": 35.24479999032337,
             "model_calls": 417,
             "input_tokens": 290395,
             "output_tokens": 15397,
             "cached_tokens": 0,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.351983
+            "simulated_cost_usd": 0.351983,
+            "estimated_cost_usd": null,
+            "usage_coverage": {
+              "input_tokens": {
+                "known": 417,
+                "unknown": 0,
+                "known_total": 290395
+              },
+              "output_tokens": {
+                "known": 417,
+                "unknown": 0,
+                "known_total": 15397
+              },
+              "cached_tokens": {
+                "known": 417,
+                "unknown": 0,
+                "known_total": 0
+              },
+              "cost_usd": {
+                "known": 417,
+                "unknown": 0,
+                "known_total": 0.0
+              },
+              "simulated_cost_usd": {
+                "known": 417,
+                "unknown": 0,
+                "known_total": 0.351983
+              },
+              "estimated_cost_usd": {
+                "known": 0,
+                "unknown": 417,
+                "known_total": 0
+              }
+            }
           }
         },
         "risk": {
@@ -175,40 +571,139 @@
             "n": 78,
             "passed": 78,
             "pass_rate": 1.0,
-            "latency_ms_p50": 13.055400006123818,
-            "latency_ms_p95": 39.44579999370035,
+            "latency_ms_p50": 13.116100002662279,
+            "latency_ms_p95": 39.6723000012571,
             "model_calls": 279,
-            "input_tokens": 200873,
-            "output_tokens": 10491,
+            "input_tokens": 200861,
+            "output_tokens": 10485,
             "cached_tokens": 0,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.242837
+            "simulated_cost_usd": 0.242801,
+            "estimated_cost_usd": null,
+            "usage_coverage": {
+              "input_tokens": {
+                "known": 279,
+                "unknown": 0,
+                "known_total": 200861
+              },
+              "output_tokens": {
+                "known": 279,
+                "unknown": 0,
+                "known_total": 10485
+              },
+              "cached_tokens": {
+                "known": 279,
+                "unknown": 0,
+                "known_total": 0
+              },
+              "cost_usd": {
+                "known": 279,
+                "unknown": 0,
+                "known_total": 0.0
+              },
+              "simulated_cost_usd": {
+                "known": 279,
+                "unknown": 0,
+                "known_total": 0.242801
+              },
+              "estimated_cost_usd": {
+                "known": 0,
+                "unknown": 279,
+                "known_total": 0
+              }
+            }
           },
           "low": {
             "n": 29,
             "passed": 29,
             "pass_rate": 1.0,
-            "latency_ms_p50": 7.9984999902080745,
-            "latency_ms_p95": 14.915899999323301,
+            "latency_ms_p50": 8.318299995153211,
+            "latency_ms_p95": 14.674799997010268,
             "model_calls": 74,
             "input_tokens": 35108,
             "output_tokens": 1853,
             "cached_tokens": 0,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.04252
+            "simulated_cost_usd": 0.04252,
+            "estimated_cost_usd": null,
+            "usage_coverage": {
+              "input_tokens": {
+                "known": 74,
+                "unknown": 0,
+                "known_total": 35108
+              },
+              "output_tokens": {
+                "known": 74,
+                "unknown": 0,
+                "known_total": 1853
+              },
+              "cached_tokens": {
+                "known": 74,
+                "unknown": 0,
+                "known_total": 0
+              },
+              "cost_usd": {
+                "known": 74,
+                "unknown": 0,
+                "known_total": 0.0
+              },
+              "simulated_cost_usd": {
+                "known": 74,
+                "unknown": 0,
+                "known_total": 0.04252
+              },
+              "estimated_cost_usd": {
+                "known": 0,
+                "unknown": 74,
+                "known_total": 0
+              }
+            }
           },
           "medium": {
             "n": 37,
             "passed": 37,
             "pass_rate": 1.0,
-            "latency_ms_p50": 10.265500008244999,
-            "latency_ms_p95": 34.5757000031881,
+            "latency_ms_p50": 10.460999998031184,
+            "latency_ms_p95": 35.18190000613686,
             "model_calls": 149,
-            "input_tokens": 98646,
-            "output_tokens": 5803,
+            "input_tokens": 98658,
+            "output_tokens": 5809,
             "cached_tokens": 0,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.121858
+            "simulated_cost_usd": 0.121894,
+            "estimated_cost_usd": null,
+            "usage_coverage": {
+              "input_tokens": {
+                "known": 149,
+                "unknown": 0,
+                "known_total": 98658
+              },
+              "output_tokens": {
+                "known": 149,
+                "unknown": 0,
+                "known_total": 5809
+              },
+              "cached_tokens": {
+                "known": 149,
+                "unknown": 0,
+                "known_total": 0
+              },
+              "cost_usd": {
+                "known": 149,
+                "unknown": 0,
+                "known_total": 0.0
+              },
+              "simulated_cost_usd": {
+                "known": 149,
+                "unknown": 0,
+                "known_total": 0.121894
+              },
+              "estimated_cost_usd": {
+                "known": 0,
+                "unknown": 149,
+                "known_total": 0
+              }
+            }
           }
         }
       },
@@ -223,7 +718,7 @@
       ],
       "failed_case_ids": [],
       "limits": "Simulator token counts/tariffs are not provider bills or real model quality. Latency is this local harness run, not a measured self-hosted LLM throughput.",
-      "created_at_utc": "2026-09-15T21:07:06.536260+00:00",
+      "created_at_utc": "2026-09-15T22:30:03.726702+00:00",
       "alias": "primary",
       "cache_enabled": true,
       "dataset_audit": {
@@ -264,14 +759,47 @@
         "n": 144,
         "passed": 144,
         "pass_rate": 1.0,
-        "latency_ms_p50": 10.890699995798059,
-        "latency_ms_p95": 31.39069999451749,
+        "latency_ms_p50": 10.708500005421229,
+        "latency_ms_p95": 28.99950000573881,
         "model_calls": 502,
-        "input_tokens": 334789,
-        "output_tokens": 18206,
+        "input_tokens": 334781,
+        "output_tokens": 18202,
         "cached_tokens": 0,
         "cost_usd": 0.0,
-        "simulated_cost_usd": 0.0407613
+        "simulated_cost_usd": 0.0407589,
+        "estimated_cost_usd": null,
+        "usage_coverage": {
+          "input_tokens": {
+            "known": 502,
+            "unknown": 0,
+            "known_total": 334781
+          },
+          "output_tokens": {
+            "known": 502,
+            "unknown": 0,
+            "known_total": 18202
+          },
+          "cached_tokens": {
+            "known": 502,
+            "unknown": 0,
+            "known_total": 0
+          },
+          "cost_usd": {
+            "known": 502,
+            "unknown": 0,
+            "known_total": 0.0
+          },
+          "simulated_cost_usd": {
+            "known": 502,
+            "unknown": 0,
+            "known_total": 0.0407589
+          },
+          "estimated_cost_usd": {
+            "known": 0,
+            "unknown": 502,
+            "known_total": 0
+          }
+        }
       },
       "slices": {
         "intent": {
@@ -279,79 +807,277 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 12.592500002938323,
-            "latency_ms_p95": 34.62099999887869,
+            "latency_ms_p50": 12.239399991813116,
+            "latency_ms_p95": 33.2637999963481,
             "model_calls": 97,
-            "input_tokens": 63366,
-            "output_tokens": 3639,
+            "input_tokens": 63354,
+            "output_tokens": 3633,
             "cached_tokens": 0,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.0077922
+            "simulated_cost_usd": 0.0077886,
+            "estimated_cost_usd": null,
+            "usage_coverage": {
+              "input_tokens": {
+                "known": 97,
+                "unknown": 0,
+                "known_total": 63354
+              },
+              "output_tokens": {
+                "known": 97,
+                "unknown": 0,
+                "known_total": 3633
+              },
+              "cached_tokens": {
+                "known": 97,
+                "unknown": 0,
+                "known_total": 0
+              },
+              "cost_usd": {
+                "known": 97,
+                "unknown": 0,
+                "known_total": 0.0
+              },
+              "simulated_cost_usd": {
+                "known": 97,
+                "unknown": 0,
+                "known_total": 0.0077886
+              },
+              "estimated_cost_usd": {
+                "known": 0,
+                "unknown": 97,
+                "known_total": 0
+              }
+            }
           },
           "exchange": {
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 16.611899991403334,
-            "latency_ms_p95": 35.995600002934225,
+            "latency_ms_p50": 15.8064999995986,
+            "latency_ms_p95": 36.378000004333444,
             "model_calls": 108,
-            "input_tokens": 84476,
-            "output_tokens": 4632,
+            "input_tokens": 84478,
+            "output_tokens": 4633,
             "cached_tokens": 0,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.0103004
+            "simulated_cost_usd": 0.010301,
+            "estimated_cost_usd": null,
+            "usage_coverage": {
+              "input_tokens": {
+                "known": 108,
+                "unknown": 0,
+                "known_total": 84478
+              },
+              "output_tokens": {
+                "known": 108,
+                "unknown": 0,
+                "known_total": 4633
+              },
+              "cached_tokens": {
+                "known": 108,
+                "unknown": 0,
+                "known_total": 0
+              },
+              "cost_usd": {
+                "known": 108,
+                "unknown": 0,
+                "known_total": 0.0
+              },
+              "simulated_cost_usd": {
+                "known": 108,
+                "unknown": 0,
+                "known_total": 0.010301
+              },
+              "estimated_cost_usd": {
+                "known": 0,
+                "unknown": 108,
+                "known_total": 0
+              }
+            }
           },
           "faq": {
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 7.803000000421889,
-            "latency_ms_p95": 8.907399998861365,
+            "latency_ms_p50": 7.872200003475882,
+            "latency_ms_p95": 9.207800001604483,
             "model_calls": 40,
             "input_tokens": 13022,
             "output_tokens": 880,
             "cached_tokens": 0,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.0016542
+            "simulated_cost_usd": 0.0016542,
+            "estimated_cost_usd": null,
+            "usage_coverage": {
+              "input_tokens": {
+                "known": 40,
+                "unknown": 0,
+                "known_total": 13022
+              },
+              "output_tokens": {
+                "known": 40,
+                "unknown": 0,
+                "known_total": 880
+              },
+              "cached_tokens": {
+                "known": 40,
+                "unknown": 0,
+                "known_total": 0
+              },
+              "cost_usd": {
+                "known": 40,
+                "unknown": 0,
+                "known_total": 0.0
+              },
+              "simulated_cost_usd": {
+                "known": 40,
+                "unknown": 0,
+                "known_total": 0.0016542
+              },
+              "estimated_cost_usd": {
+                "known": 0,
+                "unknown": 40,
+                "known_total": 0
+              }
+            }
           },
           "handoff": {
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 10.082900000270456,
-            "latency_ms_p95": 21.583099995041266,
+            "latency_ms_p50": 10.18520000798162,
+            "latency_ms_p95": 20.86460001009982,
             "model_calls": 69,
             "input_tokens": 38690,
             "output_tokens": 2407,
             "cached_tokens": 0,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.0048318
+            "simulated_cost_usd": 0.0048318,
+            "estimated_cost_usd": null,
+            "usage_coverage": {
+              "input_tokens": {
+                "known": 69,
+                "unknown": 0,
+                "known_total": 38690
+              },
+              "output_tokens": {
+                "known": 69,
+                "unknown": 0,
+                "known_total": 2407
+              },
+              "cached_tokens": {
+                "known": 69,
+                "unknown": 0,
+                "known_total": 0
+              },
+              "cost_usd": {
+                "known": 69,
+                "unknown": 0,
+                "known_total": 0.0
+              },
+              "simulated_cost_usd": {
+                "known": 69,
+                "unknown": 0,
+                "known_total": 0.0048318
+              },
+              "estimated_cost_usd": {
+                "known": 0,
+                "unknown": 69,
+                "known_total": 0
+              }
+            }
           },
           "order_status": {
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 11.807799994130619,
-            "latency_ms_p95": 13.739200003328733,
+            "latency_ms_p50": 12.238700001034886,
+            "latency_ms_p95": 15.676499999244697,
             "model_calls": 74,
             "input_tokens": 47330,
             "output_tokens": 2056,
             "cached_tokens": 0,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.0055554
+            "simulated_cost_usd": 0.0055554,
+            "estimated_cost_usd": null,
+            "usage_coverage": {
+              "input_tokens": {
+                "known": 74,
+                "unknown": 0,
+                "known_total": 47330
+              },
+              "output_tokens": {
+                "known": 74,
+                "unknown": 0,
+                "known_total": 2056
+              },
+              "cached_tokens": {
+                "known": 74,
+                "unknown": 0,
+                "known_total": 0
+              },
+              "cost_usd": {
+                "known": 74,
+                "unknown": 0,
+                "known_total": 0.0
+              },
+              "simulated_cost_usd": {
+                "known": 74,
+                "unknown": 0,
+                "known_total": 0.0055554
+              },
+              "estimated_cost_usd": {
+                "known": 0,
+                "unknown": 74,
+                "known_total": 0
+              }
+            }
           },
           "return": {
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 18.09789999970235,
-            "latency_ms_p95": 34.987399994861335,
+            "latency_ms_p50": 17.531399993458763,
+            "latency_ms_p95": 37.17670000332873,
             "model_calls": 114,
-            "input_tokens": 87905,
-            "output_tokens": 4592,
+            "input_tokens": 87907,
+            "output_tokens": 4593,
             "cached_tokens": 0,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.0106273
+            "simulated_cost_usd": 0.010627900000000001,
+            "estimated_cost_usd": null,
+            "usage_coverage": {
+              "input_tokens": {
+                "known": 114,
+                "unknown": 0,
+                "known_total": 87907
+              },
+              "output_tokens": {
+                "known": 114,
+                "unknown": 0,
+                "known_total": 4593
+              },
+              "cached_tokens": {
+                "known": 114,
+                "unknown": 0,
+                "known_total": 0
+              },
+              "cost_usd": {
+                "known": 114,
+                "unknown": 0,
+                "known_total": 0.0
+              },
+              "simulated_cost_usd": {
+                "known": 114,
+                "unknown": 0,
+                "known_total": 0.010627900000000001
+              },
+              "estimated_cost_usd": {
+                "known": 0,
+                "unknown": 114,
+                "known_total": 0
+              }
+            }
           }
         },
         "language": {
@@ -359,27 +1085,93 @@
             "n": 96,
             "passed": 96,
             "pass_rate": 1.0,
-            "latency_ms_p50": 10.355500009609386,
-            "latency_ms_p95": 34.987399994861335,
+            "latency_ms_p50": 10.467199987033382,
+            "latency_ms_p95": 36.378000004333444,
             "model_calls": 303,
-            "input_tokens": 203406,
-            "output_tokens": 11214,
+            "input_tokens": 203402,
+            "output_tokens": 11212,
             "cached_tokens": 0,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.0248262
+            "simulated_cost_usd": 0.024825,
+            "estimated_cost_usd": null,
+            "usage_coverage": {
+              "input_tokens": {
+                "known": 303,
+                "unknown": 0,
+                "known_total": 203402
+              },
+              "output_tokens": {
+                "known": 303,
+                "unknown": 0,
+                "known_total": 11212
+              },
+              "cached_tokens": {
+                "known": 303,
+                "unknown": 0,
+                "known_total": 0
+              },
+              "cost_usd": {
+                "known": 303,
+                "unknown": 0,
+                "known_total": 0.0
+              },
+              "simulated_cost_usd": {
+                "known": 303,
+                "unknown": 0,
+                "known_total": 0.024825
+              },
+              "estimated_cost_usd": {
+                "known": 0,
+                "unknown": 303,
+                "known_total": 0
+              }
+            }
           },
           "en": {
             "n": 48,
             "passed": 48,
             "pass_rate": 1.0,
-            "latency_ms_p50": 11.739600013243034,
-            "latency_ms_p95": 31.39069999451749,
+            "latency_ms_p50": 11.92839999566786,
+            "latency_ms_p95": 28.870800000731833,
             "model_calls": 199,
-            "input_tokens": 131383,
-            "output_tokens": 6992,
+            "input_tokens": 131379,
+            "output_tokens": 6990,
             "cached_tokens": 0,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.0159351
+            "simulated_cost_usd": 0.0159339,
+            "estimated_cost_usd": null,
+            "usage_coverage": {
+              "input_tokens": {
+                "known": 199,
+                "unknown": 0,
+                "known_total": 131379
+              },
+              "output_tokens": {
+                "known": 199,
+                "unknown": 0,
+                "known_total": 6990
+              },
+              "cached_tokens": {
+                "known": 199,
+                "unknown": 0,
+                "known_total": 0
+              },
+              "cost_usd": {
+                "known": 199,
+                "unknown": 0,
+                "known_total": 0.0
+              },
+              "simulated_cost_usd": {
+                "known": 199,
+                "unknown": 0,
+                "known_total": 0.0159339
+              },
+              "estimated_cost_usd": {
+                "known": 0,
+                "unknown": 199,
+                "known_total": 0
+              }
+            }
           }
         },
         "difficulty": {
@@ -387,40 +1179,139 @@
             "n": 23,
             "passed": 23,
             "pass_rate": 1.0,
-            "latency_ms_p50": 8.669400005601346,
-            "latency_ms_p95": 19.916099990950897,
+            "latency_ms_p50": 8.899099993868731,
+            "latency_ms_p95": 19.713899993803352,
             "model_calls": 64,
             "input_tokens": 33892,
             "output_tokens": 2087,
             "cached_tokens": 0,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.004224
+            "simulated_cost_usd": 0.004224,
+            "estimated_cost_usd": null,
+            "usage_coverage": {
+              "input_tokens": {
+                "known": 64,
+                "unknown": 0,
+                "known_total": 33892
+              },
+              "output_tokens": {
+                "known": 64,
+                "unknown": 0,
+                "known_total": 2087
+              },
+              "cached_tokens": {
+                "known": 64,
+                "unknown": 0,
+                "known_total": 0
+              },
+              "cost_usd": {
+                "known": 64,
+                "unknown": 0,
+                "known_total": 0.0
+              },
+              "simulated_cost_usd": {
+                "known": 64,
+                "unknown": 0,
+                "known_total": 0.004224
+              },
+              "estimated_cost_usd": {
+                "known": 0,
+                "unknown": 64,
+                "known_total": 0
+              }
+            }
           },
           "hard": {
             "n": 29,
             "passed": 29,
             "pass_rate": 1.0,
-            "latency_ms_p50": 0.9384000004502013,
-            "latency_ms_p95": 25.611000004573725,
+            "latency_ms_p50": 0.9127000084845349,
+            "latency_ms_p95": 24.882700003217906,
             "model_calls": 21,
             "input_tokens": 10332,
             "output_tokens": 662,
             "cached_tokens": 0,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.001298
+            "simulated_cost_usd": 0.001298,
+            "estimated_cost_usd": null,
+            "usage_coverage": {
+              "input_tokens": {
+                "known": 21,
+                "unknown": 0,
+                "known_total": 10332
+              },
+              "output_tokens": {
+                "known": 21,
+                "unknown": 0,
+                "known_total": 662
+              },
+              "cached_tokens": {
+                "known": 21,
+                "unknown": 0,
+                "known_total": 0
+              },
+              "cost_usd": {
+                "known": 21,
+                "unknown": 0,
+                "known_total": 0.0
+              },
+              "simulated_cost_usd": {
+                "known": 21,
+                "unknown": 0,
+                "known_total": 0.001298
+              },
+              "estimated_cost_usd": {
+                "known": 0,
+                "unknown": 21,
+                "known_total": 0
+              }
+            }
           },
           "medium": {
             "n": 92,
             "passed": 92,
             "pass_rate": 1.0,
-            "latency_ms_p50": 13.661100005265325,
-            "latency_ms_p95": 34.987399994861335,
+            "latency_ms_p50": 14.465200001723133,
+            "latency_ms_p95": 36.378000004333444,
             "model_calls": 417,
-            "input_tokens": 290565,
-            "output_tokens": 15457,
+            "input_tokens": 290557,
+            "output_tokens": 15453,
             "cached_tokens": 0,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.0352393
+            "simulated_cost_usd": 0.0352369,
+            "estimated_cost_usd": null,
+            "usage_coverage": {
+              "input_tokens": {
+                "known": 417,
+                "unknown": 0,
+                "known_total": 290557
+              },
+              "output_tokens": {
+                "known": 417,
+                "unknown": 0,
+                "known_total": 15453
+              },
+              "cached_tokens": {
+                "known": 417,
+                "unknown": 0,
+                "known_total": 0
+              },
+              "cost_usd": {
+                "known": 417,
+                "unknown": 0,
+                "known_total": 0.0
+              },
+              "simulated_cost_usd": {
+                "known": 417,
+                "unknown": 0,
+                "known_total": 0.0352369
+              },
+              "estimated_cost_usd": {
+                "known": 0,
+                "unknown": 417,
+                "known_total": 0
+              }
+            }
           }
         },
         "risk": {
@@ -428,40 +1319,139 @@
             "n": 78,
             "passed": 78,
             "pass_rate": 1.0,
-            "latency_ms_p50": 13.289800001075491,
-            "latency_ms_p95": 34.62099999887869,
+            "latency_ms_p50": 13.630300003569573,
+            "latency_ms_p95": 33.2637999963481,
             "model_calls": 279,
-            "input_tokens": 200971,
-            "output_tokens": 10527,
+            "input_tokens": 200975,
+            "output_tokens": 10529,
             "cached_tokens": 0,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.0243079
+            "simulated_cost_usd": 0.0243091,
+            "estimated_cost_usd": null,
+            "usage_coverage": {
+              "input_tokens": {
+                "known": 279,
+                "unknown": 0,
+                "known_total": 200975
+              },
+              "output_tokens": {
+                "known": 279,
+                "unknown": 0,
+                "known_total": 10529
+              },
+              "cached_tokens": {
+                "known": 279,
+                "unknown": 0,
+                "known_total": 0
+              },
+              "cost_usd": {
+                "known": 279,
+                "unknown": 0,
+                "known_total": 0.0
+              },
+              "simulated_cost_usd": {
+                "known": 279,
+                "unknown": 0,
+                "known_total": 0.0243091
+              },
+              "estimated_cost_usd": {
+                "known": 0,
+                "unknown": 279,
+                "known_total": 0
+              }
+            }
           },
           "low": {
             "n": 29,
             "passed": 29,
             "pass_rate": 1.0,
-            "latency_ms_p50": 7.922000004327856,
-            "latency_ms_p95": 13.909700006479397,
+            "latency_ms_p50": 8.063900007982738,
+            "latency_ms_p95": 15.064500010339543,
             "model_calls": 74,
             "input_tokens": 35086,
             "output_tokens": 1842,
             "cached_tokens": 0,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.0042454
+            "simulated_cost_usd": 0.0042454,
+            "estimated_cost_usd": null,
+            "usage_coverage": {
+              "input_tokens": {
+                "known": 74,
+                "unknown": 0,
+                "known_total": 35086
+              },
+              "output_tokens": {
+                "known": 74,
+                "unknown": 0,
+                "known_total": 1842
+              },
+              "cached_tokens": {
+                "known": 74,
+                "unknown": 0,
+                "known_total": 0
+              },
+              "cost_usd": {
+                "known": 74,
+                "unknown": 0,
+                "known_total": 0.0
+              },
+              "simulated_cost_usd": {
+                "known": 74,
+                "unknown": 0,
+                "known_total": 0.0042454
+              },
+              "estimated_cost_usd": {
+                "known": 0,
+                "unknown": 74,
+                "known_total": 0
+              }
+            }
           },
           "medium": {
             "n": 37,
             "passed": 37,
             "pass_rate": 1.0,
-            "latency_ms_p50": 10.322500005713664,
-            "latency_ms_p95": 34.987399994861335,
+            "latency_ms_p50": 10.525200006668456,
+            "latency_ms_p95": 36.378000004333444,
             "model_calls": 149,
-            "input_tokens": 98732,
-            "output_tokens": 5837,
+            "input_tokens": 98720,
+            "output_tokens": 5831,
             "cached_tokens": 0,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.012208
+            "simulated_cost_usd": 0.0122044,
+            "estimated_cost_usd": null,
+            "usage_coverage": {
+              "input_tokens": {
+                "known": 149,
+                "unknown": 0,
+                "known_total": 98720
+              },
+              "output_tokens": {
+                "known": 149,
+                "unknown": 0,
+                "known_total": 5831
+              },
+              "cached_tokens": {
+                "known": 149,
+                "unknown": 0,
+                "known_total": 0
+              },
+              "cost_usd": {
+                "known": 149,
+                "unknown": 0,
+                "known_total": 0.0
+              },
+              "simulated_cost_usd": {
+                "known": 149,
+                "unknown": 0,
+                "known_total": 0.0122044
+              },
+              "estimated_cost_usd": {
+                "known": 0,
+                "unknown": 149,
+                "known_total": 0
+              }
+            }
           }
         }
       },
@@ -476,7 +1466,7 @@
       ],
       "failed_case_ids": [],
       "limits": "Simulator token counts/tariffs are not provider bills or real model quality. Latency is this local harness run, not a measured self-hosted LLM throughput.",
-      "created_at_utc": "2026-09-15T21:07:08.590116+00:00",
+      "created_at_utc": "2026-09-15T22:30:05.746589+00:00",
       "alias": "open_weight",
       "cache_enabled": true,
       "dataset_audit": {
@@ -1495,39 +2485,57 @@
               "input_tokens": 205,
               "output_tokens": 9,
               "cached_tokens": 0,
+              "usage_available": true,
+              "cached_tokens_known": true,
+              "usage_status": "complete",
               "cost_usd": 0.0,
               "simulated_cost_usd": 0.000241,
+              "estimated_cost_usd": null,
+              "estimated_cost_upper_bound_usd": 0.000241,
+              "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+              "requested_model": "talabak-course-primary",
+              "served_model": "talabak-course-primary",
+              "served_model_known": true,
+              "evidence_mode": "simulator",
+              "configured_evidence_mode": "simulator",
               "attempts": 2,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 105.53830000571907,
-              "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+              "latency_ms": 107.49099998793099,
               "finish_reason": "stop",
               "stage": "input_guard",
               "model": "talabak-course-primary",
-              "evidence_mode": "simulator",
               "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
             },
             {
               "input_tokens": 434,
               "output_tokens": 35,
               "cached_tokens": 0,
+              "usage_available": true,
+              "cached_tokens_known": true,
+              "usage_status": "complete",
               "cost_usd": 0.0,
               "simulated_cost_usd": 0.000574,
+              "estimated_cost_usd": null,
+              "estimated_cost_upper_bound_usd": 0.000574,
+              "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+              "requested_model": "talabak-course-primary",
+              "served_model": "talabak-course-primary",
+              "served_model_known": true,
+              "evidence_mode": "simulator",
+              "configured_evidence_mode": "simulator",
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 1.750800001900643,
-              "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+              "latency_ms": 2.2492999996757135,
               "finish_reason": "stop",
               "stage": "route_extract",
               "model": "talabak-course-primary",
-              "evidence_mode": "simulator",
               "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
             }
           ],
           "evidence_mode": "simulator",
-          "latency_ms": 109.96800000430085
+          "latency_ms": 112.5220999965677
         },
         "events": [
           {
@@ -1535,22 +2543,98 @@
             "alias": "primary",
             "status": 429,
             "attempt": 1,
+            "wire_call": 1281,
             "retryable": true,
+            "evidence_mode": "simulator",
+            "usage": {
+              "input_tokens": null,
+              "output_tokens": null,
+              "cached_tokens": null,
+              "usage_available": false,
+              "cached_tokens_known": false,
+              "usage_status": "unreported_error",
+              "cost_usd": 0.0,
+              "simulated_cost_usd": null,
+              "estimated_cost_usd": null,
+              "estimated_cost_upper_bound_usd": null,
+              "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+              "requested_model": "talabak-course-primary",
+              "served_model": null,
+              "served_model_known": false,
+              "evidence_mode": "simulator",
+              "configured_evidence_mode": "simulator",
+              "attempts": 1,
+              "fallback_used": false,
+              "alias": "primary",
+              "latency_ms": 1.578
+            },
             "delay_s": 0.1
           },
           {
             "event": "model_success",
             "alias": "primary",
             "attempts": 2,
+            "wire_call": 1282,
             "fallback_used": false,
-            "accepted": true
+            "accepted": true,
+            "evidence_mode": "simulator",
+            "usage_status": "complete",
+            "usage": {
+              "input_tokens": 205,
+              "output_tokens": 9,
+              "cached_tokens": 0,
+              "usage_available": true,
+              "cached_tokens_known": true,
+              "usage_status": "complete",
+              "cost_usd": 0.0,
+              "simulated_cost_usd": 0.000241,
+              "estimated_cost_usd": null,
+              "estimated_cost_upper_bound_usd": 0.000241,
+              "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+              "requested_model": "talabak-course-primary",
+              "served_model": "talabak-course-primary",
+              "served_model_known": true,
+              "evidence_mode": "simulator",
+              "configured_evidence_mode": "simulator",
+              "attempts": 2,
+              "fallback_used": false,
+              "alias": "primary",
+              "latency_ms": 107.425,
+              "finish_reason": "stop"
+            }
           },
           {
             "event": "model_success",
             "alias": "primary",
             "attempts": 1,
+            "wire_call": 1283,
             "fallback_used": false,
-            "accepted": true
+            "accepted": true,
+            "evidence_mode": "simulator",
+            "usage_status": "complete",
+            "usage": {
+              "input_tokens": 434,
+              "output_tokens": 35,
+              "cached_tokens": 0,
+              "usage_available": true,
+              "cached_tokens_known": true,
+              "usage_status": "complete",
+              "cost_usd": 0.0,
+              "simulated_cost_usd": 0.000574,
+              "estimated_cost_usd": null,
+              "estimated_cost_upper_bound_usd": 0.000574,
+              "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+              "requested_model": "talabak-course-primary",
+              "served_model": "talabak-course-primary",
+              "served_model_known": true,
+              "evidence_mode": "simulator",
+              "configured_evidence_mode": "simulator",
+              "attempts": 1,
+              "fallback_used": false,
+              "alias": "primary",
+              "latency_ms": 2.217,
+              "finish_reason": "stop"
+            }
           }
         ],
         "passed": true
@@ -1619,39 +2703,57 @@
               "input_tokens": 205,
               "output_tokens": 9,
               "cached_tokens": 0,
+              "usage_available": true,
+              "cached_tokens_known": true,
+              "usage_status": "complete",
               "cost_usd": 0.0,
               "simulated_cost_usd": 4.82e-05,
+              "estimated_cost_usd": null,
+              "estimated_cost_upper_bound_usd": 4.82e-05,
+              "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+              "requested_model": "talabak-course-fallback",
+              "served_model": "talabak-course-fallback",
+              "served_model_known": true,
+              "evidence_mode": "simulator",
+              "configured_evidence_mode": "simulator",
               "attempts": 3,
               "fallback_used": true,
               "alias": "fallback",
-              "latency_ms": 95.89430000050925,
-              "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+              "latency_ms": 93.3048000006238,
               "finish_reason": "stop",
               "stage": "input_guard",
               "model": "talabak-course-fallback",
-              "evidence_mode": "simulator",
               "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
             },
             {
               "input_tokens": 434,
               "output_tokens": 35,
               "cached_tokens": 0,
+              "usage_available": true,
+              "cached_tokens_known": true,
+              "usage_status": "complete",
               "cost_usd": 0.0,
               "simulated_cost_usd": 0.0001148,
+              "estimated_cost_usd": null,
+              "estimated_cost_upper_bound_usd": 0.0001148,
+              "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+              "requested_model": "talabak-course-fallback",
+              "served_model": "talabak-course-fallback",
+              "served_model_known": true,
+              "evidence_mode": "simulator",
+              "configured_evidence_mode": "simulator",
               "attempts": 3,
               "fallback_used": true,
               "alias": "fallback",
-              "latency_ms": 81.25370000198018,
-              "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+              "latency_ms": 152.68949999881443,
               "finish_reason": "stop",
               "stage": "route_extract",
               "model": "talabak-course-fallback",
-              "evidence_mode": "simulator",
               "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
             }
           ],
           "evidence_mode": "simulator",
-          "latency_ms": 180.1469000056386
+          "latency_ms": 248.54549999872688
         },
         "events": [
           {
@@ -1659,44 +2761,192 @@
             "alias": "primary",
             "status": 529,
             "attempt": 1,
+            "wire_call": 1284,
             "retryable": true,
-            "delay_s": 0.0749678477183401
+            "evidence_mode": "simulator",
+            "usage": {
+              "input_tokens": null,
+              "output_tokens": null,
+              "cached_tokens": null,
+              "usage_available": false,
+              "cached_tokens_known": false,
+              "usage_status": "unreported_error",
+              "cost_usd": 0.0,
+              "simulated_cost_usd": null,
+              "estimated_cost_usd": null,
+              "estimated_cost_upper_bound_usd": null,
+              "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+              "requested_model": "talabak-course-primary",
+              "served_model": null,
+              "served_model_known": false,
+              "evidence_mode": "simulator",
+              "configured_evidence_mode": "simulator",
+              "attempts": 1,
+              "fallback_used": false,
+              "alias": "primary",
+              "latency_ms": 2.791
+            },
+            "delay_s": 0.08331368277024188
           },
           {
             "event": "model_error",
             "alias": "primary",
             "status": 529,
             "attempt": 2,
-            "retryable": true
+            "wire_call": 1285,
+            "retryable": true,
+            "evidence_mode": "simulator",
+            "usage": {
+              "input_tokens": null,
+              "output_tokens": null,
+              "cached_tokens": null,
+              "usage_available": false,
+              "cached_tokens_known": false,
+              "usage_status": "unreported_error",
+              "cost_usd": 0.0,
+              "simulated_cost_usd": null,
+              "estimated_cost_usd": null,
+              "estimated_cost_upper_bound_usd": null,
+              "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+              "requested_model": "talabak-course-primary",
+              "served_model": null,
+              "served_model_known": false,
+              "evidence_mode": "simulator",
+              "configured_evidence_mode": "simulator",
+              "attempts": 2,
+              "fallback_used": false,
+              "alias": "primary",
+              "latency_ms": 90.566
+            }
           },
           {
             "event": "model_success",
             "alias": "fallback",
             "attempts": 3,
+            "wire_call": 1286,
             "fallback_used": true,
-            "accepted": true
+            "accepted": true,
+            "evidence_mode": "simulator",
+            "usage_status": "complete",
+            "usage": {
+              "input_tokens": 205,
+              "output_tokens": 9,
+              "cached_tokens": 0,
+              "usage_available": true,
+              "cached_tokens_known": true,
+              "usage_status": "complete",
+              "cost_usd": 0.0,
+              "simulated_cost_usd": 4.82e-05,
+              "estimated_cost_usd": null,
+              "estimated_cost_upper_bound_usd": 4.82e-05,
+              "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+              "requested_model": "talabak-course-fallback",
+              "served_model": "talabak-course-fallback",
+              "served_model_known": true,
+              "evidence_mode": "simulator",
+              "configured_evidence_mode": "simulator",
+              "attempts": 3,
+              "fallback_used": true,
+              "alias": "fallback",
+              "latency_ms": 93.279,
+              "finish_reason": "stop"
+            }
           },
           {
             "event": "model_error",
             "alias": "primary",
             "status": 529,
             "attempt": 1,
+            "wire_call": 1287,
             "retryable": true,
-            "delay_s": 0.07625264951923295
+            "evidence_mode": "simulator",
+            "usage": {
+              "input_tokens": null,
+              "output_tokens": null,
+              "cached_tokens": null,
+              "usage_available": false,
+              "cached_tokens_known": false,
+              "usage_status": "unreported_error",
+              "cost_usd": 0.0,
+              "simulated_cost_usd": null,
+              "estimated_cost_usd": null,
+              "estimated_cost_upper_bound_usd": null,
+              "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+              "requested_model": "talabak-course-primary",
+              "served_model": null,
+              "served_model_known": false,
+              "evidence_mode": "simulator",
+              "configured_evidence_mode": "simulator",
+              "attempts": 1,
+              "fallback_used": false,
+              "alias": "primary",
+              "latency_ms": 1.188
+            },
+            "delay_s": 0.14549541081365744
           },
           {
             "event": "model_error",
             "alias": "primary",
             "status": 529,
             "attempt": 2,
-            "retryable": true
+            "wire_call": 1288,
+            "retryable": true,
+            "evidence_mode": "simulator",
+            "usage": {
+              "input_tokens": null,
+              "output_tokens": null,
+              "cached_tokens": null,
+              "usage_available": false,
+              "cached_tokens_known": false,
+              "usage_status": "unreported_error",
+              "cost_usd": 0.0,
+              "simulated_cost_usd": null,
+              "estimated_cost_usd": null,
+              "estimated_cost_upper_bound_usd": null,
+              "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+              "requested_model": "talabak-course-primary",
+              "served_model": null,
+              "served_model_known": false,
+              "evidence_mode": "simulator",
+              "configured_evidence_mode": "simulator",
+              "attempts": 2,
+              "fallback_used": false,
+              "alias": "primary",
+              "latency_ms": 150.571
+            }
           },
           {
             "event": "model_success",
             "alias": "fallback",
             "attempts": 3,
+            "wire_call": 1289,
             "fallback_used": true,
-            "accepted": true
+            "accepted": true,
+            "evidence_mode": "simulator",
+            "usage_status": "complete",
+            "usage": {
+              "input_tokens": 434,
+              "output_tokens": 35,
+              "cached_tokens": 0,
+              "usage_available": true,
+              "cached_tokens_known": true,
+              "usage_status": "complete",
+              "cost_usd": 0.0,
+              "simulated_cost_usd": 0.0001148,
+              "estimated_cost_usd": null,
+              "estimated_cost_upper_bound_usd": 0.0001148,
+              "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+              "requested_model": "talabak-course-fallback",
+              "served_model": "talabak-course-fallback",
+              "served_model_known": true,
+              "evidence_mode": "simulator",
+              "configured_evidence_mode": "simulator",
+              "attempts": 3,
+              "fallback_used": true,
+              "alias": "fallback",
+              "latency_ms": 152.664,
+              "finish_reason": "stop"
+            }
           }
         ],
         "passed": true
@@ -1765,39 +3015,57 @@
               "input_tokens": 205,
               "output_tokens": 9,
               "cached_tokens": 0,
+              "usage_available": true,
+              "cached_tokens_known": true,
+              "usage_status": "complete",
               "cost_usd": 0.0,
               "simulated_cost_usd": 4.82e-05,
+              "estimated_cost_usd": null,
+              "estimated_cost_upper_bound_usd": 4.82e-05,
+              "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+              "requested_model": "talabak-course-fallback",
+              "served_model": "talabak-course-fallback",
+              "served_model_known": true,
+              "evidence_mode": "simulator",
+              "configured_evidence_mode": "simulator",
               "attempts": 3,
               "fallback_used": true,
               "alias": "fallback",
-              "latency_ms": 85.2149999991525,
-              "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+              "latency_ms": 66.34869999834336,
               "finish_reason": "stop",
               "stage": "input_guard",
               "model": "talabak-course-fallback",
-              "evidence_mode": "simulator",
               "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
             },
             {
               "input_tokens": 434,
               "output_tokens": 35,
               "cached_tokens": 0,
+              "usage_available": true,
+              "cached_tokens_known": true,
+              "usage_status": "complete",
               "cost_usd": 0.0,
               "simulated_cost_usd": 0.0001148,
+              "estimated_cost_usd": null,
+              "estimated_cost_upper_bound_usd": 0.0001148,
+              "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+              "requested_model": "talabak-course-fallback",
+              "served_model": "talabak-course-fallback",
+              "served_model_known": true,
+              "evidence_mode": "simulator",
+              "configured_evidence_mode": "simulator",
               "attempts": 3,
               "fallback_used": true,
               "alias": "fallback",
-              "latency_ms": 92.9967999982182,
-              "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+              "latency_ms": 130.3285999892978,
               "finish_reason": "stop",
               "stage": "route_extract",
               "model": "talabak-course-fallback",
-              "evidence_mode": "simulator",
               "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
             }
           ],
           "evidence_mode": "simulator",
-          "latency_ms": 180.88679999345914
+          "latency_ms": 199.4082999881357
         },
         "events": [
           {
@@ -1805,44 +3073,192 @@
             "alias": "primary",
             "status": 503,
             "attempt": 1,
+            "wire_call": 1290,
             "retryable": true,
-            "delay_s": 0.07993683584347705
+            "evidence_mode": "simulator",
+            "usage": {
+              "input_tokens": null,
+              "output_tokens": null,
+              "cached_tokens": null,
+              "usage_available": false,
+              "cached_tokens_known": false,
+              "usage_status": "unreported_error",
+              "cost_usd": 0.0,
+              "simulated_cost_usd": null,
+              "estimated_cost_usd": null,
+              "estimated_cost_upper_bound_usd": null,
+              "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+              "requested_model": "talabak-course-primary",
+              "served_model": null,
+              "served_model_known": false,
+              "evidence_mode": "simulator",
+              "configured_evidence_mode": "simulator",
+              "attempts": 1,
+              "fallback_used": false,
+              "alias": "primary",
+              "latency_ms": 1.278
+            },
+            "delay_s": 0.06050118869706376
           },
           {
             "event": "model_error",
             "alias": "primary",
             "status": 503,
             "attempt": 2,
-            "retryable": true
+            "wire_call": 1291,
+            "retryable": true,
+            "evidence_mode": "simulator",
+            "usage": {
+              "input_tokens": null,
+              "output_tokens": null,
+              "cached_tokens": null,
+              "usage_available": false,
+              "cached_tokens_known": false,
+              "usage_status": "unreported_error",
+              "cost_usd": 0.0,
+              "simulated_cost_usd": null,
+              "estimated_cost_usd": null,
+              "estimated_cost_upper_bound_usd": null,
+              "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+              "requested_model": "talabak-course-primary",
+              "served_model": null,
+              "served_model_known": false,
+              "evidence_mode": "simulator",
+              "configured_evidence_mode": "simulator",
+              "attempts": 2,
+              "fallback_used": false,
+              "alias": "primary",
+              "latency_ms": 63.894
+            }
           },
           {
             "event": "model_success",
             "alias": "fallback",
             "attempts": 3,
+            "wire_call": 1292,
             "fallback_used": true,
-            "accepted": true
+            "accepted": true,
+            "evidence_mode": "simulator",
+            "usage_status": "complete",
+            "usage": {
+              "input_tokens": 205,
+              "output_tokens": 9,
+              "cached_tokens": 0,
+              "usage_available": true,
+              "cached_tokens_known": true,
+              "usage_status": "complete",
+              "cost_usd": 0.0,
+              "simulated_cost_usd": 4.82e-05,
+              "estimated_cost_usd": null,
+              "estimated_cost_upper_bound_usd": 4.82e-05,
+              "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+              "requested_model": "talabak-course-fallback",
+              "served_model": "talabak-course-fallback",
+              "served_model_known": true,
+              "evidence_mode": "simulator",
+              "configured_evidence_mode": "simulator",
+              "attempts": 3,
+              "fallback_used": true,
+              "alias": "fallback",
+              "latency_ms": 66.323,
+              "finish_reason": "stop"
+            }
           },
           {
             "event": "model_error",
             "alias": "primary",
             "status": 503,
             "attempt": 1,
+            "wire_call": 1293,
             "retryable": true,
-            "delay_s": 0.08682546699519417
+            "evidence_mode": "simulator",
+            "usage": {
+              "input_tokens": null,
+              "output_tokens": null,
+              "cached_tokens": null,
+              "usage_available": false,
+              "cached_tokens_known": false,
+              "usage_status": "unreported_error",
+              "cost_usd": 0.0,
+              "simulated_cost_usd": null,
+              "estimated_cost_usd": null,
+              "estimated_cost_upper_bound_usd": null,
+              "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+              "requested_model": "talabak-course-primary",
+              "served_model": null,
+              "served_model_known": false,
+              "evidence_mode": "simulator",
+              "configured_evidence_mode": "simulator",
+              "attempts": 1,
+              "fallback_used": false,
+              "alias": "primary",
+              "latency_ms": 1.317
+            },
+            "delay_s": 0.12024846269632167
           },
           {
             "event": "model_error",
             "alias": "primary",
             "status": 503,
             "attempt": 2,
-            "retryable": true
+            "wire_call": 1294,
+            "retryable": true,
+            "evidence_mode": "simulator",
+            "usage": {
+              "input_tokens": null,
+              "output_tokens": null,
+              "cached_tokens": null,
+              "usage_available": false,
+              "cached_tokens_known": false,
+              "usage_status": "unreported_error",
+              "cost_usd": 0.0,
+              "simulated_cost_usd": null,
+              "estimated_cost_usd": null,
+              "estimated_cost_upper_bound_usd": null,
+              "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+              "requested_model": "talabak-course-primary",
+              "served_model": null,
+              "served_model_known": false,
+              "evidence_mode": "simulator",
+              "configured_evidence_mode": "simulator",
+              "attempts": 2,
+              "fallback_used": false,
+              "alias": "primary",
+              "latency_ms": 127.531
+            }
           },
           {
             "event": "model_success",
             "alias": "fallback",
             "attempts": 3,
+            "wire_call": 1295,
             "fallback_used": true,
-            "accepted": true
+            "accepted": true,
+            "evidence_mode": "simulator",
+            "usage_status": "complete",
+            "usage": {
+              "input_tokens": 434,
+              "output_tokens": 35,
+              "cached_tokens": 0,
+              "usage_available": true,
+              "cached_tokens_known": true,
+              "usage_status": "complete",
+              "cost_usd": 0.0,
+              "simulated_cost_usd": 0.0001148,
+              "estimated_cost_usd": null,
+              "estimated_cost_upper_bound_usd": 0.0001148,
+              "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+              "requested_model": "talabak-course-fallback",
+              "served_model": "talabak-course-fallback",
+              "served_model_known": true,
+              "evidence_mode": "simulator",
+              "configured_evidence_mode": "simulator",
+              "attempts": 3,
+              "fallback_used": true,
+              "alias": "fallback",
+              "latency_ms": 130.303,
+              "finish_reason": "stop"
+            }
           }
         ],
         "passed": true
@@ -1882,34 +3298,52 @@
             "input_tokens": 435,
             "output_tokens": 3,
             "cached_tokens": 0,
+            "usage_available": true,
+            "cached_tokens_known": true,
+            "usage_status": "complete",
             "cost_usd": 0.0,
             "simulated_cost_usd": 0.000447,
+            "estimated_cost_usd": null,
+            "estimated_cost_upper_bound_usd": 0.000447,
+            "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+            "requested_model": "talabak-course-primary",
+            "served_model": "talabak-course-primary",
+            "served_model_known": true,
+            "evidence_mode": "simulator",
+            "configured_evidence_mode": "simulator",
             "attempts": 1,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 3.0758999928366393,
-            "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+            "latency_ms": 2.8491999983089045,
             "finish_reason": "stop",
             "stage": "route_extract",
             "model": "talabak-course-primary",
-            "evidence_mode": "simulator",
             "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
           },
           {
             "input_tokens": 530,
             "output_tokens": 39,
             "cached_tokens": 0,
+            "usage_available": true,
+            "cached_tokens_known": true,
+            "usage_status": "complete",
             "cost_usd": 0.0,
             "simulated_cost_usd": 0.000686,
+            "estimated_cost_usd": null,
+            "estimated_cost_upper_bound_usd": 0.000686,
+            "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+            "requested_model": "talabak-course-primary",
+            "served_model": "talabak-course-primary",
+            "served_model_known": true,
+            "evidence_mode": "simulator",
+            "configured_evidence_mode": "simulator",
             "attempts": 1,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 2.0782000065082684,
-            "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+            "latency_ms": 1.6359000001102686,
             "finish_reason": "stop",
             "stage": "route_extract",
             "model": "talabak-course-primary",
-            "evidence_mode": "simulator",
             "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
           }
         ],
@@ -1986,39 +3420,57 @@
                 "input_tokens": 210,
                 "output_tokens": 9,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
                 "simulated_cost_usd": 0.000246,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.000246,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.1579000022029504,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 1.5779000095790252,
                 "finish_reason": "stop",
                 "stage": "input_guard",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               },
               {
                 "input_tokens": 439,
                 "output_tokens": 35,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
                 "simulated_cost_usd": 0.000579,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.000579,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 1.817800002754666,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 1.6106999973999336,
                 "finish_reason": "stop",
                 "stage": "route_extract",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               }
             ],
             "evidence_mode": "simulator",
-            "latency_ms": 6.801800001994707
+            "latency_ms": 5.733500001952052
           }
         }
       ],
@@ -2110,97 +3562,142 @@
                 "input_tokens": 211,
                 "output_tokens": 9,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
                 "simulated_cost_usd": 0.000247,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.000247,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.390900001046248,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 1.5402999997604638,
                 "finish_reason": "stop",
                 "stage": "input_guard",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               },
               {
                 "input_tokens": 440,
                 "output_tokens": 49,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
                 "simulated_cost_usd": 0.000636,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.000636,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 1.8914999964181334,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 1.4967000024626032,
                 "finish_reason": "stop",
                 "stage": "route_extract",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               },
               {
                 "input_tokens": 958,
                 "output_tokens": 42,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
                 "simulated_cost_usd": 0.001126,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.001126,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.4985999916680157,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 2.1083999890834093,
                 "finish_reason": "tool_calls",
                 "stage": "tools",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               },
               {
                 "input_tokens": 1104,
                 "output_tokens": 69,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
                 "simulated_cost_usd": 0.00138,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.00138,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.7319999935571104,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 2.079099998809397,
                 "finish_reason": "tool_calls",
                 "stage": "tools",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               },
               {
                 "input_tokens": 1276,
                 "output_tokens": 56,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
                 "simulated_cost_usd": 0.0015,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.0015,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.694599999813363,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 2.4113999970722944,
                 "finish_reason": "stop",
                 "stage": "tools",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               }
             ],
             "evidence_mode": "simulator",
-            "latency_ms": 18.025800003670156
+            "latency_ms": 14.925799987395294
           }
         },
         {
           "input": "موافق",
           "output": {
             "status": "created",
-            "message": "تم تسجيل الطلب REQ-740E6CA9 بحالة قيد المعالجة.",
+            "message": "تم تسجيل الطلب REQ-D9ACEBE8 بحالة قيد المعالجة.",
             "citations": [
               "policy-v1"
             ],
@@ -2272,73 +3769,109 @@
                 "input_tokens": 201,
                 "output_tokens": 9,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
                 "simulated_cost_usd": 0.000237,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.000237,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 1.8300999945495278,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 1.4030000020284206,
                 "finish_reason": "stop",
                 "stage": "input_guard",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               },
               {
                 "input_tokens": 958,
                 "output_tokens": 42,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
                 "simulated_cost_usd": 0.001126,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.001126,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.2813000105088577,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 1.8226999964099377,
                 "finish_reason": "tool_calls",
                 "stage": "tools",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               },
               {
                 "input_tokens": 1104,
                 "output_tokens": 69,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
                 "simulated_cost_usd": 0.00138,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.00138,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.4720999936107546,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 2.1561000030487776,
                 "finish_reason": "tool_calls",
                 "stage": "tools",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               },
               {
-                "input_tokens": 1255,
-                "output_tokens": 30,
+                "input_tokens": 1253,
+                "output_tokens": 29,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
-                "simulated_cost_usd": 0.001375,
+                "simulated_cost_usd": 0.001369,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.001369,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.706699990085326,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 2.3944999993545935,
                 "finish_reason": "stop",
                 "stage": "tools",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               }
             ],
             "evidence_mode": "simulator",
-            "latency_ms": 14.565299992682412
+            "latency_ms": 12.449299989384599
           }
         }
       ],
@@ -2430,97 +3963,142 @@
                 "input_tokens": 216,
                 "output_tokens": 9,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
                 "simulated_cost_usd": 0.000252,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.000252,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.000599997700192,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 1.4804999955231324,
                 "finish_reason": "stop",
                 "stage": "input_guard",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               },
               {
                 "input_tokens": 445,
                 "output_tokens": 56,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
                 "simulated_cost_usd": 0.000669,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.000669,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.0303000055719167,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 1.6173000039998442,
                 "finish_reason": "stop",
                 "stage": "route_extract",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               },
               {
                 "input_tokens": 965,
                 "output_tokens": 41,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
                 "simulated_cost_usd": 0.001129,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.001129,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.3187999904621392,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 1.92090000200551,
                 "finish_reason": "tool_calls",
                 "stage": "tools",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               },
               {
                 "input_tokens": 1109,
                 "output_tokens": 75,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
                 "simulated_cost_usd": 0.001409,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.001409,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.3837999906390905,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 2.093500006594695,
                 "finish_reason": "tool_calls",
                 "stage": "tools",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               },
               {
                 "input_tokens": 1296,
                 "output_tokens": 67,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
                 "simulated_cost_usd": 0.001564,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.001564,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.675299998372793,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 2.34170000476297,
                 "finish_reason": "stop",
                 "stage": "tools",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               }
             ],
             "evidence_mode": "simulator",
-            "latency_ms": 17.614500000490807
+            "latency_ms": 15.161999996053055
           }
         },
         {
           "input": "موافق",
           "output": {
             "status": "created",
-            "message": "تم تسجيل الطلب REQ-612514EF بحالة قيد المعالجة.",
+            "message": "تم تسجيل الطلب REQ-53CBE228 بحالة قيد المعالجة.",
             "citations": [
               "policy-v1"
             ],
@@ -2592,73 +4170,109 @@
                 "input_tokens": 201,
                 "output_tokens": 9,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
                 "simulated_cost_usd": 0.000237,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.000237,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 1.7009000002872199,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 1.441300002625212,
                 "finish_reason": "stop",
                 "stage": "input_guard",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               },
               {
                 "input_tokens": 965,
                 "output_tokens": 41,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
                 "simulated_cost_usd": 0.001129,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.001129,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.2483000066131353,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 1.92020001122728,
                 "finish_reason": "tool_calls",
                 "stage": "tools",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               },
               {
                 "input_tokens": 1109,
                 "output_tokens": 75,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
                 "simulated_cost_usd": 0.001409,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.001409,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.6003999955719337,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 2.077500001178123,
                 "finish_reason": "tool_calls",
                 "stage": "tools",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               },
               {
-                "input_tokens": 1260,
-                "output_tokens": 28,
+                "input_tokens": 1262,
+                "output_tokens": 29,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
-                "simulated_cost_usd": 0.001372,
+                "simulated_cost_usd": 0.001378,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.001378,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.78539999271743,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 2.294300007633865,
                 "finish_reason": "stop",
                 "stage": "tools",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               }
             ],
             "evidence_mode": "simulator",
-            "latency_ms": 14.621800000895746
+            "latency_ms": 12.56620000640396
           }
         }
       ],
@@ -2740,80 +4354,116 @@
                 "input_tokens": 208,
                 "output_tokens": 9,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
                 "simulated_cost_usd": 0.000244,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.000244,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 1.8638999899849296,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 2.0733000128529966,
                 "finish_reason": "stop",
                 "stage": "input_guard",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               },
               {
                 "input_tokens": 437,
                 "output_tokens": 46,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
                 "simulated_cost_usd": 0.000621,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.000621,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 1.8649999983608723,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 1.8492999952286482,
                 "finish_reason": "stop",
                 "stage": "route_extract",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               },
               {
                 "input_tokens": 956,
                 "output_tokens": 55,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
                 "simulated_cost_usd": 0.001176,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.001176,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.2945999953662977,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 2.4311000015586615,
                 "finish_reason": "tool_calls",
                 "stage": "tools",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               },
               {
                 "input_tokens": 1125,
                 "output_tokens": 69,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
                 "simulated_cost_usd": 0.001401,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.001401,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.6030999870272353,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 2.2761000000173226,
                 "finish_reason": "stop",
                 "stage": "tools",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               }
             ],
             "evidence_mode": "simulator",
-            "latency_ms": 12.934899990796112
+            "latency_ms": 12.640700006159022
           }
         },
         {
           "input": "موافق",
           "output": {
             "status": "created",
-            "message": "تم تسجيل الطلب REQ-E8FAA2FC بحالة قيد المعالجة.",
+            "message": "تم تسجيل الطلب REQ-536C6050 بحالة قيد المعالجة.",
             "citations": [
               "policy-v1"
             ],
@@ -2875,56 +4525,83 @@
                 "input_tokens": 201,
                 "output_tokens": 9,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
                 "simulated_cost_usd": 0.000237,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.000237,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 1.8799000099534169,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 1.3750999933108687,
                 "finish_reason": "stop",
                 "stage": "input_guard",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               },
               {
                 "input_tokens": 956,
                 "output_tokens": 55,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
                 "simulated_cost_usd": 0.001176,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.001176,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.1785999997518957,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 1.9163999968441203,
                 "finish_reason": "tool_calls",
                 "stage": "tools",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               },
               {
                 "input_tokens": 1089,
                 "output_tokens": 29,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
                 "simulated_cost_usd": 0.001205,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.001205,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.5950999988708645,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 2.0625999895855784,
                 "finish_reason": "stop",
                 "stage": "tools",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               }
             ],
             "evidence_mode": "simulator",
-            "latency_ms": 10.426299995742738
+            "latency_ms": 8.602500005508773
           }
         }
       ],
@@ -2960,7 +4637,7 @@
             ],
             "usage": [],
             "evidence_mode": "simulator",
-            "latency_ms": 0.41000000783242285
+            "latency_ms": 0.38159999530762434
           }
         }
       ],
@@ -3042,73 +4719,109 @@
                 "input_tokens": 206,
                 "output_tokens": 9,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
                 "simulated_cost_usd": 0.000242,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.000242,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 1.864899997599423,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 1.448399998480454,
                 "finish_reason": "stop",
                 "stage": "input_guard",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               },
               {
                 "input_tokens": 435,
                 "output_tokens": 39,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
                 "simulated_cost_usd": 0.000591,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.000591,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 1.8493000097805634,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 1.5100000018719584,
                 "finish_reason": "stop",
                 "stage": "route_extract",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               },
               {
                 "input_tokens": 948,
                 "output_tokens": 41,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
                 "simulated_cost_usd": 0.001112,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.001112,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.2600000083912164,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 1.9203999981982633,
                 "finish_reason": "tool_calls",
                 "stage": "tools",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               },
               {
                 "input_tokens": 1052,
                 "output_tokens": 22,
                 "cached_tokens": 0,
+                "usage_available": true,
+                "cached_tokens_known": true,
+                "usage_status": "complete",
                 "cost_usd": 0.0,
                 "simulated_cost_usd": 0.00114,
+                "estimated_cost_usd": null,
+                "estimated_cost_upper_bound_usd": 0.00114,
+                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "requested_model": "talabak-course-primary",
+                "served_model": "talabak-course-primary",
+                "served_model_known": true,
+                "evidence_mode": "simulator",
+                "configured_evidence_mode": "simulator",
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.4027999897953123,
-                "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
+                "latency_ms": 2.187099991715513,
                 "finish_reason": "stop",
                 "stage": "tools",
                 "model": "talabak-course-primary",
-                "evidence_mode": "simulator",
                 "prompt_version": "955e9011fba785115966ae46dfb67c7aa176619d033bca57297b3f46b6889287"
               }
             ],
             "evidence_mode": "simulator",
-            "latency_ms": 12.053400001605041
+            "latency_ms": 10.28740000037942
           }
         }
       ],
@@ -3197,7 +4910,7 @@
   },
   "cache": {
     "status": "PASS",
-    "created_at_utc": "2026-09-15T21:07:18.887305+00:00",
+    "created_at_utc": "2026-09-15T22:30:15.990968+00:00",
     "traffic_sha256": "54fb4d252ce2ec931f0b53cf2e7ec275c1479956ce095abab6de983f4dcd9853",
     "workload": "Exactly four passes of all first-turn successful read-only FAQ/status golden cases. Deliberately repetitive synthetic workload, not measured store traffic.",
     "semantic_ready": true,
@@ -3217,9 +4930,9 @@
         "provider_cache_fraction": 0.0,
         "cost_usd": 0.0,
         "simulated_cost_usd": 0.204824,
-        "wall_ms": 1007.8289999946719,
-        "request_latency_ms_p50": 6.108599991421215,
-        "request_latency_ms_p95": 11.429900012444705,
+        "wall_ms": 966.1038999911398,
+        "request_latency_ms_p50": 5.79380000999663,
+        "request_latency_ms_p95": 11.126500001410022,
         "failed_ids": [],
         "evidence_mode": "simulator",
         "semantic_threshold": null,
@@ -3227,14 +4940,47 @@
           "n": 144,
           "passed": 144,
           "pass_rate": 1.0,
-          "latency_ms_p50": 10.450699992361479,
-          "latency_ms_p95": 30.577399986214004,
+          "latency_ms_p50": 11.637399991741404,
+          "latency_ms_p95": 32.20109999529086,
           "model_calls": 502,
-          "input_tokens": 334621,
-          "output_tokens": 18144,
+          "input_tokens": 334641,
+          "output_tokens": 18154,
           "cached_tokens": 0,
           "cost_usd": 0.0,
-          "simulated_cost_usd": 0.407197
+          "simulated_cost_usd": 0.407257,
+          "estimated_cost_usd": null,
+          "usage_coverage": {
+            "input_tokens": {
+              "known": 502,
+              "unknown": 0,
+              "known_total": 334641
+            },
+            "output_tokens": {
+              "known": 502,
+              "unknown": 0,
+              "known_total": 18154
+            },
+            "cached_tokens": {
+              "known": 502,
+              "unknown": 0,
+              "known_total": 0
+            },
+            "cost_usd": {
+              "known": 502,
+              "unknown": 0,
+              "known_total": 0.0
+            },
+            "simulated_cost_usd": {
+              "known": 502,
+              "unknown": 0,
+              "known_total": 0.407257
+            },
+            "estimated_cost_usd": {
+              "known": 0,
+              "unknown": 502,
+              "known_total": 0
+            }
+          }
         },
         "golden_safety": {
           "n": 78,
@@ -3263,9 +5009,9 @@
         "provider_cache_fraction": 0.0,
         "cost_usd": 0.0,
         "simulated_cost_usd": 0.051206,
-        "wall_ms": 349.82409999065567,
-        "request_latency_ms_p50": 0.7488999981433153,
-        "request_latency_ms_p95": 11.15189999109134,
+        "wall_ms": 341.9131000118796,
+        "request_latency_ms_p50": 0.7282999868039042,
+        "request_latency_ms_p95": 10.97719999961555,
         "failed_ids": [],
         "evidence_mode": "simulator",
         "semantic_threshold": null,
@@ -3273,14 +5019,47 @@
           "n": 144,
           "passed": 144,
           "pass_rate": 1.0,
-          "latency_ms_p50": 10.505099999136291,
-          "latency_ms_p95": 32.122599994181655,
+          "latency_ms_p50": 11.161999995238148,
+          "latency_ms_p95": 29.69409999786876,
           "model_calls": 502,
-          "input_tokens": 334619,
-          "output_tokens": 18143,
+          "input_tokens": 334643,
+          "output_tokens": 18155,
           "cached_tokens": 0,
           "cost_usd": 0.0,
-          "simulated_cost_usd": 0.407191
+          "simulated_cost_usd": 0.407263,
+          "estimated_cost_usd": null,
+          "usage_coverage": {
+            "input_tokens": {
+              "known": 502,
+              "unknown": 0,
+              "known_total": 334643
+            },
+            "output_tokens": {
+              "known": 502,
+              "unknown": 0,
+              "known_total": 18155
+            },
+            "cached_tokens": {
+              "known": 502,
+              "unknown": 0,
+              "known_total": 0
+            },
+            "cost_usd": {
+              "known": 502,
+              "unknown": 0,
+              "known_total": 0.0
+            },
+            "simulated_cost_usd": {
+              "known": 502,
+              "unknown": 0,
+              "known_total": 0.407263
+            },
+            "estimated_cost_usd": {
+              "known": 0,
+              "unknown": 502,
+              "known_total": 0
+            }
+          }
         },
         "golden_safety": {
           "n": 78,
@@ -3312,9 +5091,9 @@
         "provider_cache_fraction": 0.0,
         "cost_usd": 0.0,
         "simulated_cost_usd": 0.051373,
-        "wall_ms": 380.557200012845,
-        "request_latency_ms_p50": 0.756499997805804,
-        "request_latency_ms_p95": 11.944500001845881,
+        "wall_ms": 374.70490000850987,
+        "request_latency_ms_p50": 0.7424999930663034,
+        "request_latency_ms_p95": 11.95719999668654,
         "failed_ids": [],
         "evidence_mode": "simulator",
         "semantic_threshold": 1.0,
@@ -3322,14 +5101,47 @@
           "n": 144,
           "passed": 144,
           "pass_rate": 1.0,
-          "latency_ms_p50": 10.747099993750453,
-          "latency_ms_p95": 30.673200002638623,
+          "latency_ms_p50": 11.191799989319406,
+          "latency_ms_p95": 29.644499998539686,
           "model_calls": 502,
-          "input_tokens": 334639,
-          "output_tokens": 18153,
+          "input_tokens": 334631,
+          "output_tokens": 18149,
           "cached_tokens": 0,
           "cost_usd": 0.0,
-          "simulated_cost_usd": 0.407251
+          "simulated_cost_usd": 0.407227,
+          "estimated_cost_usd": null,
+          "usage_coverage": {
+            "input_tokens": {
+              "known": 502,
+              "unknown": 0,
+              "known_total": 334631
+            },
+            "output_tokens": {
+              "known": 502,
+              "unknown": 0,
+              "known_total": 18149
+            },
+            "cached_tokens": {
+              "known": 502,
+              "unknown": 0,
+              "known_total": 0
+            },
+            "cost_usd": {
+              "known": 502,
+              "unknown": 0,
+              "known_total": 0.0
+            },
+            "simulated_cost_usd": {
+              "known": 502,
+              "unknown": 0,
+              "known_total": 0.407227
+            },
+            "estimated_cost_usd": {
+              "known": 0,
+              "unknown": 502,
+              "known_total": 0
+            }
+          }
         },
         "golden_safety": {
           "n": 78,
@@ -3372,16 +5184,22 @@
     }
   },
   "context_budget": {
-    "generated_at_utc": "2026-09-15T21:07:19.084099+00:00",
+    "generated_at_utc": "2026-09-15T22:30:16.215562+00:00",
     "evidence_mode": "local_tokenizer_component_measurement",
     "tokenizer": "o200k_base",
     "max_output_tokens": 768,
     "components": [
       {
         "path": "prompts/CHANGELOG.md",
-        "tokens": 81,
-        "utf8_bytes": 428,
-        "sha256": "329f176c91029ec4093f42d686a625c9d3ab30856e04fe10a344740c96efcc33"
+        "tokens": 130,
+        "utf8_bytes": 695,
+        "sha256": "c95904537fdf69e9086d7ef3d4d3f6e4ba2d020ea904b1d4ab3387a3ecd17315"
+      },
+      {
+        "path": "prompts/context.v1.md",
+        "tokens": 289,
+        "utf8_bytes": 1696,
+        "sha256": "62c4e46acc76c2a86d85a73b1755a735365d4a07cf3d89167f5a1781683e8d7c"
       },
       {
         "path": "prompts/guard.v1.md",
@@ -3446,7 +5264,7 @@
     ],
     "rendered_tool_definitions_tokens": 649,
     "rendered_tool_definitions_sha256": "8ba9406a767d318f5993d6c257e1ba159c47a45a00f577ed3b8c72e0592ecd7c",
-    "all_files_token_sum": 2375,
+    "all_files_token_sum": 2713,
     "limitations": [
       "The all-files sum is inventory, not a claim that every file is sent together.",
       "Wire messages, tool schemas and serialization overhead are measured by actual gateway usage.",

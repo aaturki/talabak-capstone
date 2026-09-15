@@ -1,13 +1,13 @@
 # BENCHMARKS — simulator evidence only
 
-Generated: 2026-09-15T21:07:19.075987+00:00
+Generated: 2026-09-15T22:30:16.208561+00:00
 
 These are measured loopback request times and tokenizer counts. Configured tariffs are illustrative assumptions; actual external API spend is $0. No model-performance or commercial-pricing claim is made.
 
 | Route | Cases passed | p50 ms | p95 ms | Input tokens | Cached input | Actual spend | Illustrative tariff estimate |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| primary (simulator) | 144/144 | 10.54 | 33.48 | 334627 | 0.0% | $0 | $0.407215 |
-| open_weight (simulator) | 144/144 | 10.89 | 31.39 | 334789 | 0.0% | $0 | $0.040761 |
+| primary (simulator) | 144/144 | 11.31 | 33.76 | 334627 | 0.0% | $0 | $0.407215 |
+| open_weight (simulator) | 144/144 | 10.71 | 29.00 | 334781 | 0.0% | $0 | $0.040759 |
 
 ## Response-cache experiment
 
@@ -16,7 +16,7 @@ See artifacts/cache_benchmark.json for the fixed workload, before/after measurem
 ```json
 {
   "status": "PASS",
-  "created_at_utc": "2026-09-15T21:07:18.887305+00:00",
+  "created_at_utc": "2026-09-15T22:30:15.990968+00:00",
   "traffic_sha256": "54fb4d252ce2ec931f0b53cf2e7ec275c1479956ce095abab6de983f4dcd9853",
   "workload": "Exactly four passes of all first-turn successful read-only FAQ/status golden cases. Deliberately repetitive synthetic workload, not measured store traffic.",
   "semantic_ready": true,
@@ -36,9 +36,9 @@ See artifacts/cache_benchmark.json for the fixed workload, before/after measurem
       "provider_cache_fraction": 0.0,
       "cost_usd": 0.0,
       "simulated_cost_usd": 0.204824,
-      "wall_ms": 1007.8289999946719,
-      "request_latency_ms_p50": 6.108599991421215,
-      "request_latency_ms_p95": 11.429900012444705,
+      "wall_ms": 966.1038999911398,
+      "request_latency_ms_p50": 5.79380000999663,
+      "request_latency_ms_p95": 11.126500001410022,
       "failed_ids": [],
       "evidence_mode": "simulator",
       "semantic_threshold": null,
@@ -46,14 +46,47 @@ See artifacts/cache_benchmark.json for the fixed workload, before/after measurem
         "n": 144,
         "passed": 144,
         "pass_rate": 1.0,
-        "latency_ms_p50": 10.450699992361479,
-        "latency_ms_p95": 30.577399986214004,
+        "latency_ms_p50": 11.637399991741404,
+        "latency_ms_p95": 32.20109999529086,
         "model_calls": 502,
-        "input_tokens": 334621,
-        "output_tokens": 18144,
+        "input_tokens": 334641,
+        "output_tokens": 18154,
         "cached_tokens": 0,
         "cost_usd": 0.0,
-        "simulated_cost_usd": 0.407197
+        "simulated_cost_usd": 0.407257,
+        "estimated_cost_usd": null,
+        "usage_coverage": {
+          "input_tokens": {
+            "known": 502,
+            "unknown": 0,
+            "known_total": 334641
+          },
+          "output_tokens": {
+            "known": 502,
+            "unknown": 0,
+            "known_total": 18154
+          },
+          "cached_tokens": {
+            "known": 502,
+            "unknown": 0,
+            "known_total": 0
+          },
+          "cost_usd": {
+            "known": 502,
+            "unknown": 0,
+            "known_total": 0.0
+          },
+          "simulated_cost_usd": {
+            "known": 502,
+            "unknown": 0,
+            "known_total": 0.407257
+          },
+          "estimated_cost_usd": {
+            "known": 0,
+            "unknown": 502,
+            "known_total": 0
+          }
+        }
       },
       "golden_safety": {
         "n": 78,
@@ -82,9 +115,9 @@ See artifacts/cache_benchmark.json for the fixed workload, before/after measurem
       "provider_cache_fraction": 0.0,
       "cost_usd": 0.0,
       "simulated_cost_usd": 0.051206,
-      "wall_ms": 349.82409999065567,
-      "request_latency_ms_p50": 0.7488999981433153,
-      "request_latency_ms_p95": 11.15189999109134,
+      "wall_ms": 341.9131000118796,
+      "request_latency_ms_p50": 0.7282999868039042,
+      "request_latency_ms_p95": 10.97719999961555,
       "failed_ids": [],
       "evidence_mode": "simulator",
       "semantic_threshold": null,
@@ -92,14 +125,47 @@ See artifacts/cache_benchmark.json for the fixed workload, before/after measurem
         "n": 144,
         "passed": 144,
         "pass_rate": 1.0,
-        "latency_ms_p50": 10.505099999136291,
-        "latency_ms_p95": 32.122599994181655,
+        "latency_ms_p50": 11.161999995238148,
+        "latency_ms_p95": 29.69409999786876,
         "model_calls": 502,
-        "input_tokens": 334619,
-        "output_tokens": 18143,
+        "input_tokens": 334643,
+        "output_tokens": 18155,
         "cached_tokens": 0,
         "cost_usd": 0.0,
-        "simulated_cost_usd": 0.407191
+        "simulated_cost_usd": 0.407263,
+        "estimated_cost_usd": null,
+        "usage_coverage": {
+          "input_tokens": {
+            "known": 502,
+            "unknown": 0,
+            "known_total": 334643
+          },
+          "output_tokens": {
+            "known": 502,
+            "unknown": 0,
+            "known_total": 18155
+          },
+          "cached_tokens": {
+            "known": 502,
+            "unknown": 0,
+            "known_total": 0
+          },
+          "cost_usd": {
+            "known": 502,
+            "unknown": 0,
+            "known_total": 0.0
+          },
+          "simulated_cost_usd": {
+            "known": 502,
+            "unknown": 0,
+            "known_total": 0.407263
+          },
+          "estimated_cost_usd": {
+            "known": 0,
+            "unknown": 502,
+            "known_total": 0
+          }
+        }
       },
       "golden_safety": {
         "n": 78,
@@ -131,9 +197,9 @@ See artifacts/cache_benchmark.json for the fixed workload, before/after measurem
       "provider_cache_fraction": 0.0,
       "cost_usd": 0.0,
       "simulated_cost_usd": 0.051373,
-      "wall_ms": 380.557200012845,
-      "request_latency_ms_p50": 0.756499997805804,
-      "request_latency_ms_p95": 11.944500001845881,
+      "wall_ms": 374.70490000850987,
+      "request_latency_ms_p50": 0.7424999930663034,
+      "request_latency_ms_p95": 11.95719999668654,
       "failed_ids": [],
       "evidence_mode": "simulator",
       "semantic_threshold": 1.0,
@@ -141,14 +207,47 @@ See artifacts/cache_benchmark.json for the fixed workload, before/after measurem
         "n": 144,
         "passed": 144,
         "pass_rate": 1.0,
-        "latency_ms_p50": 10.747099993750453,
-        "latency_ms_p95": 30.673200002638623,
+        "latency_ms_p50": 11.191799989319406,
+        "latency_ms_p95": 29.644499998539686,
         "model_calls": 502,
-        "input_tokens": 334639,
-        "output_tokens": 18153,
+        "input_tokens": 334631,
+        "output_tokens": 18149,
         "cached_tokens": 0,
         "cost_usd": 0.0,
-        "simulated_cost_usd": 0.407251
+        "simulated_cost_usd": 0.407227,
+        "estimated_cost_usd": null,
+        "usage_coverage": {
+          "input_tokens": {
+            "known": 502,
+            "unknown": 0,
+            "known_total": 334631
+          },
+          "output_tokens": {
+            "known": 502,
+            "unknown": 0,
+            "known_total": 18149
+          },
+          "cached_tokens": {
+            "known": 502,
+            "unknown": 0,
+            "known_total": 0
+          },
+          "cost_usd": {
+            "known": 502,
+            "unknown": 0,
+            "known_total": 0.0
+          },
+          "simulated_cost_usd": {
+            "known": 502,
+            "unknown": 0,
+            "known_total": 0.407227
+          },
+          "estimated_cost_usd": {
+            "known": 0,
+            "unknown": 502,
+            "known_total": 0
+          }
+        }
       },
       "golden_safety": {
         "n": 78,

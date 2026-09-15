@@ -1,67 +1,65 @@
-# Talabak
+# Talabak — Retail Order Support
 
-An Arabic/English assistant for a fictional retail store: order status, returns, exchanges and store appointments. It saves actions locally after checking session authority and receiving confirmation for the specific proposed action.
+An Arabic/English assistant for a fictional retail store: order status, returns, exchanges and store appointments. It checks ownership, policy and confirmation before saving an action.
 
 **Owner:** تركي أحمد الصليع  
 **Programme:** SDAIA Academy — SDA-AIE-213, LLM Application Engineering  
-**Cohort dates:** Not supplied; enter the correct dates before submission.  
 **Track:** D — Retail order support  
-**References:** [Course](https://mohammadyusif.github.io/llm-application-engineering/) · [Capstone requirements](https://mohammadyusif.github.io/llm-application-engineering/capstone.html) · [SDAIA Academy](https://github.com/SDAIAAcademy)
+**Cohort dates:** Awaiting the owner's dates.
 
-## Submission and execution: one notebook
+## One notebook
 
-Open `Talabak_Capstone.ipynb` in Jupyter, or upload **only that notebook** to Google Colab and select **Runtime → Run all**. The notebook embeds the application, data and tests. Its first setup cell extracts a new working directory, installs the versions pinned in `requirements.txt`, starts the local simulator and checks readiness. No provider key or GPU is required. Initial dependency installation needs Internet access. Actual Colab success must be documented by running it there.
+The submission is **Talabak_Capstone.ipynb**. Once the actual repository URL and source revision are configured, open its Colab link and select **Runtime → Run all**. The setup cell clones the repository, installs pinned dependencies and starts the default local backend. It needs internet but no API key or GPU. The notebook contains the bilingual conversation, four demonstrations, tests, evaluation, decisions and reports.
 
-The notebook provides the conversation, four demonstrations, tests and generated reports. Saved execution outputs provide the evidence; cells alone do not establish success. The reviewer needs no separate website, Docker setup, CI pipeline or manual local installation.
+The setup follows the course labs. Application source remains readable in the repository; no encoded project archive is embedded in the notebook. A local review uses this existing checkout. The repository URL and actual fresh-Colab execution remain pending; the notebook does not claim that either has already happened. See [Notebook setup](docs/NOTEBOOK_SETUP.md).
 
-This version is an **embedded-source snapshot for local review**. The course template clones the project's repository in Colab. Adding the real repository URL and verifying that setup in a fresh Colab runtime remain pending authorized publication. No URL is invented, and extracting an archive does not prove that a clone occurred. Adjacent source files are development materials, not additional submissions.
+## Default mode and real providers
 
-## Quick conversation examples
+The default backend is a deterministic simulator reached through the provider SDK. It exercises schemas, tool calls, authorization, repair, retries, accounting and regression checks. Its responses and timing do not establish real-model quality or hardware performance.
 
-The default session represents fictional customer `CUST-A`: a trusted demonstration identity, not production authentication.
+Real-provider support is prepared separately. Select a commercial model and an open-weight model through configuration, supply credentials through Colab Secrets, and enable the notebook's live section. Provider choice, prices and credentials are intentionally undecided. No external model call is made by default, and no existing credential is silently reused.
 
-| Enter | Expected behaviour |
+- [Provider configuration](docs/PROVIDERS.md)
+- [Live evaluation and human review](docs/LIVE_EVALUATION.md)
+- [Cost, caching and self-host measurements](docs/LIVE_MEASUREMENTS.md)
+
+The optional experiments evaluate the same application used by the conversation. Simulator, injected-test and live-provider evidence remain distinguishable. Missing usage, human labels, cache measurements or throughput are reported as unavailable rather than filled with estimated results. Token-cost estimates are labelled separately from actual invoices.
+
+## Try a conversation
+
+The default session represents fictional customer CUST-A. It is a demonstration identity, not production authentication.
+
+| Message | Behaviour |
 |---|---|
-| Where is my order ORD-1002? | Show the status of an order owned by the session. |
-| I want to return ORD-1001 because the product is unsuitable. | Check policy and propose the action for confirmation. |
-| Confirm | Execute only the action proposed in the preceding message. |
-| Exchange ORD-1001 with SKU-H200. | Check ownership, eligibility, price and stock before confirmation. |
-| Book an appointment SLOT-001. | Check capacity, then request confirmation. |
-| What are the store hours? | Answer from the fictional store's data. |
-| I want to speak to support. | End the automated path locally; send no external message to a person. |
+| Where is my order ORD-1002? | Return the status only if the session owns it. |
+| I want to return ORD-1001 because the product is unsuitable. | Check policy and propose a specific action. |
+| Confirm | Execute only the action currently awaiting confirmation. |
+| Exchange ORD-1001 with SKU-H200 because I need another model. | Check ownership, eligibility, stock and confirmation. |
+| Book an appointment SLOT-001 for a product demonstration. | Check availability and request confirmation. |
+| What are the store hours? | Answer from the store's public source data. |
+| I want to speak to support. | End the automated path locally. |
 
-Use a new demonstration session/store for a new action if that order has already been processed. Repeating confirmation must not create a second return or appointment. The notebook also demonstrates Arabic customer messages.
+Arabic examples are demonstrated in the notebook. Reset the demo store/session to try an independent action after an order has already been processed. Repeating confirmation must not create another action.
 
-## What local execution establishes
+## Evidence and remaining execution
 
-The application makes real OpenAI SDK calls over HTTP to a **loopback simulator**. The gateway implements `tool_calls`, `usage` and `json_schema` response shapes and deliberate faults for repair, retry and fallback tests. Configuration aliases such as `primary`, `open_weight` and `judge` all select simulated routes.
-
-| Evidence | Interpretation |
+| Area | Current evidence boundary |
 |---|---|
-| SDK, tools, Pydantic, guards, gateway and persistence | Supported by the attached local tests when those tests pass. |
-| Simulator cost | External provider spending is zero; `simulated_cost_usd` uses a separate illustrative tariff. |
-| Commercial versus open-weight quality | Requires two actual models on the same dataset. The simulator does not establish it. |
-| Judge calibration | Requires genuine human labels and calculated agreement/κ. The assistant does not fill human labels. |
-| Self-hosting break-even | Requires measured throughput on identified hardware. Simulator latency is not LLM throughput. |
-| Peer review and cohort dates | Require external information or evidence not yet supplied. |
+| Application engineering | Local tests and executed notebook outputs; see the current execution record. |
+| Real model comparison | Prepared; run after choosing the two providers and budgets. |
+| Human calibration | Export actual answers, obtain real human labels, then calculate agreement and Cohen's kappa. |
+| Provider caching and savings | Measure returned usage and rerun evaluation after each optimization. |
+| Self-host break-even | Requires the selected runtime's measured throughput and explicit economic inputs. |
+| Reproducibility | Local execution and actual Colab execution are recorded separately. |
 
-Reports separate passed checks, failures and unmeasured items. No grade is guaranteed. GitHub publication and platform submission require the owner's explicit instruction.
+See [RUBRIC_EVIDENCE.md](RUBRIC_EVIDENCE.md), [EVALUATION_REPORT.md](EVALUATION_REPORT.md) and [BENCHMARKS.md](BENCHMARKS.md). A prepared experiment is not a completed measurement or a guaranteed grade. GitHub publication and submission await the owner's explicit instruction.
 
-## Source layout
+## Development files
 
-```text
-Talabak_Capstone.ipynb   Single notebook with source and runnable evidence
-config/                Route aliases, bounds and illustrative tariffs
-data/                  Fictional store and original evaluation datasets
-prompts/               Versioned instructions and judge contracts
-talabak/               Model boundary, simulator, policies and pipeline
-tests/                 Contract, safety and behaviour tests
-scripts/               Evaluation, calibration and notebook generation
-docs/                  Decisions, context budget and evidence documentation
-```
+The talabak directory contains the application; config contains model and notebook settings; data contains the fictional store and original evaluation cases; prompts contains versioned instructions; scripts contains evaluation and notebook tooling. These files support the one notebook.
 
-See [DECISIONS.md](docs/DECISIONS.md) for trade-offs and [CONTEXT_BUDGET.md](docs/CONTEXT_BUDGET.md) for measurement. Store data, prices, policies, customers and orders are **synthetic**. The reference clock is fixed in the data so eligibility and appointment checks remain reproducible.
+## Attribution and design
 
-## Attribution
+The instructor explicitly permits borrowing patterns and infrastructure from [Murshid](https://github.com/MohammadYusif/llm-application-engineering/blob/de2ff3c0d8758c77d85c944e2d6f133647b84a91/capstone.qmd#L44-L50). Talabak uses that architectural approach with its own retail domain, tools, policy data, guards and evaluation cases. Course or student benchmark numbers are not reused as Talabak's results.
 
-The course [Murshid reference implementation](https://github.com/MohammadYusif/llm-application-engineering) informed the model boundary, layered pipeline, repair loop, evaluation and cost-evidence practices. Talabak has its own retail domain, tools, policy data, guard cases and evaluation data. Course or student benchmark numbers are not reused as this project's results. The separate course audit records precise sources and the difference between the Capstone and Lab 5 golden-set minimums.
+[Decisions](docs/DECISIONS.md) · [Dataset](docs/DATASET.md) · [Course](https://mohammadyusif.github.io/llm-application-engineering/)

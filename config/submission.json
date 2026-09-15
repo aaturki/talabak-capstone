@@ -1,0 +1,7 @@
+{
+  "repository_url": null,
+  "revision": null,
+  "project_subdirectory": ".",
+  "status": "LOCAL_REVIEW_ONLY",
+  "note": "No authorized project repository URL or pinned commit has been supplied. Set the owner's real public repository and source commit, then rebuild and verify in a fresh Colab runtime."
+}

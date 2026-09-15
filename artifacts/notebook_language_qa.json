@@ -1,13 +1,13 @@
 {
   "status": "PASS",
-  "checked_at_utc": "2026-09-15T21:07:43.589546+00:00",
-  "notebook_sha256": "7915aed31fce6badffbfa5468a4af7721e26dd97598407de28ff82e63a463c8a",
+  "checked_at_utc": "2026-09-15T22:30:25.896872+00:00",
+  "notebook_sha256": "70faa4bfee62fbeb358255a499a38835e25aa03bd2b4f7a3496c6cd9d764eabd",
   "documentation_language": "English",
-  "markdown_sections_checked": 19,
+  "markdown_sections_checked": 26,
   "allowed_arabic_occurrences": [
     "cell 1",
-    "cell 28, output 2",
-    "cell 31"
+    "cell 42",
+    "cell 46, output 1"
   ],
   "allowed_arabic_scope": "Exact proper names and quoted bilingual examples; application dialogue/test data remain bilingual.",
   "english_conversation_controls": {

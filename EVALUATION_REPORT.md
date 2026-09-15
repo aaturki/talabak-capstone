@@ -1,6 +1,6 @@
 # Evaluation Report — Talabak
 
-Generated at 2026-09-15T21:07:19.075987+00:00 from an actual application run through the SDK to a local simulator.
+Generated at 2026-09-15T22:30:16.208561+00:00 from an actual application run through the SDK to a local simulator.
 
 **This report contains local simulator evidence. No live commercial or open-weight language model was run. External spend is zero.**
 
@@ -40,7 +40,7 @@ The names below identify two configurations of the same simulator. This is not a
 4. **Evaluation:** 144 original, fixed cases with explicit strata. Evaluation runs the same handle_message entrypoint. The simulated judge tests the interface contract only; human-calibrated κ is unavailable.
 5. **Cost:** Observed usage and illustrative tariff estimates are separated from actual spend. BENCHMARKS.md documents the cache experiment with an evaluation verdict for every step.
 6. **Model comparison:** Switching simulator configurations was tested. A live model comparison and break-even analysis based on measured throughput remain unavailable.
-7. **Operation:** One notebook contains the conversation, tests, and reports, with a setup cell that starts the simulator automatically. Embedded source supports local review; repository cloning and evidence of Run all in Colab await authorized publication.
+7. **Operation:** One notebook contains the conversation, tests, and reports. Its setup follows the course repository-clone pattern; local review uses the existing checkout. A real repository locator and fresh Colab Run all still require publication and verification.
 
 ## Judge and human calibration
 

@@ -1,50 +1,50 @@
-# البيانات والتقييم — provenance and review status
+# Data and evaluation — provenance and review status
 
-## المصدر والحدود
+## Sources and limits
 
-جميع الحالات في هذه الحزمة أُلّفت لهذا التطبيق من الصفر بواسطة المساعد، انطلاقًا من بيانات المتجر الافتراضي وسياساته. لم تُنسخ حالات golden أو درجات الطلاب أو أرقامهم. أسماء المنتجات والعملاء والطلبات وأمثلة PII اصطناعية. مراجعة مالك المشروع للحالات والتوقعات **معلّقة**؛ لا تُنسب هذه الوسوم إلى إنسان.
+The assistant authored every case in this package for this application, using the fictional store's data and policies. No golden cases, student scores or student measurements were copied. Product names, customers, orders and PII examples are synthetic. Project-owner review of the cases and expectations is **pending**; these labels are not attributed to a human reviewer.
 
-الساعة المثبتة في `store.v1.json` هي 2026-09-15. مدة الإرجاع والاستبدال 14 يومًا للمنتج غير المفتوح؛ الاستبدال يقتضي السعر نفسه ومخزونًا متاحًا. هذه سياسة المتجر التجريبي المختارة للتصميم، وليست وصفًا لقانون أو شرط من المقرر.
+The fixed date in `store.v1.json` is 2026-09-15. Unopened products have a 14-day return and exchange window; an exchange requires an equal price and available stock. This is a design choice for the demonstration store, not a statement of law or a course requirement.
 
-## مجموعات ذات إصدارات
+## Versioned datasets
 
-| الملف | الحجم | الاستخدام |
+| File | Size | Purpose |
 |---|---:|---|
-| `data/golden.v1.jsonl` | 144 محادثة | طلبات حقيقية للمسار مع توقعات ثابتة واختبارات آثار الحالة |
-| `data/attacks.v1.jsonl` | 40 هجومًا | 30 تطوير + 10 احتفاظ، 24 عربيًا و16 إنجليزيًا |
-| `data/legitimate.v1.jsonl` | 40 طلبًا مشروعًا | 30 تطوير + 10 احتفاظ، تشمل اقتباس هجوم والإبلاغ عنه وأسئلة الخصوصية والنفي |
-| `data/near_miss.v1.jsonl` | 32 زوجًا مختلفًا | تشابه نصي خطير وفروق العميل/الصلاحية/النموذج/السياسة/التاريخ/السياق؛ كلها تتوقع عدم إعادة استعمال الإجابة |
-| `data/cache_pairs.v1.jsonl` | 36 زوجًا | 24 معايرة تطوير (12 موجب/12 سالب) + 12 احتفاظ منفصل (6 موجب/6 سالب) للـconcept-vector cache |
+| `data/golden.v1.jsonl` | 144 conversations | Requests sent through the actual application pipeline, with fixed expectations and state-change checks |
+| `data/attacks.v1.jsonl` | 40 attacks | 30 development + 10 holdout; 24 Arabic and 16 English |
+| `data/legitimate.v1.jsonl` | 40 legitimate requests | 30 development + 10 holdout; includes quoted/reported attacks, privacy questions and negation |
+| `data/near_miss.v1.jsonl` | 32 non-equivalent pairs | Dangerous textual similarity and differences in customer, authorization, model, policy, date or context; every pair expects no answer reuse |
+| `data/cache_pairs.v1.jsonl` | 36 pairs | 24 development calibration pairs (12 positive/12 negative) + 12 separate holdout pairs (6 positive/6 negative) for the concept-vector cache |
 
-المجموعة golden: لكل intent من `faq`, `order_status`, `return`, `exchange`, `appointment`, `handoff` عدد 24 حالة. العربية 96 والإنجليزية 48. الصعوبة easy=23 وmedium=92 وhard=29؛ المخاطر low=29 وmedium=37 وhigh=78. كل شريحة هامشية ≥8؛ لا يعني هذا أن كل تقاطع ممكن بين الأبعاد يحتوي 8 حالات.
+The golden set has 24 cases for each intent: `faq`, `order_status`, `return`, `exchange`, `appointment` and `handoff`. It contains 96 Arabic and 48 English cases. Difficulty counts are easy=23, medium=92 and hard=29; risk counts are low=29, medium=37 and high=78. Every marginal slice has at least 8 cases; this does not mean every possible intersection of dimensions has 8 cases.
 
-المخاطر العالية زيد تمثيلها عمدًا، فلا تمثل هذه النسب حركة متجر حقيقي. تشمل الحالات ملكية الطلب، غياب المصادقة، جلسة لا تملك صلاحية الفعل، نهاية مدة الإرجاع، منتجًا مفتوحًا، اختلاف السعر، نفاد المخزون، موعدًا ممتلئًا، تأكيدًا مستقلًا، تأكيدًا قديمًا، إعادة الطلب، وانتهاء الجلسة بالتحويل. تُقاس المحادثات متعددة الأدوار كحالات كاملة.
+High-risk cases are deliberately oversampled, so these proportions do not represent real store traffic. Cases cover order ownership, missing authentication, a session without action permission, an expired return window, opened products, price differences, unavailable stock, full appointment slots, separate confirmation, stale confirmation, repeated requests and terminal handoff. Multi-turn conversations are evaluated as complete cases.
 
-## ما الذي يعد نجاحًا؟
+## What counts as success?
 
-كل حالة تحمل `expected.allowed_statuses` وعدد الأفعال المتوقع، ومعها اختبارات نص/مصادر/أدوات/حالة terminal عند الحاجة. لا يكفي أن يكتب التطبيق «تم»: يقارن harness عدد صفوف actions الفعلي، وأثر الأدوات في trace، وحالة الرد. يفحص PII في نتائج كل دور وسجلاته. لا يُفسر وجود كود الأداة كدليل على تنفيذها.
+Every case specifies `expected.allowed_statuses` and the expected action count, with text, citation, tool and terminal-state checks where needed. An answer saying “done” is insufficient: the harness checks actual action rows, tool trace events and response status. It checks PII in every turn's results and logs. Tool source code alone is not evidence that a tool ran.
 
-`scripts/evaluate.py` يبني Store وSession جديدتين لكل حالة ثم يستدعي **Application.handle_message نفسها** المستخدمة للمحادثة. لا يوجد تطبيق مبسط خاص بالاختبارات، ولا توليد للتوقعات من الإجابة أثناء التشغيل. تحفظ نتائج كل دور والاستهلاك، وبصمة ملف golden وfixture، ثم تلخص النتائج بحسب الشرائح. ملفات النتائج تحت `eval/out/` تُنشأ عند التشغيل الفعلي فقط.
+`scripts/evaluate.py` creates a fresh Store and Session for each case and calls **the same Application.handle_message** used by the conversation interface. There is no simplified evaluation application, and expectations are not generated from the current answer. Results retain each turn and its usage, plus golden-file and fixture hashes, then summarize results by slice. Files under `eval/out/` are generated only by actual runs.
 
-توقعات السلامة محافظة: فشل الحالة عالية المخاطر يظهر فشلًا في شريحة السلامة حتى إن كان الإخفاق تحويلاً آمنًا إلى موظف بدل الحالة المتوقعة. لذلك يجب قراءة failures وأثر قاعدة البيانات مع النسبة؛ لا تُختزل سلامة النظام في متوسط واحد.
+Safety expectations are conservative: any failed high-risk case fails the safety slice, even when the mismatch is a safe handoff instead of the expected status. Read the failures and database effects alongside the percentage; one average does not capture system safety.
 
-## منع تسرب الاختبار إلى التصميم
+## Development exposure and holdout limits
 
-المجموعة golden كُتبت أثناء التطوير واستُخدمت لإصلاح التطبيق والمفردات التي يفهمها المحاكي؛ هي benchmark تطوير/تراجع معروف، وليست اختبار تعميم مخفيًا لنموذج حقيقي. تحفظ الجولة الأولى وإخفاقاتها في `eval/out/development/first_golden.*`، فلا تُحذف لصالح الجولة المحسنة.
+The golden set was authored during development and used to repair the application and the simulator's vocabulary. It is a known development/regression benchmark, not a hidden generalization test for a real model. The first run and its failures are retained in `eval/out/development/first_golden.*`; later improvements do not replace that history.
 
-قُسم corpus الحواجز قبل تعديل regex إلى 30 تطوير و10 احتفاظ لكل من الهجمات والمشروع. جرى ضبط القواعد على تطوير فقط، ثم قياس الاحتفاظ مرة واحدة وحفظه في `guard_holdout_once.json` مع بصمة guards.py. مؤلف البيانات ومراجعها واحد مساعد، ولذلك ليست مراجعة خارجية مستقلة. إذا استُخدمت حالات الاحتفاظ لاحقًا لتوجيه إصلاح، تصبح جولاتها اللاحقة اختبارات تراجع مكشوفة؛ لا تُسمى اختبارًا مخفيًا جديدًا.
+Before the regex changes, each guard corpus was split into 30 development and 10 holdout cases. Rules were tuned on development cases only; the holdout was then measured once and saved in `guard_holdout_once.json` with the `guards.py` hash. The same assistant authored and reviewed the data, so this is not independent external review. If holdout cases later guide a repair, subsequent runs are exposed regression checks, not a new hidden test.
 
-تقارير الحواجز تفصل بين اختبار المكوّن الحتمي وبين safety في مسار golden الكامل. تجربة المحاكي عبر SDK تختبر بروتوكول التطبيق، وليست جودة نموذج حي أو كلفة مزود أو قدرة GPU.
+Guard reports distinguish the deterministic component test from the safety slice of the full golden pipeline. Running the simulator through the SDK tests the application protocol; it does not measure live-model quality, provider cost or GPU capacity.
 
-## الحكم والمعايرة البشرية
+## Judging and human calibration
 
-توجد rubrics مستقلة لـgroundedness وcompleteness. كل استدعاء judge يقيس بُعدًا واحدًا. groundedness.v2 مرشح مراجعة موثق؛ رقم الإصدار لا يعني تحسنًا مقاسًا. payload يسمح فقط بالسؤال والأدلة الموثوقة والإجابة؛ case IDs والوسوم البشرية والتوقعات لا تُرسل إلى الحكم.
+Groundedness and completeness have separate rubrics. Each judge call measures one dimension. `groundedness.v2` is a documented revision candidate; its version number does not establish measured improvement. The judge payload permits only the question, trusted evidence and answer. Case IDs, human labels and expected outcomes are withheld.
 
-`scripts/calibrate.py export` يختار عينة من إجابات فعلية، موزعة على اللغة والمهمة والمخاطر، ويكتب حقول `human_label`, `annotator`, `annotated_at`, `rationale` فارغة. لا يستبدل الكتابة البشرية بوسوم محاكية. بصمة output تمنع مقارنة حكم جواب جديد بوسم جواب قديم. حساب κ يذكر أنه غير معرّف عندما تكون جميع الوسوم في فئة واحدة، ولا يحوله إلى 1.
+`scripts/calibrate.py export` samples actual answers across language, intent and risk, and leaves `human_label`, `annotator`, `annotated_at` and `rationale` blank. Simulator labels do not replace human annotation. The output hash prevents pairing a judgment of a new answer with a label for an old answer. Kappa is reported as undefined when every label belongs to one category; it is not converted to 1.
 
-حتى مع اتفاق حسابي عالٍ، يبقى status=`NOT_CALIBRATED` إذا كانت الوسوم ناقصة أو الحكم محاكيًا أو حجم العينة غير كافٍ أو κ غير مستوفاة. هوية المراجع بشرية الإقرار؛ الكود لا يستطيع إثبات أن إنسانًا كتب الوسم. الحواجز الحتمية لا تعتمد على judge غير معاير.
+Even high numerical agreement leaves `status=NOT_CALIBRATED` when labels are incomplete, the judge is simulated, the sample is too small or kappa does not meet the threshold. Rater identity is self-reported; code cannot establish that a person supplied a label. Deterministic guards do not depend on an uncalibrated judge.
 
-## التشغيل
+## Running the evaluation
 
 ```powershell
 python -X utf8 scripts/evaluate.py --alias primary --out eval/out/simulator-primary
@@ -52,10 +52,10 @@ python -X utf8 scripts/evaluate.py --alias open_weight --out eval/out/simulator-
 python -X utf8 scripts/calibrate.py export eval/out/simulator-primary/results.jsonl eval/human_labels.pending.csv --limit 36
 ```
 
-تتطلب evaluate بوابة المحاكي المحلية؛ `scripts/run_all.py` نقطة التجميع التي يديرها التطبيق. baseline يُختار ويُحفظ صراحةً من تشغيل معلوم؛ التقييم لا ينشئ baseline تلقائيًا عند غيابه. بوابة التراجع تقارن كل شريحة وتمنع أي فشل سلامة حتمي، وتعيد exit code غير صفري عند BLOCK.
+These simulator evaluation commands require the local gateway; `scripts/run_all.py` provides the integrated runner. A baseline is explicitly selected and saved from a known run; evaluation does not create one automatically when it is missing. The regression gate compares slices, blocks deterministic safety failures and returns a nonzero exit code on BLOCK.
 
-## قياس التخزين المؤقت
+## Cache measurement
 
-`scripts/cache_benchmark.py` يختار threshold من أزواج تطوير فقط: صفر wrong hits أولًا، ثم أكبر عدد إصابات صحيحة، ثم أعلى threshold عند التعادل. بعدها يقيس أزواج الاحتفاظ والأزواج السلبية الأصلية دون ضبط عليها. الـsemantic tier خريطة مفاهيم حتمية صغيرة، وليست embeddings متعلمة؛ صرامة تطابق المفاهيم والتوقيع تجعل الدرجات شبه ثنائية، وقد تفوّت مرادفات صحيحة عمدًا.
+`scripts/cache_benchmark.py` selects a threshold using development pairs only: first require zero wrong hits, then maximize correct hits, then prefer the higher threshold on a tie. It subsequently evaluates the holdout pairs and original negative pairs without tuning against them. The semantic tier is a small deterministic concept map, not learned embeddings. Its strict concept/signature matching makes scores nearly binary and deliberately misses some valid synonyms.
 
-يحفظ benchmark ملف `traffic.v1.jsonl` ثابتًا: أربعة تكرارات لكل سؤال golden ناجح من أول دور في FAQ وحالة الطلب. حمل مصطنع متكرر عمدًا؛ ليس عينة استخدام متجر. تقارن كل خطوة الرد والمصادر والحالة مع baseline، وتعيد أيضًا تقييم golden الكامل (144) لكل من بلا cache وexact وsemantic. توفر حقول الإنفاق الفعلي صفرًا والتعرفة المحاكية منفصلًا؛ نسبة توفير من صفر إلى صفر غير معرّفة. cached_tokens الخاص بمزود النموذج لا يساوي إصابات response cache.
+The benchmark saves fixed `traffic.v1.jsonl`: four repetitions of each eligible successful one-turn golden FAQ/order-status case. This is deliberately repeated synthetic traffic, not a store-usage sample. Every step compares the answer, citations and status with the baseline and reruns the full 144-case golden set for no-cache, exact-cache and semantic-cache modes. Actual spending remains zero and illustrative simulator tariffs are reported separately; savings from zero to zero are undefined. Provider `cached_tokens` and response-cache hits measure different things.

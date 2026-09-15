@@ -32,7 +32,7 @@ class Result:
 class Application:
     STAGES = ("input_guard", "route_extract", "tools", "output_guard", "deliver")
 
-    def __init__(self, client: ModelClient, store=None, *, cache_enabled=True, alias="primary", max_tool_rounds=4, audit_path=None, semantic_enabled=False):
+    def __init__(self, client: ModelClient, store=None, *, cache_enabled=True, alias="primary", max_tool_rounds=4, audit_path=None, semantic_enabled=False, stable_context=None):
         self.client = client
         self.store = store or Store()
         self.alias = alias
@@ -43,6 +43,10 @@ class Application:
         self.audit_path = Path(audit_path) if audit_path else None
         self.prompts = {name: (ROOT / f"prompts/{name}.v1.md").read_text(encoding="utf-8")
                         for name in ("router", "workflow", "guard", "repair")}
+        settings = getattr(client, "config", {}).get("pipeline", {})
+        self.stable_context = settings.get("stable_context", False) if stable_context is None else stable_context
+        if self.stable_context:
+            self.prompts["context"] = (ROOT / "prompts/context.v1.md").read_text(encoding="utf-8")
         self.refresh_prompt_version()
         self.canary = "TALABAK_CANARY_7C84F52A"
 
@@ -50,6 +54,13 @@ class Application:
         self.prompt_version = digest({"prompts":self.prompts,"tools":tool_definitions()})
 
     def _call(self, messages, result, *, stage, schema=None, tools=None, alias=None):
+        if self.stable_context:
+            # Only public, versioned store facts enter the shared prefix. Orders,
+            # customers, sessions and tool receipts remain outside it.
+            public = {key: self.store.data[key] for key in ("policy", "hours", "catalog")}
+            prefix = self.prompts["context"] + "\nPUBLIC_REFERENCE_JSON\n" + canonical(public)
+            prefix += "\nAVAILABLE_TOOL_CONTRACTS_JSON\n" + canonical(tool_definitions())
+            messages = [{"role": "system", "content": prefix}, *messages]
         started = time.perf_counter()
         try:
             reply = self.client.complete(messages, schema=schema, tools=tools, alias=alias or self.alias)

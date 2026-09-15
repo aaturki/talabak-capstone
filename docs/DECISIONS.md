@@ -12,7 +12,7 @@ The Talabak name, electronics-store domain and SQLite database are project choic
 
 `ModelClient` separates the application from the SDK. The SDK implementation is in `talabak/llm.py`; model names and bounds come from configuration. The local gateway implements the HTTP contract, so schema, tools, usage and errors are tested through that boundary rather than direct calls into simulator logic.
 
-Every default route is simulated, including `open_weight` and `judge`. Access to a live classroom gateway has not been confirmed, and external spending has not been authorized. This build rejects external URLs and ignores environment credentials. A live comparison requires authorized access, documented configuration, review of the connection policy and the same evaluation rerun. Renaming an alias does not create a live model run.
+Every default route is simulated, including `open_weight` and `judge`. The owner authorized preparation for real providers while deferring provider and credential selection. Live routes therefore require an explicit opt-in and separate configuration; default runs still ignore credentials and stay on loopback. Live mode validates the configured endpoint, capabilities and spending bounds, then reads only the selected secret. A live comparison still requires actual access and a rerun of the same evaluation. Renaming an alias does not create a live model run.
 
 ## ADR-003 — Authority, confirmation and persistent state
 
@@ -54,15 +54,23 @@ The default was changed to exact matching alone. The semantic tier remains avail
 
 The submission is one Colab notebook that reaches an internal conversation through **Run all**. Its first setup cell installs dependencies, starts the backend and verifies readiness. The separate website created during development was removed from submission scope. The reviewer needs no Docker setup, CI pipeline or manual local installation.
 
-The notebook embeds source, data and tests in a compressed payload with a SHA-256 digest. It selects an available loopback port and extracts a new working directory, allowing local review without a public repository. Initial dependency installation needs Internet access. Local `nbclient` success and actual Colab success are separate evidence categories.
+The earlier encoded source archive made the notebook difficult to inspect and differed from the lab template. It was removed after the owner's review. The replacement setup clones the actual project repository in Colab and verifies the readable source files against a hash manifest. Local review uses the existing checkout. Initial dependency installation needs Internet access. Local notebook success and actual Colab success remain separate evidence categories.
 
-Embedding source is a choice for this review snapshot. The course template clones the project's repository in Colab. A real URL can be added after authorized publication and tested in a fresh runtime. Neither that clone nor an actual Colab run has been performed.
+The repository URL and pinned source revision must be supplied before publication and fresh Colab verification. The notebook reports an incomplete locator explicitly; it does not clone the instructor's repository as if it were Talabak or silently invent a public URL.
 
 The README uses the owner's exact supplied name, تركي أحمد الصليع. Cohort dates await the correct information. Current authorization covers local preparation and history; it does not include publication, push, submission or contacting the instructor or peers.
 
 ## Current recommendation
 
 Review local simulator results and gaps requirement by requirement. A live commercial/open-weight choice has not been established through measurements; an alias is not a deployment recommendation. When authorized access is available, rerun the same evaluation, cost and latency measurements, then derive the recommendation and break-even from that evidence.
+
+## ADR-010 — Real evidence without replacing the default course setup
+
+The same SDK boundary can address a commercial service and an open-weight endpoint through configuration. Required structured-output and tool capabilities are checked rather than silently removed for a weaker provider. A configured secret is loaded only for explicitly enabled live runs. Provider responses identify the served model and returned usage; unknown usage remains unknown. Estimated token cost is distinct from an invoice. Injected test transports never count as live model evidence.
+
+Live comparison, human review, cache experiments and self-host load tests have separate notebook controls. This keeps default Run all usable without paid inference while providing executable paths for the additional evidence. Human labels are exported blank and tied to actual answer hashes. Current tests of these paths establish engineering readiness, not model quality, calibration or a grade.
+
+The optional context-prefix experiment supplies public policies, catalogue facts and tool contracts. Private order/session data is excluded. It is tested before enabling it in the main pipeline because extra context can increase cost or change quality. The cache benchmark records every phase's full golden result, including a failed optimization. It cannot force a provider's cache to meet the course target.
 
 ## References
 
