@@ -839,15 +839,8 @@ def build(root: Path, output: Path) -> dict:
     ''')
     md("### D. Graceful fallback under a scripted fault")
     code('''
-    import urllib.request
-    admin_url = gateway_url.removesuffix("/v1")
-    def set_fault(payload):
-        request = urllib.request.Request(
-            admin_url + "/admin/fault", data=json.dumps(payload).encode(),
-            headers={"Content-Type": "application/json"}, method="POST",
-        )
-        with urllib.request.urlopen(request, timeout=10) as response:
-            return json.load(response)
+    # set_fault is the helper defined once in section 2; it posts to the simulator's /admin/fault.
+    assert callable(set_fault)
     event_start = len(client.events)
     try:
         set_fault({"mode": "overload", "model": runtime_config["routes"]["primary"]["model"], "seconds": 30})
