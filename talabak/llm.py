@@ -233,6 +233,10 @@ def preflight_config(config: dict, *, allow_live: bool = False) -> dict:
             raise ValueError("max_input_tokens must be a positive integer or null")
         if route.get("deployment") not in {None, "hosted", "self_hosted"}:
             raise ValueError("deployment must be hosted, self_hosted or null")
+        extra = route.get("extra_body")
+        if extra is not None and (not isinstance(extra, dict) or any(not isinstance(k, str) or k in
+                {"model", "messages", "tools", "response_format", "max_tokens", "max_completion_tokens", "stream"} for k in extra)):
+            raise ValueError("extra_body must be a mapping of provider-specific options that do not override the wire contract")
         tariff = _tariff(route)
         if mode in LIVE_MODES:
             auth = route.get("auth", {})
@@ -386,6 +390,10 @@ class SDKClient:
             kwargs["tools"] = tools
             if caps["parallel_tool_calls"]:
                 kwargs["parallel_tool_calls"] = False
+        if route.get("extra_body"):
+            # Provider-specific request options declared in configuration (for example
+            # reasoning_effort for reasoning models); validated in preflight_config.
+            kwargs["extra_body"] = copy.deepcopy(route["extra_body"])
         return kwargs
 
     def _reserve(self, route, kwargs, attempts):

@@ -364,6 +364,20 @@ def test_token_screen_admits_a_real_tools_stage_request_under_a_cost_cap():
     assert reply.usage["usage_available"]
 
 
+def test_configured_extra_body_reaches_the_wire_but_cannot_override_the_contract():
+    config, bodies = live_config(), []
+    config["routes"]["primary"]["extra_body"] = {"reasoning_effort": "low"}
+    def handler(request_):
+        bodies.append(json.loads(request_.content))
+        return httpx.Response(200, json=wire())
+    with live_client(config, handler) as client:
+        client.complete([{"role": "user", "content": "x"}], schema=wire_schema(Answer))
+    assert bodies[0]["reasoning_effort"] == "low" and bodies[0]["response_format"]["type"] == "json_schema"
+    config["routes"]["primary"]["extra_body"] = {"model": "other"}
+    with pytest.raises(ValueError, match="extra_body"):
+        live_client(config, handler)
+
+
 def test_budget_status_exposes_upper_bound_and_partial_usage_counts():
     response = wire()
     response["usage"].pop("prompt_tokens_details")

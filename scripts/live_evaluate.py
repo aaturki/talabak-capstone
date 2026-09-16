@@ -44,7 +44,7 @@ def sanitized_config(config: dict) -> dict:
         clean = {k: copy.deepcopy(route[k]) for k in
                  ("provider", "model", "evidence_mode", "capabilities", "tariff",
                   "temperature", "max_input_tokens", "max_output_tokens", "deployment",
-                  "simulation_tariff") if k in route}
+                  "simulation_tariff", "extra_body") if k in route}
         parsed = urlsplit(str(route.get("base_url", "")))
         hostname = parsed.hostname or ""
         try:
