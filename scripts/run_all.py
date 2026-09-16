@@ -278,6 +278,13 @@ def run_all(*,skip_tests=False):
             with template.open(encoding='utf-8-sig',newline='') as f: labels=list(csv.DictReader(f))
             calibration=calibrate(labels,predictions_by_dimension['groundedness'],min_pairs=40)
             calibration['dimension']='groundedness'
+            write(out/'calibration.simulator_template.json',calibration)
+            # A scored human review of live answers, when present, is the calibration evidence.
+            reviews=sorted((ROOT/'artifacts/live').glob('review*/calibration.json'))
+            if reviews:
+                calibration=json.loads(reviews[-1].read_text(encoding='utf-8'))
+                calibration['source']=str(reviews[-1].relative_to(ROOT)).replace('\\','/')
+                calibration['simulator_template']='artifacts/calibration.simulator_template.json'
             write(out/'calibration.json',calibration)
             cache={"status":"NOT_RUN"}
             try:
@@ -298,11 +305,12 @@ def run_all(*,skip_tests=False):
             'regression':{'clean':clean,'degraded':bad,'baseline_sha256':hashlib.sha256((ROOT/'eval/baseline.simulator.json').read_bytes()).hexdigest()},
             'faults':faults,'demos':demos,'judge':judge_reports,'calibration':calibration,'cache':cache,'structured_by_language':structured,
             'context_budget':measure(ROOT),'live_models':(f"RECORDED:{latest_live_run(ROOT)[1]['run_id']}:{latest_live_run(ROOT)[1]['status']}" if latest_live_run(ROOT) else 'NOT_RUN'),
-            'human_calibration':'PENDING','self_host_throughput':'NOT_MEASURED','colab_fresh_runtime':'NOT_VERIFIED_LOCALLY'}
+            'human_calibration':(f"MEASURED:{calibration['status']}:n={calibration.get('n')}:kappa={calibration.get('cohen_kappa')}" if calibration.get('source') else 'PENDING'),
+            'self_host_throughput':'NOT_MEASURED','colab_fresh_runtime':'NOT_VERIFIED_LOCALLY'}
     write(out/'report.json',report);generate_reports(report,ROOT)
     guards_pass=all(layer['attack_block_rate']>=.95 and layer['legitimate_false_positive_rate']==0 for layer in report['guards']['layers'].values())
     passed=clean['status']=='PASS' and bad['status']=='BLOCK' and faults['all_passed'] and all(x['passed'] for x in demos) and guards_pass and cache.get('status')=='PASS'
-    print(json.dumps({'local_checks':'PASS' if passed else 'FAIL','report':'artifacts/report.json','live_models':report['live_models'],'human_calibration':'PENDING'},ensure_ascii=False),flush=True)
+    print(json.dumps({'local_checks':'PASS' if passed else 'FAIL','report':'artifacts/report.json','live_models':report['live_models'],'human_calibration':report['human_calibration']},ensure_ascii=False),flush=True)
     if not passed: raise RuntimeError('Verification failed; inspect generated report')
     return report
 

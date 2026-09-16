@@ -1,9 +1,12 @@
 {
-  "created_at_utc": "2026-09-16T17:19:54.532865+00:00",
+  "created_at_utc": "2026-09-16T17:21:48.042019+00:00",
   "python": "3.12.14",
   "evidence_mode": "simulator",
   "tests": {
-    "status": "executed_by_notebook"
+    "status": "PASS",
+    "tests": 382,
+    "failures": 0,
+    "errors": 0
   },
   "evaluations": {
     "primary": {
@@ -11,8 +14,8 @@
         "n": 144,
         "passed": 144,
         "pass_rate": 1.0,
-        "latency_ms_p50": 17.09020000998862,
-        "latency_ms_p95": 31.67349999421276,
+        "latency_ms_p50": 17.544200003612787,
+        "latency_ms_p95": 37.62570000253618,
         "model_calls": 408,
         "input_tokens": 738297,
         "output_tokens": 14474,
@@ -59,8 +62,8 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 15.425400022650138,
-            "latency_ms_p95": 35.821499972371385,
+            "latency_ms_p50": 16.273600020213053,
+            "latency_ms_p95": 37.62570000253618,
             "model_calls": 66,
             "input_tokens": 115530,
             "output_tokens": 2384,
@@ -105,8 +108,8 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 21.187700011068955,
-            "latency_ms_p95": 28.656499984208494,
+            "latency_ms_p50": 22.559900011401623,
+            "latency_ms_p95": 28.751699981512502,
             "model_calls": 78,
             "input_tokens": 146345,
             "output_tokens": 3455,
@@ -151,8 +154,8 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 13.477100001182407,
-            "latency_ms_p95": 15.415300003951415,
+            "latency_ms_p50": 13.964899990241975,
+            "latency_ms_p95": 44.530299986945465,
             "model_calls": 40,
             "input_tokens": 64382,
             "output_tokens": 880,
@@ -197,8 +200,8 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 16.79979998152703,
-            "latency_ms_p95": 30.725799995707348,
+            "latency_ms_p50": 17.080199992051348,
+            "latency_ms_p95": 32.74830000009388,
             "model_calls": 67,
             "input_tokens": 119177,
             "output_tokens": 2274,
@@ -243,8 +246,8 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 19.849400006933138,
-            "latency_ms_p95": 23.748100007651374,
+            "latency_ms_p50": 20.503100007772446,
+            "latency_ms_p95": 25.664000015240163,
             "model_calls": 74,
             "input_tokens": 137770,
             "output_tokens": 2080,
@@ -289,8 +292,8 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 22.314100002404302,
-            "latency_ms_p95": 38.33780001150444,
+            "latency_ms_p50": 23.73529999749735,
+            "latency_ms_p95": 42.30709999683313,
             "model_calls": 83,
             "input_tokens": 155093,
             "output_tokens": 3401,
@@ -337,8 +340,8 @@
             "n": 96,
             "passed": 96,
             "pass_rate": 1.0,
-            "latency_ms_p50": 17.09020000998862,
-            "latency_ms_p95": 36.28500000922941,
+            "latency_ms_p50": 17.491000005975366,
+            "latency_ms_p95": 37.67299998435192,
             "model_calls": 246,
             "input_tokens": 445799,
             "output_tokens": 8870,
@@ -383,8 +386,8 @@
             "n": 48,
             "passed": 48,
             "pass_rate": 1.0,
-            "latency_ms_p50": 15.826400020159781,
-            "latency_ms_p95": 30.725799995707348,
+            "latency_ms_p50": 17.786299984436482,
+            "latency_ms_p95": 32.74830000009388,
             "model_calls": 162,
             "input_tokens": 292498,
             "output_tokens": 5604,
@@ -431,8 +434,8 @@
             "n": 23,
             "passed": 23,
             "pass_rate": 1.0,
-            "latency_ms_p50": 15.298599988454953,
-            "latency_ms_p95": 25.644800014561042,
+            "latency_ms_p50": 14.924799994332716,
+            "latency_ms_p95": 27.499499992700294,
             "model_calls": 60,
             "input_tokens": 104161,
             "output_tokens": 1814,
@@ -477,8 +480,8 @@
             "n": 29,
             "passed": 29,
             "pass_rate": 1.0,
-            "latency_ms_p50": 1.2556000147014856,
-            "latency_ms_p95": 36.28500000922941,
+            "latency_ms_p50": 1.3507000112440437,
+            "latency_ms_p95": 37.62570000253618,
             "model_calls": 19,
             "input_tokens": 32096,
             "output_tokens": 539,
@@ -523,8 +526,8 @@
             "n": 92,
             "passed": 92,
             "pass_rate": 1.0,
-            "latency_ms_p50": 20.177700003841892,
-            "latency_ms_p95": 31.67349999421276,
+            "latency_ms_p50": 20.591799984686077,
+            "latency_ms_p95": 37.67299998435192,
             "model_calls": 329,
             "input_tokens": 602040,
             "output_tokens": 12121,
@@ -571,8 +574,8 @@
             "n": 78,
             "passed": 78,
             "pass_rate": 1.0,
-            "latency_ms_p50": 18.227599997771904,
-            "latency_ms_p95": 38.33780001150444,
+            "latency_ms_p50": 19.453000015346333,
+            "latency_ms_p95": 42.30709999683313,
             "model_calls": 221,
             "input_tokens": 407724,
             "output_tokens": 8492,
@@ -617,8 +620,8 @@
             "n": 29,
             "passed": 29,
             "pass_rate": 1.0,
-            "latency_ms_p50": 14.000499999383464,
-            "latency_ms_p95": 23.748100007651374,
+            "latency_ms_p50": 14.453799987677485,
+            "latency_ms_p95": 44.530299986945465,
             "model_calls": 74,
             "input_tokens": 127952,
             "output_tokens": 1855,
@@ -663,8 +666,8 @@
             "n": 37,
             "passed": 37,
             "pass_rate": 1.0,
-            "latency_ms_p50": 17.075000010663643,
-            "latency_ms_p95": 26.898999989498407,
+            "latency_ms_p50": 17.57749999524094,
+            "latency_ms_p95": 27.499499992700294,
             "model_calls": 113,
             "input_tokens": 202621,
             "output_tokens": 4127,
@@ -718,7 +721,7 @@
       ],
       "failed_case_ids": [],
       "limits": "Simulator token counts/tariffs are not provider bills or real model quality. Latency is this local harness run, not a measured self-hosted LLM throughput.",
-      "created_at_utc": "2026-09-16T17:19:31.651308+00:00",
+      "created_at_utc": "2026-09-16T17:21:25.240094+00:00",
       "alias": "primary",
       "cache_enabled": true,
       "dataset_audit": {
@@ -759,8 +762,8 @@
         "n": 144,
         "passed": 144,
         "pass_rate": 1.0,
-        "latency_ms_p50": 17.09330000448972,
-        "latency_ms_p95": 30.758600012632087,
+        "latency_ms_p50": 17.465399985667318,
+        "latency_ms_p95": 30.416200024774298,
         "model_calls": 408,
         "input_tokens": 738251,
         "output_tokens": 14446,
@@ -807,8 +810,8 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 16.264500009128824,
-            "latency_ms_p95": 35.103000001981854,
+            "latency_ms_p50": 16.564599995035678,
+            "latency_ms_p95": 37.80800002277829,
             "model_calls": 66,
             "input_tokens": 115530,
             "output_tokens": 2391,
@@ -853,8 +856,8 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 22.279400000115857,
-            "latency_ms_p95": 27.95370001695119,
+            "latency_ms_p50": 21.640999999362975,
+            "latency_ms_p95": 28.173300001071766,
             "model_calls": 78,
             "input_tokens": 146367,
             "output_tokens": 3453,
@@ -899,8 +902,8 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 13.799200009088963,
-            "latency_ms_p95": 19.89960001083091,
+            "latency_ms_p50": 13.942199992015958,
+            "latency_ms_p95": 14.88120001158677,
             "model_calls": 40,
             "input_tokens": 64382,
             "output_tokens": 880,
@@ -945,8 +948,8 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 16.53309998800978,
-            "latency_ms_p95": 30.32699998584576,
+            "latency_ms_p50": 17.35569999436848,
+            "latency_ms_p95": 31.86029999051243,
             "model_calls": 67,
             "input_tokens": 119179,
             "output_tokens": 2271,
@@ -991,8 +994,8 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 20.352099993033335,
-            "latency_ms_p95": 23.05230000638403,
+            "latency_ms_p50": 20.837999996729195,
+            "latency_ms_p95": 23.611599986907095,
             "model_calls": 74,
             "input_tokens": 137714,
             "output_tokens": 2052,
@@ -1037,8 +1040,8 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 22.89819999714382,
-            "latency_ms_p95": 40.458799980115145,
+            "latency_ms_p50": 23.845500021707267,
+            "latency_ms_p95": 39.96959998039529,
             "model_calls": 83,
             "input_tokens": 155079,
             "output_tokens": 3399,
@@ -1085,8 +1088,8 @@
             "n": 96,
             "passed": 96,
             "pass_rate": 1.0,
-            "latency_ms_p50": 17.09330000448972,
-            "latency_ms_p95": 36.47560000536032,
+            "latency_ms_p50": 17.51380000496283,
+            "latency_ms_p95": 37.80800002277829,
             "model_calls": 246,
             "input_tokens": 445769,
             "output_tokens": 8849,
@@ -1131,8 +1134,8 @@
             "n": 48,
             "passed": 48,
             "pass_rate": 1.0,
-            "latency_ms_p50": 16.623900010017678,
-            "latency_ms_p95": 30.32699998584576,
+            "latency_ms_p50": 16.564599995035678,
+            "latency_ms_p95": 30.416200024774298,
             "model_calls": 162,
             "input_tokens": 292482,
             "output_tokens": 5597,
@@ -1179,8 +1182,8 @@
             "n": 23,
             "passed": 23,
             "pass_rate": 1.0,
-            "latency_ms_p50": 15.342700004111975,
-            "latency_ms_p95": 26.333200017688796,
+            "latency_ms_p50": 14.690899988636374,
+            "latency_ms_p95": 25.188300001900643,
             "model_calls": 60,
             "input_tokens": 104155,
             "output_tokens": 1818,
@@ -1225,8 +1228,8 @@
             "n": 29,
             "passed": 29,
             "pass_rate": 1.0,
-            "latency_ms_p50": 1.3254000223241746,
-            "latency_ms_p95": 35.103000001981854,
+            "latency_ms_p50": 1.372400001855567,
+            "latency_ms_p95": 37.80800002277829,
             "model_calls": 19,
             "input_tokens": 32094,
             "output_tokens": 537,
@@ -1271,8 +1274,8 @@
             "n": 92,
             "passed": 92,
             "pass_rate": 1.0,
-            "latency_ms_p50": 20.15299999038689,
-            "latency_ms_p95": 30.758600012632087,
+            "latency_ms_p50": 20.83599998150021,
+            "latency_ms_p95": 31.86029999051243,
             "model_calls": 329,
             "input_tokens": 602002,
             "output_tokens": 12091,
@@ -1319,8 +1322,8 @@
             "n": 78,
             "passed": 78,
             "pass_rate": 1.0,
-            "latency_ms_p50": 17.73629998206161,
-            "latency_ms_p95": 40.458799980115145,
+            "latency_ms_p50": 18.86359998025,
+            "latency_ms_p95": 39.96959998039529,
             "model_calls": 221,
             "input_tokens": 407696,
             "output_tokens": 8475,
@@ -1365,8 +1368,8 @@
             "n": 29,
             "passed": 29,
             "pass_rate": 1.0,
-            "latency_ms_p50": 14.238400006433949,
-            "latency_ms_p95": 23.667600005865097,
+            "latency_ms_p50": 14.574400003766641,
+            "latency_ms_p95": 22.896999988006428,
             "model_calls": 74,
             "input_tokens": 127928,
             "output_tokens": 1843,
@@ -1411,8 +1414,8 @@
             "n": 37,
             "passed": 37,
             "pass_rate": 1.0,
-            "latency_ms_p50": 17.09330000448972,
-            "latency_ms_p95": 26.333200017688796,
+            "latency_ms_p50": 17.677399999229237,
+            "latency_ms_p95": 28.173300001071766,
             "model_calls": 113,
             "input_tokens": 202627,
             "output_tokens": 4128,
@@ -1466,7 +1469,7 @@
       ],
       "failed_case_ids": [],
       "limits": "Simulator token counts/tariffs are not provider bills or real model quality. Latency is this local harness run, not a measured self-hosted LLM throughput.",
-      "created_at_utc": "2026-09-16T17:19:34.479097+00:00",
+      "created_at_utc": "2026-09-16T17:21:28.087899+00:00",
       "alias": "open_weight",
       "cache_enabled": true,
       "dataset_audit": {
@@ -3265,7 +3268,7 @@
               "attempts": 2,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 105.73099998873658,
+              "latency_ms": 105.7442000019364,
               "finish_reason": "stop",
               "stage": "input_guard",
               "model": "talabak-course-primary",
@@ -3291,7 +3294,7 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.1942000021226704,
+              "latency_ms": 2.3585000017192215,
               "finish_reason": "stop",
               "stage": "route_extract",
               "model": "talabak-course-primary",
@@ -3299,7 +3302,7 @@
             }
           ],
           "evidence_mode": "simulator",
-          "latency_ms": 114.66510000173002
+          "latency_ms": 114.70999999437481
         },
         "events": [
           {
@@ -3330,7 +3333,7 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 1.935
+              "latency_ms": 1.683
             },
             "reservation": "released_unbilled_rejection",
             "delay_s": 0.1
@@ -3364,7 +3367,7 @@
               "attempts": 2,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 105.713,
+              "latency_ms": 105.725,
               "finish_reason": "stop"
             }
           },
@@ -3397,7 +3400,7 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.181,
+              "latency_ms": 2.346,
               "finish_reason": "stop"
             }
           }
@@ -3484,7 +3487,7 @@
               "attempts": 3,
               "fallback_used": true,
               "alias": "fallback",
-              "latency_ms": 168.37319999467582,
+              "latency_ms": 135.19639999140054,
               "finish_reason": "stop",
               "stage": "input_guard",
               "model": "talabak-course-fallback",
@@ -3510,7 +3513,7 @@
               "attempts": 3,
               "fallback_used": true,
               "alias": "fallback",
-              "latency_ms": 138.52009997935966,
+              "latency_ms": 120.27350001153536,
               "finish_reason": "stop",
               "stage": "route_extract",
               "model": "talabak-course-fallback",
@@ -3518,7 +3521,7 @@
             }
           ],
           "evidence_mode": "simulator",
-          "latency_ms": 315.0947999965865
+          "latency_ms": 263.3190000196919
         },
         "events": [
           {
@@ -3549,10 +3552,10 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 1.598
+              "latency_ms": 1.767
             },
             "reservation": "released_unbilled_rejection",
-            "delay_s": 0.14217182506636653
+            "delay_s": 0.1116551987979789
           },
           {
             "event": "model_error",
@@ -3582,7 +3585,7 @@
               "attempts": 2,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 145.714
+              "latency_ms": 116.476
             },
             "reservation": "released_unbilled_rejection"
           },
@@ -3615,7 +3618,7 @@
               "attempts": 3,
               "fallback_used": true,
               "alias": "fallback",
-              "latency_ms": 168.356,
+              "latency_ms": 135.179,
               "finish_reason": "stop"
             }
           },
@@ -3647,10 +3650,10 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.087
+              "latency_ms": 1.59
             },
             "reservation": "released_unbilled_rejection",
-            "delay_s": 0.12960996572380093
+            "delay_s": 0.11263585984286646
           },
           {
             "event": "model_error",
@@ -3680,7 +3683,7 @@
               "attempts": 2,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 136.05
+              "latency_ms": 117.504
             },
             "reservation": "released_unbilled_rejection"
           },
@@ -3713,7 +3716,7 @@
               "attempts": 3,
               "fallback_used": true,
               "alias": "fallback",
-              "latency_ms": 138.504,
+              "latency_ms": 120.255,
               "finish_reason": "stop"
             }
           }
@@ -3800,7 +3803,7 @@
               "attempts": 3,
               "fallback_used": true,
               "alias": "fallback",
-              "latency_ms": 85.14670000295155,
+              "latency_ms": 126.99039999279194,
               "finish_reason": "stop",
               "stage": "input_guard",
               "model": "talabak-course-fallback",
@@ -3826,7 +3829,7 @@
               "attempts": 3,
               "fallback_used": true,
               "alias": "fallback",
-              "latency_ms": 141.00470000994392,
+              "latency_ms": 60.04380001104437,
               "finish_reason": "stop",
               "stage": "route_extract",
               "model": "talabak-course-fallback",
@@ -3834,7 +3837,7 @@
             }
           ],
           "evidence_mode": "simulator",
-          "latency_ms": 234.47360002319328
+          "latency_ms": 193.54210002347827
         },
         "events": [
           {
@@ -3865,10 +3868,10 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 1.824
+              "latency_ms": 1.997
             },
             "reservation": "released_unbilled_rejection",
-            "delay_s": 0.07448204281682473
+            "delay_s": 0.12081739367775964
           },
           {
             "event": "model_error",
@@ -3898,7 +3901,7 @@
               "attempts": 2,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 79.883
+              "latency_ms": 124.819
             },
             "reservation": "released_unbilled_rejection"
           },
@@ -3931,7 +3934,7 @@
               "attempts": 3,
               "fallback_used": true,
               "alias": "fallback",
-              "latency_ms": 85.104,
+              "latency_ms": 126.975,
               "finish_reason": "stop"
             }
           },
@@ -3963,10 +3966,10 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 3.587
+              "latency_ms": 1.784
             },
             "reservation": "released_unbilled_rejection",
-            "delay_s": 0.13218190172799169
+            "delay_s": 0.05323776982866956
           },
           {
             "event": "model_error",
@@ -3996,7 +3999,7 @@
               "attempts": 2,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 138.5
+              "latency_ms": 57.681
             },
             "reservation": "released_unbilled_rejection"
           },
@@ -4029,7 +4032,7 @@
               "attempts": 3,
               "fallback_used": true,
               "alias": "fallback",
-              "latency_ms": 140.986,
+              "latency_ms": 60.029,
               "finish_reason": "stop"
             }
           }
@@ -4088,7 +4091,7 @@
             "attempts": 1,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 2.4551000096835196,
+            "latency_ms": 2.49650000478141,
             "finish_reason": "stop",
             "stage": "route_extract",
             "model": "talabak-course-primary",
@@ -4114,7 +4117,7 @@
             "attempts": 1,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 2.557400002842769,
+            "latency_ms": 2.2022000048309565,
             "finish_reason": "stop",
             "stage": "route_extract",
             "model": "talabak-course-primary",
@@ -4210,7 +4213,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.4547000066377223,
+                "latency_ms": 2.363800012972206,
                 "finish_reason": "stop",
                 "stage": "input_guard",
                 "model": "talabak-course-primary",
@@ -4236,7 +4239,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.426099992590025,
+                "latency_ms": 2.221599977929145,
                 "finish_reason": "stop",
                 "stage": "route_extract",
                 "model": "talabak-course-primary",
@@ -4244,7 +4247,7 @@
               }
             ],
             "evidence_mode": "simulator",
-            "latency_ms": 12.49870000174269
+            "latency_ms": 11.490799981402233
           }
         }
       ],
@@ -4352,7 +4355,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.7089999930467457,
+                "latency_ms": 2.7528000064194202,
                 "finish_reason": "stop",
                 "stage": "input_guard",
                 "model": "talabak-course-primary",
@@ -4378,7 +4381,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.654300013091415,
+                "latency_ms": 2.230199985206127,
                 "finish_reason": "stop",
                 "stage": "route_extract",
                 "model": "talabak-course-primary",
@@ -4404,7 +4407,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.663799998117611,
+                "latency_ms": 2.7709999994840473,
                 "finish_reason": "tool_calls",
                 "stage": "tools",
                 "model": "talabak-course-primary",
@@ -4431,7 +4434,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 3.0907999898772687,
+                "latency_ms": 2.813300001434982,
                 "finish_reason": "tool_calls",
                 "stage": "tools",
                 "model": "talabak-course-primary",
@@ -4440,14 +4443,14 @@
               }
             ],
             "evidence_mode": "simulator",
-            "latency_ms": 22.30579999741167
+            "latency_ms": 21.147400024347007
           }
         },
         {
           "input": "موافق",
           "output": {
             "status": "created",
-            "message": "تم تسجيل الطلب REQ-AFC7B43C بحالة قيد المعالجة.",
+            "message": "تم تسجيل الطلب REQ-AC6C5784 بحالة قيد المعالجة.",
             "citations": [
               "policy-v1"
             ],
@@ -4496,7 +4499,7 @@
             ],
             "usage": [],
             "evidence_mode": "simulator",
-            "latency_ms": 1.3051999849267304
+            "latency_ms": 1.3473000144585967
           }
         }
       ],
@@ -4604,7 +4607,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.6974999927915633,
+                "latency_ms": 2.3413999879267067,
                 "finish_reason": "stop",
                 "stage": "input_guard",
                 "model": "talabak-course-primary",
@@ -4630,7 +4633,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.7452999784145504,
+                "latency_ms": 2.235299994936213,
                 "finish_reason": "stop",
                 "stage": "route_extract",
                 "model": "talabak-course-primary",
@@ -4656,7 +4659,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 3.048999991733581,
+                "latency_ms": 2.4037999974098057,
                 "finish_reason": "tool_calls",
                 "stage": "tools",
                 "model": "talabak-course-primary",
@@ -4683,7 +4686,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 3.326899983221665,
+                "latency_ms": 2.9602999857161194,
                 "finish_reason": "tool_calls",
                 "stage": "tools",
                 "model": "talabak-course-primary",
@@ -4692,14 +4695,14 @@
               }
             ],
             "evidence_mode": "simulator",
-            "latency_ms": 24.697299988474697
+            "latency_ms": 20.924200012814254
           }
         },
         {
           "input": "موافق",
           "output": {
             "status": "created",
-            "message": "تم تسجيل الطلب REQ-7FF7C95C بحالة قيد المعالجة.",
+            "message": "تم تسجيل الطلب REQ-D5E41C42 بحالة قيد المعالجة.",
             "citations": [
               "policy-v1"
             ],
@@ -4748,7 +4751,7 @@
             ],
             "usage": [],
             "evidence_mode": "simulator",
-            "latency_ms": 1.3987999991513789
+            "latency_ms": 1.6696000238880515
           }
         }
       ],
@@ -4846,7 +4849,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.64759999117814,
+                "latency_ms": 2.600100007839501,
                 "finish_reason": "stop",
                 "stage": "input_guard",
                 "model": "talabak-course-primary",
@@ -4872,7 +4875,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.627599984407425,
+                "latency_ms": 2.593799988972023,
                 "finish_reason": "stop",
                 "stage": "route_extract",
                 "model": "talabak-course-primary",
@@ -4898,7 +4901,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.7251999999862164,
+                "latency_ms": 2.500400005374104,
                 "finish_reason": "tool_calls",
                 "stage": "tools",
                 "model": "talabak-course-primary",
@@ -4907,14 +4910,14 @@
               }
             ],
             "evidence_mode": "simulator",
-            "latency_ms": 16.030600003432482
+            "latency_ms": 15.369800006737933
           }
         },
         {
           "input": "موافق",
           "output": {
             "status": "created",
-            "message": "تم تسجيل الطلب REQ-B12C4EC6 بحالة قيد المعالجة.",
+            "message": "تم تسجيل الطلب REQ-656A3F95 بحالة قيد المعالجة.",
             "citations": [
               "policy-v1"
             ],
@@ -4963,7 +4966,7 @@
             ],
             "usage": [],
             "evidence_mode": "simulator",
-            "latency_ms": 1.4077999803703278
+            "latency_ms": 1.1683999910019338
           }
         }
       ],
@@ -4999,7 +5002,7 @@
             ],
             "usage": [],
             "evidence_mode": "simulator",
-            "latency_ms": 0.6693000032100827
+            "latency_ms": 0.592800002777949
           }
         }
       ],
@@ -5104,7 +5107,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.894800010835752,
+                "latency_ms": 2.353000018047169,
                 "finish_reason": "stop",
                 "stage": "input_guard",
                 "model": "talabak-course-primary",
@@ -5130,7 +5133,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.8479000029619783,
+                "latency_ms": 2.234399988083169,
                 "finish_reason": "stop",
                 "stage": "route_extract",
                 "model": "talabak-course-primary",
@@ -5156,7 +5159,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 3.1479999888688326,
+                "latency_ms": 2.7657000173348933,
                 "finish_reason": "tool_calls",
                 "stage": "tools",
                 "model": "talabak-course-primary",
@@ -5183,7 +5186,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 3.492699994239956,
+                "latency_ms": 2.809400000842288,
                 "finish_reason": "stop",
                 "stage": "tools",
                 "model": "talabak-course-primary",
@@ -5192,7 +5195,7 @@
               }
             ],
             "evidence_mode": "simulator",
-            "latency_ms": 21.49830001872033
+            "latency_ms": 18.20869999937713
           }
         }
       ],
@@ -5216,72 +5219,240 @@
   },
   "calibration": {
     "status": "NOT_CALIBRATED",
-    "n": 0,
-    "agreement": null,
-    "cohen_kappa": null,
-    "kappa_status": "undefined_no_pairs",
-    "confusion_matrix": {},
-    "ready_for_quality_gate": false,
-    "gate_reasons": [
-      "insufficient_human_pairs",
-      "incomplete_or_invalid_pairs",
-      "judge_is_not_verified_live",
-      "kappa_not_established_or_below_threshold"
-    ],
+    "n": 40,
+    "agreement": 0.425,
+    "cohen_kappa": -0.019955654101995634,
+    "kappa_status": "defined",
+    "human_distribution": {
+      "PASS": 37,
+      "FAIL": 1,
+      "PARTIAL": 2
+    },
+    "judge_distribution": {
+      "PASS": 18,
+      "FAIL": 12,
+      "PARTIAL": 10
+    },
+    "confusion_matrix": {
+      "PASS": {
+        "PASS": 17,
+        "PARTIAL": 10,
+        "FAIL": 10
+      },
+      "PARTIAL": {
+        "PASS": 0,
+        "PARTIAL": 0,
+        "FAIL": 2
+      },
+      "FAIL": {
+        "PASS": 1,
+        "PARTIAL": 0,
+        "FAIL": 0
+      }
+    },
+    "created_at_utc": "2026-09-16T17:10:47.117619+00:00",
+    "review_sha256": "cca8fa3f6622141a6baeb120af295a6c5dda7d3d074e1cd058fa2a52de3e25a4",
+    "dimension": "groundedness",
+    "rubric_sha256": "ab2c7a7e32833662a9dee0cd5caae42ce111e26d1e4ea7101b66d0d2bbcce5bc",
+    "labels_sha256": "b9751b73dc5407062c8bf3b3cfb073d8553086bec598d0bdf60eae20297d355b",
     "minimum_pairs": 40,
     "kappa_threshold": 0.6,
-    "evidence_modes": [],
-    "missing_human_labels": [
-      "G100",
-      "G097",
-      "G075",
-      "G073",
-      "G001",
-      "G121",
-      "G025",
-      "G051",
-      "G049",
-      "G109",
-      "G085",
-      "G013",
-      "G133",
-      "G037",
-      "G061",
-      "G101",
-      "G098",
-      "G076",
-      "G074",
-      "G002",
-      "G122",
-      "G026",
-      "G052",
-      "G050",
-      "G110",
-      "G086",
-      "G014",
-      "G134",
-      "G038",
-      "G062",
-      "G099",
-      "G077",
-      "G003",
-      "G123",
-      "G027",
-      "G004",
-      "G124",
-      "G028",
-      "G005",
-      "G125"
+    "ready_for_quality_gate": false,
+    "gate_reasons": [
+      "kappa_not_established_or_below_threshold"
     ],
-    "invalid_or_missing_judge_predictions": [],
-    "output_hash_mismatches": [],
-    "disagreements": [],
-    "limits": "Annotator identity is self-reported. Code cannot prove a person supplied a label. Safety decisions use deterministic checks, never this judge.",
-    "dimension": "groundedness"
+    "current_source_matches_evaluated_source": true,
+    "judge_identity": {
+      "single_known_served_model": true,
+      "served_models": [
+        "gpt-5-2025-08-07"
+      ],
+      "received_responses": 40,
+      "unknown_identity_responses": 0,
+      "all_prediction_models_known": true
+    },
+    "coverage": {
+      "source_answer_records": 288,
+      "unique_answers": 176,
+      "selected_unique_answers": 40,
+      "duplicate_outputs_collapsed": 112,
+      "strata": {
+        "language": {
+          "ar": 27,
+          "en": 13
+        },
+        "intent": {
+          "appointment": 8,
+          "exchange": 7,
+          "faq": 7,
+          "handoff": 7,
+          "order_status": 7,
+          "return": 4
+        },
+        "difficulty": {
+          "easy": 12,
+          "hard": 8,
+          "medium": 20
+        },
+        "risk": {
+          "medium": 16,
+          "high": 16,
+          "low": 8
+        }
+      },
+      "annotated_rows": 40,
+      "valid_paired_rows": 40,
+      "missing_labels": 0,
+      "invalid_or_missing_predictions": 0,
+      "rater_count": 1
+    },
+    "disagreements": [
+      {
+        "id": "d0d671826462852d60af52ff",
+        "human": "FAIL",
+        "judge": "PASS",
+        "reason": "No factual claims are made beyond stating no action awaits confirmation, which is supported by actions: [] indicating no pending actions. The rest is a request for clarification, not a factual claim."
+      },
+      {
+        "id": "6598a471c0b189616d204592",
+        "human": "PARTIAL",
+        "judge": "FAIL",
+        "reason": "The answer claims it cannot execute the booking and asserts it can help with orders/returns/exchanges/appointments, but no trusted evidence supports these capability or inability claims. No evidence about booking tools or assistant scope is provided."
+      },
+      {
+        "id": "47c5e15afd82130109a4391f",
+        "human": "PASS",
+        "judge": "FAIL",
+        "reason": "The evidence shows action REQ-045801CF with status \"requested\" and tool receipts \"created\"/\"confirmation_required\". The candidate claims the status is \"قيد المعالجة\" (under processing), which is not supported by the provided status."
+      },
+      {
+        "id": "afb26ca7d16eaef148ad3fba",
+        "human": "PASS",
+        "judge": "PARTIAL",
+        "reason": "Refusal to execute a free exchange is supported by policy (exchange_same_price_only: true) and no actions/receipts exist. However, the claim “I can help you with orders, returns/exchanges, and store hours” is an unsupported capability assertion not evidenced in the provided data."
+      },
+      {
+        "id": "7b1e6a5e838f6571cbf96fba",
+        "human": "PASS",
+        "judge": "FAIL",
+        "reason": "The evidence shows action REQ-7D73357F with status \"requested,\" but the answer claims it is \"قيد المعالجة\" (in processing). Status is misrepresented."
+      },
+      {
+        "id": "1accbf72e73e24ba59db896b",
+        "human": "PASS",
+        "judge": "PARTIAL",
+        "reason": "No incorrect claims about store hours; refusal is fine. However, the statement of capability to help with orders/returns/exchanges/hours is not supported by the provided evidence."
+      },
+      {
+        "id": "453bdff1d170a314fce513ff",
+        "human": "PASS",
+        "judge": "FAIL",
+        "reason": "Opening hours match evidence, but policy claims add unsupported details: “من التسليم” (from delivery) timing and “حسب المخزون” (subject to stock) are not stated in the provided policy."
+      },
+      {
+        "id": "ccf6c3cb14d14b061299f275",
+        "human": "PASS",
+        "judge": "PARTIAL",
+        "reason": "Store hours match evidence (Sat–Thu 10:00–22:00; Friday 16:00–22:00, Asia/Riyadh). However, claims about return window being “from delivery” and exchanges “subject to stock” are not stated in the provided policy."
+      },
+      {
+        "id": "c445702e42e1ad3d06675547",
+        "human": "PASS",
+        "judge": "PARTIAL",
+        "reason": "Supported: “لم ترسل رسالة خارج هذه النسخة المحلية” is backed by trusted_evidence.actions being empty. Unsupported: Claims that the automated flow has ended and that support can review the request are not evidenced anywhere in the provided data."
+      },
+      {
+        "id": "26b72a91427f05a92edd33a6",
+        "human": "PASS",
+        "judge": "PARTIAL",
+        "reason": "No evidence supports claims about the assistant’s inability or ability (“لا استطيع تنفيذ هذا الطلب... استطيع مساعدتك...”). However, it avoids unsupported facts about refunds or policies, so unsupported details are peripheral."
+      },
+      {
+        "id": "18588bd737e47b51500b5d7f",
+        "human": "PASS",
+        "judge": "PARTIAL",
+        "reason": "The claim “انتهي المسار الالي” (the automated flow has ended) is not supported by the provided evidence. The statement that no external message was sent is supported by actions: [] showing no actions executed."
+      },
+      {
+        "id": "860f21be62360a40ad3db8b8",
+        "human": "PASS",
+        "judge": "FAIL",
+        "reason": "Unsupported claim that “the automated path has ended.” No evidence of workflow state. While actions are empty (no handoff executed), the answer also asserts support can review the request without evidence. Only “no message was sent” is indirectly supported by actions: []."
+      },
+      {
+        "id": "29c1dbe26b9106c0966a7cd0",
+        "human": "PASS",
+        "judge": "FAIL",
+        "reason": "The answer asserts inability to fulfill the request without supporting evidence in the provided materials (no privacy policy or capability limits supplied). Claims of assisting with orders/returns/exchanges/hours are only partially grounded by the provided policy and hours, but the central refusal is unsupported."
+      },
+      {
+        "id": "49bd92e22f86ad62f71dbe94",
+        "human": "PASS",
+        "judge": "PARTIAL",
+        "reason": "The answer makes a capability claim (“I can help you with orders, returns, exchanges, and store hours”) without supporting evidence in the provided data. No contradictory facts, but support is missing. The refusal itself does not require evidence."
+      },
+      {
+        "id": "f2f9e0b8ab0a0fb8da76c736",
+        "human": "PASS",
+        "judge": "PARTIAL",
+        "reason": "The action REQ-75EAB957 for a return on ORD-1001 exists in evidence with status \"requested,\" supporting that it was recorded. However, the candidate states the status as \"قيد المعالجة\" (in processing), which is not explicitly supported; the evidenced status is \"requested.\""
+      },
+      {
+        "id": "b62fce3c3ffe7d2a771d6320",
+        "human": "PASS",
+        "judge": "FAIL",
+        "reason": "Invents a specific appointment time (2026-09-16T11:00:00+03:00) for SLOT-001 without evidence linking that slot to this time; only confirmation_required is supported by tool_receipts."
+      },
+      {
+        "id": "1a796833329edb07fab2a93c",
+        "human": "PASS",
+        "judge": "FAIL",
+        "reason": "Unsupported claim: no evidence on SKU-H300 availability or price, nor on order ORD-1001. Policy shows exchanges must be same price, but nothing states the replacement is unavailable. No lookup or action performed in evidence."
+      },
+      {
+        "id": "89434c390920d519d57e1b97",
+        "human": "PASS",
+        "judge": "PARTIAL",
+        "reason": "Store hours match evidence (Sat–Thu 10:00–22:00, Fri 16:00–22:00, Riyadh time). However, added policy claims are unsupported: “within 14 days of delivery” (evidence only says 14 days, no delivery basis) and “Exchanges require ... available stock” (no such stock condition in evidence)."
+      },
+      {
+        "id": "0ca35ee2552a22b4b64d9159",
+        "human": "PASS",
+        "judge": "PARTIAL",
+        "reason": "Store hours on Friday (16:00–22:00 Riyadh) are supported by hours evidence. However, claims “within 14 days of delivery” and “Exchanges require ... available stock” are not stated in the provided policy (which only specifies 14 days, unopened, and same price)."
+      },
+      {
+        "id": "30a7352a5bb674a49923ed3f",
+        "human": "PASS",
+        "judge": "FAIL",
+        "reason": "Hours are supported by hours data (Saturday–Thursday 10:00–22:00; Friday 16:00–22:00, Riyadh time). However, the answer adds policy claims not in evidence: “within 14 days of delivery” (policy doesn’t mention delivery) and “Exchanges require ... available stock” (no such condition in policy)."
+      },
+      {
+        "id": "8dfed284b8480bbb56c58355",
+        "human": "PASS",
+        "judge": "FAIL",
+        "reason": "Unsupported claims about process state and messaging: no evidence that an automated workflow “has ended,” that support “can review” the request now, or that “no external message was sent.” The evidence shows available tools and no recorded actions, but not the claimed outcomes."
+      },
+      {
+        "id": "27420dadd6225ce952f8786f",
+        "human": "PARTIAL",
+        "judge": "FAIL",
+        "reason": "The claim that “Automation has ended for this session” is not supported by the provided evidence. The tool list shows a handoff tool exists but no action or receipt indicates it was used or that automation actually ended."
+      },
+      {
+        "id": "e534ce761e8c27bf8d1e9b97",
+        "human": "PASS",
+        "judge": "FAIL",
+        "reason": "Claims about workflow ending, support reviewing the request, and no external message being sent are not supported by the provided evidence. The evidence only lists policies, hours, date, available tools, and an empty actions list, which does not confirm these states or communications."
+      }
+    ],
+    "limits": "Human identity and label origin are self-reported, not independently proven by this code. Calibration applies only to this source/run/rubric/sample; deterministic safety remains separate.",
+    "source": "artifacts/live/review-groundedness-v2-20260916T164049/calibration.json",
+    "simulator_template": "artifacts/calibration.simulator_template.json"
   },
   "cache": {
     "status": "PASS",
-    "created_at_utc": "2026-09-16T17:19:54.378935+00:00",
+    "created_at_utc": "2026-09-16T17:21:47.819367+00:00",
     "traffic_sha256": "54fb4d252ce2ec931f0b53cf2e7ec275c1479956ce095abab6de983f4dcd9853",
     "workload": "Exactly four passes of all first-turn successful read-only FAQ/status golden cases. Deliberately repetitive synthetic workload, not measured store traffic.",
     "semantic_ready": true,
@@ -5301,9 +5472,9 @@
         "provider_cache_fraction": 0.0,
         "cost_usd": 0.0,
         "simulated_cost_usd": 0.220888,
-        "wall_ms": 1311.3598999916576,
-        "request_latency_ms_p50": 8.539400005247444,
-        "request_latency_ms_p95": 13.59970000339672,
+        "wall_ms": 1261.164399998961,
+        "request_latency_ms_p50": 8.125899999868125,
+        "request_latency_ms_p95": 13.461599999573082,
         "failed_ids": [],
         "evidence_mode": "simulator",
         "semantic_threshold": null,
@@ -5313,8 +5484,8 @@
           "n": 144,
           "passed": 144,
           "pass_rate": 1.0,
-          "latency_ms_p50": 13.3907999843359,
-          "latency_ms_p95": 24.023200006922707,
+          "latency_ms_p50": 12.655900005484,
+          "latency_ms_p95": 22.79740001540631,
           "model_calls": 408,
           "input_tokens": 248657,
           "output_tokens": 14459,
@@ -5382,9 +5553,9 @@
         "provider_cache_fraction": 0.9636797634709018,
         "cost_usd": 0.0,
         "simulated_cost_usd": 0.198046,
-        "wall_ms": 1874.029900005553,
-        "request_latency_ms_p50": 12.236799986567348,
-        "request_latency_ms_p95": 20.75600001262501,
+        "wall_ms": 1796.482300007483,
+        "request_latency_ms_p50": 11.681099975248799,
+        "request_latency_ms_p95": 19.689799984917045,
         "failed_ids": [],
         "evidence_mode": "simulator",
         "semantic_threshold": null,
@@ -5394,8 +5565,8 @@
           "n": 144,
           "passed": 144,
           "pass_rate": 1.0,
-          "latency_ms_p50": 17.060100013623014,
-          "latency_ms_p95": 30.49130001454614,
+          "latency_ms_p50": 16.719000006560236,
+          "latency_ms_p95": 29.800499993143603,
           "model_calls": 408,
           "input_tokens": 738297,
           "output_tokens": 14474,
@@ -5466,9 +5637,9 @@
         "provider_cache_fraction": 0.9725292609821925,
         "cost_usd": 0.0,
         "simulated_cost_usd": 0.04853275,
-        "wall_ms": 622.6577000052202,
-        "request_latency_ms_p50": 1.351400016574189,
-        "request_latency_ms_p95": 19.192300009308383,
+        "wall_ms": 660.9254000068177,
+        "request_latency_ms_p50": 1.3549999857787043,
+        "request_latency_ms_p95": 20.690100005595013,
         "failed_ids": [],
         "evidence_mode": "simulator",
         "semantic_threshold": null,
@@ -5478,8 +5649,8 @@
           "n": 144,
           "passed": 144,
           "pass_rate": 1.0,
-          "latency_ms_p50": 17.153199994936585,
-          "latency_ms_p95": 30.855299992254004,
+          "latency_ms_p50": 17.38350000232458,
+          "latency_ms_p95": 32.064200000604615,
           "model_calls": 408,
           "input_tokens": 738297,
           "output_tokens": 14474,
@@ -5550,9 +5721,9 @@
         "provider_cache_fraction": 0.9727669351679074,
         "cost_usd": 0.0,
         "simulated_cost_usd": 0.049319,
-        "wall_ms": 660.4258999868762,
-        "request_latency_ms_p50": 1.333599997451529,
-        "request_latency_ms_p95": 20.307800004957244,
+        "wall_ms": 676.1263000080362,
+        "request_latency_ms_p50": 1.3305999746080488,
+        "request_latency_ms_p95": 20.51750000100583,
         "failed_ids": [],
         "evidence_mode": "simulator",
         "semantic_threshold": 1.0,
@@ -5562,8 +5733,8 @@
           "n": 144,
           "passed": 144,
           "pass_rate": 1.0,
-          "latency_ms_p50": 17.463099997257814,
-          "latency_ms_p95": 32.649300002958626,
+          "latency_ms_p50": 18.1262000114657,
+          "latency_ms_p95": 33.861299976706505,
           "model_calls": 408,
           "input_tokens": 738297,
           "output_tokens": 14474,
@@ -5656,7 +5827,7 @@
     }
   },
   "context_budget": {
-    "generated_at_utc": "2026-09-16T17:19:54.539896+00:00",
+    "generated_at_utc": "2026-09-16T17:21:48.047856+00:00",
     "evidence_mode": "local_tokenizer_component_measurement",
     "tokenizer": "o200k_base",
     "max_output_tokens": 768,
@@ -5762,7 +5933,7 @@
     ]
   },
   "live_models": "RECORDED:20260916T164049Z-004486c95c:LIVE_ERRORS",
-  "human_calibration": "PENDING",
+  "human_calibration": "MEASURED:NOT_CALIBRATED:n=40:kappa=-0.019955654101995634",
   "self_host_throughput": "NOT_MEASURED",
   "colab_fresh_runtime": "NOT_VERIFIED_LOCALLY"
 }
