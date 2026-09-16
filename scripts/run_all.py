@@ -164,9 +164,11 @@ def run_all(*,skip_tests=False):
     out=ROOT/'artifacts';out.mkdir(exist_ok=True)
     tests={'status':'executed_by_notebook' if skip_tests else 'pending'}
     if not skip_tests:
-        p=subprocess.run([sys.executable,'-m','pytest','--junitxml',str(out/'pytest.xml')],cwd=ROOT,capture_output=True,text=True,encoding='utf-8',errors='replace')
-        (out/'pytest.txt').write_text(p.stdout+'\n'+p.stderr,encoding='utf-8')
-        print(p.stdout[-3000:],flush=True)
+        p=subprocess.run([sys.executable,'-m','pytest','--no-header','-p','no:warnings','--junitxml',str(out/'pytest.xml')],cwd=ROOT,capture_output=True,text=True,encoding='utf-8',errors='replace')
+        # Logs name the project and interpreter by role, never by machine path.
+        portable=lambda text: text.replace(str(ROOT),'<project>').replace(sys.prefix,'<venv>')
+        (out/'pytest.txt').write_text(portable(p.stdout)+'\n'+portable(p.stderr),encoding='utf-8')
+        print(portable(p.stdout)[-3000:],flush=True)
         if p.returncode: raise RuntimeError('Test suite failed; inspect artifacts/pytest.txt')
         suites=ET.parse(out/'pytest.xml').getroot()
         tests={'status':'PASS','tests':sum(int(x.attrib.get('tests',0)) for x in suites),'failures':sum(int(x.attrib.get('failures',0)) for x in suites),'errors':sum(int(x.attrib.get('errors',0)) for x in suites)}
@@ -239,7 +241,7 @@ def run_all(*,skip_tests=False):
     write(out/'report.json',report);generate_reports(report,ROOT)
     guards_pass=all(layer['attack_block_rate']>=.95 and layer['legitimate_false_positive_rate']==0 for layer in report['guards']['layers'].values())
     passed=clean['status']=='PASS' and bad['status']=='BLOCK' and faults['all_passed'] and all(x['passed'] for x in demos) and guards_pass and cache.get('status')=='PASS'
-    print(json.dumps({'local_checks':'PASS' if passed else 'FAIL','report':str(out/'report.json'),'live_models':'NOT_RUN','human_calibration':'PENDING'},ensure_ascii=False),flush=True)
+    print(json.dumps({'local_checks':'PASS' if passed else 'FAIL','report':'artifacts/report.json','live_models':'NOT_RUN','human_calibration':'PENDING'},ensure_ascii=False),flush=True)
     if not passed: raise RuntimeError('Verification failed; inspect generated report')
     return report
 

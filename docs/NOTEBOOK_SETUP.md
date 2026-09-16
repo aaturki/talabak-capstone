@@ -8,7 +8,7 @@ The notebook imports ordinary project files. It no longer carries an encoded app
 
 ## Local review
 
-Open `Talabak_Capstone.ipynb` from the Talabak project directory and run all cells. The setup can also find `outputs/talabak` when launched from the current task workspace. It checks source hashes, installs only missing or mismatched pinned dependencies, and starts a loopback simulator on an available port.
+Open `Talabak_Capstone.ipynb` from the Talabak project directory and run all cells. The setup also finds the project when the notebook is launched from a parent folder that contains `outputs/talabak`. It checks source hashes, installs only missing or mismatched pinned dependencies, and starts a loopback simulator on an available port.
 
 The notebook calls the same application, tests and evaluation scripts as the project. Simulator results are labelled accordingly. The tests do not need provider credentials. Rerunning setup closes its prior runtime, closes demonstration stores, disables old conversation buttons and clears imports loaded from the previous project directory before loading the current files.
 

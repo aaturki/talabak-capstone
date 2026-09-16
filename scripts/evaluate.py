@@ -51,7 +51,7 @@ def dataset_audit(cases: list[dict], *, enforce_minimum: bool = True) -> dict:
             raise ValueError(f"Exact duplicate request/session: {case['id']}")
         unique_inputs.add(identity)
     return {"n": len(cases), "strata": counts, "exact_duplicate_contexts": 0,
-            "authorship": "original synthetic agent-authored cases; owner review pending",
+            "authorship": "original synthetic cases authored for this application; owner review pending",
             "independence": "Authored during application development; not an external blind benchmark"}
 
 

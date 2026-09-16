@@ -2,7 +2,7 @@
 
 **This is not a self-awarded score.** Weights come from the supplied grading rubric; no project points are awarded here. The table identifies evidence and its limits. A file or test's existence does not prove execution: read the saved test log, runner results and executed notebook alongside it.
 
-The complete requirements and source locators are in [docs/COURSE_REQUIREMENTS.md](docs/COURSE_REQUIREMENTS.md) and [docs/requirements.json](docs/requirements.json). The [Capstone page](https://mohammadyusif.github.io/llm-application-engineering/capstone.html) adds requirements beyond the concise rubric, particularly Colab, datasets, guards, cost and calibration.
+The rubric text is kept in [docs/RUBRIC.user_supplied.json](docs/RUBRIC.user_supplied.json). The [Capstone page](https://mohammadyusif.github.io/llm-application-engineering/capstone.html) adds requirements beyond the concise rubric, particularly Colab, datasets, guards, cost and calibration.
 
 ## Evidence categories
 

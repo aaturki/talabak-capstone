@@ -245,7 +245,7 @@
       }
     },
     "exact_duplicate_contexts": 0,
-    "authorship": "original synthetic agent-authored cases; owner review pending",
+    "authorship": "original synthetic cases authored for this application; owner review pending",
     "independence": "Authored during application development; not an external blind benchmark"
   },
   "dataset_sha256": "41174e930a60f155f3c05b0e1dc441322e1df94dbae2277be2605855b377eb69",

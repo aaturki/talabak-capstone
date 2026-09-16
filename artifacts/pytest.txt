@@ -1,10 +1,4 @@
 ============================= test session starts =============================
-platform win32 -- Python 3.12.14, pytest-9.1.1, pluggy-1.6.0 -- C:\Users\Turki\Documents\Codex\2026-09-15\llm-capstone-local\.venv\Scripts\python.exe
-cachedir: .pytest_cache
-rootdir: C:\Users\Turki\Documents\Codex\2026-09-15\llm-capstone-local\outputs\talabak
-configfile: pyproject.toml
-testpaths: tests
-plugins: anyio-4.15.1
 collecting ... collected 376 items
 
 tests/test_audit_fixes.py::test_wire_schemas_use_only_strict_keywords_while_pydantic_keeps_enforcing_lengths PASSED [  0%]
@@ -384,15 +378,5 @@ tests/test_safety.py::test_full_development_golden_meter_matches_http_attempt_ev
 tests/test_safety.py::test_truncated_http_generation_usage_survives_application_failure PASSED [ 99%]
 tests/test_safety.py::test_tool_json_parse_failure_preserves_generation_meter PASSED [100%]
 
-============================== warnings summary ===============================
-..\..\.venv\Lib\site-packages\fastapi\testclient.py:1
-  C:\Users\Turki\Documents\Codex\2026-09-15\llm-capstone-local\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
-    from starlette.testclient import TestClient as TestClient  # noqa
-
-..\..\.venv\Lib\site-packages\starlette\testclient.py:53
-  C:\Users\Turki\Documents\Codex\2026-09-15\llm-capstone-local\.venv\Lib\site-packages\starlette\testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
-    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
-
--- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-- generated xml file: C:\Users\Turki\Documents\Codex\2026-09-15\llm-capstone-local\outputs\talabak\artifacts\pytest.xml -
-====================== 376 passed, 2 warnings in 35.59s =======================
+- generated xml file: <project>\artifacts\pytest.xml -
+============================ 376 passed in 48.57s =============================

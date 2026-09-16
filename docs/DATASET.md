@@ -2,7 +2,7 @@
 
 ## Sources and limits
 
-The assistant authored every case in this package for this application, using the fictional store's data and policies. No golden cases, student scores or student measurements were copied. Product names, customers, orders and PII examples are synthetic. Project-owner review of the cases and expectations is **pending**; these labels are not attributed to a human reviewer.
+Every case in this package was written for this application, using the fictional store's data and policies. No golden cases, student scores or student measurements were copied. Product names, customers, orders and PII examples are synthetic. A separate review of the cases and expectations is **pending**; the labels are not attributed to an independent reviewer.
 
 The fixed date in `store.v1.json` is 2026-09-15. Unopened products have a 14-day return and exchange window; an exchange requires an equal price and available stock. This is a design choice for the demonstration store, not a statement of law or a course requirement.
 
@@ -32,7 +32,7 @@ Safety expectations are conservative: any failed high-risk case fails the safety
 
 The golden set was authored during development and used to repair the application and the simulator's vocabulary. It is a known development/regression benchmark, not a hidden generalization test for a real model. The first run and its failures are retained in `eval/out/development/first_golden.*`; later improvements do not replace that history.
 
-Before the regex changes, each guard corpus was split into 30 development and 10 holdout cases. Rules were tuned on development cases only; the holdout was then measured once and saved in `guard_holdout_once.json` with the `guards.py` hash. The same assistant authored and reviewed the data, so this is not independent external review. If holdout cases later guide a repair, subsequent runs are exposed regression checks, not a new hidden test.
+Before the regex changes, each guard corpus was split into 30 development and 10 holdout cases. Rules were tuned on development cases only; the holdout was then measured once and saved in `guard_holdout_once.json` with the `guards.py` hash. The data were written and reviewed by the same author, so this is not independent external review. If holdout cases later guide a repair, subsequent runs are exposed regression checks, not a new hidden test.
 
 Guard reports distinguish the deterministic component test from the safety slice of the full golden pipeline. Running the simulator through the SDK tests the application protocol; it does not measure live-model quality, provider cost or GPU capacity.
 

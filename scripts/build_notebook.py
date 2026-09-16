@@ -406,28 +406,33 @@ def build(root: Path, output: Path) -> dict:
     Safety is reported separately, and a seeded regression must be blocked.
     ''')
     code('''
+    def portable(text):
+        # Logs and outputs name the project and interpreter by role, not by machine path.
+        return text.replace(str(RUN_ROOT), "<project>").replace(str(RUN_ROOT).replace("\\\\", "/"), "<project>").replace(sys.prefix, "<venv>")
+
     def run_command(arguments, log_path=None):
         completed = subprocess.run(
             [sys.executable, *arguments], cwd=RUN_ROOT, capture_output=True,
             text=True, encoding="utf-8", errors="replace",
         )
+        stdout, stderr = portable(completed.stdout), portable(completed.stderr)
         if log_path is not None:
-            log_path.write_text(completed.stdout + completed.stderr, "utf-8")
+            log_path.write_text(stdout + stderr, "utf-8")
         if completed.returncode:
-            print(completed.stdout[-6000:])
+            print(stdout[-6000:])
         elif log_path is not None:
-            print("\\n".join(completed.stdout.splitlines()[-6:]))
-            print("Full named-test log:", log_path)
+            print("\\n".join(stdout.splitlines()[-6:]))
+            print("Full named-test log:", log_path.relative_to(RUN_ROOT).as_posix())
         else:
-            print(completed.stdout)
+            print(stdout)
         if completed.returncode:
-            print(completed.stderr[-6000:])
+            print(stderr[-6000:])
             raise RuntimeError(f"Command failed with exit code {completed.returncode}: {arguments}")
         return completed
 
     (RUN_ROOT / "artifacts").mkdir(exist_ok=True)
     test_run = run_command(
-        ["-m", "pytest", "-o", "addopts=", "-v", "--tb=short", "--junitxml=artifacts/pytest.xml"],
+        ["-m", "pytest", "-o", "addopts=", "-v", "--tb=short", "--no-header", "-p", "no:warnings", "--junitxml=artifacts/pytest.xml"],
         log_path=RUN_ROOT / "artifacts/pytest.txt",
     )
     ''')
@@ -491,7 +496,7 @@ def build(root: Path, output: Path) -> dict:
         print(f"{target}: {'met' if met else 'NOT met'} on the simulator")
     print("Basis:", cache_run["targets_basis"])
     print("Actual external spend is zero. These are illustrative simulator tariff estimates.")
-    print("Full benchmark and latency evidence:", RUN_ROOT / "BENCHMARKS.md")
+    print("Full benchmark and latency evidence: BENCHMARKS.md")
     ''')
     md('''
     ## 6. Commercial/open-weight comparison and human review

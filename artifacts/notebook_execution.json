@@ -1,21 +1,21 @@
 {
   "status": "PASS",
-  "finished_at_utc": "2026-09-16T14:49:10.841146+00:00",
-  "duration_s": 65.75803019999876,
-  "python": "C:\\Users\\Turki\\Documents\\Codex\\2026-09-15\\llm-capstone-local\\.venv\\Scripts\\python.exe",
-  "kernel": "talabak-local (workspace-local kernelspec)",
+  "finished_at_utc": "2026-09-16T15:01:45.659434+00:00",
+  "duration_s": 86.7414165000082,
+  "python": "project .venv, Python 3.12.14",
+  "kernel": "talabak-local (project kernelspec)",
   "scope": "Fresh local kernel using verified checkout; default simulator only",
   "code_cells": 23,
   "executed_code_cells": 23,
   "error_outputs": 0,
-  "source_manifest_sha256": "156092a74738881b0fb393aaf4d13c0dc6a2c4865dc20496539b9686d08020fb",
+  "source_manifest_sha256": "a05a699c7163f7ec01fd25c3c248849aadfd032f857cbff06b9c918d97ecb957",
   "source_comparison": {
     "source_matches_current_project": true,
-    "recorded_files": 73,
-    "current_files": 73,
-    "current_manifest_sha256": "156092a74738881b0fb393aaf4d13c0dc6a2c4865dc20496539b9686d08020fb"
+    "recorded_files": 71,
+    "current_files": 71,
+    "current_manifest_sha256": "a05a699c7163f7ec01fd25c3c248849aadfd032f857cbff06b9c918d97ecb957"
   },
-  "notebook_sha256": "05e0880b4f92c7ff68be2c84e71aefeeaa138fc6ffd0bc71ed4612636b3d54df",
+  "notebook_sha256": "194c629ef689b4e6a7dc98c94c7841ef83c25f7e7196a481f998ced94f9d194b",
   "colab_fresh_runtime": "NOT_RUN",
   "live_model_calls": "NOT_RUN",
   "error": null

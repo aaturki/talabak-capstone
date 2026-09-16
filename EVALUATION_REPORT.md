@@ -1,6 +1,6 @@
 # Evaluation Report — Talabak
 
-Generated at 2026-09-16T14:49:09.587775+00:00 from an actual application run through the SDK to a local simulator.
+Generated at 2026-09-16T15:01:44.120876+00:00 from an actual application run through the SDK to a local simulator.
 
 **This report contains local simulator evidence. No live commercial or open-weight language model was run. External spend is zero.**
 
