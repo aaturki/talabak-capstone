@@ -1,12 +1,9 @@
 {
-  "created_at_utc": "2026-09-16T17:18:45.533976+00:00",
+  "created_at_utc": "2026-09-16T17:19:54.532865+00:00",
   "python": "3.12.14",
   "evidence_mode": "simulator",
   "tests": {
-    "status": "PASS",
-    "tests": 382,
-    "failures": 0,
-    "errors": 0
+    "status": "executed_by_notebook"
   },
   "evaluations": {
     "primary": {
@@ -14,8 +11,8 @@
         "n": 144,
         "passed": 144,
         "pass_rate": 1.0,
-        "latency_ms_p50": 17.419599986169487,
-        "latency_ms_p95": 36.48640000028536,
+        "latency_ms_p50": 17.09020000998862,
+        "latency_ms_p95": 31.67349999421276,
         "model_calls": 408,
         "input_tokens": 738297,
         "output_tokens": 14474,
@@ -62,8 +59,8 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 15.829999989364296,
-            "latency_ms_p95": 36.48640000028536,
+            "latency_ms_p50": 15.425400022650138,
+            "latency_ms_p95": 35.821499972371385,
             "model_calls": 66,
             "input_tokens": 115530,
             "output_tokens": 2384,
@@ -108,8 +105,8 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 21.950499998638406,
-            "latency_ms_p95": 29.162699996959418,
+            "latency_ms_p50": 21.187700011068955,
+            "latency_ms_p95": 28.656499984208494,
             "model_calls": 78,
             "input_tokens": 146345,
             "output_tokens": 3455,
@@ -154,8 +151,8 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 13.738599984208122,
-            "latency_ms_p95": 42.25520000909455,
+            "latency_ms_p50": 13.477100001182407,
+            "latency_ms_p95": 15.415300003951415,
             "model_calls": 40,
             "input_tokens": 64382,
             "output_tokens": 880,
@@ -200,8 +197,8 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 17.399500007741153,
-            "latency_ms_p95": 33.79830002086237,
+            "latency_ms_p50": 16.79979998152703,
+            "latency_ms_p95": 30.725799995707348,
             "model_calls": 67,
             "input_tokens": 119177,
             "output_tokens": 2274,
@@ -246,8 +243,8 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 19.697299983818084,
-            "latency_ms_p95": 23.3783999865409,
+            "latency_ms_p50": 19.849400006933138,
+            "latency_ms_p95": 23.748100007651374,
             "model_calls": 74,
             "input_tokens": 137770,
             "output_tokens": 2080,
@@ -292,8 +289,8 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 23.494799999753013,
-            "latency_ms_p95": 38.6343999998644,
+            "latency_ms_p50": 22.314100002404302,
+            "latency_ms_p95": 38.33780001150444,
             "model_calls": 83,
             "input_tokens": 155093,
             "output_tokens": 3401,
@@ -340,8 +337,8 @@
             "n": 96,
             "passed": 96,
             "pass_rate": 1.0,
-            "latency_ms_p50": 17.227299977093935,
-            "latency_ms_p95": 36.62239998811856,
+            "latency_ms_p50": 17.09020000998862,
+            "latency_ms_p95": 36.28500000922941,
             "model_calls": 246,
             "input_tokens": 445799,
             "output_tokens": 8870,
@@ -386,8 +383,8 @@
             "n": 48,
             "passed": 48,
             "pass_rate": 1.0,
-            "latency_ms_p50": 17.63989997562021,
-            "latency_ms_p95": 33.79830002086237,
+            "latency_ms_p50": 15.826400020159781,
+            "latency_ms_p95": 30.725799995707348,
             "model_calls": 162,
             "input_tokens": 292498,
             "output_tokens": 5604,
@@ -434,8 +431,8 @@
             "n": 23,
             "passed": 23,
             "pass_rate": 1.0,
-            "latency_ms_p50": 14.965000009397045,
-            "latency_ms_p95": 25.687200017273426,
+            "latency_ms_p50": 15.298599988454953,
+            "latency_ms_p95": 25.644800014561042,
             "model_calls": 60,
             "input_tokens": 104161,
             "output_tokens": 1814,
@@ -480,8 +477,8 @@
             "n": 29,
             "passed": 29,
             "pass_rate": 1.0,
-            "latency_ms_p50": 1.3931999856140465,
-            "latency_ms_p95": 36.62239998811856,
+            "latency_ms_p50": 1.2556000147014856,
+            "latency_ms_p95": 36.28500000922941,
             "model_calls": 19,
             "input_tokens": 32096,
             "output_tokens": 539,
@@ -526,8 +523,8 @@
             "n": 92,
             "passed": 92,
             "pass_rate": 1.0,
-            "latency_ms_p50": 20.450900017749518,
-            "latency_ms_p95": 36.48640000028536,
+            "latency_ms_p50": 20.177700003841892,
+            "latency_ms_p95": 31.67349999421276,
             "model_calls": 329,
             "input_tokens": 602040,
             "output_tokens": 12121,
@@ -574,8 +571,8 @@
             "n": 78,
             "passed": 78,
             "pass_rate": 1.0,
-            "latency_ms_p50": 18.851300003007054,
-            "latency_ms_p95": 38.6343999998644,
+            "latency_ms_p50": 18.227599997771904,
+            "latency_ms_p95": 38.33780001150444,
             "model_calls": 221,
             "input_tokens": 407724,
             "output_tokens": 8492,
@@ -620,8 +617,8 @@
             "n": 29,
             "passed": 29,
             "pass_rate": 1.0,
-            "latency_ms_p50": 13.911199988797307,
-            "latency_ms_p95": 42.25520000909455,
+            "latency_ms_p50": 14.000499999383464,
+            "latency_ms_p95": 23.748100007651374,
             "model_calls": 74,
             "input_tokens": 127952,
             "output_tokens": 1855,
@@ -666,8 +663,8 @@
             "n": 37,
             "passed": 37,
             "pass_rate": 1.0,
-            "latency_ms_p50": 17.419599986169487,
-            "latency_ms_p95": 26.596599986078218,
+            "latency_ms_p50": 17.075000010663643,
+            "latency_ms_p95": 26.898999989498407,
             "model_calls": 113,
             "input_tokens": 202621,
             "output_tokens": 4127,
@@ -721,7 +718,7 @@
       ],
       "failed_case_ids": [],
       "limits": "Simulator token counts/tariffs are not provider bills or real model quality. Latency is this local harness run, not a measured self-hosted LLM throughput.",
-      "created_at_utc": "2026-09-16T17:18:22.856217+00:00",
+      "created_at_utc": "2026-09-16T17:19:31.651308+00:00",
       "alias": "primary",
       "cache_enabled": true,
       "dataset_audit": {
@@ -762,8 +759,8 @@
         "n": 144,
         "passed": 144,
         "pass_rate": 1.0,
-        "latency_ms_p50": 17.654199997195974,
-        "latency_ms_p95": 32.83630000078119,
+        "latency_ms_p50": 17.09330000448972,
+        "latency_ms_p95": 30.758600012632087,
         "model_calls": 408,
         "input_tokens": 738251,
         "output_tokens": 14446,
@@ -810,8 +807,8 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 16.357899992726743,
-            "latency_ms_p95": 38.45319998799823,
+            "latency_ms_p50": 16.264500009128824,
+            "latency_ms_p95": 35.103000001981854,
             "model_calls": 66,
             "input_tokens": 115530,
             "output_tokens": 2391,
@@ -856,8 +853,8 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 22.286599996732548,
-            "latency_ms_p95": 27.238999988185242,
+            "latency_ms_p50": 22.279400000115857,
+            "latency_ms_p95": 27.95370001695119,
             "model_calls": 78,
             "input_tokens": 146367,
             "output_tokens": 3453,
@@ -902,8 +899,8 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 14.203700004145503,
-            "latency_ms_p95": 16.498699988005683,
+            "latency_ms_p50": 13.799200009088963,
+            "latency_ms_p95": 19.89960001083091,
             "model_calls": 40,
             "input_tokens": 64382,
             "output_tokens": 880,
@@ -948,8 +945,8 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 17.2667000151705,
-            "latency_ms_p95": 32.05629999865778,
+            "latency_ms_p50": 16.53309998800978,
+            "latency_ms_p95": 30.32699998584576,
             "model_calls": 67,
             "input_tokens": 119179,
             "output_tokens": 2271,
@@ -994,8 +991,8 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 20.346300007076934,
-            "latency_ms_p95": 23.14440000918694,
+            "latency_ms_p50": 20.352099993033335,
+            "latency_ms_p95": 23.05230000638403,
             "model_calls": 74,
             "input_tokens": 137714,
             "output_tokens": 2052,
@@ -1040,8 +1037,8 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 23.553400009404868,
-            "latency_ms_p95": 39.33339999639429,
+            "latency_ms_p50": 22.89819999714382,
+            "latency_ms_p95": 40.458799980115145,
             "model_calls": 83,
             "input_tokens": 155079,
             "output_tokens": 3399,
@@ -1088,8 +1085,8 @@
             "n": 96,
             "passed": 96,
             "pass_rate": 1.0,
-            "latency_ms_p50": 17.654199997195974,
-            "latency_ms_p95": 38.83679999853484,
+            "latency_ms_p50": 17.09330000448972,
+            "latency_ms_p95": 36.47560000536032,
             "model_calls": 246,
             "input_tokens": 445769,
             "output_tokens": 8849,
@@ -1134,8 +1131,8 @@
             "n": 48,
             "passed": 48,
             "pass_rate": 1.0,
-            "latency_ms_p50": 16.357899992726743,
-            "latency_ms_p95": 32.05629999865778,
+            "latency_ms_p50": 16.623900010017678,
+            "latency_ms_p95": 30.32699998584576,
             "model_calls": 162,
             "input_tokens": 292482,
             "output_tokens": 5597,
@@ -1182,8 +1179,8 @@
             "n": 23,
             "passed": 23,
             "pass_rate": 1.0,
-            "latency_ms_p50": 15.3983999916818,
-            "latency_ms_p95": 26.39610000187531,
+            "latency_ms_p50": 15.342700004111975,
+            "latency_ms_p95": 26.333200017688796,
             "model_calls": 60,
             "input_tokens": 104155,
             "output_tokens": 1818,
@@ -1228,8 +1225,8 @@
             "n": 29,
             "passed": 29,
             "pass_rate": 1.0,
-            "latency_ms_p50": 1.3219999964348972,
-            "latency_ms_p95": 38.45319998799823,
+            "latency_ms_p50": 1.3254000223241746,
+            "latency_ms_p95": 35.103000001981854,
             "model_calls": 19,
             "input_tokens": 32094,
             "output_tokens": 537,
@@ -1274,8 +1271,8 @@
             "n": 92,
             "passed": 92,
             "pass_rate": 1.0,
-            "latency_ms_p50": 20.59850000659935,
-            "latency_ms_p95": 32.83630000078119,
+            "latency_ms_p50": 20.15299999038689,
+            "latency_ms_p95": 30.758600012632087,
             "model_calls": 329,
             "input_tokens": 602002,
             "output_tokens": 12091,
@@ -1322,8 +1319,8 @@
             "n": 78,
             "passed": 78,
             "pass_rate": 1.0,
-            "latency_ms_p50": 19.99450000585057,
-            "latency_ms_p95": 39.33339999639429,
+            "latency_ms_p50": 17.73629998206161,
+            "latency_ms_p95": 40.458799980115145,
             "model_calls": 221,
             "input_tokens": 407696,
             "output_tokens": 8475,
@@ -1368,8 +1365,8 @@
             "n": 29,
             "passed": 29,
             "pass_rate": 1.0,
-            "latency_ms_p50": 14.542599994456396,
-            "latency_ms_p95": 23.247399978572503,
+            "latency_ms_p50": 14.238400006433949,
+            "latency_ms_p95": 23.667600005865097,
             "model_calls": 74,
             "input_tokens": 127928,
             "output_tokens": 1843,
@@ -1414,8 +1411,8 @@
             "n": 37,
             "passed": 37,
             "pass_rate": 1.0,
-            "latency_ms_p50": 17.653900024015456,
-            "latency_ms_p95": 27.238999988185242,
+            "latency_ms_p50": 17.09330000448972,
+            "latency_ms_p95": 26.333200017688796,
             "model_calls": 113,
             "input_tokens": 202627,
             "output_tokens": 4128,
@@ -1469,7 +1466,7 @@
       ],
       "failed_case_ids": [],
       "limits": "Simulator token counts/tariffs are not provider bills or real model quality. Latency is this local harness run, not a measured self-hosted LLM throughput.",
-      "created_at_utc": "2026-09-16T17:18:25.737395+00:00",
+      "created_at_utc": "2026-09-16T17:19:34.479097+00:00",
       "alias": "open_weight",
       "cache_enabled": true,
       "dataset_audit": {
@@ -3268,7 +3265,7 @@
               "attempts": 2,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 106.20379997999407,
+              "latency_ms": 105.73099998873658,
               "finish_reason": "stop",
               "stage": "input_guard",
               "model": "talabak-course-primary",
@@ -3294,7 +3291,7 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.657000004546717,
+              "latency_ms": 2.1942000021226704,
               "finish_reason": "stop",
               "stage": "route_extract",
               "model": "talabak-course-primary",
@@ -3302,7 +3299,7 @@
             }
           ],
           "evidence_mode": "simulator",
-          "latency_ms": 115.11590000009164
+          "latency_ms": 114.66510000173002
         },
         "events": [
           {
@@ -3333,7 +3330,7 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.305
+              "latency_ms": 1.935
             },
             "reservation": "released_unbilled_rejection",
             "delay_s": 0.1
@@ -3367,7 +3364,7 @@
               "attempts": 2,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 106.188,
+              "latency_ms": 105.713,
               "finish_reason": "stop"
             }
           },
@@ -3400,7 +3397,7 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.641,
+              "latency_ms": 2.181,
               "finish_reason": "stop"
             }
           }
@@ -3487,7 +3484,7 @@
               "attempts": 3,
               "fallback_used": true,
               "alias": "fallback",
-              "latency_ms": 87.39100000821054,
+              "latency_ms": 168.37319999467582,
               "finish_reason": "stop",
               "stage": "input_guard",
               "model": "talabak-course-fallback",
@@ -3513,7 +3510,7 @@
               "attempts": 3,
               "fallback_used": true,
               "alias": "fallback",
-              "latency_ms": 102.96180000295863,
+              "latency_ms": 138.52009997935966,
               "finish_reason": "stop",
               "stage": "route_extract",
               "model": "talabak-course-fallback",
@@ -3521,7 +3518,7 @@
             }
           ],
           "evidence_mode": "simulator",
-          "latency_ms": 198.942499991972
+          "latency_ms": 315.0947999965865
         },
         "events": [
           {
@@ -3552,10 +3549,10 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 1.628
+              "latency_ms": 1.598
             },
             "reservation": "released_unbilled_rejection",
-            "delay_s": 0.07930345795492166
+            "delay_s": 0.14217182506636653
           },
           {
             "event": "model_error",
@@ -3585,7 +3582,7 @@
               "attempts": 2,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 84.43
+              "latency_ms": 145.714
             },
             "reservation": "released_unbilled_rejection"
           },
@@ -3618,7 +3615,7 @@
               "attempts": 3,
               "fallback_used": true,
               "alias": "fallback",
-              "latency_ms": 87.374,
+              "latency_ms": 168.356,
               "finish_reason": "stop"
             }
           },
@@ -3650,10 +3647,10 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 1.483
+              "latency_ms": 2.087
             },
             "reservation": "released_unbilled_rejection",
-            "delay_s": 0.09610460709261917
+            "delay_s": 0.12960996572380093
           },
           {
             "event": "model_error",
@@ -3683,7 +3680,7 @@
               "attempts": 2,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 100.377
+              "latency_ms": 136.05
             },
             "reservation": "released_unbilled_rejection"
           },
@@ -3716,7 +3713,7 @@
               "attempts": 3,
               "fallback_used": true,
               "alias": "fallback",
-              "latency_ms": 102.941,
+              "latency_ms": 138.504,
               "finish_reason": "stop"
             }
           }
@@ -3803,7 +3800,7 @@
               "attempts": 3,
               "fallback_used": true,
               "alias": "fallback",
-              "latency_ms": 135.1190000132192,
+              "latency_ms": 85.14670000295155,
               "finish_reason": "stop",
               "stage": "input_guard",
               "model": "talabak-course-fallback",
@@ -3829,7 +3826,7 @@
               "attempts": 3,
               "fallback_used": true,
               "alias": "fallback",
-              "latency_ms": 86.46049999515526,
+              "latency_ms": 141.00470000994392,
               "finish_reason": "stop",
               "stage": "route_extract",
               "model": "talabak-course-fallback",
@@ -3837,7 +3834,7 @@
             }
           ],
           "evidence_mode": "simulator",
-          "latency_ms": 228.36919999099337
+          "latency_ms": 234.47360002319328
         },
         "events": [
           {
@@ -3868,10 +3865,10 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.114
+              "latency_ms": 1.824
             },
             "reservation": "released_unbilled_rejection",
-            "delay_s": 0.12584726347529837
+            "delay_s": 0.07448204281682473
           },
           {
             "event": "model_error",
@@ -3901,7 +3898,7 @@
               "attempts": 2,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 132.115
+              "latency_ms": 79.883
             },
             "reservation": "released_unbilled_rejection"
           },
@@ -3934,7 +3931,7 @@
               "attempts": 3,
               "fallback_used": true,
               "alias": "fallback",
-              "latency_ms": 135.097,
+              "latency_ms": 85.104,
               "finish_reason": "stop"
             }
           },
@@ -3966,10 +3963,10 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 1.748
+              "latency_ms": 3.587
             },
             "reservation": "released_unbilled_rejection",
-            "delay_s": 0.07972910605755418
+            "delay_s": 0.13218190172799169
           },
           {
             "event": "model_error",
@@ -3999,7 +3996,7 @@
               "attempts": 2,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 84.243
+              "latency_ms": 138.5
             },
             "reservation": "released_unbilled_rejection"
           },
@@ -4032,7 +4029,7 @@
               "attempts": 3,
               "fallback_used": true,
               "alias": "fallback",
-              "latency_ms": 86.446,
+              "latency_ms": 140.986,
               "finish_reason": "stop"
             }
           }
@@ -4091,7 +4088,7 @@
             "attempts": 1,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 2.2243999992497265,
+            "latency_ms": 2.4551000096835196,
             "finish_reason": "stop",
             "stage": "route_extract",
             "model": "talabak-course-primary",
@@ -4117,7 +4114,7 @@
             "attempts": 1,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 2.5086999812629074,
+            "latency_ms": 2.557400002842769,
             "finish_reason": "stop",
             "stage": "route_extract",
             "model": "talabak-course-primary",
@@ -4213,7 +4210,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.227999997558072,
+                "latency_ms": 2.4547000066377223,
                 "finish_reason": "stop",
                 "stage": "input_guard",
                 "model": "talabak-course-primary",
@@ -4239,7 +4236,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.2982000082265586,
+                "latency_ms": 2.426099992590025,
                 "finish_reason": "stop",
                 "stage": "route_extract",
                 "model": "talabak-course-primary",
@@ -4247,7 +4244,7 @@
               }
             ],
             "evidence_mode": "simulator",
-            "latency_ms": 11.371000000508502
+            "latency_ms": 12.49870000174269
           }
         }
       ],
@@ -4355,7 +4352,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.3925999994389713,
+                "latency_ms": 2.7089999930467457,
                 "finish_reason": "stop",
                 "stage": "input_guard",
                 "model": "talabak-course-primary",
@@ -4381,7 +4378,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.128299995092675,
+                "latency_ms": 2.654300013091415,
                 "finish_reason": "stop",
                 "stage": "route_extract",
                 "model": "talabak-course-primary",
@@ -4407,7 +4404,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.5877000007312745,
+                "latency_ms": 2.663799998117611,
                 "finish_reason": "tool_calls",
                 "stage": "tools",
                 "model": "talabak-course-primary",
@@ -4434,7 +4431,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 3.022299992153421,
+                "latency_ms": 3.0907999898772687,
                 "finish_reason": "tool_calls",
                 "stage": "tools",
                 "model": "talabak-course-primary",
@@ -4443,14 +4440,14 @@
               }
             ],
             "evidence_mode": "simulator",
-            "latency_ms": 20.87849998497404
+            "latency_ms": 22.30579999741167
           }
         },
         {
           "input": "موافق",
           "output": {
             "status": "created",
-            "message": "تم تسجيل الطلب REQ-5326EDC6 بحالة قيد المعالجة.",
+            "message": "تم تسجيل الطلب REQ-AFC7B43C بحالة قيد المعالجة.",
             "citations": [
               "policy-v1"
             ],
@@ -4499,7 +4496,7 @@
             ],
             "usage": [],
             "evidence_mode": "simulator",
-            "latency_ms": 1.4019000227563083
+            "latency_ms": 1.3051999849267304
           }
         }
       ],
@@ -4607,7 +4604,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.578600018750876,
+                "latency_ms": 2.6974999927915633,
                 "finish_reason": "stop",
                 "stage": "input_guard",
                 "model": "talabak-course-primary",
@@ -4633,7 +4630,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.1296000049915165,
+                "latency_ms": 2.7452999784145504,
                 "finish_reason": "stop",
                 "stage": "route_extract",
                 "model": "talabak-course-primary",
@@ -4659,7 +4656,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.604199980851263,
+                "latency_ms": 3.048999991733581,
                 "finish_reason": "tool_calls",
                 "stage": "tools",
                 "model": "talabak-course-primary",
@@ -4686,7 +4683,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.799100009724498,
+                "latency_ms": 3.326899983221665,
                 "finish_reason": "tool_calls",
                 "stage": "tools",
                 "model": "talabak-course-primary",
@@ -4695,14 +4692,14 @@
               }
             ],
             "evidence_mode": "simulator",
-            "latency_ms": 21.82829999946989
+            "latency_ms": 24.697299988474697
           }
         },
         {
           "input": "موافق",
           "output": {
             "status": "created",
-            "message": "تم تسجيل الطلب REQ-87536352 بحالة قيد المعالجة.",
+            "message": "تم تسجيل الطلب REQ-7FF7C95C بحالة قيد المعالجة.",
             "citations": [
               "policy-v1"
             ],
@@ -4751,7 +4748,7 @@
             ],
             "usage": [],
             "evidence_mode": "simulator",
-            "latency_ms": 1.4263000048231333
+            "latency_ms": 1.3987999991513789
           }
         }
       ],
@@ -4849,7 +4846,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.5344000023324043,
+                "latency_ms": 2.64759999117814,
                 "finish_reason": "stop",
                 "stage": "input_guard",
                 "model": "talabak-course-primary",
@@ -4875,7 +4872,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.5234000058844686,
+                "latency_ms": 2.627599984407425,
                 "finish_reason": "stop",
                 "stage": "route_extract",
                 "model": "talabak-course-primary",
@@ -4901,7 +4898,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.7953000098932534,
+                "latency_ms": 2.7251999999862164,
                 "finish_reason": "tool_calls",
                 "stage": "tools",
                 "model": "talabak-course-primary",
@@ -4910,14 +4907,14 @@
               }
             ],
             "evidence_mode": "simulator",
-            "latency_ms": 15.769999998155981
+            "latency_ms": 16.030600003432482
           }
         },
         {
           "input": "موافق",
           "output": {
             "status": "created",
-            "message": "تم تسجيل الطلب REQ-A23457B2 بحالة قيد المعالجة.",
+            "message": "تم تسجيل الطلب REQ-B12C4EC6 بحالة قيد المعالجة.",
             "citations": [
               "policy-v1"
             ],
@@ -4966,7 +4963,7 @@
             ],
             "usage": [],
             "evidence_mode": "simulator",
-            "latency_ms": 1.1959999974351376
+            "latency_ms": 1.4077999803703278
           }
         }
       ],
@@ -5002,7 +4999,7 @@
             ],
             "usage": [],
             "evidence_mode": "simulator",
-            "latency_ms": 0.6762999983038753
+            "latency_ms": 0.6693000032100827
           }
         }
       ],
@@ -5107,7 +5104,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.951500006020069,
+                "latency_ms": 2.894800010835752,
                 "finish_reason": "stop",
                 "stage": "input_guard",
                 "model": "talabak-course-primary",
@@ -5133,7 +5130,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.2187000140547752,
+                "latency_ms": 2.8479000029619783,
                 "finish_reason": "stop",
                 "stage": "route_extract",
                 "model": "talabak-course-primary",
@@ -5159,7 +5156,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.5110999995376915,
+                "latency_ms": 3.1479999888688326,
                 "finish_reason": "tool_calls",
                 "stage": "tools",
                 "model": "talabak-course-primary",
@@ -5186,7 +5183,7 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.744099998380989,
+                "latency_ms": 3.492699994239956,
                 "finish_reason": "stop",
                 "stage": "tools",
                 "model": "talabak-course-primary",
@@ -5195,7 +5192,7 @@
               }
             ],
             "evidence_mode": "simulator",
-            "latency_ms": 19.13770000101067
+            "latency_ms": 21.49830001872033
           }
         }
       ],
@@ -5284,7 +5281,7 @@
   },
   "cache": {
     "status": "PASS",
-    "created_at_utc": "2026-09-16T17:18:45.307837+00:00",
+    "created_at_utc": "2026-09-16T17:19:54.378935+00:00",
     "traffic_sha256": "54fb4d252ce2ec931f0b53cf2e7ec275c1479956ce095abab6de983f4dcd9853",
     "workload": "Exactly four passes of all first-turn successful read-only FAQ/status golden cases. Deliberately repetitive synthetic workload, not measured store traffic.",
     "semantic_ready": true,
@@ -5304,9 +5301,9 @@
         "provider_cache_fraction": 0.0,
         "cost_usd": 0.0,
         "simulated_cost_usd": 0.220888,
-        "wall_ms": 1248.2018999871798,
-        "request_latency_ms_p50": 8.028400014154613,
-        "request_latency_ms_p95": 13.16539998515509,
+        "wall_ms": 1311.3598999916576,
+        "request_latency_ms_p50": 8.539400005247444,
+        "request_latency_ms_p95": 13.59970000339672,
         "failed_ids": [],
         "evidence_mode": "simulator",
         "semantic_threshold": null,
@@ -5316,8 +5313,8 @@
           "n": 144,
           "passed": 144,
           "pass_rate": 1.0,
-          "latency_ms_p50": 12.767199979862198,
-          "latency_ms_p95": 22.691699996357784,
+          "latency_ms_p50": 13.3907999843359,
+          "latency_ms_p95": 24.023200006922707,
           "model_calls": 408,
           "input_tokens": 248657,
           "output_tokens": 14459,
@@ -5385,9 +5382,9 @@
         "provider_cache_fraction": 0.9636797634709018,
         "cost_usd": 0.0,
         "simulated_cost_usd": 0.198046,
-        "wall_ms": 1790.1534999837168,
-        "request_latency_ms_p50": 11.485600000014529,
-        "request_latency_ms_p95": 19.33209999697283,
+        "wall_ms": 1874.029900005553,
+        "request_latency_ms_p50": 12.236799986567348,
+        "request_latency_ms_p95": 20.75600001262501,
         "failed_ids": [],
         "evidence_mode": "simulator",
         "semantic_threshold": null,
@@ -5397,8 +5394,8 @@
           "n": 144,
           "passed": 144,
           "pass_rate": 1.0,
-          "latency_ms_p50": 17.28599998750724,
-          "latency_ms_p95": 30.60830000322312,
+          "latency_ms_p50": 17.060100013623014,
+          "latency_ms_p95": 30.49130001454614,
           "model_calls": 408,
           "input_tokens": 738297,
           "output_tokens": 14474,
@@ -5469,9 +5466,9 @@
         "provider_cache_fraction": 0.9725292609821925,
         "cost_usd": 0.0,
         "simulated_cost_usd": 0.04853275,
-        "wall_ms": 615.2332000201568,
-        "request_latency_ms_p50": 1.2835999950766563,
-        "request_latency_ms_p95": 19.126500003039837,
+        "wall_ms": 622.6577000052202,
+        "request_latency_ms_p50": 1.351400016574189,
+        "request_latency_ms_p95": 19.192300009308383,
         "failed_ids": [],
         "evidence_mode": "simulator",
         "semantic_threshold": null,
@@ -5481,8 +5478,8 @@
           "n": 144,
           "passed": 144,
           "pass_rate": 1.0,
-          "latency_ms_p50": 17.22499998868443,
-          "latency_ms_p95": 30.677300004754215,
+          "latency_ms_p50": 17.153199994936585,
+          "latency_ms_p95": 30.855299992254004,
           "model_calls": 408,
           "input_tokens": 738297,
           "output_tokens": 14474,
@@ -5553,9 +5550,9 @@
         "provider_cache_fraction": 0.9727669351679074,
         "cost_usd": 0.0,
         "simulated_cost_usd": 0.049319,
-        "wall_ms": 664.4310000119731,
-        "request_latency_ms_p50": 1.290899992454797,
-        "request_latency_ms_p95": 20.335599983809516,
+        "wall_ms": 660.4258999868762,
+        "request_latency_ms_p50": 1.333599997451529,
+        "request_latency_ms_p95": 20.307800004957244,
         "failed_ids": [],
         "evidence_mode": "simulator",
         "semantic_threshold": 1.0,
@@ -5565,8 +5562,8 @@
           "n": 144,
           "passed": 144,
           "pass_rate": 1.0,
-          "latency_ms_p50": 17.41749999928288,
-          "latency_ms_p95": 32.12019999045879,
+          "latency_ms_p50": 17.463099997257814,
+          "latency_ms_p95": 32.649300002958626,
           "model_calls": 408,
           "input_tokens": 738297,
           "output_tokens": 14474,
@@ -5659,7 +5656,7 @@
     }
   },
   "context_budget": {
-    "generated_at_utc": "2026-09-16T17:18:45.538974+00:00",
+    "generated_at_utc": "2026-09-16T17:19:54.539896+00:00",
     "evidence_mode": "local_tokenizer_component_measurement",
     "tokenizer": "o200k_base",
     "max_output_tokens": 768,

@@ -1,21 +1,21 @@
 {
   "status": "PASS",
-  "finished_at_utc": "2026-09-16T16:48:03.915412+00:00",
-  "duration_s": 66.16442080002162,
+  "finished_at_utc": "2026-09-16T17:19:55.872040+00:00",
+  "duration_s": 67.40137779997895,
   "python": "project .venv, Python 3.12.14",
   "kernel": "talabak-local (project kernelspec)",
   "scope": "Fresh local kernel using verified checkout; default simulator only",
   "code_cells": 29,
   "executed_code_cells": 29,
   "error_outputs": 0,
-  "source_manifest_sha256": "b777aa686d65081544930bd4cf87885c3e61ea62f9291251e384b287c53fa8e7",
+  "source_manifest_sha256": "f321953f74f615b05f62123253dcf410039dffc1d5c2b7c7a559819abdf01a8d",
   "source_comparison": {
     "source_matches_current_project": true,
     "recorded_files": 72,
     "current_files": 72,
-    "current_manifest_sha256": "b777aa686d65081544930bd4cf87885c3e61ea62f9291251e384b287c53fa8e7"
+    "current_manifest_sha256": "f321953f74f615b05f62123253dcf410039dffc1d5c2b7c7a559819abdf01a8d"
   },
-  "notebook_sha256": "afd89c7f2f784dccb2899094f67b9ca5cbd8ac0f0341acf3e7085d84cc0b376c",
+  "notebook_sha256": "60f66db96c49ae16d8e9ec8af9b9ebafb17c89dbc72394c624f3e79e39559907",
   "colab_fresh_runtime": "NOT_RUN",
   "live_model_calls": "NOT_RUN",
   "error": null
