@@ -65,8 +65,8 @@ Arabic examples are demonstrated in the notebook. Reset the demo store/session t
 | Area | Current evidence boundary |
 |---|---|
 | Application engineering | Local tests and executed notebook outputs; see the current execution record. |
-| Real model comparison | Prepared; run after choosing the two providers and budgets. |
-| Human calibration | Export actual answers, obtain real human labels, then calculate agreement and Cohen's kappa. |
+| Real model comparison | Recorded on 2026-09-16: OpenAI gpt-5-mini 140/144 and DeepSeek deepseek-flash 137/144 over the same golden set, by slice, with cost, cache and latency (EVALUATION_REPORT.md, "Live model runs"). |
+| Human calibration | Not done: no human labels were collected, so the judge is reported as uncalibrated (no κ). |
 | Provider caching and savings | Measure returned usage and rerun evaluation after each optimization. |
 | Self-host break-even | Requires the selected runtime's measured throughput and explicit economic inputs. |
 | Reproducibility | Local execution and actual Colab execution are recorded separately. |

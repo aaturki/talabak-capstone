@@ -62,6 +62,8 @@ def source_provenance(config: dict) -> dict:
     for folder in ("talabak", "scripts", "prompts", "data", "config"):
         for path in sorted((ROOT / folder).rglob("*")):
             if path.is_file() and "__pycache__" not in path.parts and path.suffix not in {".pyc", ".pyo"}:
+                if path.relative_to(ROOT).as_posix() == "config/submission.json":
+                    continue  # publication locator, not application source (same rule as the notebook manifest)
                 files[path.relative_to(ROOT).as_posix()] = file_hash(path)
     clean = sanitized_config(config)
     return {"source_files_sha256": files, "source_manifest_sha256": digest(files),

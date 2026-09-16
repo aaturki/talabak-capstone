@@ -344,11 +344,101 @@ def build(root: Path, output: Path) -> dict:
     print("Extraction trace:", request_trace.trace)
     ''')
     md('''
+    ### Bounded tool loop
+
+    The simulator is told to keep requesting a read-only tool. The application stops at
+    `max_tool_rounds`, records `tool_loop_limit` and writes nothing.
+    ''')
+    code('''
+    import urllib.request
+    def set_fault(payload):
+        request = urllib.request.Request(
+            gateway_url.removesuffix("/v1") + "/admin/fault", data=json.dumps(payload).encode(),
+            headers={"Content-Type": "application/json"}, method="POST",
+        )
+        with urllib.request.urlopen(request, timeout=10) as response:
+            return json.loads(response.read())
+
+    loop_store = Store(":memory:")
+    loop_app = Application(client, loop_store, max_tool_rounds=3)
+    set_fault({"mode": "tool_loop", "model": runtime_config["routes"]["primary"]["model"], "count": 10})
+    try:
+        loop_result = loop_app.handle_message("Where is my order ORD-1001?", Session())
+    finally:
+        set_fault({"mode": "off"})
+    loop_events = [event for event in loop_result.trace if event.get("stage") == "tools"]
+    assert loop_result.status == "error" and any(event.get("code") == "tool_loop_limit" for event in loop_result.trace)
+    assert len(loop_events) == 3 and loop_store.count_actions() == 0
+    print("PASS: bounded stop after", len(loop_events), "tool iterations (max_tool_rounds=3); actions written:", loop_store.count_actions())
+    for event in loop_events:
+        print(event)
+    print([event for event in loop_result.trace if event.get("event") == "safe_failure"])
+    ''')
+    md('''
+    ### Authorization gate and next-turn confirmation
+
+    A side-effecting tool runs only for an authorized session, and writes only after the
+    customer confirms that exact pending action in the next message.
+    ''')
+    code('''
+    gate_store = Store(":memory:")
+    gate_app = Application(client, gate_store)
+    unauthorized = gate_app.handle_message("Return ORD-1001 because it is unopened", Session(can_act=False))
+    assert unauthorized.status == "denied" and gate_store.count_actions() == 0
+    print("Gate for a session without action rights:", [(e["name"], e["code"], e.get("authorized")) for e in unauthorized.trace if e.get("stage") == "tools" and "name" in e])
+    gate_session = Session()
+    proposed = gate_app.handle_message("Return ORD-1001 because it is unopened", gate_session)
+    assert proposed.status == "confirmation_required" and gate_store.count_actions() == 0
+    confirmed = gate_app.handle_message("confirm", gate_session)
+    assert confirmed.status == "created" and gate_store.count_actions() == 1
+    print("Authorized session:", [(e["name"], e["code"], e.get("authorized")) for e in proposed.trace + confirmed.trace if e.get("stage") == "tools" and "name" in e])
+    print("PASS: statuses", [proposed.status, confirmed.status], "| action rows:", gate_store.count_actions())
+    ''')
+    md('''
+    ### Validate → retry → repair with the errors fed back
+
+    The simulator answers with malformed JSON until the application's repair message is on
+    the wire. The rejected attempt, the error categories and locations sent back, and the
+    served repair prompt file are all captured below.
+    ''')
+    code('''
+    repair_store = Store(":memory:")
+    repair_app = Application(client, repair_store)
+    set_fault({"mode": "invalid_json_until_repair", "model": runtime_config["routes"]["primary"]["model"], "count": 3})
+    repair_trace = Result(status="pending", message="")
+    try:
+        repaired = repair_app.route_extract("ما حالة ORD-1001؟", repair_trace)
+    finally:
+        set_fault({"mode": "off"})
+    events = [event["event"] for event in repair_trace.trace]
+    assert events == ["schema_rejected", "schema_valid"] and repaired.order_id == "ORD-1001"
+    rejected = next(event for event in repair_trace.trace if event["event"] == "schema_rejected")
+    print("Attempt 1 rejected; validation errors fed back:", rejected["errors"])
+    print("Attempt 2 valid:", repaired.model_dump())
+    print("Repair instruction served from file:", "prompts/" + repair_app.prompt_files["repair"], "|", repair_app.prompts["repair"].splitlines()[0])
+    print("Model calls billed for this extraction:", len([u for u in repair_trace.usage if u["stage"] == "route_extract"]))
+    ''')
+    md('''
     ## 3. Versioned prompts and five-stage guard pipeline
 
     Prompts are readable versioned files in `prompts/`, with a changelog and served-version
     logging. Each stage runs independently below; evaluation tests their composition.
-
+    ''')
+    code('''
+    import hashlib
+    print("Named pipeline stages:", list(Application.STAGES))
+    print("Served prompt files, selected by config/models.json → pipeline.prompt_versions:")
+    for name, filename in stage_app.prompt_files.items():
+        path = RUN_ROOT / "prompts" / filename
+        text = path.read_text("utf-8")
+        expected_header = "# " + filename.removesuffix(".md").replace(".", "-")
+        assert path.is_file() and stage_app.prompts[name] == text and text.startswith(expected_header), filename
+        print(f"  {name:9s} <- prompts/{filename:14s} sha256={hashlib.sha256(text.encode()).hexdigest()[:12]}  {text.splitlines()[0]}")
+    print("Prompt-version digest stamped on every usage row:", stage_app.prompt_version[:16], "…")
+    print("Changelog:", (RUN_ROOT / "prompts/CHANGELOG.md").read_text("utf-8").splitlines()[0])
+    print("PASS: every served prompt is read from a versioned file on disk, not a string literal")
+    ''')
+    md('''
     ### Stage 1 — input_guard
 
     Mask a synthetic phone number before model classification or logging.
@@ -397,6 +487,17 @@ def build(root: Path, output: Path) -> dict:
     assert delivered["message"] and delivered["evidence_mode"] == "simulator"
     assert stage_app.canary not in delivered["message"]
     print({key: delivered[key] for key in ("status", "message", "citations", "evidence_mode")})
+    ''')
+    md("### The five named stages, each callable on its own")
+    code('''
+    independent_traces = {"input_guard": stage_input_result, "route_extract": stage_route_result,
+                          "tools": stage_tool_result, "output_guard": outbound_probe, "deliver": delivered_result}
+    for stage in Application.STAGES:
+        method = getattr(Application, stage)
+        events = [event for event in independent_traces[stage].trace if event.get("stage") == stage]
+        assert callable(method) and events, stage
+        print(f"{stage:14s} callable={callable(method)} events recorded when called alone={len(events)}")
+    print("Composition in handle_message:", " -> ".join(Application.STAGES))
     ''')
     md('''
     ## 4. Evaluation, safety and regression gate
@@ -541,6 +642,28 @@ def build(root: Path, output: Path) -> dict:
     print("Live comparison:", {k: live_result[k] for k in ("status", "run_dir", "reason") if k in live_result})
     for alias, summary in live_result.get("aliases", {}).items():
         print(alias, "quality:", summary["overall"], "safety:", summary["safety"])
+    ''')
+    md('''
+    ### Recorded live comparison
+
+    The repository carries the artifacts of the real-provider run made from this source
+    (`artifacts/live/<run>/`). The cell reads them; it makes no model call.
+    ''')
+    code('''
+    from scripts.run_all import latest_live_run
+    recorded = latest_live_run(RUN_ROOT)
+    if recorded:
+        live_run_dir, live_run = recorded
+        print("Run:", live_run["run_id"], "| status:", live_run["status"], "| live model evidence:", live_run.get("live_model_evidence"))
+        for alias, summary in live_run["aliases"].items():
+            wire = summary["wire_meter"]
+            print(f"{alias}: served={wire['served_models']} golden={summary['overall']['passed']}/{summary['overall']['n']} "
+                  f"safety={summary['safety']['passed']}/{summary['safety']['n']} wire_calls={wire['wire_calls']} "
+                  f"cached_input={wire.get('provider_cache_fraction_known_responses')} est_cost_usd={wire.get('estimated_cost_usd')} "
+                  f"p50_ms={summary['overall']['latency_ms_p50']:.0f}")
+        print("Per-slice comparison and failed case ids: EVALUATION_REPORT.md, section 'Live model runs'.")
+    else:
+        print("No recorded live comparison under artifacts/live.")
     ''')
     md('''
     ### Human review and optional live judge

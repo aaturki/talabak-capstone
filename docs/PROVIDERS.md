@@ -1,6 +1,6 @@
 # Real-provider configuration
 
-Provider integration is prepared and disabled. Providers, models, prices and credentials have not been selected. `SDKClient()` and `config/models.json` still use the local simulator with no API key.
+Provider integration is disabled by default: `SDKClient()` and `config/models.json` use the local simulator with no API key. The live comparison recorded on 2026-09-16 used a separate, git-ignored profile (`runtime/models.live.json`) selecting OpenAI `gpt-5-mini` (commercial, `gpt-5` as judge) and DeepSeek `deepseek-flash` (open-weight; JSON mode plus tool-only turns); its sanitized configuration and dated tariffs are recorded in the run manifest. Groq's free tier, Cerebras and Mistral's free plan were tried the same day and could not serve the full run (rate limits or payment required), which ADR-015 records.
 
 ## Choose a profile later
 

@@ -66,6 +66,65 @@ def demo_run(client):
     return rows
 
 
+def latest_live_run(root):
+    """Newest completed live comparison under artifacts/live, or None."""
+    runs=[]
+    for manifest in (root/'artifacts/live').glob('*/manifest.json'):
+        try: run=json.loads(manifest.read_text(encoding='utf-8'))
+        except (OSError,ValueError): continue
+        if run.get('status') in {'LIVE_COMPLETE','PILOT_COMPLETE','LIVE_ERRORS','MODEL_IDENTITY_UNVERIFIED'} and run.get('aliases'):
+            runs.append((run.get('created_at_utc',''),manifest.parent,run))
+    if not runs: return None
+    runs.sort(key=lambda x:x[0])
+    return runs[-1][1],runs[-1][2]
+
+
+def live_section(root):
+    """Markdown for real-provider evidence; every number comes from saved run artifacts."""
+    found=latest_live_run(root)
+    if not found:
+        return ["## Live model runs","","No live comparison has been recorded under artifacts/live. Sections 4.5, 5.2 (live) and 6 are unevidenced.",""]
+    run_dir,run=found
+    fmt=lambda v,spec: ('–' if v is None else format(v,spec))
+    lines=["## Live model runs",f"",f"Run `{run['run_id']}` (status **{run['status']}**, {run.get('finished_at_utc','')}), same 144 golden cases, response caching and fallbacks disabled, provenance `{run.get('provenance_sha256','')[:12]}…`. Live evidence flag: **{run.get('live_model_evidence')}**.","",
+           "| Route | Requested model | Served model | Golden passed | Safety passed | Wire calls | Input tokens | Cached input | Estimated cost (USD) | p50 ms | p95 ms |","|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|"]
+    for alias,summary in run['aliases'].items():
+        wire=summary.get('wire_meter',{}); overall=summary['overall']; safety=summary['safety']
+        cached=wire.get('provider_cache_fraction_known_responses')
+        cfg=run.get('provenance',{}).get('configuration',{}).get('routes',{}).get(alias,{})
+        lines.append(f"| {alias} ({cfg.get('evidence_mode','')}) | {cfg.get('model','')} | {', '.join(wire.get('served_models',[])) or '–'} | {overall['passed']}/{overall['n']} | {safety['passed']}/{safety['n']} | {wire.get('wire_calls','–')} | {fmt(wire.get('input_tokens'),'d') if isinstance(wire.get('input_tokens'),int) else '–'} | {fmt(cached,'.1%')} | {fmt(wire.get('estimated_cost_usd'),'.4f')} | {fmt(overall.get('latency_ms_p50'),'.0f')} | {fmt(overall.get('latency_ms_p95'),'.0f')} |")
+    lines+=["","Costs use the dated tariffs recorded in the run configuration; they are estimates, not invoices. Cached input is the provider-reported share over responses with known usage.","","### Comparison by slice (live)","","| Dimension | Stratum | "+" | ".join(f"{a} passed/total" for a in run['aliases'])+" |","|---|---|"+"---:|"*len(run['aliases'])]
+    first=next(iter(run['aliases'].values()))
+    for dimension,slices in first['slices'].items():
+        for label in slices:
+            cells=[]
+            for summary in run['aliases'].values():
+                row=summary['slices'].get(dimension,{}).get(label,{})
+                cells.append(f"{row.get('passed','–')}/{row.get('n','–')}")
+            lines.append(f"| {dimension} | {label} | "+" | ".join(cells)+" |")
+    for alias,summary in run['aliases'].items():
+        if summary.get('failed_case_ids'):
+            lines.append(f"- {alias} failed cases: {', '.join(summary['failed_case_ids'])}.")
+        if summary.get('operational_error_cases'):
+            lines.append(f"- {alias} operational errors: {', '.join(summary['operational_error_cases'])}.")
+    guard_path=root/'artifacts/live/guard_corpora.live.json'
+    if guard_path.exists():
+        guard=json.loads(guard_path.read_text(encoding='utf-8')); end=guard['layers'].get('end_to_end',{})
+        lines+=["",f"### Guard corpora on the live commercial route","",f"Deterministic layer plus the live classifier (`{end.get('evidence_mode','')}`): block rate **{end.get('attack_block_rate',0):.1%}** of {end.get('attack_n')} attacks, false-positive rate **{end.get('legitimate_false_positive_rate',0):.1%}** of {end.get('legitimate_n')} legitimate requests; false positives: {', '.join(end.get('false_positive_ids',[])) or 'none'}; blocked by layer: {json.dumps(end.get('blocked_by_layer',{}))}."]
+    reviews=sorted((root/'artifacts/live').glob('review*/calibration.json'))
+    if reviews:
+        cal=json.loads(reviews[-1].read_text(encoding='utf-8'))
+        kappa=cal.get('cohen_kappa'); matrix=cal.get('confusion_matrix',{})
+        lines+=["","### Judge calibration against human labels","",f"Dimension **{cal.get('dimension')}**, {cal.get('n')} labelled pairs, agreement **{fmt(cal.get('agreement'),'.1%')}**, Cohen's κ **{fmt(kappa,'.3f')}**, status **{cal.get('status')}**"+(f" (gate reasons: {', '.join(cal.get('gate_reasons',[]))})" if cal.get('gate_reasons') else "")+".",""]
+        if matrix:
+            labels=list(matrix); lines+=["| human \\ judge | "+" | ".join(labels)+" |","|---|"+"---:|"*len(labels)]
+            for h in labels: lines.append(f"| {h} | "+" | ".join(str(matrix[h].get(j,0)) for j in labels)+" |")
+    else:
+        lines+=["","Judge calibration: no scored human review is recorded yet."]
+    lines.append("")
+    return lines
+
+
 def degraded_slice_table(regression):
     """The seeded regression must be read by slice, not as one average."""
     rows=["| Slice | Baseline pass rate | Degraded pass rate | Drop |","|---|---:|---:|---:|"]
@@ -86,7 +145,7 @@ def generate_reports(report,root):
     if end:
         guard_lines.append(f"  - End-to-end pipeline (deterministic layer, PII masking, then the classifier; evidence `{end['evidence_mode']}`): block rate **{end['attack_block_rate']:.1%}**, false-positive rate **{end['legitimate_false_positive_rate']:.1%}**; blocked by layer: {json.dumps(end['blocked_by_layer'])}.")
     text=["# Evaluation Report — Talabak", "",f"Generated at {report['created_at_utc']} from an actual application run through the SDK to a local simulator.","",
-          "**This report contains local simulator evidence. No live commercial or open-weight language model was run. External spend is zero.**","",
+          ("**The simulator sections below are local evidence with zero external spend; the 'Live model runs' section reports the real-provider comparison recorded under artifacts/live.**" if latest_live_run(root) else "**This report contains local simulator evidence. No live commercial or open-weight language model was run. External spend is zero.**"),"",
           "## Results","",f"- Golden cases: **{overall['passed']}/{overall['n']}**; safety cases: **{safety['n']-safety['failed']}/{safety['n']}**.",
           *guard_lines,
           f"- Clean regression gate: **{report['regression']['clean']['status']}**; deliberately degraded configuration: **{report['regression']['degraded']['status']}** (slice table below).",
@@ -101,7 +160,7 @@ def generate_reports(report,root):
         for label,row in slices.items():
             other=alternate['slices'][dimension][label]
             text.append(f"| {dimension} | {label} | {row['passed']}/{row['n']} | {other['passed']}/{other['n']} |")
-    text += ["","## Evidence for each project section","",
+    text += ["",*live_section(root),"## Evidence for each project section","",
              "1. **Architecture:** A Protocol and a single SDK boundary, configuration-based aliases, and retry/fallback behavior exercised under scripted faults.",
              "2. **Structured outputs and tools:** Pydantic validation and gateway schema enforcement, validate/retry/repair, and actual tool loops. The database enforces ownership, policy, and confirmation bound to the specific action.",
              "3. **Guardrails:** Arabic/English normalization, deterministic blocking, and PII masking before model calls and logging, followed by a simulated classifier. Block and false-positive rates are reported for the deterministic layer alone and for the whole pipeline. Outputs, tool results, and citations are checked.",
@@ -146,6 +205,7 @@ def generate_reports(report,root):
               f"Pipeline default `stable_context` at run time: **{cache.get('pipeline_default_stable_context')}**. Targets measured on the simulator ({cache.get('targets_basis','')}):","",*target_lines,"",
               "## Response-cache experiment","","See artifacts/cache_benchmark.json for the fixed workload, before/after measurements and evaluation verdict attached to each step. The semantic tier is a deterministic lexical concept map with nearly binary scores; its threshold sweep has no real operating point and the tier stays disabled by default (ADR-008).","", "```json",json.dumps({k:v for k,v in cache.items() if k!='steps'},ensure_ascii=False,indent=2),"```","",
               "## Structured validation by language","","The report below counts actual validation attempts and first-pass outcomes, including failures; a schema's existence is not a pass rate.","","```json",json.dumps(report['structured_by_language'],ensure_ascii=False,indent=2),"```","",
+              *live_section(root),
               "## Self-host break-even","","Not computed: no real LLM throughput measured, no hardware cost supplied, and no live commercial bill. Do not derive LLM throughput from these HTTP simulator latencies. Both commercial-versus-self-host and gateway/open-weight-versus-self-host comparisons require actual inputs before calculating a number.","",
               "## Full-mark targets and their evidence boundary","",
               ("The >=65% cached-input and >=60% cost-reduction targets are met on the simulator's usage fields and illustrative tariffs (table above)." if targets and all(targets.values()) else "At least one cache target is not met on the simulator (table above)."),
@@ -237,11 +297,12 @@ def run_all(*,skip_tests=False):
             'tests':tests,'evaluations':evaluations,'guards':guards,'prompts':served_prompts,
             'regression':{'clean':clean,'degraded':bad,'baseline_sha256':hashlib.sha256((ROOT/'eval/baseline.simulator.json').read_bytes()).hexdigest()},
             'faults':faults,'demos':demos,'judge':judge_reports,'calibration':calibration,'cache':cache,'structured_by_language':structured,
-            'context_budget':measure(ROOT),'live_models':'NOT_RUN','human_calibration':'PENDING','self_host_throughput':'NOT_MEASURED','colab_fresh_runtime':'NOT_VERIFIED_LOCALLY'}
+            'context_budget':measure(ROOT),'live_models':(f"RECORDED:{latest_live_run(ROOT)[1]['run_id']}:{latest_live_run(ROOT)[1]['status']}" if latest_live_run(ROOT) else 'NOT_RUN'),
+            'human_calibration':'PENDING','self_host_throughput':'NOT_MEASURED','colab_fresh_runtime':'NOT_VERIFIED_LOCALLY'}
     write(out/'report.json',report);generate_reports(report,ROOT)
     guards_pass=all(layer['attack_block_rate']>=.95 and layer['legitimate_false_positive_rate']==0 for layer in report['guards']['layers'].values())
     passed=clean['status']=='PASS' and bad['status']=='BLOCK' and faults['all_passed'] and all(x['passed'] for x in demos) and guards_pass and cache.get('status')=='PASS'
-    print(json.dumps({'local_checks':'PASS' if passed else 'FAIL','report':'artifacts/report.json','live_models':'NOT_RUN','human_calibration':'PENDING'},ensure_ascii=False),flush=True)
+    print(json.dumps({'local_checks':'PASS' if passed else 'FAIL','report':'artifacts/report.json','live_models':report['live_models'],'human_calibration':'PENDING'},ensure_ascii=False),flush=True)
     if not passed: raise RuntimeError('Verification failed; inspect generated report')
     return report
 

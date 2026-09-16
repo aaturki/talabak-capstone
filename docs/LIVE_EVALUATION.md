@@ -2,7 +2,7 @@
 
 ## Current evidence
 
-The live workflow is prepared but has not been run against a commercial model or a real open-weight model. No provider, key, or live price is selected by these scripts. Implementation tests use an injected local HTTP fixture and remain `TEST_ONLY`; they are not model-quality, spend, or human-calibration results.
+The live comparison ran on 2026-09-16 (`artifacts/live/20260916T160121Z-409d8f927a/`): OpenAI `gpt-5-mini` as the commercial route and DeepSeek `deepseek-flash` as the open-weight route, over all 144 golden cases, with the results rendered in `EVALUATION_REPORT.md` under "Live model runs" and the decision recorded in ADR-015. No human labels were collected, so the judge remains uncalibrated. Implementation tests still use an injected local HTTP fixture and remain `TEST_ONLY`; they are not model-quality, spend, or human-calibration results.
 
 The default application and `scripts/run_all.py` continue to use the simulator. Live artifacts are written separately under `artifacts/live/<unique-run-id>/`. A successful deterministic evaluation does not by itself establish live model evidence or a calibrated judge.
 
