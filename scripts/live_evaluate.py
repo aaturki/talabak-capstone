@@ -105,11 +105,15 @@ def preflight(config: dict) -> dict:
             issues.append(f"{alias}_requires_{expected}")
         caps = route.get("capabilities") if isinstance(route.get("capabilities"), dict) else {}
         auth = route.get("auth") if isinstance(route.get("auth"), dict) else {}
-        for capability in ("json_schema", "tools"):
-            if caps.get(capability) is not True:
-                issues.append(f"{alias}_requires_{capability}")
-        # schema_with_tools false is served with tool-only turns; the wire pattern is disclosed.
+        if caps.get("tools") is not True:
+            issues.append(f"{alias}_requires_tools")
+        if caps.get("json_schema") is not True and caps.get("json_object") is not True:
+            issues.append(f"{alias}_requires_json_schema_or_json_object")
+        # schema_with_tools false is served with tool-only turns; json_object routes get the
+        # schema as an instruction plus validation; both wire patterns are disclosed.
         wire_pattern = "tools_only" if caps.get("schema_with_tools") is False else "schema_with_tools"
+        if caps.get("json_schema") is not True:
+            wire_pattern += "+json_object_mode"
         if alias == "open_weight":
             deployment = route.get("deployment")
             if deployment not in {"hosted", "self_hosted"}:

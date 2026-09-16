@@ -221,7 +221,7 @@ def preflight_config(config: dict, *, allow_live: bool = False) -> dict:
             raise ValueError("Live route capabilities must be explicitly selected booleans")
         if caps.get("token_parameter") not in {"max_tokens", "max_completion_tokens"}:
             raise ValueError("Select max_tokens or max_completion_tokens for this route")
-        if any(key in caps and type(caps[key]) is not bool for key in ("schema_with_tools", "developer_role")):
+        if any(key in caps and type(caps[key]) is not bool for key in ("schema_with_tools", "developer_role", "json_object")):
             raise ValueError("Optional route capabilities must be boolean")
         temperature = route.get("temperature", 0 if mode == "simulator" else None)
         if temperature is not None and (not caps["temperature"] or not _finite(temperature) or temperature > 2):
@@ -369,13 +369,20 @@ class SDKClient:
 
     def _kwargs(self, route, messages, schema, tools):
         caps = self._caps(route)
-        if schema is not None and not caps["json_schema"]:
+        json_mode_only = schema is not None and not caps["json_schema"]
+        if json_mode_only and not caps.get("json_object", False):
             raise ModelError("Required strict JSON schema capability is unsupported")
         if tools and not caps["tools"]:
             raise ModelError("Required tool capability is unsupported")
         if tools and schema is not None and not caps.get("schema_with_tools", True):
             raise ModelError("Combining required tools and JSON schema is unsupported")
         wire_messages = copy.deepcopy(messages)
+        if json_mode_only:
+            # JSON mode without provider-side schema enforcement: the schema travels as a
+            # trusted instruction; Pydantic validation and the repair loop enforce it.
+            wire_messages.append({"role": "developer", "content":
+                "Respond with exactly one JSON object that is valid under this JSON Schema; no prose and no markdown fences.\n"
+                + json.dumps(schema, ensure_ascii=False)})
         if not caps.get("developer_role", True):
             wire_messages = _fold_developer_messages(wire_messages)
         kwargs = {"model": route["model"], "messages": wire_messages,
@@ -383,7 +390,9 @@ class SDKClient:
         temperature = route.get("temperature", 0 if route["evidence_mode"] == "simulator" else None)
         if temperature is not None:
             kwargs["temperature"] = temperature
-        if schema is not None:
+        if json_mode_only:
+            kwargs["response_format"] = {"type": "json_object"}
+        elif schema is not None:
             kwargs["response_format"] = {"type": "json_schema", "json_schema": {
                 "name": schema.get("title", "StructuredAnswer"), "strict": True, "schema": schema}}
         if tools:

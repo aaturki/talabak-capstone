@@ -16,7 +16,7 @@ SAFE_ERROR_CODES = {"structured_validation_exhausted", "ungrounded_model_answer"
                     "unknown_tool", "tool_intent_mismatch", "tool_order_mismatch", "tool_action_mismatch", "tool_loop_limit",
                     "unsafe_structured_output", "pending_action_invalid"}
 # Served versions; config/models.json restates them explicitly (pipeline.prompt_versions).
-PROMPT_DEFAULTS = {"router": "v1", "workflow": "v1", "guard": "v2", "repair": "v2"}
+PROMPT_DEFAULTS = {"router": "v1", "workflow": "v1", "guard": "v3", "repair": "v2"}
 EXPECTED_ACTION_TOOL = {"order_status": "lookup_order", "return": "create_return_or_exchange", "exchange": "create_return_or_exchange",
                         "appointment": "book_store_appointment", "handoff": "handoff_to_support"}
 

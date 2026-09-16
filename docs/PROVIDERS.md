@@ -48,7 +48,8 @@ Default setup does not call `userdata` or reuse `OPENAI_API_KEY`. Secret-store e
 
 | Capability | Meaning |
 |---|---|
-| `json_schema` | Whether strict structured responses are supported. Required. |
+| `json_schema` | Whether strict structured responses are supported. Required unless `json_object` is true. |
+| `json_object` | Optional. If true and `json_schema` is false, structured stages use JSON mode: the schema is sent as a trusted instruction, the provider only guarantees valid JSON, and Pydantic validation plus the repair loop enforce the contract (wire pattern `…+json_object_mode`). |
 | `tools` | Whether model tool calls are supported. Required. |
 | `schema_with_tools` | Whether one request may combine tools and a response schema. If false, the tools stage sends tool-only turns (`wire_pattern: tools_only` in every tools-stage usage row and in preflight); the delivered message is the tool result in both patterns. |
 | `parallel_tool_calls` | Whether to send the corresponding request option. |

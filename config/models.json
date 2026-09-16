@@ -39,7 +39,7 @@
   "fallbacks": {"primary": ["fallback"], "fallback": [], "judge": ["fallback"], "open_weight": []},
   "pipeline": {
     "stable_context": true,
-    "prompt_versions": {"router": "v1", "workflow": "v1", "guard": "v2", "repair": "v2"}
+    "prompt_versions": {"router": "v1", "workflow": "v1", "guard": "v3", "repair": "v2"}
   },
   "notice": "Every route is a deterministic local simulator. Tariffs are illustrative assumptions, not provider quotes, bills, or evidence of model quality. No commercial or open-weight model has run."
 }

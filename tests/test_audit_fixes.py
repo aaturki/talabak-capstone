@@ -219,8 +219,8 @@ def test_repair_feedback_names_locations_and_messages_but_never_the_rejected_val
 def test_prompt_versions_are_explicit_configuration(store):
     with SDKClient() as client:
         app = Application(client, store)
-        assert app.prompt_files == {"router": "router.v1.md", "workflow": "workflow.v1.md", "guard": "guard.v2.md", "repair": "repair.v2.md", "context": "context.v1.md"}
-        assert app.prompts["guard"].startswith("# guard-v2") and app.prompts["repair"].startswith("# repair-v2")
+        assert app.prompt_files == {"router": "router.v1.md", "workflow": "workflow.v1.md", "guard": "guard.v3.md", "repair": "repair.v2.md", "context": "context.v1.md"}
+        assert app.prompts["guard"].startswith("# guard-v3") and app.prompts["repair"].startswith("# repair-v2")
         assert "context" not in Application(client, store, stable_context=False).prompt_files
         older = Application(client, store, prompt_versions={"guard": "v1"})
         assert older.prompt_files["guard"] == "guard.v1.md" and older.prompt_version != app.prompt_version
@@ -228,7 +228,7 @@ def test_prompt_versions_are_explicit_configuration(store):
             Application(client, store, prompt_versions={"guard": "latest"})
 
 
-@pytest.mark.parametrize("prompt_file", ["router.v1.md", "context.v1.md", "guard.v2.md", "repair.v2.md"])
+@pytest.mark.parametrize("prompt_file", ["router.v1.md", "context.v1.md", "guard.v3.md", "repair.v2.md"])
 def test_served_prompt_text_leaking_through_a_model_field_is_blocked(store, prompt_file):
     leaked = (ROOT / "prompts" / prompt_file).read_text("utf-8")[:450]
     client = Scripted(request(reason=leaked), turns=[[{"id": "c1", "name": "create_return_or_exchange",
@@ -388,6 +388,24 @@ def test_configured_extra_body_reaches_the_wire_but_cannot_override_the_contract
     config["routes"]["primary"]["extra_body"] = {"model": "other"}
     with pytest.raises(ValueError, match="extra_body"):
         live_client(config, handler)
+
+
+def test_json_object_mode_sends_the_schema_as_an_instruction_when_strict_schema_is_unsupported():
+    config, bodies = live_config(json_schema=False, json_object=True, developer_role=False), []
+    def handler(request_):
+        bodies.append(json.loads(request_.content))
+        return httpx.Response(200, json=wire(content=canonical({"blocked": False, "reason": "allowed"})))
+    with live_client(config, handler) as client:
+        reply = client.complete([{"role": "system", "content": "# guard"}, {"role": "user", "content": "hours?"}], schema=wire_schema(GuardDecision))
+    body = bodies[0]
+    assert body["response_format"] == {"type": "json_object"}
+    assert body["messages"][-1]["role"] == "user" and "GuardDecision" in body["messages"][-1]["content"]
+    assert body["messages"][-1]["content"].startswith("[Application instruction]")
+    assert GuardDecision.model_validate_json(reply.content).blocked is False
+    config["routes"]["primary"]["capabilities"]["json_object"] = False
+    with live_client(config, handler) as client:
+        with pytest.raises(ModelError, match="unsupported"):
+            client.complete([], schema=wire_schema(GuardDecision))
 
 
 def test_budget_status_exposes_upper_bound_and_partial_usage_counts():
