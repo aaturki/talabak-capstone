@@ -361,18 +361,23 @@ def build(root: Path, output: Path) -> dict:
 
     loop_store = Store(":memory:")
     loop_app = Application(client, loop_store, max_tool_rounds=3)
+    loop_result = Result(status="pending", message="")
+    loop_request = loop_app.route_extract("Where is my order ORD-1001?", loop_result)
+    # The fault makes every tools-stage reply another read-only tool call.
     set_fault({"mode": "tool_loop", "model": runtime_config["routes"]["primary"]["model"], "count": 10})
     try:
-        loop_result = loop_app.handle_message("Where is my order ORD-1001?", Session())
+        loop_app.tools(loop_request, Session(), loop_result)
+        stop_code = "no stop"
+    except ValueError as stop:
+        stop_code = str(stop)
     finally:
         set_fault({"mode": "off"})
     loop_events = [event for event in loop_result.trace if event.get("stage") == "tools"]
-    assert loop_result.status == "error" and any(event.get("code") == "tool_loop_limit" for event in loop_result.trace)
-    assert len(loop_events) == 3 and loop_store.count_actions() == 0
-    print("PASS: bounded stop after", len(loop_events), "tool iterations (max_tool_rounds=3); actions written:", loop_store.count_actions())
+    assert stop_code == "tool_loop_limit" and len(loop_events) == 3 and loop_store.count_actions() == 0
+    print("PASS: bounded stop with code", stop_code, "after", len(loop_events), "tool iterations (max_tool_rounds=3); actions written:", loop_store.count_actions())
     for event in loop_events:
         print(event)
-    print([event for event in loop_result.trace if event.get("event") == "safe_failure"])
+    print("Model calls made in the loop:", len([u for u in loop_result.usage if u["stage"] == "tools"]))
     ''')
     md('''
     ### Authorization gate and next-turn confirmation
