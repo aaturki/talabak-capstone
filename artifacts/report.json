@@ -1,5 +1,5 @@
 {
-  "created_at_utc": "2026-09-16T15:12:31.437444+00:00",
+  "created_at_utc": "2026-09-16T15:42:03.943769+00:00",
   "python": "3.12.14",
   "evidence_mode": "simulator",
   "tests": {
@@ -11,20 +11,20 @@
         "n": 144,
         "passed": 144,
         "pass_rate": 1.0,
-        "latency_ms_p50": 17.152099986560643,
-        "latency_ms_p95": 31.370299984700978,
+        "latency_ms_p50": 17.008499999064952,
+        "latency_ms_p95": 33.61759998369962,
         "model_calls": 408,
-        "input_tokens": 725817,
+        "input_tokens": 738297,
         "output_tokens": 14474,
-        "cached_tokens": 698670,
+        "cached_tokens": 711054,
         "cost_usd": 0.0,
-        "simulated_cost_usd": 0.2597105,
+        "simulated_cost_usd": 0.2629025,
         "estimated_cost_usd": null,
         "usage_coverage": {
           "input_tokens": {
             "known": 408,
             "unknown": 0,
-            "known_total": 725817
+            "known_total": 738297
           },
           "output_tokens": {
             "known": 408,
@@ -34,7 +34,7 @@
           "cached_tokens": {
             "known": 408,
             "unknown": 0,
-            "known_total": 698670
+            "known_total": 711054
           },
           "cost_usd": {
             "known": 408,
@@ -44,7 +44,7 @@
           "simulated_cost_usd": {
             "known": 408,
             "unknown": 0,
-            "known_total": 0.2597105
+            "known_total": 0.2629025
           },
           "estimated_cost_usd": {
             "known": 0,
@@ -59,20 +59,20 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 15.917799988528714,
-            "latency_ms_p95": 35.48550000414252,
+            "latency_ms_p50": 15.686500002630055,
+            "latency_ms_p95": 36.387500003911555,
             "model_calls": 66,
-            "input_tokens": 113226,
+            "input_tokens": 115530,
             "output_tokens": 2384,
-            "cached_tokens": 111138,
+            "cached_tokens": 113442,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.0394085,
+            "simulated_cost_usd": 0.0399845,
             "estimated_cost_usd": null,
             "usage_coverage": {
               "input_tokens": {
                 "known": 66,
                 "unknown": 0,
-                "known_total": 113226
+                "known_total": 115530
               },
               "output_tokens": {
                 "known": 66,
@@ -82,7 +82,7 @@
               "cached_tokens": {
                 "known": 66,
                 "unknown": 0,
-                "known_total": 111138
+                "known_total": 113442
               },
               "cost_usd": {
                 "known": 66,
@@ -92,7 +92,7 @@
               "simulated_cost_usd": {
                 "known": 66,
                 "unknown": 0,
-                "known_total": 0.0394085
+                "known_total": 0.0399845
               },
               "estimated_cost_usd": {
                 "known": 0,
@@ -105,20 +105,20 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 21.849499986274168,
-            "latency_ms_p95": 27.702699997462332,
+            "latency_ms_p50": 21.73659999971278,
+            "latency_ms_p95": 29.603500006487593,
             "model_calls": 78,
-            "input_tokens": 144329,
+            "input_tokens": 146345,
             "output_tokens": 3455,
-            "cached_tokens": 138279,
+            "cached_tokens": 140295,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.05443975,
+            "simulated_cost_usd": 0.05494375,
             "estimated_cost_usd": null,
             "usage_coverage": {
               "input_tokens": {
                 "known": 78,
                 "unknown": 0,
-                "known_total": 144329
+                "known_total": 146345
               },
               "output_tokens": {
                 "known": 78,
@@ -128,7 +128,7 @@
               "cached_tokens": {
                 "known": 78,
                 "unknown": 0,
-                "known_total": 138279
+                "known_total": 140295
               },
               "cost_usd": {
                 "known": 78,
@@ -138,7 +138,7 @@
               "simulated_cost_usd": {
                 "known": 78,
                 "unknown": 0,
-                "known_total": 0.05443975
+                "known_total": 0.05494375
               },
               "estimated_cost_usd": {
                 "known": 0,
@@ -151,20 +151,20 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 13.284399989061058,
-            "latency_ms_p95": 15.01450000796467,
+            "latency_ms_p50": 13.278900005389005,
+            "latency_ms_p95": 15.778899978613481,
             "model_calls": 40,
-            "input_tokens": 62462,
+            "input_tokens": 64382,
             "output_tokens": 880,
-            "cached_tokens": 58501,
+            "cached_tokens": 60325,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.02210625,
+            "simulated_cost_usd": 0.02265825,
             "estimated_cost_usd": null,
             "usage_coverage": {
               "input_tokens": {
                 "known": 40,
                 "unknown": 0,
-                "known_total": 62462
+                "known_total": 64382
               },
               "output_tokens": {
                 "known": 40,
@@ -174,7 +174,7 @@
               "cached_tokens": {
                 "known": 40,
                 "unknown": 0,
-                "known_total": 58501
+                "known_total": 60325
               },
               "cost_usd": {
                 "known": 40,
@@ -184,7 +184,7 @@
               "simulated_cost_usd": {
                 "known": 40,
                 "unknown": 0,
-                "known_total": 0.02210625
+                "known_total": 0.02265825
               },
               "estimated_cost_usd": {
                 "known": 0,
@@ -197,20 +197,20 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 16.950200020801276,
-            "latency_ms_p95": 31.370299984700978,
+            "latency_ms_p50": 16.542600002139807,
+            "latency_ms_p95": 31.4230999792926,
             "model_calls": 67,
-            "input_tokens": 117065,
+            "input_tokens": 119177,
             "output_tokens": 2274,
-            "cached_tokens": 114773,
+            "cached_tokens": 116885,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.04008125,
+            "simulated_cost_usd": 0.04060925,
             "estimated_cost_usd": null,
             "usage_coverage": {
               "input_tokens": {
                 "known": 67,
                 "unknown": 0,
-                "known_total": 117065
+                "known_total": 119177
               },
               "output_tokens": {
                 "known": 67,
@@ -220,7 +220,7 @@
               "cached_tokens": {
                 "known": 67,
                 "unknown": 0,
-                "known_total": 114773
+                "known_total": 116885
               },
               "cost_usd": {
                 "known": 67,
@@ -230,7 +230,7 @@
               "simulated_cost_usd": {
                 "known": 67,
                 "unknown": 0,
-                "known_total": 0.04008125
+                "known_total": 0.04060925
               },
               "estimated_cost_usd": {
                 "known": 0,
@@ -243,20 +243,20 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 19.149300002027303,
-            "latency_ms_p95": 22.925499972188845,
+            "latency_ms_p50": 19.584900001063943,
+            "latency_ms_p95": 22.843100014142692,
             "model_calls": 74,
-            "input_tokens": 135850,
+            "input_tokens": 137770,
             "output_tokens": 2080,
-            "cached_tokens": 129065,
+            "cached_tokens": 130985,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.04737125,
+            "simulated_cost_usd": 0.04785125,
             "estimated_cost_usd": null,
             "usage_coverage": {
               "input_tokens": {
                 "known": 74,
                 "unknown": 0,
-                "known_total": 135850
+                "known_total": 137770
               },
               "output_tokens": {
                 "known": 74,
@@ -266,7 +266,7 @@
               "cached_tokens": {
                 "known": 74,
                 "unknown": 0,
-                "known_total": 129065
+                "known_total": 130985
               },
               "cost_usd": {
                 "known": 74,
@@ -276,7 +276,7 @@
               "simulated_cost_usd": {
                 "known": 74,
                 "unknown": 0,
-                "known_total": 0.04737125
+                "known_total": 0.04785125
               },
               "estimated_cost_usd": {
                 "known": 0,
@@ -289,20 +289,20 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 22.814199997810647,
-            "latency_ms_p95": 38.35680001066066,
+            "latency_ms_p50": 22.510900016641244,
+            "latency_ms_p95": 38.22059999220073,
             "model_calls": 83,
-            "input_tokens": 152885,
+            "input_tokens": 155093,
             "output_tokens": 3401,
-            "cached_tokens": 146914,
+            "cached_tokens": 149122,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.0563035,
+            "simulated_cost_usd": 0.0568555,
             "estimated_cost_usd": null,
             "usage_coverage": {
               "input_tokens": {
                 "known": 83,
                 "unknown": 0,
-                "known_total": 152885
+                "known_total": 155093
               },
               "output_tokens": {
                 "known": 83,
@@ -312,7 +312,7 @@
               "cached_tokens": {
                 "known": 83,
                 "unknown": 0,
-                "known_total": 146914
+                "known_total": 149122
               },
               "cost_usd": {
                 "known": 83,
@@ -322,7 +322,7 @@
               "simulated_cost_usd": {
                 "known": 83,
                 "unknown": 0,
-                "known_total": 0.0563035
+                "known_total": 0.0568555
               },
               "estimated_cost_usd": {
                 "known": 0,
@@ -337,20 +337,20 @@
             "n": 96,
             "passed": 96,
             "pass_rate": 1.0,
-            "latency_ms_p50": 17.170699982671067,
-            "latency_ms_p95": 37.0573999825865,
+            "latency_ms_p50": 17.011299991281703,
+            "latency_ms_p95": 36.8529999977909,
             "model_calls": 246,
-            "input_tokens": 438311,
+            "input_tokens": 445799,
             "output_tokens": 8870,
-            "cached_tokens": 419520,
+            "cached_tokens": 426912,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.159151,
+            "simulated_cost_usd": 0.161095,
             "estimated_cost_usd": null,
             "usage_coverage": {
               "input_tokens": {
                 "known": 246,
                 "unknown": 0,
-                "known_total": 438311
+                "known_total": 445799
               },
               "output_tokens": {
                 "known": 246,
@@ -360,7 +360,7 @@
               "cached_tokens": {
                 "known": 246,
                 "unknown": 0,
-                "known_total": 419520
+                "known_total": 426912
               },
               "cost_usd": {
                 "known": 246,
@@ -370,7 +370,7 @@
               "simulated_cost_usd": {
                 "known": 246,
                 "unknown": 0,
-                "known_total": 0.159151
+                "known_total": 0.161095
               },
               "estimated_cost_usd": {
                 "known": 0,
@@ -383,20 +383,20 @@
             "n": 48,
             "passed": 48,
             "pass_rate": 1.0,
-            "latency_ms_p50": 15.917799988528714,
-            "latency_ms_p95": 30.94060000148602,
+            "latency_ms_p50": 15.686500002630055,
+            "latency_ms_p95": 31.4230999792926,
             "model_calls": 162,
-            "input_tokens": 287506,
+            "input_tokens": 292498,
             "output_tokens": 5604,
-            "cached_tokens": 279150,
+            "cached_tokens": 284142,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.1005595,
+            "simulated_cost_usd": 0.1018075,
             "estimated_cost_usd": null,
             "usage_coverage": {
               "input_tokens": {
                 "known": 162,
                 "unknown": 0,
-                "known_total": 287506
+                "known_total": 292498
               },
               "output_tokens": {
                 "known": 162,
@@ -406,7 +406,7 @@
               "cached_tokens": {
                 "known": 162,
                 "unknown": 0,
-                "known_total": 279150
+                "known_total": 284142
               },
               "cost_usd": {
                 "known": 162,
@@ -416,7 +416,7 @@
               "simulated_cost_usd": {
                 "known": 162,
                 "unknown": 0,
-                "known_total": 0.1005595
+                "known_total": 0.1018075
               },
               "estimated_cost_usd": {
                 "known": 0,
@@ -431,20 +431,20 @@
             "n": 23,
             "passed": 23,
             "pass_rate": 1.0,
-            "latency_ms_p50": 14.967399998567998,
-            "latency_ms_p95": 25.05709999240935,
+            "latency_ms_p50": 14.714499993715435,
+            "latency_ms_p95": 26.814699987880886,
             "model_calls": 60,
-            "input_tokens": 101953,
+            "input_tokens": 104161,
             "output_tokens": 1814,
-            "cached_tokens": 94323,
+            "cached_tokens": 96435,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.03846675,
+            "simulated_cost_usd": 0.03909075,
             "estimated_cost_usd": null,
             "usage_coverage": {
               "input_tokens": {
                 "known": 60,
                 "unknown": 0,
-                "known_total": 101953
+                "known_total": 104161
               },
               "output_tokens": {
                 "known": 60,
@@ -454,7 +454,7 @@
               "cached_tokens": {
                 "known": 60,
                 "unknown": 0,
-                "known_total": 94323
+                "known_total": 96435
               },
               "cost_usd": {
                 "known": 60,
@@ -464,7 +464,7 @@
               "simulated_cost_usd": {
                 "known": 60,
                 "unknown": 0,
-                "known_total": 0.03846675
+                "known_total": 0.03909075
               },
               "estimated_cost_usd": {
                 "known": 0,
@@ -477,20 +477,20 @@
             "n": 29,
             "passed": 29,
             "pass_rate": 1.0,
-            "latency_ms_p50": 1.2769000022672117,
-            "latency_ms_p95": 35.48550000414252,
+            "latency_ms_p50": 1.344699994660914,
+            "latency_ms_p95": 36.8529999977909,
             "model_calls": 19,
-            "input_tokens": 31232,
+            "input_tokens": 32096,
             "output_tokens": 539,
-            "cached_tokens": 30620,
+            "cached_tokens": 31484,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.010423,
+            "simulated_cost_usd": 0.010639,
             "estimated_cost_usd": null,
             "usage_coverage": {
               "input_tokens": {
                 "known": 19,
                 "unknown": 0,
-                "known_total": 31232
+                "known_total": 32096
               },
               "output_tokens": {
                 "known": 19,
@@ -500,7 +500,7 @@
               "cached_tokens": {
                 "known": 19,
                 "unknown": 0,
-                "known_total": 30620
+                "known_total": 31484
               },
               "cost_usd": {
                 "known": 19,
@@ -510,7 +510,7 @@
               "simulated_cost_usd": {
                 "known": 19,
                 "unknown": 0,
-                "known_total": 0.010423
+                "known_total": 0.010639
               },
               "estimated_cost_usd": {
                 "known": 0,
@@ -523,20 +523,20 @@
             "n": 92,
             "passed": 92,
             "pass_rate": 1.0,
-            "latency_ms_p50": 19.732699991436675,
-            "latency_ms_p95": 31.370299984700978,
+            "latency_ms_p50": 19.62239999556914,
+            "latency_ms_p95": 33.61759998369962,
             "model_calls": 329,
-            "input_tokens": 592632,
+            "input_tokens": 602040,
             "output_tokens": 12121,
-            "cached_tokens": 573727,
+            "cached_tokens": 583135,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.21082075,
+            "simulated_cost_usd": 0.21317275,
             "estimated_cost_usd": null,
             "usage_coverage": {
               "input_tokens": {
                 "known": 329,
                 "unknown": 0,
-                "known_total": 592632
+                "known_total": 602040
               },
               "output_tokens": {
                 "known": 329,
@@ -546,7 +546,7 @@
               "cached_tokens": {
                 "known": 329,
                 "unknown": 0,
-                "known_total": 573727
+                "known_total": 583135
               },
               "cost_usd": {
                 "known": 329,
@@ -556,7 +556,7 @@
               "simulated_cost_usd": {
                 "known": 329,
                 "unknown": 0,
-                "known_total": 0.21082075
+                "known_total": 0.21317275
               },
               "estimated_cost_usd": {
                 "known": 0,
@@ -571,20 +571,20 @@
             "n": 78,
             "passed": 78,
             "pass_rate": 1.0,
-            "latency_ms_p50": 18.26380001148209,
-            "latency_ms_p95": 38.35680001066066,
+            "latency_ms_p50": 18.814000010024756,
+            "latency_ms_p95": 38.22059999220073,
             "model_calls": 221,
-            "input_tokens": 401580,
+            "input_tokens": 407724,
             "output_tokens": 8492,
-            "cached_tokens": 388105,
+            "cached_tokens": 394249,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.14446925,
+            "simulated_cost_usd": 0.14600525,
             "estimated_cost_usd": null,
             "usage_coverage": {
               "input_tokens": {
                 "known": 221,
                 "unknown": 0,
-                "known_total": 401580
+                "known_total": 407724
               },
               "output_tokens": {
                 "known": 221,
@@ -594,7 +594,7 @@
               "cached_tokens": {
                 "known": 221,
                 "unknown": 0,
-                "known_total": 388105
+                "known_total": 394249
               },
               "cost_usd": {
                 "known": 221,
@@ -604,7 +604,7 @@
               "simulated_cost_usd": {
                 "known": 221,
                 "unknown": 0,
-                "known_total": 0.14446925
+                "known_total": 0.14600525
               },
               "estimated_cost_usd": {
                 "known": 0,
@@ -617,20 +617,20 @@
             "n": 29,
             "passed": 29,
             "pass_rate": 1.0,
-            "latency_ms_p50": 13.765199983026832,
-            "latency_ms_p95": 23.45540001988411,
+            "latency_ms_p50": 13.493599981302395,
+            "latency_ms_p95": 23.83330001612194,
             "model_calls": 74,
-            "input_tokens": 125168,
+            "input_tokens": 127952,
             "output_tokens": 1855,
-            "cached_tokens": 116887,
+            "cached_tokens": 119575,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.04492275,
+            "simulated_cost_usd": 0.04569075,
             "estimated_cost_usd": null,
             "usage_coverage": {
               "input_tokens": {
                 "known": 74,
                 "unknown": 0,
-                "known_total": 125168
+                "known_total": 127952
               },
               "output_tokens": {
                 "known": 74,
@@ -640,7 +640,7 @@
               "cached_tokens": {
                 "known": 74,
                 "unknown": 0,
-                "known_total": 116887
+                "known_total": 119575
               },
               "cost_usd": {
                 "known": 74,
@@ -650,7 +650,7 @@
               "simulated_cost_usd": {
                 "known": 74,
                 "unknown": 0,
-                "known_total": 0.04492275
+                "known_total": 0.04569075
               },
               "estimated_cost_usd": {
                 "known": 0,
@@ -663,20 +663,20 @@
             "n": 37,
             "passed": 37,
             "pass_rate": 1.0,
-            "latency_ms_p50": 17.022899992298335,
-            "latency_ms_p95": 25.99299998837523,
+            "latency_ms_p50": 17.011299991281703,
+            "latency_ms_p95": 26.814699987880886,
             "model_calls": 113,
-            "input_tokens": 199069,
+            "input_tokens": 202621,
             "output_tokens": 4127,
-            "cached_tokens": 193678,
+            "cached_tokens": 197230,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.0703185,
+            "simulated_cost_usd": 0.0712065,
             "estimated_cost_usd": null,
             "usage_coverage": {
               "input_tokens": {
                 "known": 113,
                 "unknown": 0,
-                "known_total": 199069
+                "known_total": 202621
               },
               "output_tokens": {
                 "known": 113,
@@ -686,7 +686,7 @@
               "cached_tokens": {
                 "known": 113,
                 "unknown": 0,
-                "known_total": 193678
+                "known_total": 197230
               },
               "cost_usd": {
                 "known": 113,
@@ -696,7 +696,7 @@
               "simulated_cost_usd": {
                 "known": 113,
                 "unknown": 0,
-                "known_total": 0.0703185
+                "known_total": 0.0712065
               },
               "estimated_cost_usd": {
                 "known": 0,
@@ -718,7 +718,7 @@
       ],
       "failed_case_ids": [],
       "limits": "Simulator token counts/tariffs are not provider bills or real model quality. Latency is this local harness run, not a measured self-hosted LLM throughput.",
-      "created_at_utc": "2026-09-16T15:12:09.071637+00:00",
+      "created_at_utc": "2026-09-16T15:41:41.613925+00:00",
       "alias": "primary",
       "cache_enabled": true,
       "dataset_audit": {
@@ -759,20 +759,20 @@
         "n": 144,
         "passed": 144,
         "pass_rate": 1.0,
-        "latency_ms_p50": 16.92259998526424,
-        "latency_ms_p95": 31.040600006235763,
+        "latency_ms_p50": 17.226299998583272,
+        "latency_ms_p95": 30.28679999988526,
         "model_calls": 408,
-        "input_tokens": 725771,
+        "input_tokens": 738251,
         "output_tokens": 14446,
-        "cached_tokens": 698670,
+        "cached_tokens": 711054,
         "cost_usd": 0.0,
-        "simulated_cost_usd": 0.02595525,
+        "simulated_cost_usd": 0.02627445,
         "estimated_cost_usd": null,
         "usage_coverage": {
           "input_tokens": {
             "known": 408,
             "unknown": 0,
-            "known_total": 725771
+            "known_total": 738251
           },
           "output_tokens": {
             "known": 408,
@@ -782,7 +782,7 @@
           "cached_tokens": {
             "known": 408,
             "unknown": 0,
-            "known_total": 698670
+            "known_total": 711054
           },
           "cost_usd": {
             "known": 408,
@@ -792,7 +792,7 @@
           "simulated_cost_usd": {
             "known": 408,
             "unknown": 0,
-            "known_total": 0.02595525
+            "known_total": 0.02627445
           },
           "estimated_cost_usd": {
             "known": 0,
@@ -807,20 +807,20 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 16.27979998011142,
-            "latency_ms_p95": 37.01179998461157,
+            "latency_ms_p50": 15.237199986586347,
+            "latency_ms_p95": 36.66969999903813,
             "model_calls": 66,
-            "input_tokens": 113226,
+            "input_tokens": 115530,
             "output_tokens": 2391,
-            "cached_tokens": 111138,
+            "cached_tokens": 113442,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.00394365,
+            "simulated_cost_usd": 0.00400125,
             "estimated_cost_usd": null,
             "usage_coverage": {
               "input_tokens": {
                 "known": 66,
                 "unknown": 0,
-                "known_total": 113226
+                "known_total": 115530
               },
               "output_tokens": {
                 "known": 66,
@@ -830,7 +830,7 @@
               "cached_tokens": {
                 "known": 66,
                 "unknown": 0,
-                "known_total": 111138
+                "known_total": 113442
               },
               "cost_usd": {
                 "known": 66,
@@ -840,7 +840,7 @@
               "simulated_cost_usd": {
                 "known": 66,
                 "unknown": 0,
-                "known_total": 0.00394365
+                "known_total": 0.00400125
               },
               "estimated_cost_usd": {
                 "known": 0,
@@ -853,20 +853,20 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 22.31890000985004,
-            "latency_ms_p95": 27.582100010477006,
+            "latency_ms_p50": 21.20770001783967,
+            "latency_ms_p95": 26.741899986518547,
             "model_calls": 78,
-            "input_tokens": 144351,
+            "input_tokens": 146367,
             "output_tokens": 3453,
-            "cached_tokens": 138279,
+            "cached_tokens": 140295,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.005445375,
+            "simulated_cost_usd": 0.005495775,
             "estimated_cost_usd": null,
             "usage_coverage": {
               "input_tokens": {
                 "known": 78,
                 "unknown": 0,
-                "known_total": 144351
+                "known_total": 146367
               },
               "output_tokens": {
                 "known": 78,
@@ -876,7 +876,7 @@
               "cached_tokens": {
                 "known": 78,
                 "unknown": 0,
-                "known_total": 138279
+                "known_total": 140295
               },
               "cost_usd": {
                 "known": 78,
@@ -886,7 +886,7 @@
               "simulated_cost_usd": {
                 "known": 78,
                 "unknown": 0,
-                "known_total": 0.005445375
+                "known_total": 0.005495775
               },
               "estimated_cost_usd": {
                 "known": 0,
@@ -899,20 +899,20 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 13.60400000703521,
-            "latency_ms_p95": 15.242399997077882,
+            "latency_ms_p50": 13.58920001075603,
+            "latency_ms_p95": 15.753000014228746,
             "model_calls": 40,
-            "input_tokens": 62462,
+            "input_tokens": 64382,
             "output_tokens": 880,
-            "cached_tokens": 58501,
+            "cached_tokens": 60325,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.002210625,
+            "simulated_cost_usd": 0.002265825,
             "estimated_cost_usd": null,
             "usage_coverage": {
               "input_tokens": {
                 "known": 40,
                 "unknown": 0,
-                "known_total": 62462
+                "known_total": 64382
               },
               "output_tokens": {
                 "known": 40,
@@ -922,7 +922,7 @@
               "cached_tokens": {
                 "known": 40,
                 "unknown": 0,
-                "known_total": 58501
+                "known_total": 60325
               },
               "cost_usd": {
                 "known": 40,
@@ -932,7 +932,7 @@
               "simulated_cost_usd": {
                 "known": 40,
                 "unknown": 0,
-                "known_total": 0.002210625
+                "known_total": 0.002265825
               },
               "estimated_cost_usd": {
                 "known": 0,
@@ -945,20 +945,20 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 16.67419998557307,
-            "latency_ms_p95": 31.040600006235763,
+            "latency_ms_p50": 16.738199978135526,
+            "latency_ms_p95": 30.28679999988526,
             "model_calls": 67,
-            "input_tokens": 117067,
+            "input_tokens": 119179,
             "output_tokens": 2271,
-            "cached_tokens": 114773,
+            "cached_tokens": 116885,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.004007125,
+            "simulated_cost_usd": 0.004059925,
             "estimated_cost_usd": null,
             "usage_coverage": {
               "input_tokens": {
                 "known": 67,
                 "unknown": 0,
-                "known_total": 117067
+                "known_total": 119179
               },
               "output_tokens": {
                 "known": 67,
@@ -968,7 +968,7 @@
               "cached_tokens": {
                 "known": 67,
                 "unknown": 0,
-                "known_total": 114773
+                "known_total": 116885
               },
               "cost_usd": {
                 "known": 67,
@@ -978,7 +978,7 @@
               "simulated_cost_usd": {
                 "known": 67,
                 "unknown": 0,
-                "known_total": 0.004007125
+                "known_total": 0.004059925
               },
               "estimated_cost_usd": {
                 "known": 0,
@@ -991,20 +991,20 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 19.791800004895777,
-            "latency_ms_p95": 22.615499998209998,
+            "latency_ms_p50": 19.645100022898987,
+            "latency_ms_p95": 23.22990001994185,
             "model_calls": 74,
-            "input_tokens": 135794,
+            "input_tokens": 137714,
             "output_tokens": 2052,
-            "cached_tokens": 129065,
+            "cached_tokens": 130985,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.004720325,
+            "simulated_cost_usd": 0.004768325,
             "estimated_cost_usd": null,
             "usage_coverage": {
               "input_tokens": {
                 "known": 74,
                 "unknown": 0,
-                "known_total": 135794
+                "known_total": 137714
               },
               "output_tokens": {
                 "known": 74,
@@ -1014,7 +1014,7 @@
               "cached_tokens": {
                 "known": 74,
                 "unknown": 0,
-                "known_total": 129065
+                "known_total": 130985
               },
               "cost_usd": {
                 "known": 74,
@@ -1024,7 +1024,7 @@
               "simulated_cost_usd": {
                 "known": 74,
                 "unknown": 0,
-                "known_total": 0.004720325
+                "known_total": 0.004768325
               },
               "estimated_cost_usd": {
                 "known": 0,
@@ -1037,20 +1037,20 @@
             "n": 24,
             "passed": 24,
             "pass_rate": 1.0,
-            "latency_ms_p50": 22.82980000018142,
-            "latency_ms_p95": 38.175699999555945,
+            "latency_ms_p50": 22.654900007182732,
+            "latency_ms_p95": 37.41240000817925,
             "model_calls": 83,
-            "input_tokens": 152871,
+            "input_tokens": 155079,
             "output_tokens": 3399,
-            "cached_tokens": 146914,
+            "cached_tokens": 149122,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.00562815,
+            "simulated_cost_usd": 0.00568335,
             "estimated_cost_usd": null,
             "usage_coverage": {
               "input_tokens": {
                 "known": 83,
                 "unknown": 0,
-                "known_total": 152871
+                "known_total": 155079
               },
               "output_tokens": {
                 "known": 83,
@@ -1060,7 +1060,7 @@
               "cached_tokens": {
                 "known": 83,
                 "unknown": 0,
-                "known_total": 146914
+                "known_total": 149122
               },
               "cost_usd": {
                 "known": 83,
@@ -1070,7 +1070,7 @@
               "simulated_cost_usd": {
                 "known": 83,
                 "unknown": 0,
-                "known_total": 0.00562815
+                "known_total": 0.00568335
               },
               "estimated_cost_usd": {
                 "known": 0,
@@ -1085,20 +1085,20 @@
             "n": 96,
             "passed": 96,
             "pass_rate": 1.0,
-            "latency_ms_p50": 16.92259998526424,
-            "latency_ms_p95": 37.01179998461157,
+            "latency_ms_p50": 17.233299993677065,
+            "latency_ms_p95": 36.66969999903813,
             "model_calls": 246,
-            "input_tokens": 438281,
+            "input_tokens": 445769,
             "output_tokens": 8849,
-            "cached_tokens": 419520,
+            "cached_tokens": 426912,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.0159037,
+            "simulated_cost_usd": 0.0160981,
             "estimated_cost_usd": null,
             "usage_coverage": {
               "input_tokens": {
                 "known": 246,
                 "unknown": 0,
-                "known_total": 438281
+                "known_total": 445769
               },
               "output_tokens": {
                 "known": 246,
@@ -1108,7 +1108,7 @@
               "cached_tokens": {
                 "known": 246,
                 "unknown": 0,
-                "known_total": 419520
+                "known_total": 426912
               },
               "cost_usd": {
                 "known": 246,
@@ -1118,7 +1118,7 @@
               "simulated_cost_usd": {
                 "known": 246,
                 "unknown": 0,
-                "known_total": 0.0159037
+                "known_total": 0.0160981
               },
               "estimated_cost_usd": {
                 "known": 0,
@@ -1131,20 +1131,20 @@
             "n": 48,
             "passed": 48,
             "pass_rate": 1.0,
-            "latency_ms_p50": 16.27979998011142,
-            "latency_ms_p95": 31.040600006235763,
+            "latency_ms_p50": 16.371099976822734,
+            "latency_ms_p95": 30.28679999988526,
             "model_calls": 162,
-            "input_tokens": 287490,
+            "input_tokens": 292482,
             "output_tokens": 5597,
-            "cached_tokens": 279150,
+            "cached_tokens": 284142,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.01005155,
+            "simulated_cost_usd": 0.01017635,
             "estimated_cost_usd": null,
             "usage_coverage": {
               "input_tokens": {
                 "known": 162,
                 "unknown": 0,
-                "known_total": 287490
+                "known_total": 292482
               },
               "output_tokens": {
                 "known": 162,
@@ -1154,7 +1154,7 @@
               "cached_tokens": {
                 "known": 162,
                 "unknown": 0,
-                "known_total": 279150
+                "known_total": 284142
               },
               "cost_usd": {
                 "known": 162,
@@ -1164,7 +1164,7 @@
               "simulated_cost_usd": {
                 "known": 162,
                 "unknown": 0,
-                "known_total": 0.01005155
+                "known_total": 0.01017635
               },
               "estimated_cost_usd": {
                 "known": 0,
@@ -1179,20 +1179,20 @@
             "n": 23,
             "passed": 23,
             "pass_rate": 1.0,
-            "latency_ms_p50": 14.113100012764335,
-            "latency_ms_p95": 23.942400002852082,
+            "latency_ms_p50": 15.084700018633157,
+            "latency_ms_p95": 25.656299985712394,
             "model_calls": 60,
-            "input_tokens": 101947,
+            "input_tokens": 104155,
             "output_tokens": 1818,
-            "cached_tokens": 94323,
+            "cached_tokens": 96435,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.003847675,
+            "simulated_cost_usd": 0.003910075,
             "estimated_cost_usd": null,
             "usage_coverage": {
               "input_tokens": {
                 "known": 60,
                 "unknown": 0,
-                "known_total": 101947
+                "known_total": 104155
               },
               "output_tokens": {
                 "known": 60,
@@ -1202,7 +1202,7 @@
               "cached_tokens": {
                 "known": 60,
                 "unknown": 0,
-                "known_total": 94323
+                "known_total": 96435
               },
               "cost_usd": {
                 "known": 60,
@@ -1212,7 +1212,7 @@
               "simulated_cost_usd": {
                 "known": 60,
                 "unknown": 0,
-                "known_total": 0.003847675
+                "known_total": 0.003910075
               },
               "estimated_cost_usd": {
                 "known": 0,
@@ -1225,20 +1225,20 @@
             "n": 29,
             "passed": 29,
             "pass_rate": 1.0,
-            "latency_ms_p50": 1.2919000000692904,
-            "latency_ms_p95": 37.23590000299737,
+            "latency_ms_p50": 1.3263000000733882,
+            "latency_ms_p95": 37.32500001206063,
             "model_calls": 19,
-            "input_tokens": 31230,
+            "input_tokens": 32094,
             "output_tokens": 537,
-            "cached_tokens": 30620,
+            "cached_tokens": 31484,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.0010413,
+            "simulated_cost_usd": 0.0010629,
             "estimated_cost_usd": null,
             "usage_coverage": {
               "input_tokens": {
                 "known": 19,
                 "unknown": 0,
-                "known_total": 31230
+                "known_total": 32094
               },
               "output_tokens": {
                 "known": 19,
@@ -1248,7 +1248,7 @@
               "cached_tokens": {
                 "known": 19,
                 "unknown": 0,
-                "known_total": 30620
+                "known_total": 31484
               },
               "cost_usd": {
                 "known": 19,
@@ -1258,7 +1258,7 @@
               "simulated_cost_usd": {
                 "known": 19,
                 "unknown": 0,
-                "known_total": 0.0010413
+                "known_total": 0.0010629
               },
               "estimated_cost_usd": {
                 "known": 0,
@@ -1271,20 +1271,20 @@
             "n": 92,
             "passed": 92,
             "pass_rate": 1.0,
-            "latency_ms_p50": 20.686899981228635,
-            "latency_ms_p95": 32.5973000144586,
+            "latency_ms_p50": 19.780600006924942,
+            "latency_ms_p95": 30.63379999366589,
             "model_calls": 329,
-            "input_tokens": 592594,
+            "input_tokens": 602002,
             "output_tokens": 12091,
-            "cached_tokens": 573727,
+            "cached_tokens": 583135,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.021066275,
+            "simulated_cost_usd": 0.021301475,
             "estimated_cost_usd": null,
             "usage_coverage": {
               "input_tokens": {
                 "known": 329,
                 "unknown": 0,
-                "known_total": 592594
+                "known_total": 602002
               },
               "output_tokens": {
                 "known": 329,
@@ -1294,7 +1294,7 @@
               "cached_tokens": {
                 "known": 329,
                 "unknown": 0,
-                "known_total": 573727
+                "known_total": 583135
               },
               "cost_usd": {
                 "known": 329,
@@ -1304,7 +1304,7 @@
               "simulated_cost_usd": {
                 "known": 329,
                 "unknown": 0,
-                "known_total": 0.021066275
+                "known_total": 0.021301475
               },
               "estimated_cost_usd": {
                 "known": 0,
@@ -1319,20 +1319,20 @@
             "n": 78,
             "passed": 78,
             "pass_rate": 1.0,
-            "latency_ms_p50": 19.111599976895377,
-            "latency_ms_p95": 38.175699999555945,
+            "latency_ms_p50": 18.19410000462085,
+            "latency_ms_p95": 37.41240000817925,
             "model_calls": 221,
-            "input_tokens": 401552,
+            "input_tokens": 407696,
             "output_tokens": 8475,
-            "cached_tokens": 388105,
+            "cached_tokens": 394249,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.014437325,
+            "simulated_cost_usd": 0.014590925,
             "estimated_cost_usd": null,
             "usage_coverage": {
               "input_tokens": {
                 "known": 221,
                 "unknown": 0,
-                "known_total": 401552
+                "known_total": 407696
               },
               "output_tokens": {
                 "known": 221,
@@ -1342,7 +1342,7 @@
               "cached_tokens": {
                 "known": 221,
                 "unknown": 0,
-                "known_total": 388105
+                "known_total": 394249
               },
               "cost_usd": {
                 "known": 221,
@@ -1352,7 +1352,7 @@
               "simulated_cost_usd": {
                 "known": 221,
                 "unknown": 0,
-                "known_total": 0.014437325
+                "known_total": 0.014590925
               },
               "estimated_cost_usd": {
                 "known": 0,
@@ -1365,20 +1365,20 @@
             "n": 29,
             "passed": 29,
             "pass_rate": 1.0,
-            "latency_ms_p50": 13.989600003696978,
-            "latency_ms_p95": 22.252900002058595,
+            "latency_ms_p50": 13.893199997255579,
+            "latency_ms_p95": 23.429099994245917,
             "model_calls": 74,
-            "input_tokens": 125144,
+            "input_tokens": 127928,
             "output_tokens": 1843,
-            "cached_tokens": 116887,
+            "cached_tokens": 119575,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.004485075,
+            "simulated_cost_usd": 0.004561875,
             "estimated_cost_usd": null,
             "usage_coverage": {
               "input_tokens": {
                 "known": 74,
                 "unknown": 0,
-                "known_total": 125144
+                "known_total": 127928
               },
               "output_tokens": {
                 "known": 74,
@@ -1388,7 +1388,7 @@
               "cached_tokens": {
                 "known": 74,
                 "unknown": 0,
-                "known_total": 116887
+                "known_total": 119575
               },
               "cost_usd": {
                 "known": 74,
@@ -1398,7 +1398,7 @@
               "simulated_cost_usd": {
                 "known": 74,
                 "unknown": 0,
-                "known_total": 0.004485075
+                "known_total": 0.004561875
               },
               "estimated_cost_usd": {
                 "known": 0,
@@ -1411,20 +1411,20 @@
             "n": 37,
             "passed": 37,
             "pass_rate": 1.0,
-            "latency_ms_p50": 17.17029997962527,
-            "latency_ms_p95": 26.25540000735782,
+            "latency_ms_p50": 17.233299993677065,
+            "latency_ms_p95": 25.92669997829944,
             "model_calls": 113,
-            "input_tokens": 199075,
+            "input_tokens": 202627,
             "output_tokens": 4128,
-            "cached_tokens": 193678,
+            "cached_tokens": 197230,
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.00703285,
+            "simulated_cost_usd": 0.00712165,
             "estimated_cost_usd": null,
             "usage_coverage": {
               "input_tokens": {
                 "known": 113,
                 "unknown": 0,
-                "known_total": 199075
+                "known_total": 202627
               },
               "output_tokens": {
                 "known": 113,
@@ -1434,7 +1434,7 @@
               "cached_tokens": {
                 "known": 113,
                 "unknown": 0,
-                "known_total": 193678
+                "known_total": 197230
               },
               "cost_usd": {
                 "known": 113,
@@ -1444,7 +1444,7 @@
               "simulated_cost_usd": {
                 "known": 113,
                 "unknown": 0,
-                "known_total": 0.00703285
+                "known_total": 0.00712165
               },
               "estimated_cost_usd": {
                 "known": 0,
@@ -1466,7 +1466,7 @@
       ],
       "failed_case_ids": [],
       "limits": "Simulator token counts/tariffs are not provider bills or real model quality. Latency is this local harness run, not a measured self-hosted LLM throughput.",
-      "created_at_utc": "2026-09-16T15:12:11.868957+00:00",
+      "created_at_utc": "2026-09-16T15:41:44.395849+00:00",
       "alias": "open_weight",
       "cache_enabled": true,
       "dataset_audit": {
@@ -3074,7 +3074,7 @@
   "prompts": {
     "router": "router.v1.md",
     "workflow": "workflow.v1.md",
-    "guard": "guard.v2.md",
+    "guard": "guard.v3.md",
     "repair": "repair.v2.md",
     "context": "context.v1.md"
   },
@@ -3246,16 +3246,16 @@
           ],
           "usage": [
             {
-              "input_tokens": 1482,
+              "input_tokens": 1578,
               "output_tokens": 9,
-              "cached_tokens": 1466,
+              "cached_tokens": 1562,
               "usage_available": true,
               "cached_tokens_known": true,
               "usage_status": "complete",
               "cost_usd": 0.0,
-              "simulated_cost_usd": 0.0004185,
+              "simulated_cost_usd": 0.0004425,
               "estimated_cost_usd": null,
-              "estimated_cost_upper_bound_usd": 0.001518,
+              "estimated_cost_upper_bound_usd": 0.001614,
               "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
               "requested_model": "talabak-course-primary",
               "served_model": "talabak-course-primary",
@@ -3265,11 +3265,11 @@
               "attempts": 2,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 105.42659999919124,
+              "latency_ms": 104.90830001072027,
               "finish_reason": "stop",
               "stage": "input_guard",
               "model": "talabak-course-primary",
-              "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+              "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
             },
             {
               "input_tokens": 1629,
@@ -3291,15 +3291,15 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.675299998372793,
+              "latency_ms": 2.2733999940101057,
               "finish_reason": "stop",
               "stage": "route_extract",
               "model": "talabak-course-primary",
-              "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+              "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
             }
           ],
           "evidence_mode": "simulator",
-          "latency_ms": 114.89640001673251
+          "latency_ms": 113.85940000764094
         },
         "events": [
           {
@@ -3330,7 +3330,7 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 1.778
+              "latency_ms": 1.822
             },
             "reservation": "released_unbilled_rejection",
             "delay_s": 0.1
@@ -3345,16 +3345,16 @@
             "evidence_mode": "simulator",
             "usage_status": "complete",
             "usage": {
-              "input_tokens": 1482,
+              "input_tokens": 1578,
               "output_tokens": 9,
-              "cached_tokens": 1466,
+              "cached_tokens": 1562,
               "usage_available": true,
               "cached_tokens_known": true,
               "usage_status": "complete",
               "cost_usd": 0.0,
-              "simulated_cost_usd": 0.0004185,
+              "simulated_cost_usd": 0.0004425,
               "estimated_cost_usd": null,
-              "estimated_cost_upper_bound_usd": 0.001518,
+              "estimated_cost_upper_bound_usd": 0.001614,
               "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
               "requested_model": "talabak-course-primary",
               "served_model": "talabak-course-primary",
@@ -3364,7 +3364,7 @@
               "attempts": 2,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 105.409,
+              "latency_ms": 104.891,
               "finish_reason": "stop"
             }
           },
@@ -3397,7 +3397,7 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.661,
+              "latency_ms": 2.259,
               "finish_reason": "stop"
             }
           }
@@ -3465,16 +3465,16 @@
           ],
           "usage": [
             {
-              "input_tokens": 1482,
+              "input_tokens": 1578,
               "output_tokens": 9,
               "cached_tokens": 0,
               "usage_available": true,
               "cached_tokens_known": true,
               "usage_status": "complete",
               "cost_usd": 0.0,
-              "simulated_cost_usd": 0.0003036,
+              "simulated_cost_usd": 0.0003228,
               "estimated_cost_usd": null,
-              "estimated_cost_upper_bound_usd": 0.0003036,
+              "estimated_cost_upper_bound_usd": 0.0003228,
               "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
               "requested_model": "talabak-course-fallback",
               "served_model": "talabak-course-fallback",
@@ -3484,11 +3484,11 @@
               "attempts": 3,
               "fallback_used": true,
               "alias": "fallback",
-              "latency_ms": 136.72890001907945,
+              "latency_ms": 174.50670001562685,
               "finish_reason": "stop",
               "stage": "input_guard",
               "model": "talabak-course-fallback",
-              "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+              "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
             },
             {
               "input_tokens": 1629,
@@ -3510,15 +3510,15 @@
               "attempts": 3,
               "fallback_used": true,
               "alias": "fallback",
-              "latency_ms": 136.2080000108108,
+              "latency_ms": 57.762700016610324,
               "finish_reason": "stop",
               "stage": "route_extract",
               "model": "talabak-course-fallback",
-              "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+              "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
             }
           ],
           "evidence_mode": "simulator",
-          "latency_ms": 281.1641000153031
+          "latency_ms": 239.9429999932181
         },
         "events": [
           {
@@ -3549,10 +3549,10 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 1.639
+              "latency_ms": 1.854
             },
             "reservation": "released_unbilled_rejection",
-            "delay_s": 0.12993490028727633
+            "delay_s": 0.1438122681206899
           },
           {
             "event": "model_error",
@@ -3582,7 +3582,7 @@
               "attempts": 2,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 134.131
+              "latency_ms": 148.244
             },
             "reservation": "released_unbilled_rejection"
           },
@@ -3596,16 +3596,16 @@
             "evidence_mode": "simulator",
             "usage_status": "complete",
             "usage": {
-              "input_tokens": 1482,
+              "input_tokens": 1578,
               "output_tokens": 9,
               "cached_tokens": 0,
               "usage_available": true,
               "cached_tokens_known": true,
               "usage_status": "complete",
               "cost_usd": 0.0,
-              "simulated_cost_usd": 0.0003036,
+              "simulated_cost_usd": 0.0003228,
               "estimated_cost_usd": null,
-              "estimated_cost_upper_bound_usd": 0.0003036,
+              "estimated_cost_upper_bound_usd": 0.0003228,
               "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
               "requested_model": "talabak-course-fallback",
               "served_model": "talabak-course-fallback",
@@ -3615,7 +3615,7 @@
               "attempts": 3,
               "fallback_used": true,
               "alias": "fallback",
-              "latency_ms": 136.712,
+              "latency_ms": 174.489,
               "finish_reason": "stop"
             }
           },
@@ -3647,10 +3647,10 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 1.51
+              "latency_ms": 2.055
             },
             "reservation": "released_unbilled_rejection",
-            "delay_s": 0.12969060086138764
+            "delay_s": 0.0505344270755351
           },
           {
             "event": "model_error",
@@ -3680,7 +3680,7 @@
               "attempts": 2,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 134.003
+              "latency_ms": 55.141
             },
             "reservation": "released_unbilled_rejection"
           },
@@ -3713,7 +3713,7 @@
               "attempts": 3,
               "fallback_used": true,
               "alias": "fallback",
-              "latency_ms": 136.193,
+              "latency_ms": 57.748,
               "finish_reason": "stop"
             }
           }
@@ -3781,16 +3781,16 @@
           ],
           "usage": [
             {
-              "input_tokens": 1482,
+              "input_tokens": 1578,
               "output_tokens": 9,
-              "cached_tokens": 1466,
+              "cached_tokens": 1562,
               "usage_available": true,
               "cached_tokens_known": true,
               "usage_status": "complete",
               "cost_usd": 0.0,
-              "simulated_cost_usd": 8.37e-05,
+              "simulated_cost_usd": 8.85e-05,
               "estimated_cost_usd": null,
-              "estimated_cost_upper_bound_usd": 0.0003036,
+              "estimated_cost_upper_bound_usd": 0.0003228,
               "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
               "requested_model": "talabak-course-fallback",
               "served_model": "talabak-course-fallback",
@@ -3800,11 +3800,11 @@
               "attempts": 3,
               "fallback_used": true,
               "alias": "fallback",
-              "latency_ms": 112.90370000642724,
+              "latency_ms": 109.39440000220202,
               "finish_reason": "stop",
               "stage": "input_guard",
               "model": "talabak-course-fallback",
-              "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+              "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
             },
             {
               "input_tokens": 1629,
@@ -3826,15 +3826,15 @@
               "attempts": 3,
               "fallback_used": true,
               "alias": "fallback",
-              "latency_ms": 132.08080001641065,
+              "latency_ms": 144.62589999311604,
               "finish_reason": "stop",
               "stage": "route_extract",
               "model": "talabak-course-fallback",
-              "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+              "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
             }
           ],
           "evidence_mode": "simulator",
-          "latency_ms": 252.2264000144787
+          "latency_ms": 260.7004000165034
         },
         "events": [
           {
@@ -3865,10 +3865,10 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 1.733
+              "latency_ms": 2.195
             },
             "reservation": "released_unbilled_rejection",
-            "delay_s": 0.10588118716490802
+            "delay_s": 0.1003612735715856
           },
           {
             "event": "model_error",
@@ -3898,7 +3898,7 @@
               "attempts": 2,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 110.685
+              "latency_ms": 106.398
             },
             "reservation": "released_unbilled_rejection"
           },
@@ -3912,16 +3912,16 @@
             "evidence_mode": "simulator",
             "usage_status": "complete",
             "usage": {
-              "input_tokens": 1482,
+              "input_tokens": 1578,
               "output_tokens": 9,
-              "cached_tokens": 1466,
+              "cached_tokens": 1562,
               "usage_available": true,
               "cached_tokens_known": true,
               "usage_status": "complete",
               "cost_usd": 0.0,
-              "simulated_cost_usd": 8.37e-05,
+              "simulated_cost_usd": 8.85e-05,
               "estimated_cost_usd": null,
-              "estimated_cost_upper_bound_usd": 0.0003036,
+              "estimated_cost_upper_bound_usd": 0.0003228,
               "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
               "requested_model": "talabak-course-fallback",
               "served_model": "talabak-course-fallback",
@@ -3931,7 +3931,7 @@
               "attempts": 3,
               "fallback_used": true,
               "alias": "fallback",
-              "latency_ms": 112.89,
+              "latency_ms": 109.376,
               "finish_reason": "stop"
             }
           },
@@ -3963,10 +3963,10 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 1.663
+              "latency_ms": 1.8
             },
             "reservation": "released_unbilled_rejection",
-            "delay_s": 0.12531441338234736
+            "delay_s": 0.13697805360182833
           },
           {
             "event": "model_error",
@@ -3996,7 +3996,7 @@
               "attempts": 2,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 129.715
+              "latency_ms": 142.091
             },
             "reservation": "released_unbilled_rejection"
           },
@@ -4029,7 +4029,7 @@
               "attempts": 3,
               "fallback_used": true,
               "alias": "fallback",
-              "latency_ms": 132.067,
+              "latency_ms": 144.609,
               "finish_reason": "stop"
             }
           }
@@ -4088,11 +4088,11 @@
             "attempts": 1,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 2.324500004760921,
+            "latency_ms": 2.5954000011552125,
             "finish_reason": "stop",
             "stage": "route_extract",
             "model": "talabak-course-primary",
-            "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+            "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
           },
           {
             "input_tokens": 1790,
@@ -4114,11 +4114,11 @@
             "attempts": 1,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 2.3490999883506447,
+            "latency_ms": 2.123500016750768,
             "finish_reason": "stop",
             "stage": "route_extract",
             "model": "talabak-course-primary",
-            "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+            "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
           }
         ],
         "passed": true
@@ -4191,16 +4191,16 @@
             ],
             "usage": [
               {
-                "input_tokens": 1487,
+                "input_tokens": 1583,
                 "output_tokens": 9,
-                "cached_tokens": 1466,
+                "cached_tokens": 1562,
                 "usage_available": true,
                 "cached_tokens_known": true,
                 "usage_status": "complete",
                 "cost_usd": 0.0,
-                "simulated_cost_usd": 0.0004235,
+                "simulated_cost_usd": 0.0004475,
                 "estimated_cost_usd": null,
-                "estimated_cost_upper_bound_usd": 0.001523,
+                "estimated_cost_upper_bound_usd": 0.001619,
                 "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
                 "requested_model": "talabak-course-primary",
                 "served_model": "talabak-course-primary",
@@ -4210,11 +4210,11 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.2071999846957624,
+                "latency_ms": 2.4280999787151814,
                 "finish_reason": "stop",
                 "stage": "input_guard",
                 "model": "talabak-course-primary",
-                "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+                "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
               },
               {
                 "input_tokens": 1634,
@@ -4236,15 +4236,15 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.514399995561689,
+                "latency_ms": 2.183300006436184,
                 "finish_reason": "stop",
                 "stage": "route_extract",
                 "model": "talabak-course-primary",
-                "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+                "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
               }
             ],
             "evidence_mode": "simulator",
-            "latency_ms": 12.266799982171506
+            "latency_ms": 11.744799994630739
           }
         }
       ],
@@ -4333,16 +4333,16 @@
             ],
             "usage": [
               {
-                "input_tokens": 1488,
+                "input_tokens": 1584,
                 "output_tokens": 9,
-                "cached_tokens": 1466,
+                "cached_tokens": 1562,
                 "usage_available": true,
                 "cached_tokens_known": true,
                 "usage_status": "complete",
                 "cost_usd": 0.0,
-                "simulated_cost_usd": 0.0004245,
+                "simulated_cost_usd": 0.0004485,
                 "estimated_cost_usd": null,
-                "estimated_cost_upper_bound_usd": 0.001524,
+                "estimated_cost_upper_bound_usd": 0.00162,
                 "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
                 "requested_model": "talabak-course-primary",
                 "served_model": "talabak-course-primary",
@@ -4352,11 +4352,11 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.3372000141534954,
+                "latency_ms": 2.195999986724928,
                 "finish_reason": "stop",
                 "stage": "input_guard",
                 "model": "talabak-course-primary",
-                "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+                "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
               },
               {
                 "input_tokens": 1635,
@@ -4378,11 +4378,11 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.214000007370487,
+                "latency_ms": 2.3225999902933836,
                 "finish_reason": "stop",
                 "stage": "route_extract",
                 "model": "talabak-course-primary",
-                "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+                "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
               },
               {
                 "input_tokens": 2106,
@@ -4404,11 +4404,11 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.7052999939769506,
+                "latency_ms": 2.601799991680309,
                 "finish_reason": "tool_calls",
                 "stage": "tools",
                 "model": "talabak-course-primary",
-                "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460",
+                "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f",
                 "wire_pattern": "schema_with_tools"
               },
               {
@@ -4431,23 +4431,23 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.590299991425127,
+                "latency_ms": 2.720700023928657,
                 "finish_reason": "tool_calls",
                 "stage": "tools",
                 "model": "talabak-course-primary",
-                "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460",
+                "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f",
                 "wire_pattern": "schema_with_tools"
               }
             ],
             "evidence_mode": "simulator",
-            "latency_ms": 20.410099998116493
+            "latency_ms": 20.341499999631196
           }
         },
         {
           "input": "موافق",
           "output": {
             "status": "created",
-            "message": "تم تسجيل الطلب REQ-3A9F2F36 بحالة قيد المعالجة.",
+            "message": "تم تسجيل الطلب REQ-B51A6671 بحالة قيد المعالجة.",
             "citations": [
               "policy-v1"
             ],
@@ -4496,7 +4496,7 @@
             ],
             "usage": [],
             "evidence_mode": "simulator",
-            "latency_ms": 1.258800009964034
+            "latency_ms": 1.2113999982830137
           }
         }
       ],
@@ -4585,16 +4585,16 @@
             ],
             "usage": [
               {
-                "input_tokens": 1493,
+                "input_tokens": 1589,
                 "output_tokens": 9,
-                "cached_tokens": 1466,
+                "cached_tokens": 1562,
                 "usage_available": true,
                 "cached_tokens_known": true,
                 "usage_status": "complete",
                 "cost_usd": 0.0,
-                "simulated_cost_usd": 0.0004295,
+                "simulated_cost_usd": 0.0004535,
                 "estimated_cost_usd": null,
-                "estimated_cost_upper_bound_usd": 0.001529,
+                "estimated_cost_upper_bound_usd": 0.001625,
                 "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
                 "requested_model": "talabak-course-primary",
                 "served_model": "talabak-course-primary",
@@ -4604,11 +4604,11 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.226499986136332,
+                "latency_ms": 2.232899976661429,
                 "finish_reason": "stop",
                 "stage": "input_guard",
                 "model": "talabak-course-primary",
-                "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+                "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
               },
               {
                 "input_tokens": 1640,
@@ -4630,11 +4630,11 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.1092999959364533,
+                "latency_ms": 2.2227000154089183,
                 "finish_reason": "stop",
                 "stage": "route_extract",
                 "model": "talabak-course-primary",
-                "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+                "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
               },
               {
                 "input_tokens": 2113,
@@ -4656,11 +4656,11 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.4049000057857484,
+                "latency_ms": 2.3923999979160726,
                 "finish_reason": "tool_calls",
                 "stage": "tools",
                 "model": "talabak-course-primary",
-                "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460",
+                "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f",
                 "wire_pattern": "schema_with_tools"
               },
               {
@@ -4683,23 +4683,23 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.797699999064207,
+                "latency_ms": 2.7735999901778996,
                 "finish_reason": "tool_calls",
                 "stage": "tools",
                 "model": "talabak-course-primary",
-                "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460",
+                "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f",
                 "wire_pattern": "schema_with_tools"
               }
             ],
             "evidence_mode": "simulator",
-            "latency_ms": 20.2786999871023
+            "latency_ms": 21.453900000778958
           }
         },
         {
           "input": "موافق",
           "output": {
             "status": "created",
-            "message": "تم تسجيل الطلب REQ-084F1267 بحالة قيد المعالجة.",
+            "message": "تم تسجيل الطلب REQ-5FBCCE01 بحالة قيد المعالجة.",
             "citations": [
               "policy-v1"
             ],
@@ -4748,7 +4748,7 @@
             ],
             "usage": [],
             "evidence_mode": "simulator",
-            "latency_ms": 1.4187999768182635
+            "latency_ms": 1.2969000090379268
           }
         }
       ],
@@ -4827,16 +4827,16 @@
             ],
             "usage": [
               {
-                "input_tokens": 1485,
+                "input_tokens": 1581,
                 "output_tokens": 9,
-                "cached_tokens": 1466,
+                "cached_tokens": 1562,
                 "usage_available": true,
                 "cached_tokens_known": true,
                 "usage_status": "complete",
                 "cost_usd": 0.0,
-                "simulated_cost_usd": 0.0004215,
+                "simulated_cost_usd": 0.0004455,
                 "estimated_cost_usd": null,
-                "estimated_cost_upper_bound_usd": 0.001521,
+                "estimated_cost_upper_bound_usd": 0.001617,
                 "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
                 "requested_model": "talabak-course-primary",
                 "served_model": "talabak-course-primary",
@@ -4846,11 +4846,11 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.377400000113994,
+                "latency_ms": 2.139699994586408,
                 "finish_reason": "stop",
                 "stage": "input_guard",
                 "model": "talabak-course-primary",
-                "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+                "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
               },
               {
                 "input_tokens": 1632,
@@ -4872,11 +4872,11 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.142699988326058,
+                "latency_ms": 2.599600004032254,
                 "finish_reason": "stop",
                 "stage": "route_extract",
                 "model": "talabak-course-primary",
-                "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+                "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
               },
               {
                 "input_tokens": 2104,
@@ -4898,23 +4898,23 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.463399985572323,
+                "latency_ms": 2.497300010873005,
                 "finish_reason": "tool_calls",
                 "stage": "tools",
                 "model": "talabak-course-primary",
-                "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460",
+                "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f",
                 "wire_pattern": "schema_with_tools"
               }
             ],
             "evidence_mode": "simulator",
-            "latency_ms": 14.178300014464185
+            "latency_ms": 14.749900001334026
           }
         },
         {
           "input": "موافق",
           "output": {
             "status": "created",
-            "message": "تم تسجيل الطلب REQ-06ADDE3F بحالة قيد المعالجة.",
+            "message": "تم تسجيل الطلب REQ-D9B845B9 بحالة قيد المعالجة.",
             "citations": [
               "policy-v1"
             ],
@@ -4963,7 +4963,7 @@
             ],
             "usage": [],
             "evidence_mode": "simulator",
-            "latency_ms": 1.295800000661984
+            "latency_ms": 1.1752000136766583
           }
         }
       ],
@@ -4999,7 +4999,7 @@
             ],
             "usage": [],
             "evidence_mode": "simulator",
-            "latency_ms": 0.593400007346645
+            "latency_ms": 0.6477999850176275
           }
         }
       ],
@@ -5085,16 +5085,16 @@
             ],
             "usage": [
               {
-                "input_tokens": 1483,
+                "input_tokens": 1579,
                 "output_tokens": 9,
-                "cached_tokens": 1466,
+                "cached_tokens": 1562,
                 "usage_available": true,
                 "cached_tokens_known": true,
                 "usage_status": "complete",
                 "cost_usd": 0.0,
-                "simulated_cost_usd": 0.0004195,
+                "simulated_cost_usd": 0.0004435,
                 "estimated_cost_usd": null,
-                "estimated_cost_upper_bound_usd": 0.001519,
+                "estimated_cost_upper_bound_usd": 0.001615,
                 "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
                 "requested_model": "talabak-course-primary",
                 "served_model": "talabak-course-primary",
@@ -5104,11 +5104,11 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.2908000100869685,
+                "latency_ms": 2.600100007839501,
                 "finish_reason": "stop",
                 "stage": "input_guard",
                 "model": "talabak-course-primary",
-                "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+                "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
               },
               {
                 "input_tokens": 1630,
@@ -5130,11 +5130,11 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.2240999969653785,
+                "latency_ms": 2.2357999987434596,
                 "finish_reason": "stop",
                 "stage": "route_extract",
                 "model": "talabak-course-primary",
-                "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+                "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
               },
               {
                 "input_tokens": 2096,
@@ -5156,11 +5156,11 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.347300003748387,
+                "latency_ms": 2.439300005789846,
                 "finish_reason": "tool_calls",
                 "stage": "tools",
                 "model": "talabak-course-primary",
-                "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460",
+                "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f",
                 "wire_pattern": "schema_with_tools"
               },
               {
@@ -5183,16 +5183,16 @@
                 "attempts": 1,
                 "fallback_used": false,
                 "alias": "primary",
-                "latency_ms": 2.546499978052452,
+                "latency_ms": 2.659299992956221,
                 "finish_reason": "stop",
                 "stage": "tools",
                 "model": "talabak-course-primary",
-                "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460",
+                "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f",
                 "wire_pattern": "schema_with_tools"
               }
             ],
             "evidence_mode": "simulator",
-            "latency_ms": 17.291299998760223
+            "latency_ms": 18.64470000145957
           }
         }
       ],
@@ -5281,7 +5281,7 @@
   },
   "cache": {
     "status": "PASS",
-    "created_at_utc": "2026-09-16T15:12:31.234834+00:00",
+    "created_at_utc": "2026-09-16T15:42:03.799161+00:00",
     "traffic_sha256": "54fb4d252ce2ec931f0b53cf2e7ec275c1479956ce095abab6de983f4dcd9853",
     "workload": "Exactly four passes of all first-turn successful read-only FAQ/status golden cases. Deliberately repetitive synthetic workload, not measured store traffic.",
     "semantic_ready": true,
@@ -5295,15 +5295,15 @@
         "response_cache_hits": 0,
         "exact_hits": 0,
         "semantic_hits": 0,
-        "input_tokens": 174664,
+        "input_tokens": 186568,
         "output_tokens": 8580,
         "provider_cached_tokens": 0,
         "provider_cache_fraction": 0.0,
         "cost_usd": 0.0,
-        "simulated_cost_usd": 0.208984,
-        "wall_ms": 1251.7265999922529,
-        "request_latency_ms_p50": 7.975400018040091,
-        "request_latency_ms_p95": 13.24849997763522,
+        "simulated_cost_usd": 0.220888,
+        "wall_ms": 1254.009300027974,
+        "request_latency_ms_p50": 8.105500019155443,
+        "request_latency_ms_p95": 13.13579999259673,
         "failed_ids": [],
         "evidence_mode": "simulator",
         "semantic_threshold": null,
@@ -5313,20 +5313,20 @@
           "n": 144,
           "passed": 144,
           "pass_rate": 1.0,
-          "latency_ms_p50": 12.638699990930036,
-          "latency_ms_p95": 22.45380001841113,
+          "latency_ms_p50": 12.760799989337102,
+          "latency_ms_p95": 22.970500023802742,
           "model_calls": 408,
-          "input_tokens": 236177,
+          "input_tokens": 248657,
           "output_tokens": 14459,
           "cached_tokens": 0,
           "cost_usd": 0.0,
-          "simulated_cost_usd": 0.294013,
+          "simulated_cost_usd": 0.306493,
           "estimated_cost_usd": null,
           "usage_coverage": {
             "input_tokens": {
               "known": 408,
               "unknown": 0,
-              "known_total": 236177
+              "known_total": 248657
             },
             "output_tokens": {
               "known": 408,
@@ -5346,7 +5346,7 @@
             "simulated_cost_usd": {
               "known": 408,
               "unknown": 0,
-              "known_total": 0.294013
+              "known_total": 0.306493
             },
             "estimated_cost_usd": {
               "known": 0,
@@ -5376,15 +5376,15 @@
         "response_cache_hits": 0,
         "exact_hits": 0,
         "semantic_hits": 0,
-        "input_tokens": 577960,
+        "input_tokens": 589864,
         "output_tokens": 8628,
-        "provider_cached_tokens": 556632,
-        "provider_cache_fraction": 0.9630977922347568,
+        "provider_cached_tokens": 568440,
+        "provider_cache_fraction": 0.9636797634709018,
         "cost_usd": 0.0,
-        "simulated_cost_usd": 0.194998,
-        "wall_ms": 1778.5191000148188,
-        "request_latency_ms_p50": 11.41879998613149,
-        "request_latency_ms_p95": 19.087099994067103,
+        "simulated_cost_usd": 0.198046,
+        "wall_ms": 1781.9267000013497,
+        "request_latency_ms_p50": 11.482000001706183,
+        "request_latency_ms_p95": 19.189300015568733,
         "failed_ids": [],
         "evidence_mode": "simulator",
         "semantic_threshold": null,
@@ -5394,20 +5394,20 @@
           "n": 144,
           "passed": 144,
           "pass_rate": 1.0,
-          "latency_ms_p50": 16.858199989655986,
-          "latency_ms_p95": 29.93600000627339,
+          "latency_ms_p50": 16.701400018064305,
+          "latency_ms_p95": 30.311700014863163,
           "model_calls": 408,
-          "input_tokens": 725817,
+          "input_tokens": 738297,
           "output_tokens": 14474,
-          "cached_tokens": 703794,
+          "cached_tokens": 716274,
           "cost_usd": 0.0,
-          "simulated_cost_usd": 0.2558675,
+          "simulated_cost_usd": 0.2589875,
           "estimated_cost_usd": null,
           "usage_coverage": {
             "input_tokens": {
               "known": 408,
               "unknown": 0,
-              "known_total": 725817
+              "known_total": 738297
             },
             "output_tokens": {
               "known": 408,
@@ -5417,7 +5417,7 @@
             "cached_tokens": {
               "known": 408,
               "unknown": 0,
-              "known_total": 703794
+              "known_total": 716274
             },
             "cost_usd": {
               "known": 408,
@@ -5427,7 +5427,7 @@
             "simulated_cost_usd": {
               "known": 408,
               "unknown": 0,
-              "known_total": 0.2558675
+              "known_total": 0.2589875
             },
             "estimated_cost_usd": {
               "known": 0,
@@ -5448,7 +5448,7 @@
           "failures": [],
           "basis": "authored deterministic expectations; no uncalibrated judge"
         },
-        "simulated_cost_reduction_vs_baseline": 0.0669237836389388,
+        "simulated_cost_reduction_vs_baseline": 0.10340987287675207,
         "actual_cost_reduction_vs_baseline": null,
         "actual_cost_reduction_reason": "Actual spend is zero in both modes; a percentage is undefined"
       },
@@ -5460,15 +5460,15 @@
         "response_cache_hits": 93,
         "exact_hits": 93,
         "semantic_hits": 0,
-        "input_tokens": 144490,
+        "input_tokens": 147466,
         "output_tokens": 2157,
-        "provider_cached_tokens": 140439,
-        "provider_cache_fraction": 0.971963457678732,
+        "provider_cached_tokens": 143415,
+        "provider_cache_fraction": 0.9725292609821925,
         "cost_usd": 0.0,
-        "simulated_cost_usd": 0.04778875,
-        "wall_ms": 603.1064000271726,
-        "request_latency_ms_p50": 1.2808999745175242,
-        "request_latency_ms_p95": 19.128400017507374,
+        "simulated_cost_usd": 0.04853275,
+        "wall_ms": 608.5659000091255,
+        "request_latency_ms_p50": 1.3104999961797148,
+        "request_latency_ms_p95": 18.504499981645495,
         "failed_ids": [],
         "evidence_mode": "simulator",
         "semantic_threshold": null,
@@ -5478,20 +5478,20 @@
           "n": 144,
           "passed": 144,
           "pass_rate": 1.0,
-          "latency_ms_p50": 16.919499990763143,
-          "latency_ms_p95": 30.884899984812364,
+          "latency_ms_p50": 17.09010000922717,
+          "latency_ms_p95": 29.84079997986555,
           "model_calls": 408,
-          "input_tokens": 725817,
+          "input_tokens": 738297,
           "output_tokens": 14474,
-          "cached_tokens": 703794,
+          "cached_tokens": 716274,
           "cost_usd": 0.0,
-          "simulated_cost_usd": 0.2558675,
+          "simulated_cost_usd": 0.2589875,
           "estimated_cost_usd": null,
           "usage_coverage": {
             "input_tokens": {
               "known": 408,
               "unknown": 0,
-              "known_total": 725817
+              "known_total": 738297
             },
             "output_tokens": {
               "known": 408,
@@ -5501,7 +5501,7 @@
             "cached_tokens": {
               "known": 408,
               "unknown": 0,
-              "known_total": 703794
+              "known_total": 716274
             },
             "cost_usd": {
               "known": 408,
@@ -5511,7 +5511,7 @@
             "simulated_cost_usd": {
               "known": 408,
               "unknown": 0,
-              "known_total": 0.2558675
+              "known_total": 0.2589875
             },
             "estimated_cost_usd": {
               "known": 0,
@@ -5532,7 +5532,7 @@
           "failures": [],
           "basis": "authored deterministic expectations; no uncalibrated judge"
         },
-        "simulated_cost_reduction_vs_baseline": 0.771328187803851,
+        "simulated_cost_reduction_vs_baseline": 0.7802834468146753,
         "actual_cost_reduction_vs_baseline": null,
         "actual_cost_reduction_reason": "Actual spend is zero in both modes; a percentage is undefined"
       },
@@ -5544,15 +5544,15 @@
         "response_cache_hits": 94,
         "exact_hits": 90,
         "semantic_hits": 4,
-        "input_tokens": 147325,
+        "input_tokens": 150589,
         "output_tokens": 2149,
-        "provider_cached_tokens": 143224,
-        "provider_cache_fraction": 0.9721635839131173,
+        "provider_cached_tokens": 146488,
+        "provider_cache_fraction": 0.9727669351679074,
         "cost_usd": 0.0,
-        "simulated_cost_usd": 0.048503,
-        "wall_ms": 656.2819000100717,
-        "request_latency_ms_p50": 1.3010000111535192,
-        "request_latency_ms_p95": 19.88330000312999,
+        "simulated_cost_usd": 0.049319,
+        "wall_ms": 651.2371999851894,
+        "request_latency_ms_p50": 1.289300009375438,
+        "request_latency_ms_p95": 20.421299996087328,
         "failed_ids": [],
         "evidence_mode": "simulator",
         "semantic_threshold": 1.0,
@@ -5562,20 +5562,20 @@
           "n": 144,
           "passed": 144,
           "pass_rate": 1.0,
-          "latency_ms_p50": 17.12559998850338,
-          "latency_ms_p95": 30.22039998904802,
+          "latency_ms_p50": 17.30080001289025,
+          "latency_ms_p95": 31.868699996266514,
           "model_calls": 408,
-          "input_tokens": 725817,
+          "input_tokens": 738297,
           "output_tokens": 14474,
-          "cached_tokens": 703794,
+          "cached_tokens": 716274,
           "cost_usd": 0.0,
-          "simulated_cost_usd": 0.2558675,
+          "simulated_cost_usd": 0.2589875,
           "estimated_cost_usd": null,
           "usage_coverage": {
             "input_tokens": {
               "known": 408,
               "unknown": 0,
-              "known_total": 725817
+              "known_total": 738297
             },
             "output_tokens": {
               "known": 408,
@@ -5585,7 +5585,7 @@
             "cached_tokens": {
               "known": 408,
               "unknown": 0,
-              "known_total": 703794
+              "known_total": 716274
             },
             "cost_usd": {
               "known": 408,
@@ -5595,7 +5595,7 @@
             "simulated_cost_usd": {
               "known": 408,
               "unknown": 0,
-              "known_total": 0.2558675
+              "known_total": 0.2589875
             },
             "estimated_cost_usd": {
               "known": 0,
@@ -5616,13 +5616,13 @@
           "failures": [],
           "basis": "authored deterministic expectations; no uncalibrated judge"
         },
-        "simulated_cost_reduction_vs_baseline": 0.7679104620449413,
+        "simulated_cost_reduction_vs_baseline": 0.7767239505993988,
         "actual_cost_reduction_vs_baseline": null,
         "actual_cost_reduction_reason": "Actual spend is zero in both modes; a percentage is undefined"
       }
     ],
-    "provider_input_cache_fraction": 0.9630977922347568,
-    "simulated_cost_reduction": 0.7679104620449413,
+    "provider_input_cache_fraction": 0.9636797634709018,
+    "simulated_cost_reduction": 0.7767239505993988,
     "targets": {
       "provider_input_cache_at_least_65_percent": true,
       "simulated_cost_reduction_at_least_60_percent": true,
@@ -5656,16 +5656,16 @@
     }
   },
   "context_budget": {
-    "generated_at_utc": "2026-09-16T15:12:31.442853+00:00",
+    "generated_at_utc": "2026-09-16T15:42:03.949760+00:00",
     "evidence_mode": "local_tokenizer_component_measurement",
     "tokenizer": "o200k_base",
     "max_output_tokens": 768,
     "components": [
       {
         "path": "prompts/CHANGELOG.md",
-        "tokens": 500,
-        "utf8_bytes": 2419,
-        "sha256": "4e9f83190623512ccf2ca2856a1f353207ead81941329d42959e53c2aa1bb05d"
+        "tokens": 648,
+        "utf8_bytes": 3016,
+        "sha256": "ce9e4be0c09013d2e0ceb8e37f223ba701cfadb9e160c6f0b1d45ab9a151a6a0"
       },
       {
         "path": "prompts/context.v1.md",
@@ -5684,6 +5684,12 @@
         "tokens": 180,
         "utf8_bytes": 975,
         "sha256": "3ce8c1843ffe239e552a419fc277e76e56deff6ca9ccccce3e7315af1816ff48"
+      },
+      {
+        "path": "prompts/guard.v3.md",
+        "tokens": 276,
+        "utf8_bytes": 1449,
+        "sha256": "d3d84459d481f37964ee09553dc849ed899dfca0126455e415641ab4469eba81"
       },
       {
         "path": "prompts/judge.completeness.v1.md",
@@ -5748,7 +5754,7 @@
     ],
     "rendered_tool_definitions_tokens": 613,
     "rendered_tool_definitions_sha256": "3bf99e765a8236b0a1fbaf85ea972a3eb01d3fad3ec1f8091b62d52f8f7f30fd",
-    "all_files_token_sum": 3373,
+    "all_files_token_sum": 3797,
     "limitations": [
       "The all-files sum is inventory, not a claim that every file is sent together.",
       "Wire messages, tool schemas and serialization overhead are measured by actual gateway usage.",

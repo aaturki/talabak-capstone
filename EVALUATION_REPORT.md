@@ -1,6 +1,6 @@
 # Evaluation Report — Talabak
 
-Generated at 2026-09-16T15:12:31.437444+00:00 from an actual application run through the SDK to a local simulator.
+Generated at 2026-09-16T15:42:03.943769+00:00 from an actual application run through the SDK to a local simulator.
 
 **This report contains local simulator evidence. No live commercial or open-weight language model was run. External spend is zero.**
 
@@ -12,7 +12,7 @@ Generated at 2026-09-16T15:12:31.437444+00:00 from an actual application run thr
   - End-to-end pipeline (deterministic layer, PII masking, then the classifier; evidence `pipeline:simulator`): block rate **100.0%**, false-positive rate **0.0%**; blocked by layer: {"deterministic": 52}.
 - Clean regression gate: **PASS**; deliberately degraded configuration: **BLOCK** (slice table below).
 - Fault and repair drills: **PASS**.
-- Served prompts: router.v1.md, workflow.v1.md, guard.v2.md, repair.v2.md, context.v1.md.
+- Served prompts: router.v1.md, workflow.v1.md, guard.v3.md, repair.v2.md, context.v1.md.
 
 ## Regression gate read by slice
 

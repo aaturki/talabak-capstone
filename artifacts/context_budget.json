@@ -1,14 +1,14 @@
 {
-  "generated_at_utc": "2026-09-16T15:12:31.641496+00:00",
+  "generated_at_utc": "2026-09-16T15:42:04.154149+00:00",
   "evidence_mode": "local_tokenizer_component_measurement",
   "tokenizer": "o200k_base",
   "max_output_tokens": 768,
   "components": [
     {
       "path": "prompts/CHANGELOG.md",
-      "tokens": 500,
-      "utf8_bytes": 2419,
-      "sha256": "4e9f83190623512ccf2ca2856a1f353207ead81941329d42959e53c2aa1bb05d"
+      "tokens": 648,
+      "utf8_bytes": 3016,
+      "sha256": "ce9e4be0c09013d2e0ceb8e37f223ba701cfadb9e160c6f0b1d45ab9a151a6a0"
     },
     {
       "path": "prompts/context.v1.md",
@@ -27,6 +27,12 @@
       "tokens": 180,
       "utf8_bytes": 975,
       "sha256": "3ce8c1843ffe239e552a419fc277e76e56deff6ca9ccccce3e7315af1816ff48"
+    },
+    {
+      "path": "prompts/guard.v3.md",
+      "tokens": 276,
+      "utf8_bytes": 1449,
+      "sha256": "d3d84459d481f37964ee09553dc849ed899dfca0126455e415641ab4469eba81"
     },
     {
       "path": "prompts/judge.completeness.v1.md",
@@ -91,7 +97,7 @@
   ],
   "rendered_tool_definitions_tokens": 613,
   "rendered_tool_definitions_sha256": "3bf99e765a8236b0a1fbaf85ea972a3eb01d3fad3ec1f8091b62d52f8f7f30fd",
-  "all_files_token_sum": 3373,
+  "all_files_token_sum": 3797,
   "limitations": [
     "The all-files sum is inventory, not a claim that every file is sent together.",
     "Wire messages, tool schemas and serialization overhead are measured by actual gateway usage.",

@@ -63,16 +63,16 @@
           ],
           "usage": [
             {
-              "input_tokens": 1487,
+              "input_tokens": 1583,
               "output_tokens": 9,
-              "cached_tokens": 1466,
+              "cached_tokens": 1562,
               "usage_available": true,
               "cached_tokens_known": true,
               "usage_status": "complete",
               "cost_usd": 0.0,
-              "simulated_cost_usd": 0.0004235,
+              "simulated_cost_usd": 0.0004475,
               "estimated_cost_usd": null,
-              "estimated_cost_upper_bound_usd": 0.001523,
+              "estimated_cost_upper_bound_usd": 0.001619,
               "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
               "requested_model": "talabak-course-primary",
               "served_model": "talabak-course-primary",
@@ -82,11 +82,11 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.2071999846957624,
+              "latency_ms": 2.4280999787151814,
               "finish_reason": "stop",
               "stage": "input_guard",
               "model": "talabak-course-primary",
-              "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+              "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
             },
             {
               "input_tokens": 1634,
@@ -108,15 +108,15 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.514399995561689,
+              "latency_ms": 2.183300006436184,
               "finish_reason": "stop",
               "stage": "route_extract",
               "model": "talabak-course-primary",
-              "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+              "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
             }
           ],
           "evidence_mode": "simulator",
-          "latency_ms": 12.266799982171506
+          "latency_ms": 11.744799994630739
         }
       }
     ],
@@ -205,16 +205,16 @@
           ],
           "usage": [
             {
-              "input_tokens": 1488,
+              "input_tokens": 1584,
               "output_tokens": 9,
-              "cached_tokens": 1466,
+              "cached_tokens": 1562,
               "usage_available": true,
               "cached_tokens_known": true,
               "usage_status": "complete",
               "cost_usd": 0.0,
-              "simulated_cost_usd": 0.0004245,
+              "simulated_cost_usd": 0.0004485,
               "estimated_cost_usd": null,
-              "estimated_cost_upper_bound_usd": 0.001524,
+              "estimated_cost_upper_bound_usd": 0.00162,
               "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
               "requested_model": "talabak-course-primary",
               "served_model": "talabak-course-primary",
@@ -224,11 +224,11 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.3372000141534954,
+              "latency_ms": 2.195999986724928,
               "finish_reason": "stop",
               "stage": "input_guard",
               "model": "talabak-course-primary",
-              "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+              "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
             },
             {
               "input_tokens": 1635,
@@ -250,11 +250,11 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.214000007370487,
+              "latency_ms": 2.3225999902933836,
               "finish_reason": "stop",
               "stage": "route_extract",
               "model": "talabak-course-primary",
-              "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+              "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
             },
             {
               "input_tokens": 2106,
@@ -276,11 +276,11 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.7052999939769506,
+              "latency_ms": 2.601799991680309,
               "finish_reason": "tool_calls",
               "stage": "tools",
               "model": "talabak-course-primary",
-              "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460",
+              "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f",
               "wire_pattern": "schema_with_tools"
             },
             {
@@ -303,23 +303,23 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.590299991425127,
+              "latency_ms": 2.720700023928657,
               "finish_reason": "tool_calls",
               "stage": "tools",
               "model": "talabak-course-primary",
-              "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460",
+              "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f",
               "wire_pattern": "schema_with_tools"
             }
           ],
           "evidence_mode": "simulator",
-          "latency_ms": 20.410099998116493
+          "latency_ms": 20.341499999631196
         }
       },
       {
         "input": "موافق",
         "output": {
           "status": "created",
-          "message": "تم تسجيل الطلب REQ-3A9F2F36 بحالة قيد المعالجة.",
+          "message": "تم تسجيل الطلب REQ-B51A6671 بحالة قيد المعالجة.",
           "citations": [
             "policy-v1"
           ],
@@ -368,7 +368,7 @@
           ],
           "usage": [],
           "evidence_mode": "simulator",
-          "latency_ms": 1.258800009964034
+          "latency_ms": 1.2113999982830137
         }
       }
     ],
@@ -457,16 +457,16 @@
           ],
           "usage": [
             {
-              "input_tokens": 1493,
+              "input_tokens": 1589,
               "output_tokens": 9,
-              "cached_tokens": 1466,
+              "cached_tokens": 1562,
               "usage_available": true,
               "cached_tokens_known": true,
               "usage_status": "complete",
               "cost_usd": 0.0,
-              "simulated_cost_usd": 0.0004295,
+              "simulated_cost_usd": 0.0004535,
               "estimated_cost_usd": null,
-              "estimated_cost_upper_bound_usd": 0.001529,
+              "estimated_cost_upper_bound_usd": 0.001625,
               "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
               "requested_model": "talabak-course-primary",
               "served_model": "talabak-course-primary",
@@ -476,11 +476,11 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.226499986136332,
+              "latency_ms": 2.232899976661429,
               "finish_reason": "stop",
               "stage": "input_guard",
               "model": "talabak-course-primary",
-              "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+              "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
             },
             {
               "input_tokens": 1640,
@@ -502,11 +502,11 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.1092999959364533,
+              "latency_ms": 2.2227000154089183,
               "finish_reason": "stop",
               "stage": "route_extract",
               "model": "talabak-course-primary",
-              "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+              "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
             },
             {
               "input_tokens": 2113,
@@ -528,11 +528,11 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.4049000057857484,
+              "latency_ms": 2.3923999979160726,
               "finish_reason": "tool_calls",
               "stage": "tools",
               "model": "talabak-course-primary",
-              "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460",
+              "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f",
               "wire_pattern": "schema_with_tools"
             },
             {
@@ -555,23 +555,23 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.797699999064207,
+              "latency_ms": 2.7735999901778996,
               "finish_reason": "tool_calls",
               "stage": "tools",
               "model": "talabak-course-primary",
-              "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460",
+              "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f",
               "wire_pattern": "schema_with_tools"
             }
           ],
           "evidence_mode": "simulator",
-          "latency_ms": 20.2786999871023
+          "latency_ms": 21.453900000778958
         }
       },
       {
         "input": "موافق",
         "output": {
           "status": "created",
-          "message": "تم تسجيل الطلب REQ-084F1267 بحالة قيد المعالجة.",
+          "message": "تم تسجيل الطلب REQ-5FBCCE01 بحالة قيد المعالجة.",
           "citations": [
             "policy-v1"
           ],
@@ -620,7 +620,7 @@
           ],
           "usage": [],
           "evidence_mode": "simulator",
-          "latency_ms": 1.4187999768182635
+          "latency_ms": 1.2969000090379268
         }
       }
     ],
@@ -699,16 +699,16 @@
           ],
           "usage": [
             {
-              "input_tokens": 1485,
+              "input_tokens": 1581,
               "output_tokens": 9,
-              "cached_tokens": 1466,
+              "cached_tokens": 1562,
               "usage_available": true,
               "cached_tokens_known": true,
               "usage_status": "complete",
               "cost_usd": 0.0,
-              "simulated_cost_usd": 0.0004215,
+              "simulated_cost_usd": 0.0004455,
               "estimated_cost_usd": null,
-              "estimated_cost_upper_bound_usd": 0.001521,
+              "estimated_cost_upper_bound_usd": 0.001617,
               "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
               "requested_model": "talabak-course-primary",
               "served_model": "talabak-course-primary",
@@ -718,11 +718,11 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.377400000113994,
+              "latency_ms": 2.139699994586408,
               "finish_reason": "stop",
               "stage": "input_guard",
               "model": "talabak-course-primary",
-              "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+              "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
             },
             {
               "input_tokens": 1632,
@@ -744,11 +744,11 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.142699988326058,
+              "latency_ms": 2.599600004032254,
               "finish_reason": "stop",
               "stage": "route_extract",
               "model": "talabak-course-primary",
-              "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+              "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
             },
             {
               "input_tokens": 2104,
@@ -770,23 +770,23 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.463399985572323,
+              "latency_ms": 2.497300010873005,
               "finish_reason": "tool_calls",
               "stage": "tools",
               "model": "talabak-course-primary",
-              "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460",
+              "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f",
               "wire_pattern": "schema_with_tools"
             }
           ],
           "evidence_mode": "simulator",
-          "latency_ms": 14.178300014464185
+          "latency_ms": 14.749900001334026
         }
       },
       {
         "input": "موافق",
         "output": {
           "status": "created",
-          "message": "تم تسجيل الطلب REQ-06ADDE3F بحالة قيد المعالجة.",
+          "message": "تم تسجيل الطلب REQ-D9B845B9 بحالة قيد المعالجة.",
           "citations": [
             "policy-v1"
           ],
@@ -835,7 +835,7 @@
           ],
           "usage": [],
           "evidence_mode": "simulator",
-          "latency_ms": 1.295800000661984
+          "latency_ms": 1.1752000136766583
         }
       }
     ],
@@ -871,7 +871,7 @@
           ],
           "usage": [],
           "evidence_mode": "simulator",
-          "latency_ms": 0.593400007346645
+          "latency_ms": 0.6477999850176275
         }
       }
     ],
@@ -957,16 +957,16 @@
           ],
           "usage": [
             {
-              "input_tokens": 1483,
+              "input_tokens": 1579,
               "output_tokens": 9,
-              "cached_tokens": 1466,
+              "cached_tokens": 1562,
               "usage_available": true,
               "cached_tokens_known": true,
               "usage_status": "complete",
               "cost_usd": 0.0,
-              "simulated_cost_usd": 0.0004195,
+              "simulated_cost_usd": 0.0004435,
               "estimated_cost_usd": null,
-              "estimated_cost_upper_bound_usd": 0.001519,
+              "estimated_cost_upper_bound_usd": 0.001615,
               "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
               "requested_model": "talabak-course-primary",
               "served_model": "talabak-course-primary",
@@ -976,11 +976,11 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.2908000100869685,
+              "latency_ms": 2.600100007839501,
               "finish_reason": "stop",
               "stage": "input_guard",
               "model": "talabak-course-primary",
-              "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+              "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
             },
             {
               "input_tokens": 1630,
@@ -1002,11 +1002,11 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.2240999969653785,
+              "latency_ms": 2.2357999987434596,
               "finish_reason": "stop",
               "stage": "route_extract",
               "model": "talabak-course-primary",
-              "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+              "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
             },
             {
               "input_tokens": 2096,
@@ -1028,11 +1028,11 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.347300003748387,
+              "latency_ms": 2.439300005789846,
               "finish_reason": "tool_calls",
               "stage": "tools",
               "model": "talabak-course-primary",
-              "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460",
+              "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f",
               "wire_pattern": "schema_with_tools"
             },
             {
@@ -1055,16 +1055,16 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.546499978052452,
+              "latency_ms": 2.659299992956221,
               "finish_reason": "stop",
               "stage": "tools",
               "model": "talabak-course-primary",
-              "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460",
+              "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f",
               "wire_pattern": "schema_with_tools"
             }
           ],
           "evidence_mode": "simulator",
-          "latency_ms": 17.291299998760223
+          "latency_ms": 18.64470000145957
         }
       }
     ],

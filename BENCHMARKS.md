@@ -1,13 +1,13 @@
 # BENCHMARKS — simulator evidence only
 
-Generated: 2026-09-16T15:12:31.437444+00:00
+Generated: 2026-09-16T15:42:03.943769+00:00
 
 These are measured loopback request times and tokenizer counts. Configured tariffs are illustrative assumptions; actual external API spend is $0. No model-performance or commercial-pricing claim is made.
 
 | Route | Cases passed | p50 ms | p95 ms | Input tokens | Cached input | Actual spend | Illustrative tariff estimate |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| primary (simulator) | 144/144 | 17.15 | 31.37 | 725817 | 96.3% | $0 | $0.259711 |
-| open_weight (simulator) | 144/144 | 16.92 | 31.04 | 725771 | 96.3% | $0 | $0.025955 |
+| primary (simulator) | 144/144 | 17.01 | 33.62 | 738297 | 96.3% | $0 | $0.262902 |
+| open_weight (simulator) | 144/144 | 17.23 | 30.29 | 738251 | 96.3% | $0 | $0.026274 |
 
 ## Prompt-cache and response-cache steps
 
@@ -15,10 +15,10 @@ Each step reruns the full golden set and carries its own gate verdict. `stable_p
 
 | Step | Model calls | Provider cached input | Illustrative USD | Reduction vs baseline | Golden | Safety | Gate |
 |---|---:|---:|---:|---:|---:|---:|---|
-| baseline | 336 | 0.0% | $0.208984 | – | 144/144 | 78/78 | PASS |
-| stable_public_context | 336 | 96.3% | $0.194998 | 6.7% | 144/144 | 78/78 | PASS |
-| exact | 84 | 97.2% | $0.047789 | 77.1% | 144/144 | 78/78 | PASS |
-| semantic | 86 | 97.2% | $0.048503 | 76.8% | 144/144 | 78/78 | PASS |
+| baseline | 336 | 0.0% | $0.220888 | – | 144/144 | 78/78 | PASS |
+| stable_public_context | 336 | 96.4% | $0.198046 | 10.3% | 144/144 | 78/78 | PASS |
+| exact | 84 | 97.3% | $0.048533 | 78.0% | 144/144 | 78/78 | PASS |
+| semantic | 86 | 97.3% | $0.049319 | 77.7% | 144/144 | 78/78 | PASS |
 
 Pipeline default `stable_context` at run time: **True**. Targets measured on the simulator (simulator usage.prompt_tokens_details.cached_tokens over a 1024-token minimum prefix and illustrative tariffs; a live provider must confirm both targets):
 
@@ -34,13 +34,13 @@ See artifacts/cache_benchmark.json for the fixed workload, before/after measurem
 ```json
 {
   "status": "PASS",
-  "created_at_utc": "2026-09-16T15:12:31.234834+00:00",
+  "created_at_utc": "2026-09-16T15:42:03.799161+00:00",
   "traffic_sha256": "54fb4d252ce2ec931f0b53cf2e7ec275c1479956ce095abab6de983f4dcd9853",
   "workload": "Exactly four passes of all first-turn successful read-only FAQ/status golden cases. Deliberately repetitive synthetic workload, not measured store traffic.",
   "semantic_ready": true,
   "selected_threshold": 1.0,
-  "provider_input_cache_fraction": 0.9630977922347568,
-  "simulated_cost_reduction": 0.7679104620449413,
+  "provider_input_cache_fraction": 0.9636797634709018,
+  "simulated_cost_reduction": 0.7767239505993988,
   "targets": {
     "provider_input_cache_at_least_65_percent": true,
     "simulated_cost_reduction_at_least_60_percent": true,

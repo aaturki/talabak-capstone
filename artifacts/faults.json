@@ -62,16 +62,16 @@
         ],
         "usage": [
           {
-            "input_tokens": 1482,
+            "input_tokens": 1578,
             "output_tokens": 9,
-            "cached_tokens": 1466,
+            "cached_tokens": 1562,
             "usage_available": true,
             "cached_tokens_known": true,
             "usage_status": "complete",
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.0004185,
+            "simulated_cost_usd": 0.0004425,
             "estimated_cost_usd": null,
-            "estimated_cost_upper_bound_usd": 0.001518,
+            "estimated_cost_upper_bound_usd": 0.001614,
             "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
             "requested_model": "talabak-course-primary",
             "served_model": "talabak-course-primary",
@@ -81,11 +81,11 @@
             "attempts": 2,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 105.42659999919124,
+            "latency_ms": 104.90830001072027,
             "finish_reason": "stop",
             "stage": "input_guard",
             "model": "talabak-course-primary",
-            "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+            "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
           },
           {
             "input_tokens": 1629,
@@ -107,15 +107,15 @@
             "attempts": 1,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 2.675299998372793,
+            "latency_ms": 2.2733999940101057,
             "finish_reason": "stop",
             "stage": "route_extract",
             "model": "talabak-course-primary",
-            "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+            "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
           }
         ],
         "evidence_mode": "simulator",
-        "latency_ms": 114.89640001673251
+        "latency_ms": 113.85940000764094
       },
       "events": [
         {
@@ -146,7 +146,7 @@
             "attempts": 1,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 1.778
+            "latency_ms": 1.822
           },
           "reservation": "released_unbilled_rejection",
           "delay_s": 0.1
@@ -161,16 +161,16 @@
           "evidence_mode": "simulator",
           "usage_status": "complete",
           "usage": {
-            "input_tokens": 1482,
+            "input_tokens": 1578,
             "output_tokens": 9,
-            "cached_tokens": 1466,
+            "cached_tokens": 1562,
             "usage_available": true,
             "cached_tokens_known": true,
             "usage_status": "complete",
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.0004185,
+            "simulated_cost_usd": 0.0004425,
             "estimated_cost_usd": null,
-            "estimated_cost_upper_bound_usd": 0.001518,
+            "estimated_cost_upper_bound_usd": 0.001614,
             "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
             "requested_model": "talabak-course-primary",
             "served_model": "talabak-course-primary",
@@ -180,7 +180,7 @@
             "attempts": 2,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 105.409,
+            "latency_ms": 104.891,
             "finish_reason": "stop"
           }
         },
@@ -213,7 +213,7 @@
             "attempts": 1,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 2.661,
+            "latency_ms": 2.259,
             "finish_reason": "stop"
           }
         }
@@ -281,16 +281,16 @@
         ],
         "usage": [
           {
-            "input_tokens": 1482,
+            "input_tokens": 1578,
             "output_tokens": 9,
             "cached_tokens": 0,
             "usage_available": true,
             "cached_tokens_known": true,
             "usage_status": "complete",
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.0003036,
+            "simulated_cost_usd": 0.0003228,
             "estimated_cost_usd": null,
-            "estimated_cost_upper_bound_usd": 0.0003036,
+            "estimated_cost_upper_bound_usd": 0.0003228,
             "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
             "requested_model": "talabak-course-fallback",
             "served_model": "talabak-course-fallback",
@@ -300,11 +300,11 @@
             "attempts": 3,
             "fallback_used": true,
             "alias": "fallback",
-            "latency_ms": 136.72890001907945,
+            "latency_ms": 174.50670001562685,
             "finish_reason": "stop",
             "stage": "input_guard",
             "model": "talabak-course-fallback",
-            "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+            "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
           },
           {
             "input_tokens": 1629,
@@ -326,15 +326,15 @@
             "attempts": 3,
             "fallback_used": true,
             "alias": "fallback",
-            "latency_ms": 136.2080000108108,
+            "latency_ms": 57.762700016610324,
             "finish_reason": "stop",
             "stage": "route_extract",
             "model": "talabak-course-fallback",
-            "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+            "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
           }
         ],
         "evidence_mode": "simulator",
-        "latency_ms": 281.1641000153031
+        "latency_ms": 239.9429999932181
       },
       "events": [
         {
@@ -365,10 +365,10 @@
             "attempts": 1,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 1.639
+            "latency_ms": 1.854
           },
           "reservation": "released_unbilled_rejection",
-          "delay_s": 0.12993490028727633
+          "delay_s": 0.1438122681206899
         },
         {
           "event": "model_error",
@@ -398,7 +398,7 @@
             "attempts": 2,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 134.131
+            "latency_ms": 148.244
           },
           "reservation": "released_unbilled_rejection"
         },
@@ -412,16 +412,16 @@
           "evidence_mode": "simulator",
           "usage_status": "complete",
           "usage": {
-            "input_tokens": 1482,
+            "input_tokens": 1578,
             "output_tokens": 9,
             "cached_tokens": 0,
             "usage_available": true,
             "cached_tokens_known": true,
             "usage_status": "complete",
             "cost_usd": 0.0,
-            "simulated_cost_usd": 0.0003036,
+            "simulated_cost_usd": 0.0003228,
             "estimated_cost_usd": null,
-            "estimated_cost_upper_bound_usd": 0.0003036,
+            "estimated_cost_upper_bound_usd": 0.0003228,
             "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
             "requested_model": "talabak-course-fallback",
             "served_model": "talabak-course-fallback",
@@ -431,7 +431,7 @@
             "attempts": 3,
             "fallback_used": true,
             "alias": "fallback",
-            "latency_ms": 136.712,
+            "latency_ms": 174.489,
             "finish_reason": "stop"
           }
         },
@@ -463,10 +463,10 @@
             "attempts": 1,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 1.51
+            "latency_ms": 2.055
           },
           "reservation": "released_unbilled_rejection",
-          "delay_s": 0.12969060086138764
+          "delay_s": 0.0505344270755351
         },
         {
           "event": "model_error",
@@ -496,7 +496,7 @@
             "attempts": 2,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 134.003
+            "latency_ms": 55.141
           },
           "reservation": "released_unbilled_rejection"
         },
@@ -529,7 +529,7 @@
             "attempts": 3,
             "fallback_used": true,
             "alias": "fallback",
-            "latency_ms": 136.193,
+            "latency_ms": 57.748,
             "finish_reason": "stop"
           }
         }
@@ -597,16 +597,16 @@
         ],
         "usage": [
           {
-            "input_tokens": 1482,
+            "input_tokens": 1578,
             "output_tokens": 9,
-            "cached_tokens": 1466,
+            "cached_tokens": 1562,
             "usage_available": true,
             "cached_tokens_known": true,
             "usage_status": "complete",
             "cost_usd": 0.0,
-            "simulated_cost_usd": 8.37e-05,
+            "simulated_cost_usd": 8.85e-05,
             "estimated_cost_usd": null,
-            "estimated_cost_upper_bound_usd": 0.0003036,
+            "estimated_cost_upper_bound_usd": 0.0003228,
             "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
             "requested_model": "talabak-course-fallback",
             "served_model": "talabak-course-fallback",
@@ -616,11 +616,11 @@
             "attempts": 3,
             "fallback_used": true,
             "alias": "fallback",
-            "latency_ms": 112.90370000642724,
+            "latency_ms": 109.39440000220202,
             "finish_reason": "stop",
             "stage": "input_guard",
             "model": "talabak-course-fallback",
-            "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+            "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
           },
           {
             "input_tokens": 1629,
@@ -642,15 +642,15 @@
             "attempts": 3,
             "fallback_used": true,
             "alias": "fallback",
-            "latency_ms": 132.08080001641065,
+            "latency_ms": 144.62589999311604,
             "finish_reason": "stop",
             "stage": "route_extract",
             "model": "talabak-course-fallback",
-            "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+            "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
           }
         ],
         "evidence_mode": "simulator",
-        "latency_ms": 252.2264000144787
+        "latency_ms": 260.7004000165034
       },
       "events": [
         {
@@ -681,10 +681,10 @@
             "attempts": 1,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 1.733
+            "latency_ms": 2.195
           },
           "reservation": "released_unbilled_rejection",
-          "delay_s": 0.10588118716490802
+          "delay_s": 0.1003612735715856
         },
         {
           "event": "model_error",
@@ -714,7 +714,7 @@
             "attempts": 2,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 110.685
+            "latency_ms": 106.398
           },
           "reservation": "released_unbilled_rejection"
         },
@@ -728,16 +728,16 @@
           "evidence_mode": "simulator",
           "usage_status": "complete",
           "usage": {
-            "input_tokens": 1482,
+            "input_tokens": 1578,
             "output_tokens": 9,
-            "cached_tokens": 1466,
+            "cached_tokens": 1562,
             "usage_available": true,
             "cached_tokens_known": true,
             "usage_status": "complete",
             "cost_usd": 0.0,
-            "simulated_cost_usd": 8.37e-05,
+            "simulated_cost_usd": 8.85e-05,
             "estimated_cost_usd": null,
-            "estimated_cost_upper_bound_usd": 0.0003036,
+            "estimated_cost_upper_bound_usd": 0.0003228,
             "cost_basis": "zero_spend_local_simulator; illustrative_tariff_separate",
             "requested_model": "talabak-course-fallback",
             "served_model": "talabak-course-fallback",
@@ -747,7 +747,7 @@
             "attempts": 3,
             "fallback_used": true,
             "alias": "fallback",
-            "latency_ms": 112.89,
+            "latency_ms": 109.376,
             "finish_reason": "stop"
           }
         },
@@ -779,10 +779,10 @@
             "attempts": 1,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 1.663
+            "latency_ms": 1.8
           },
           "reservation": "released_unbilled_rejection",
-          "delay_s": 0.12531441338234736
+          "delay_s": 0.13697805360182833
         },
         {
           "event": "model_error",
@@ -812,7 +812,7 @@
             "attempts": 2,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 129.715
+            "latency_ms": 142.091
           },
           "reservation": "released_unbilled_rejection"
         },
@@ -845,7 +845,7 @@
             "attempts": 3,
             "fallback_used": true,
             "alias": "fallback",
-            "latency_ms": 132.067,
+            "latency_ms": 144.609,
             "finish_reason": "stop"
           }
         }
@@ -904,11 +904,11 @@
           "attempts": 1,
           "fallback_used": false,
           "alias": "primary",
-          "latency_ms": 2.324500004760921,
+          "latency_ms": 2.5954000011552125,
           "finish_reason": "stop",
           "stage": "route_extract",
           "model": "talabak-course-primary",
-          "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+          "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
         },
         {
           "input_tokens": 1790,
@@ -930,11 +930,11 @@
           "attempts": 1,
           "fallback_used": false,
           "alias": "primary",
-          "latency_ms": 2.3490999883506447,
+          "latency_ms": 2.123500016750768,
           "finish_reason": "stop",
           "stage": "route_extract",
           "model": "talabak-course-primary",
-          "prompt_version": "abdc9aed5150626c502a0843fd1ddabb75ed022fd949875eed6a3c99f7d19460"
+          "prompt_version": "a934409c6bfef2bbb5f239a0742baeaab9bb2d26044fe862d459a6f103c8d80f"
         }
       ],
       "passed": true

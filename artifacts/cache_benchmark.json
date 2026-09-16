@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "created_at_utc": "2026-09-16T15:12:31.234834+00:00",
+  "created_at_utc": "2026-09-16T15:42:03.799161+00:00",
   "traffic_sha256": "54fb4d252ce2ec931f0b53cf2e7ec275c1479956ce095abab6de983f4dcd9853",
   "workload": "Exactly four passes of all first-turn successful read-only FAQ/status golden cases. Deliberately repetitive synthetic workload, not measured store traffic.",
   "semantic_ready": true,
@@ -14,15 +14,15 @@
       "response_cache_hits": 0,
       "exact_hits": 0,
       "semantic_hits": 0,
-      "input_tokens": 174664,
+      "input_tokens": 186568,
       "output_tokens": 8580,
       "provider_cached_tokens": 0,
       "provider_cache_fraction": 0.0,
       "cost_usd": 0.0,
-      "simulated_cost_usd": 0.208984,
-      "wall_ms": 1251.7265999922529,
-      "request_latency_ms_p50": 7.975400018040091,
-      "request_latency_ms_p95": 13.24849997763522,
+      "simulated_cost_usd": 0.220888,
+      "wall_ms": 1254.009300027974,
+      "request_latency_ms_p50": 8.105500019155443,
+      "request_latency_ms_p95": 13.13579999259673,
       "failed_ids": [],
       "evidence_mode": "simulator",
       "semantic_threshold": null,
@@ -32,20 +32,20 @@
         "n": 144,
         "passed": 144,
         "pass_rate": 1.0,
-        "latency_ms_p50": 12.638699990930036,
-        "latency_ms_p95": 22.45380001841113,
+        "latency_ms_p50": 12.760799989337102,
+        "latency_ms_p95": 22.970500023802742,
         "model_calls": 408,
-        "input_tokens": 236177,
+        "input_tokens": 248657,
         "output_tokens": 14459,
         "cached_tokens": 0,
         "cost_usd": 0.0,
-        "simulated_cost_usd": 0.294013,
+        "simulated_cost_usd": 0.306493,
         "estimated_cost_usd": null,
         "usage_coverage": {
           "input_tokens": {
             "known": 408,
             "unknown": 0,
-            "known_total": 236177
+            "known_total": 248657
           },
           "output_tokens": {
             "known": 408,
@@ -65,7 +65,7 @@
           "simulated_cost_usd": {
             "known": 408,
             "unknown": 0,
-            "known_total": 0.294013
+            "known_total": 0.306493
           },
           "estimated_cost_usd": {
             "known": 0,
@@ -95,15 +95,15 @@
       "response_cache_hits": 0,
       "exact_hits": 0,
       "semantic_hits": 0,
-      "input_tokens": 577960,
+      "input_tokens": 589864,
       "output_tokens": 8628,
-      "provider_cached_tokens": 556632,
-      "provider_cache_fraction": 0.9630977922347568,
+      "provider_cached_tokens": 568440,
+      "provider_cache_fraction": 0.9636797634709018,
       "cost_usd": 0.0,
-      "simulated_cost_usd": 0.194998,
-      "wall_ms": 1778.5191000148188,
-      "request_latency_ms_p50": 11.41879998613149,
-      "request_latency_ms_p95": 19.087099994067103,
+      "simulated_cost_usd": 0.198046,
+      "wall_ms": 1781.9267000013497,
+      "request_latency_ms_p50": 11.482000001706183,
+      "request_latency_ms_p95": 19.189300015568733,
       "failed_ids": [],
       "evidence_mode": "simulator",
       "semantic_threshold": null,
@@ -113,20 +113,20 @@
         "n": 144,
         "passed": 144,
         "pass_rate": 1.0,
-        "latency_ms_p50": 16.858199989655986,
-        "latency_ms_p95": 29.93600000627339,
+        "latency_ms_p50": 16.701400018064305,
+        "latency_ms_p95": 30.311700014863163,
         "model_calls": 408,
-        "input_tokens": 725817,
+        "input_tokens": 738297,
         "output_tokens": 14474,
-        "cached_tokens": 703794,
+        "cached_tokens": 716274,
         "cost_usd": 0.0,
-        "simulated_cost_usd": 0.2558675,
+        "simulated_cost_usd": 0.2589875,
         "estimated_cost_usd": null,
         "usage_coverage": {
           "input_tokens": {
             "known": 408,
             "unknown": 0,
-            "known_total": 725817
+            "known_total": 738297
           },
           "output_tokens": {
             "known": 408,
@@ -136,7 +136,7 @@
           "cached_tokens": {
             "known": 408,
             "unknown": 0,
-            "known_total": 703794
+            "known_total": 716274
           },
           "cost_usd": {
             "known": 408,
@@ -146,7 +146,7 @@
           "simulated_cost_usd": {
             "known": 408,
             "unknown": 0,
-            "known_total": 0.2558675
+            "known_total": 0.2589875
           },
           "estimated_cost_usd": {
             "known": 0,
@@ -167,7 +167,7 @@
         "failures": [],
         "basis": "authored deterministic expectations; no uncalibrated judge"
       },
-      "simulated_cost_reduction_vs_baseline": 0.0669237836389388,
+      "simulated_cost_reduction_vs_baseline": 0.10340987287675207,
       "actual_cost_reduction_vs_baseline": null,
       "actual_cost_reduction_reason": "Actual spend is zero in both modes; a percentage is undefined"
     },
@@ -179,15 +179,15 @@
       "response_cache_hits": 93,
       "exact_hits": 93,
       "semantic_hits": 0,
-      "input_tokens": 144490,
+      "input_tokens": 147466,
       "output_tokens": 2157,
-      "provider_cached_tokens": 140439,
-      "provider_cache_fraction": 0.971963457678732,
+      "provider_cached_tokens": 143415,
+      "provider_cache_fraction": 0.9725292609821925,
       "cost_usd": 0.0,
-      "simulated_cost_usd": 0.04778875,
-      "wall_ms": 603.1064000271726,
-      "request_latency_ms_p50": 1.2808999745175242,
-      "request_latency_ms_p95": 19.128400017507374,
+      "simulated_cost_usd": 0.04853275,
+      "wall_ms": 608.5659000091255,
+      "request_latency_ms_p50": 1.3104999961797148,
+      "request_latency_ms_p95": 18.504499981645495,
       "failed_ids": [],
       "evidence_mode": "simulator",
       "semantic_threshold": null,
@@ -197,20 +197,20 @@
         "n": 144,
         "passed": 144,
         "pass_rate": 1.0,
-        "latency_ms_p50": 16.919499990763143,
-        "latency_ms_p95": 30.884899984812364,
+        "latency_ms_p50": 17.09010000922717,
+        "latency_ms_p95": 29.84079997986555,
         "model_calls": 408,
-        "input_tokens": 725817,
+        "input_tokens": 738297,
         "output_tokens": 14474,
-        "cached_tokens": 703794,
+        "cached_tokens": 716274,
         "cost_usd": 0.0,
-        "simulated_cost_usd": 0.2558675,
+        "simulated_cost_usd": 0.2589875,
         "estimated_cost_usd": null,
         "usage_coverage": {
           "input_tokens": {
             "known": 408,
             "unknown": 0,
-            "known_total": 725817
+            "known_total": 738297
           },
           "output_tokens": {
             "known": 408,
@@ -220,7 +220,7 @@
           "cached_tokens": {
             "known": 408,
             "unknown": 0,
-            "known_total": 703794
+            "known_total": 716274
           },
           "cost_usd": {
             "known": 408,
@@ -230,7 +230,7 @@
           "simulated_cost_usd": {
             "known": 408,
             "unknown": 0,
-            "known_total": 0.2558675
+            "known_total": 0.2589875
           },
           "estimated_cost_usd": {
             "known": 0,
@@ -251,7 +251,7 @@
         "failures": [],
         "basis": "authored deterministic expectations; no uncalibrated judge"
       },
-      "simulated_cost_reduction_vs_baseline": 0.771328187803851,
+      "simulated_cost_reduction_vs_baseline": 0.7802834468146753,
       "actual_cost_reduction_vs_baseline": null,
       "actual_cost_reduction_reason": "Actual spend is zero in both modes; a percentage is undefined"
     },
@@ -263,15 +263,15 @@
       "response_cache_hits": 94,
       "exact_hits": 90,
       "semantic_hits": 4,
-      "input_tokens": 147325,
+      "input_tokens": 150589,
       "output_tokens": 2149,
-      "provider_cached_tokens": 143224,
-      "provider_cache_fraction": 0.9721635839131173,
+      "provider_cached_tokens": 146488,
+      "provider_cache_fraction": 0.9727669351679074,
       "cost_usd": 0.0,
-      "simulated_cost_usd": 0.048503,
-      "wall_ms": 656.2819000100717,
-      "request_latency_ms_p50": 1.3010000111535192,
-      "request_latency_ms_p95": 19.88330000312999,
+      "simulated_cost_usd": 0.049319,
+      "wall_ms": 651.2371999851894,
+      "request_latency_ms_p50": 1.289300009375438,
+      "request_latency_ms_p95": 20.421299996087328,
       "failed_ids": [],
       "evidence_mode": "simulator",
       "semantic_threshold": 1.0,
@@ -281,20 +281,20 @@
         "n": 144,
         "passed": 144,
         "pass_rate": 1.0,
-        "latency_ms_p50": 17.12559998850338,
-        "latency_ms_p95": 30.22039998904802,
+        "latency_ms_p50": 17.30080001289025,
+        "latency_ms_p95": 31.868699996266514,
         "model_calls": 408,
-        "input_tokens": 725817,
+        "input_tokens": 738297,
         "output_tokens": 14474,
-        "cached_tokens": 703794,
+        "cached_tokens": 716274,
         "cost_usd": 0.0,
-        "simulated_cost_usd": 0.2558675,
+        "simulated_cost_usd": 0.2589875,
         "estimated_cost_usd": null,
         "usage_coverage": {
           "input_tokens": {
             "known": 408,
             "unknown": 0,
-            "known_total": 725817
+            "known_total": 738297
           },
           "output_tokens": {
             "known": 408,
@@ -304,7 +304,7 @@
           "cached_tokens": {
             "known": 408,
             "unknown": 0,
-            "known_total": 703794
+            "known_total": 716274
           },
           "cost_usd": {
             "known": 408,
@@ -314,7 +314,7 @@
           "simulated_cost_usd": {
             "known": 408,
             "unknown": 0,
-            "known_total": 0.2558675
+            "known_total": 0.2589875
           },
           "estimated_cost_usd": {
             "known": 0,
@@ -335,13 +335,13 @@
         "failures": [],
         "basis": "authored deterministic expectations; no uncalibrated judge"
       },
-      "simulated_cost_reduction_vs_baseline": 0.7679104620449413,
+      "simulated_cost_reduction_vs_baseline": 0.7767239505993988,
       "actual_cost_reduction_vs_baseline": null,
       "actual_cost_reduction_reason": "Actual spend is zero in both modes; a percentage is undefined"
     }
   ],
-  "provider_input_cache_fraction": 0.9630977922347568,
-  "simulated_cost_reduction": 0.7679104620449413,
+  "provider_input_cache_fraction": 0.9636797634709018,
+  "simulated_cost_reduction": 0.7767239505993988,
   "targets": {
     "provider_input_cache_at_least_65_percent": true,
     "simulated_cost_reduction_at_least_60_percent": true,
