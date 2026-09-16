@@ -66,7 +66,7 @@ Arabic examples are demonstrated in the notebook. Reset the demo store/session t
 |---|---|
 | Application engineering | Local tests and executed notebook outputs; see the current execution record. |
 | Real model comparison | Recorded on 2026-09-16: OpenAI gpt-5-mini 140/144 and DeepSeek deepseek-flash 137/144 over the same golden set, by slice, with cost, cache and latency (EVALUATION_REPORT.md, "Live model runs"). |
-| Human calibration | Not done: no human labels were collected, so the judge is reported as uncalibrated (no κ). |
+| Human calibration | Measured on 2026-09-16: 40 owner-labelled live answers against the gpt-5 judge; agreement 42.5%, κ = −0.02 (v2 rubric), status NOT_CALIBRATED; the judge stays advisory (ADR-016). |
 | Provider caching and savings | Measure returned usage and rerun evaluation after each optimization. |
 | Self-host break-even | Requires the selected runtime's measured throughput and explicit economic inputs. |
 | Reproducibility | Local execution and actual Colab execution are recorded separately. |

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-09-16T16:59:57.903679+00:00",
+  "status": "AWAITING_HUMAN_LABELS",
+  "review_sha256": "cca8fa3f6622141a6baeb120af295a6c5dda7d3d074e1cd058fa2a52de3e25a4",
+  "binding": {
+    "source_run_id": "20260916T164049Z-004486c95c",
+    "source_manifest_sha256": "1dd220f6148836e5b7c00ad5ed5c233dcdd30ee0c14a91658473cdc9011cd74b",
+    "source_provenance_sha256": "5e689a0f40dfb5e6f0be9609fdbe5ba440b037bed9836e04bbaf22aef2b12827",
+    "items_sha256": "65b7cb03cda025b7bcdd5a88fb6a5e3295972ce6bd2b4e5ab1ec3a54eafa48ba",
+    "rubric_sha256": "ab2c7a7e32833662a9dee0cd5caae42ce111e26d1e4ea7101b66d0d2bbcce5bc",
+    "dimension": "groundedness",
+    "source_is_live": true
+  },
+  "rubric_source": "judge.groundedness.v2.md",
+  "source_run_dir": "C:\\Users\\Turki\\Documents\\Codex\\2026-09-15\\llm-capstone-local\\outputs\\talabak\\artifacts\\live\\20260916T164049Z-004486c95c",
+  "rows": 40,
+  "labels_filled": 0,
+  "coverage": {
+    "source_answer_records": 288,
+    "unique_answers": 176,
+    "selected_unique_answers": 40,
+    "duplicate_outputs_collapsed": 112,
+    "strata": {
+      "language": {
+        "ar": 27,
+        "en": 13
+      },
+      "intent": {
+        "appointment": 8,
+        "exchange": 7,
+        "faq": 7,
+        "handoff": 7,
+        "order_status": 7,
+        "return": 4
+      },
+      "difficulty": {
+        "easy": 12,
+        "hard": 8,
+        "medium": 20
+      },
+      "risk": {
+        "medium": 16,
+        "high": 16,
+        "low": 8
+      }
+    }
+  },
+  "paths": {
+    "human_csv": "C:\\Users\\Turki\\Documents\\Codex\\2026-09-15\\llm-capstone-local\\outputs\\talabak\\artifacts\\live\\review-groundedness-v2-20260916T164049\\human.csv",
+    "manifest": "C:\\Users\\Turki\\Documents\\Codex\\2026-09-15\\llm-capstone-local\\outputs\\talabak\\artifacts\\live\\review-groundedness-v2-20260916T164049\\review_manifest.json"
+  },
+  "notice": "Labels are genuinely blank. Rater identity is self-reported; no human review has occurred."
+}

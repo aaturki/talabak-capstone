@@ -1,0 +1,210 @@
+{
+  "status": "JUDGE_SCORED",
+  "created_at_utc": "2026-09-16T17:16:40.610618+00:00",
+  "review_sha256": "906cd4cf612997657e966b39319bfb0e81f5d11613b9b656732f22ba65b61bf7",
+  "rubric_sha256": "816f30722d3ae490b4cc78e4c32a818c27a065558be747a2466f036656f570ae",
+  "dimension": "groundedness",
+  "predictions_sha256": "739c1722a8f698939a644e9ad485c08d31f4a150851e5de9de571b5b366cca93",
+  "expected_items": 40,
+  "judge_wire_events_sha256": "62ae5f394befb8142ce0770b24b617ca716ef2a7ad742ebf09417f47d0863d8a",
+  "judge_provenance": {
+    "source_files_sha256": {
+      "talabak/__init__.py": "738e4adaa0377d8df3c0e0cd979406bb4cf99aa96a54bb24ed82d95e49f23869",
+      "talabak/cache.py": "a7477278291309920a95e1d519fe9702d7719d5407352bfae9d9670691077c31",
+      "talabak/domain.py": "613ec4121082acde891079d95cfcf5dd9c2f0eb4c84b501730c10995e116549a",
+      "talabak/guards.py": "01bcd26d93adef90682d71ae0bf768a9e35e52c369036cbe442d369a9819a469",
+      "talabak/llm.py": "c80214aef724677e383193d539da382ff94fd0e1bd83d3b3d6a705e4d78a52e9",
+      "talabak/mock_gateway.py": "df690c23f7efa119bd74c8ea290d77ddf9c1f9385bbfdbc75e4b52a449c2c233",
+      "talabak/pipeline.py": "c0bb15a620a72370c08b665d0892195f9b3e08bda96d9e170ce7d18a0fbd1448",
+      "talabak/schemas.py": "72d9d589ad0055812dc33453c616a51d70fa92361ae964e9cebd033e83ff904a",
+      "scripts/breakeven.py": "89f3aaa9119e845125bfeda26923682aa4a207871c100f909ac3268970ab70d5",
+      "scripts/build_notebook.py": "b2f9bb0fa3ea792cbb3e4af11196ebb58de3ddf8e933876126d1979f014e032b",
+      "scripts/cache_benchmark.py": "f1bd4bbe586c84b07e44b3b420217604d21531371b946cebd70fbef6ce68a1c9",
+      "scripts/calibrate.py": "4c69342c42f14a72dd330ea6a203d89bef4eceffcfecf94df4b747bf6d7e3386",
+      "scripts/context_budget.py": "acee3f05fa01cdbc2296d3aba8d6c316e1d31f4bc219cc5208426e6c178bb146",
+      "scripts/evaluate.py": "327ee7c8f39403a701e75a83edfa11bf3605cacd9304ad09af165e28d541cdf9",
+      "scripts/live_benchmark.py": "0678c6c07797aea2025e9c76681b3b8df9221cb77f2374dfd62c64f86f6edef6",
+      "scripts/live_evaluate.py": "19afbbe0445555bf47b87bf070f1a50540d4518cf640d73160e49aba4248fef4",
+      "scripts/prepare_review.py": "96196b95cae161cb4f07ae9cef964d54cdbe53e9586f68a2c52b673074f3f60e",
+      "scripts/run_all.py": "63015419a00f654d4cee605db1c04b212ffe80c7f954bc5eec145d26d6a6967a",
+      "prompts/CHANGELOG.md": "ce9e4be0c09013d2e0ceb8e37f223ba701cfadb9e160c6f0b1d45ab9a151a6a0",
+      "prompts/context.v1.md": "62c4e46acc76c2a86d85a73b1755a735365d4a07cf3d89167f5a1781683e8d7c",
+      "prompts/guard.v1.md": "4218ab32cc7a33c921de37971eb2891117802f8114e7b742113b26c364ad8016",
+      "prompts/guard.v2.md": "3ce8c1843ffe239e552a419fc277e76e56deff6ca9ccccce3e7315af1816ff48",
+      "prompts/guard.v3.md": "d3d84459d481f37964ee09553dc849ed899dfca0126455e415641ab4469eba81",
+      "prompts/judge.completeness.v1.md": "51648278d3d237f2f145e195d0fa4a584ec82db3b374310909cf6a392671b453",
+      "prompts/judge.groundedness.v1.md": "816f30722d3ae490b4cc78e4c32a818c27a065558be747a2466f036656f570ae",
+      "prompts/judge.groundedness.v2.md": "ab2c7a7e32833662a9dee0cd5caae42ce111e26d1e4ea7101b66d0d2bbcce5bc",
+      "prompts/repair.v1.md": "788947cff3164d7337da2bf099057ccfcc938d3c22a861dd23120a2bdbde06a0",
+      "prompts/repair.v2.md": "a1dfce18fd0d823e242e5595522cc89a005742f5431c31db42d06dc19c7d34a4",
+      "prompts/router.degraded.v0.md": "003e925a7c5dd50420a7a225703111298577359506b8f13f774f88f7dcdd72c4",
+      "prompts/router.v1.md": "95444803cfc7e454b3b3e867d65773417e9efe31edd091ffa72d092701918e0a",
+      "prompts/tools.v1.json": "77618a5a45a3a97b81a6f28d82160a2bc736ba6309ecfcc7bacd23af2c5ab74e",
+      "prompts/workflow.v1.md": "785733d511af5c4e6907942f3a59e5ecfe67fc87cce8c6be8ff07d4514d23767",
+      "data/attacks.v1.jsonl": "ba59e75c3b4bda1b8016204696dde8a89e68c794b5a189ef8d35ca2d48bf6ab9",
+      "data/cache_pairs.v1.jsonl": "4af59244ca4c254cd4af4684e2300a8496a225e423811b211e7a828a0921c17e",
+      "data/golden.v1.jsonl": "41174e930a60f155f3c05b0e1dc441322e1df94dbae2277be2605855b377eb69",
+      "data/legitimate.v1.jsonl": "0e5b04a0f50286102581445363de4320b696ca89d888eeea30965920d45621e5",
+      "data/near_miss.v1.jsonl": "8645bb9beef6c7c098dbb56942230d6e7ceab0d3b6335e67fe0193819f108be5",
+      "data/store.v1.json": "1b3b16d36469dcb8037593961abd7f71489c0ac247ae86816280f5e6b4adb663",
+      "config/models.json": "e206d30a2e39fe1058f9b66f74bd584fdcc6f96d02e0e2848edafede4e90e21a",
+      "config/models.live.example.json": "5baaa515d6d292b2475133afb5f76acb144a5a7215b604cb87bf6b7ac4df8522",
+      "config/tokenizer_cache/fb374d419588a4632f3f557e76b4b70aebbca790": "446a9538cb6c348e3516120d7c08b09f57c36495e2acfffe59a5bf8b0cfb1a2d"
+    },
+    "source_manifest_sha256": "f5e8569597dd1642cd02eee49d93639c08e57d225f11554ce72382580656a5e7",
+    "configuration": {
+      "routes": {
+        "judge": {
+          "provider": "openai_compatible",
+          "model": "gpt-5",
+          "evidence_mode": "live_commercial",
+          "capabilities": {
+            "json_schema": true,
+            "tools": true,
+            "schema_with_tools": true,
+            "parallel_tool_calls": true,
+            "temperature": false,
+            "developer_role": true,
+            "token_parameter": "max_completion_tokens"
+          },
+          "tariff": {
+            "input_usd_per_million": 1.25,
+            "cached_input_usd_per_million": 0.125,
+            "output_usd_per_million": 10.0,
+            "source_url": "https://developers.openai.com/api/docs/pricing",
+            "verified_at": "2026-09-16"
+          },
+          "temperature": null,
+          "max_input_tokens": 16000,
+          "max_output_tokens": 2048,
+          "extra_body": {
+            "reasoning_effort": "low"
+          },
+          "base_url": "https://api.openai.com/v1",
+          "auth": {
+            "type": "env",
+            "name": "TALABAK_JUDGE_API_KEY"
+          }
+        }
+      },
+      "fallbacks": {
+        "judge": []
+      },
+      "settings": {
+        "max_attempts": 4,
+        "base_delay_s": 1.0,
+        "max_delay_s": 30.0,
+        "timeout_s": 90,
+        "max_output_tokens": 768,
+        "budget": {
+          "max_calls": 2500,
+          "max_estimated_cost_usd": null
+        }
+      },
+      "pipeline": {
+        "stable_context": true,
+        "prompt_versions": {
+          "router": "v1",
+          "workflow": "v1",
+          "guard": "v3",
+          "repair": "v2"
+        }
+      }
+    },
+    "configuration_sha256": "854bfb8d8e776e3906e99f1e147478e8bb7a5fcc778be5b21476a29a79b4a9eb",
+    "fixture_sha256": "1b3b16d36469dcb8037593961abd7f71489c0ac247ae86816280f5e6b4adb663",
+    "golden_file_sha256": "41174e930a60f155f3c05b0e1dc441322e1df94dbae2277be2605855b377eb69"
+  },
+  "judge_provenance_sha256": "fb6920e8cbae1736422d8fc87559ad32530323cd40c04e942720d15c74a3df48",
+  "wire_meter": {
+    "wire_calls": 40,
+    "received_responses": 40,
+    "accepted_responses": 40,
+    "error_attempts": 0,
+    "invalid_responses": 0,
+    "input_tokens": 21638,
+    "output_tokens": 13489,
+    "cached_tokens": 0,
+    "cost_usd": null,
+    "simulated_cost_usd": 0.0,
+    "estimated_cost_usd": 0.1619375,
+    "estimated_cost_upper_bound_usd": 0.1619375,
+    "usage_coverage": {
+      "input_tokens": {
+        "known": 40,
+        "unknown": 0,
+        "known_total": 21638
+      },
+      "output_tokens": {
+        "known": 40,
+        "unknown": 0,
+        "known_total": 13489
+      },
+      "cached_tokens": {
+        "known": 40,
+        "unknown": 0,
+        "known_total": 0
+      },
+      "cost_usd": {
+        "known": 0,
+        "unknown": 40,
+        "known_total": 0
+      },
+      "simulated_cost_usd": {
+        "known": 40,
+        "unknown": 0,
+        "known_total": 0.0
+      },
+      "estimated_cost_usd": {
+        "known": 40,
+        "unknown": 0,
+        "known_total": 0.1619375
+      },
+      "estimated_cost_upper_bound_usd": {
+        "known": 40,
+        "unknown": 0,
+        "known_total": 0.1619375
+      }
+    },
+    "provider_cache_fraction_known_responses": 0.0,
+    "responses_with_known_cache_usage": 40,
+    "attempts_with_unknown_usage": 0,
+    "requested_models": [
+      "gpt-5"
+    ],
+    "served_models": [
+      "gpt-5-2025-08-07"
+    ],
+    "served_model_unknown_responses": 0,
+    "fallback_used": false,
+    "cost_basis": "Configured tariff estimates for every wire attempt; actual invoice cost is unverified."
+  },
+  "judge_identity": {
+    "single_known_served_model": true,
+    "served_models": [
+      "gpt-5-2025-08-07"
+    ],
+    "received_responses": 40,
+    "unknown_identity_responses": 0,
+    "all_prediction_models_known": true
+  },
+  "scored_items": 40,
+  "valid_predictions": 40,
+  "evidence_modes": [
+    "live_commercial"
+  ],
+  "calibration_status": "NOT_CALIBRATED",
+  "budget": {
+    "wire_calls": 40,
+    "max_calls": 2500,
+    "max_estimated_cost_usd": null,
+    "estimated_cost_usd": 0.1619375,
+    "estimated_cost_upper_bound_usd": 0.1619375,
+    "reserved_estimated_cost_usd": 0.0,
+    "unknown_usage_responses": 0,
+    "partial_usage_responses": 0,
+    "retained_failure_reservations": 0,
+    "stopped": false,
+    "basis": "estimated_cost_usd sums complete-usage responses only; the upper bound covers every metered response; reserved is the amount compared with the cap"
+  }
+}

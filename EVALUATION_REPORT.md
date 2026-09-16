@@ -1,6 +1,6 @@
 # Evaluation Report — Talabak
 
-Generated at 2026-09-16T16:48:02.835848+00:00 from an actual application run through the SDK to a local simulator.
+Generated at 2026-09-16T17:18:45.533976+00:00 from an actual application run through the SDK to a local simulator.
 
 **The simulator sections below are local evidence with zero external spend; the 'Live model runs' section reports the real-provider comparison recorded under artifacts/live.**
 
@@ -59,12 +59,12 @@ The names below identify two configurations of the same simulator. This is not a
 
 ## Live model runs
 
-Run `20260916T160121Z-409d8f927a` (status **LIVE_ERRORS**, 2026-09-16T16:20:58.502292+00:00), same 144 golden cases, response caching and fallbacks disabled, provenance `c154f02bc843…`. Live evidence flag: **True**.
+Run `20260916T164049Z-004486c95c` (status **LIVE_ERRORS**, 2026-09-16T16:59:25.853635+00:00), same 144 golden cases, response caching and fallbacks disabled, provenance `5e689a0f40df…`. Live evidence flag: **True**.
 
 | Route | Requested model | Served model | Golden passed | Safety passed | Wire calls | Input tokens | Cached input | Estimated cost (USD) | p50 ms | p95 ms |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|
-| primary (live_commercial) | gpt-5-mini | gpt-5-mini-2025-08-07 | 140/144 | 75/78 | 388 | 625180 | 72.8% | 0.0844 | 4592 | 9193 |
-| open_weight (live_open_weight) | deepseek-flash | deepseek-flash | 137/144 | 73/78 | 413 | 807336 | 72.3% | 0.1351 | 3552 | 8535 |
+| primary (live_commercial) | gpt-5-mini | gpt-5-mini-2025-08-07 | 140/144 | 76/78 | 400 | 648441 | 81.6% | 0.0750 | 4641 | 8698 |
+| open_weight (live_open_weight) | deepseek-flash | deepseek-flash | 136/144 | 72/78 | 412 | 802310 | 83.2% | 0.1098 | 3145 | 7375 |
 
 Costs use the dated tariffs recorded in the run configuration; they are estimates, not invoices. Cached input is the provider-reported share over responses with known usage.
 
@@ -72,29 +72,37 @@ Costs use the dated tariffs recorded in the run configuration; they are estimate
 
 | Dimension | Stratum | primary passed/total | open_weight passed/total |
 |---|---|---:|---:|
-| intent | appointment | 23/24 | 24/24 |
-| intent | exchange | 23/24 | 20/24 |
-| intent | faq | 24/24 | 23/24 |
+| intent | appointment | 23/24 | 21/24 |
+| intent | exchange | 24/24 | 21/24 |
+| intent | faq | 24/24 | 24/24 |
 | intent | handoff | 24/24 | 23/24 |
 | intent | order_status | 22/24 | 24/24 |
-| intent | return | 24/24 | 23/24 |
-| language | ar | 94/96 | 93/96 |
-| language | en | 46/48 | 44/48 |
-| difficulty | easy | 23/23 | 22/23 |
-| difficulty | hard | 28/29 | 29/29 |
-| difficulty | medium | 89/92 | 86/92 |
-| risk | high | 75/78 | 73/78 |
-| risk | low | 29/29 | 28/29 |
-| risk | medium | 36/37 | 36/37 |
-- primary failed cases: G042, G043, G076, G104.
-- open_weight failed cases: G013, G065, G076, G078, G087, G090, G122.
-- open_weight operational errors: G076.
+| intent | return | 23/24 | 23/24 |
+| language | ar | 94/96 | 89/96 |
+| language | en | 46/48 | 47/48 |
+| difficulty | easy | 23/23 | 23/23 |
+| difficulty | hard | 27/29 | 29/29 |
+| difficulty | medium | 90/92 | 84/92 |
+| risk | high | 76/78 | 72/78 |
+| risk | low | 28/29 | 29/29 |
+| risk | medium | 36/37 | 35/37 |
+- primary failed cases: G032, G042, G065, G104.
+- open_weight failed cases: G058, G076, G078, G081, G098, G102, G112, G122.
+- open_weight operational errors: G098.
 
 ### Guard corpora on the live commercial route
 
 Deterministic layer plus the live classifier (`pipeline:live_commercial`): block rate **100.0%** of 52 attacks, false-positive rate **6.0%** of 50 legitimate requests; false positives: L033, L036, L043; blocked by layer: {"deterministic": 52, "null": 2, "classifier": 1}.
 
-Judge calibration: no scored human review is recorded yet.
+### Judge calibration against human labels
+
+Dimension **groundedness**, 40 labelled pairs, agreement **42.5%**, Cohen's κ **-0.020**, status **NOT_CALIBRATED** (gate reasons: kappa_not_established_or_below_threshold).
+
+| human \ judge | PASS | PARTIAL | FAIL |
+|---|---:|---:|---:|
+| PASS | 17 | 10 | 10 |
+| PARTIAL | 0 | 0 | 2 |
+| FAIL | 1 | 0 | 0 |
 
 ## Evidence for each project section
 

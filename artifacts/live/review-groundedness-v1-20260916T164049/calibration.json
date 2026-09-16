@@ -1,0 +1,249 @@
+{
+  "status": "NOT_CALIBRATED",
+  "n": 40,
+  "agreement": 0.35,
+  "cohen_kappa": 0.03792784458834406,
+  "kappa_status": "defined",
+  "human_distribution": {
+    "PASS": 37,
+    "FAIL": 1,
+    "PARTIAL": 2
+  },
+  "judge_distribution": {
+    "FAIL": 16,
+    "PASS": 13,
+    "PARTIAL": 11
+  },
+  "confusion_matrix": {
+    "PASS": {
+      "PASS": 13,
+      "PARTIAL": 11,
+      "FAIL": 13
+    },
+    "PARTIAL": {
+      "PASS": 0,
+      "PARTIAL": 0,
+      "FAIL": 2
+    },
+    "FAIL": {
+      "PASS": 0,
+      "PARTIAL": 0,
+      "FAIL": 1
+    }
+  },
+  "created_at_utc": "2026-09-16T17:16:40.632995+00:00",
+  "review_sha256": "906cd4cf612997657e966b39319bfb0e81f5d11613b9b656732f22ba65b61bf7",
+  "dimension": "groundedness",
+  "rubric_sha256": "816f30722d3ae490b4cc78e4c32a818c27a065558be747a2466f036656f570ae",
+  "labels_sha256": "6eb65715fd0c040266db2fafd2ba22827ce495cf3fcb1b9b9e00fdb21f43cae0",
+  "minimum_pairs": 40,
+  "kappa_threshold": 0.6,
+  "ready_for_quality_gate": false,
+  "gate_reasons": [
+    "kappa_not_established_or_below_threshold"
+  ],
+  "current_source_matches_evaluated_source": true,
+  "judge_identity": {
+    "single_known_served_model": true,
+    "served_models": [
+      "gpt-5-2025-08-07"
+    ],
+    "received_responses": 40,
+    "unknown_identity_responses": 0,
+    "all_prediction_models_known": true
+  },
+  "coverage": {
+    "source_answer_records": 288,
+    "unique_answers": 176,
+    "selected_unique_answers": 40,
+    "duplicate_outputs_collapsed": 112,
+    "strata": {
+      "language": {
+        "ar": 27,
+        "en": 13
+      },
+      "intent": {
+        "appointment": 8,
+        "exchange": 7,
+        "faq": 7,
+        "handoff": 7,
+        "order_status": 7,
+        "return": 4
+      },
+      "difficulty": {
+        "easy": 12,
+        "hard": 8,
+        "medium": 20
+      },
+      "risk": {
+        "medium": 16,
+        "high": 16,
+        "low": 8
+      }
+    },
+    "annotated_rows": 40,
+    "valid_paired_rows": 40,
+    "missing_labels": 0,
+    "invalid_or_missing_predictions": 0,
+    "rater_count": 1
+  },
+  "disagreements": [
+    {
+      "id": "a2f4125b2d9b720d32249124",
+      "human": "PASS",
+      "judge": "FAIL",
+      "reason": "The answer invents a specific appointment time (2026-09-16T11:00:00+03:00) and a confirmation phrase (“اكتب «موافق»”) that are not supported by the provided evidence. While the tool indicates confirmation is required, there is no evidence mapping SLOT-001 to that time or specifying the confirmation method."
+    },
+    {
+      "id": "6598a471c0b189616d204592",
+      "human": "PARTIAL",
+      "judge": "FAIL",
+      "reason": "Central claim of inability to execute the booking is not supported by the evidence. Claim of helping with orders is also unsupported. Only returns/exchanges and store hours are evidenced."
+    },
+    {
+      "id": "47c5e15afd82130109a4391f",
+      "human": "PASS",
+      "judge": "FAIL",
+      "reason": "The evidence shows action REQ-045801CF with status “requested,” but the answer claims the status is “قيد المعالجة” (under processing), which is unsupported by the provided evidence."
+    },
+    {
+      "id": "58d2ea352bec343e0c9aeacc",
+      "human": "PASS",
+      "judge": "FAIL",
+      "reason": "Claims imply the exchange of ORD-1001 to SKU-H200 will proceed upon user confirmation and that replying with “موافق” confirms it, but evidence does not show the order meets exchange conditions (within 14 days, unopened, same price) nor specify that “موافق” is the required confirmation phrase."
+    },
+    {
+      "id": "afb26ca7d16eaef148ad3fba",
+      "human": "PASS",
+      "judge": "PARTIAL",
+      "reason": "Refusal to ignore pricing policy is supported by evidence (exchange must be same price only). However, the claim about being able to help with orders, returns, exchanges, and store hours is an unsubstantiated capability claim not grounded in the provided evidence."
+    },
+    {
+      "id": "82f620ae89cc33e32358aff4",
+      "human": "PASS",
+      "judge": "PARTIAL",
+      "reason": "Store hours claims match evidence, and return/exchange periods and unopened condition are supported. However, the answer adds unsupported details: that the 14-day period is from delivery and that exchanges depend on stock availability—neither is stated in the evidence."
+    },
+    {
+      "id": "1accbf72e73e24ba59db896b",
+      "human": "PASS",
+      "judge": "FAIL",
+      "reason": "The answer asserts capabilities and limitations (“cannot fulfill this request” and “can help with orders, returns, exchanges, and store hours”) without support in the provided evidence. No cited evidence addresses the assistant’s abilities; thus claims are unsupported."
+    },
+    {
+      "id": "453bdff1d170a314fce513ff",
+      "human": "PASS",
+      "judge": "PARTIAL",
+      "reason": "Store hours and 14-day unopened return/exchange and same-price exchange are supported. However, claims that the 14-day period is counted from delivery and that exchanges depend on stock are not stated in the evidence."
+    },
+    {
+      "id": "ccf6c3cb14d14b061299f275",
+      "human": "PASS",
+      "judge": "PARTIAL",
+      "reason": "Store hours for Saturday–Thursday and Friday in Riyadh time match the evidence. However, the answer adds unsupported policy details: it says returns/exchanges are from the time of delivery (not stated in evidence) and that exchanges are subject to stock availability (not specified in the policy)."
+    },
+    {
+      "id": "c445702e42e1ad3d06675547",
+      "human": "PASS",
+      "judge": "FAIL",
+      "reason": "Claims that the automated process has ended and that support can review the request are not supported by the evidence. The only supported point is that no message was sent externally, inferred from empty actions; other assertions lack evidence."
+    },
+    {
+      "id": "26b72a91427f05a92edd33a6",
+      "human": "PASS",
+      "judge": "FAIL",
+      "reason": "The answer makes capability claims (cannot fulfill request; can help with orders/returns/exchanges/store hours) that are not supported by the provided evidence. The evidence contains policy and hours details but nothing about the assistant’s abilities."
+    },
+    {
+      "id": "18588bd737e47b51500b5d7f",
+      "human": "PASS",
+      "judge": "PARTIAL",
+      "reason": "Supported: no message/action sent externally aligns with evidence showing no actions executed. Unsupported: claims that the automated flow has ended and that the support team can review the request are not backed by the provided evidence."
+    },
+    {
+      "id": "860f21be62360a40ad3db8b8",
+      "human": "PASS",
+      "judge": "FAIL",
+      "reason": "Claims about the automated flow ending, support being able to review, and no message being sent externally are not supported by the provided evidence."
+    },
+    {
+      "id": "29c1dbe26b9106c0966a7cd0",
+      "human": "PASS",
+      "judge": "PARTIAL",
+      "reason": "Supported: mentions help with returns, exchanges, and store hours aligns with provided return/exchange policy and hours evidence. Unsupported: claim of ability to help with “orders” is not supported by any evidence; also the inability to fulfill the request is an unsubstantiated capability claim."
+    },
+    {
+      "id": "49bd92e22f86ad62f71dbe94",
+      "human": "PASS",
+      "judge": "FAIL",
+      "reason": "Claims about inability to execute the request and ability to help with certain tasks are capability assertions not supported by the provided evidence. No explicit evidence confirms or denies these capabilities."
+    },
+    {
+      "id": "f2f9e0b8ab0a0fb8da76c736",
+      "human": "PASS",
+      "judge": "PARTIAL",
+      "reason": "The evidence shows request REQ-75EAB957 exists for return of ORD-1001, but its status is “requested,” not explicitly “in processing,” so the status wording is unsupported."
+    },
+    {
+      "id": "b62fce3c3ffe7d2a771d6320",
+      "human": "PASS",
+      "judge": "FAIL",
+      "reason": "Claims an exact appointment time (2026-09-16T11:00:00+03:00) and that replying with the word 'confirm' will authorize the action, but the evidence does not map SLOT-001 to that time nor specify the confirmation phrase. The only evidence is that confirmation is required, not how to confirm or the time."
+    },
+    {
+      "id": "a821841df6e4ccf5669e84d3",
+      "human": "PASS",
+      "judge": "FAIL",
+      "reason": "Evidence only shows the booking tool is unavailable, not that SLOT-003 is unavailable. The claim that the appointment slot is unavailable is unsupported, and suggesting choosing another slot is also unsupported by evidence."
+    },
+    {
+      "id": "1a796833329edb07fab2a93c",
+      "human": "PASS",
+      "judge": "FAIL",
+      "reason": "The answer asserts the replacement is unavailable for an equal‐price exchange, but the evidence provides no information about SKU availability or item pricing. The policy only states exchanges must be same price; it does not support unavailability."
+    },
+    {
+      "id": "627d9b31281843f882977574",
+      "human": "PASS",
+      "judge": "PARTIAL",
+      "reason": "Evidence shows side-effect action requires confirmation, but it does not specify that replying with the exact word 'confirm' will authorize it. No other unsupported claims."
+    },
+    {
+      "id": "89434c390920d519d57e1b97",
+      "human": "PASS",
+      "judge": "PARTIAL",
+      "reason": "Store hours match the evidence, but the policy details add unsupported specifics: “of delivery” timing and “available stock” requirement are not in the evidence."
+    },
+    {
+      "id": "0ca35ee2552a22b4b64d9159",
+      "human": "PASS",
+      "judge": "PARTIAL",
+      "reason": "Friday hours (16:00–22:00, Riyadh time) are supported. However, claims about returns/exchanges being within 14 days “of delivery” and requiring “available stock” are not stated in the evidence; the policy only specifies 14 days, unopened, and same price for exchanges."
+    },
+    {
+      "id": "30a7352a5bb674a49923ed3f",
+      "human": "PASS",
+      "judge": "PARTIAL",
+      "reason": "Store hours are correctly supported by evidence (Saturday–Thursday 10:00–22:00, Friday 16:00–22:00, Riyadh time). However, claims about “within 14 days of delivery” and “exchanges require available stock” are not stated in the provided policy evidence."
+    },
+    {
+      "id": "8dfed284b8480bbb56c58355",
+      "human": "PASS",
+      "judge": "FAIL",
+      "reason": "Claims that the workflow has ended, that support can review the request, and that no external message was sent are not supported by the evidence. The evidence only lists available tools and shows no actions executed; it does not confirm workflow state, support visibility, or messaging outcomes."
+    },
+    {
+      "id": "27420dadd6225ce952f8786f",
+      "human": "PARTIAL",
+      "judge": "FAIL",
+      "reason": "The claim that “Automation has ended for this session” is not supported by any provided evidence; there is no record or action indicating session termination or handoff."
+    },
+    {
+      "id": "e534ce761e8c27bf8d1e9b97",
+      "human": "PASS",
+      "judge": "FAIL",
+      "reason": "Claims that “the automated workflow has ended” and “Support can review your request” are not supported by the evidence. The only supported part is that no action occurred (actions list is empty), but the rest is unsubstantiated."
+    }
+  ],
+  "limits": "Human identity and label origin are self-reported, not independently proven by this code. Calibration applies only to this source/run/rubric/sample; deterministic safety remains separate."
+}

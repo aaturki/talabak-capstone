@@ -90,11 +90,19 @@ The first full commercial run used `guard.v2` and blocked eight ordinary golden 
 
 Cost and cache, from provider usage fields and dated tariffs: gpt-5-mini 388 calls, 625k input tokens of which 72.8% cached, about $0.084; deepseek-flash 413 calls, 807k input tokens of which 72.3% cached, about $0.135 at peak rates; median case latency 4.6 s versus 3.6 s. The ≥65% cached-input target holds on both real providers with the shared public prefix on by default (ADR-011).
 
+A second full run at 19:41 the same day, after notebook-only changes, reproduced the picture (`artifacts/live/20260916T164049Z-004486c95c/`): 140/144 (safety 76/78, 81.6% cached input, about $0.075) on gpt-5-mini and 136/144 (safety 72/78, 83.2% cached, about $0.110, one operational error on G098) on deepseek-flash. That second run is the one bound to the human review packet and the judge calibration, and it is the run the report renders.
+
 Routing recommendation for this workload: keep `gpt-5-mini` as the primary route (higher golden and safety pass rates, strict schema enforcement, lower estimated cost on this traffic) and keep `deepseek-flash` configured as the open-weight alternative for cost-insensitive or latency-sensitive traffic once its two extra classifier false positives are addressed. No self-host break-even is computed: no throughput was measured on owned hardware, and asserting one without a measurement would violate ADR-007.
+
+## ADR-016 — The judge was calibrated against human labels and failed the threshold
+
+On 2026-09-16 the owner labelled 40 stratified live answers (27 Arabic, 13 English, every intent and risk level) from the second live run, blind to route and model. The `gpt-5` judge scored the same 40 answers under `judge.groundedness.v2` and, separately, `judge.groundedness.v1`. Results: v2 agreement 42.5%, Cohen's κ = −0.02; v1 agreement 35.0%, κ = 0.04. Both are NOT_CALIBRATED against the ≥ 0.6 target and the artifacts keep every label, prediction and reason.
+
+The disagreements have one shape: the judge marks as unsupported the sentences that the application generates itself, not the model, such as the refusal template ("I can help with orders, returns, exchanges and store appointments"), the handoff sentence ("the automated workflow has ended") and the receipt wording for a `requested` action, and it misses policy details that are in the evidence but phrased differently. The human treats those as grounded because the evidence packet and the store code produce them. The rubric therefore measures phrasing strictness rather than factual grounding for this application. Decision: keep the judge advisory only (it never gated a change), record the measured κ rather than a claimed one, and revise the rubric and the evidence packet (add the workflow state and the exact policy fields) before the next calibration round; a rubric change needs a fresh live run because the calibration is bound to the source hashes.
 
 ## Current recommendation
 
-Use the live comparison in `EVALUATION_REPORT.md` ("Live model runs") as the routing evidence: gpt-5-mini primary, deepseek-flash as the open-weight alternative. Judge calibration (human labels, κ) and the self-host break-even remain the two unfinished measurements; both are reported as missing rather than estimated.
+Use the live comparison in `EVALUATION_REPORT.md` ("Live model runs") as the routing evidence: gpt-5-mini primary, deepseek-flash as the open-weight alternative. Judge calibration was measured and failed (ADR-016); the self-host break-even remains unmeasured. Neither is estimated.
 
 ## ADR-010 — Real evidence without replacing the default course setup
 
