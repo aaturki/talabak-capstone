@@ -1,25 +1,22 @@
 {
-  "status": "FAIL",
-  "finished_at_utc": "2026-09-16T16:25:15.678499+00:00",
-  "duration_s": 2.974638400017284,
+  "status": "PASS",
+  "finished_at_utc": "2026-09-16T16:27:46.840472+00:00",
+  "duration_s": 89.53726059998735,
   "python": "project .venv, Python 3.12.14",
   "kernel": "talabak-local (project kernelspec)",
   "scope": "Fresh local kernel using verified checkout; default simulator only",
   "code_cells": 29,
-  "executed_code_cells": 4,
-  "error_outputs": 1,
-  "source_manifest_sha256": "167c1c0b844c528f54771229ac216db3ef769270be2b96da5234e5fa1f6a4bbf",
+  "executed_code_cells": 29,
+  "error_outputs": 0,
+  "source_manifest_sha256": "2bf633aa0c31be4b25379157e817da4bc4394a348bd99813669b248efbca2f4e",
   "source_comparison": {
     "source_matches_current_project": true,
     "recorded_files": 72,
     "current_files": 72,
-    "current_manifest_sha256": "167c1c0b844c528f54771229ac216db3ef769270be2b96da5234e5fa1f6a4bbf"
+    "current_manifest_sha256": "2bf633aa0c31be4b25379157e817da4bc4394a348bd99813669b248efbca2f4e"
   },
-  "notebook_sha256": "daefd09d8ed8eada04c9224b063ef696c8af7e048ff71d0f37769f54d3337ea1",
+  "notebook_sha256": "066e2c6ce0c160b7fd2841ac7caa32111e303fa61ea61c4febd75b38337b1d32",
   "colab_fresh_runtime": "NOT_RUN",
   "live_model_calls": "NOT_RUN",
-  "error": {
-    "type": "CellExecutionError",
-    "detail": "An error occurred while executing the following cell:\n------------------\nimport urllib.request\ndef set_fault(payload):\n    request = urllib.request.Request(\n        gateway_url.removesuffix(\"/v1\") + \"/admin/fault\", data=json.dumps(payload).encode(),\n        headers={\"Content-Type\": \"application/json\"}, method=\"POST\",\n    )\n    with urllib.request.urlopen(request, timeout=10) as response:\n        return json.loads(response.read())\n\nloop_store = Store(\":memory:\")\nloop_app = Application(client, loop_store, max_tool_rounds=3)\nset_fault({\"mode\": \"tool_loop\", \"model\": runtime_config[\"routes\"][\"primary\"][\"model\"], \"count\": 10})\ntry:\n    loop_result = loop_app.handle_message(\"Where is my order ORD-1001?\", Session())\nfinally:\n    set_fault({\"mode\": \"off\"})\nloop_events = [event for event in loop_result.trace if event.get(\"stage\") == \"tools\"]\nassert loop_result.status == \"error\" and any(event.get(\"code\") == \"tool_loop_limit\" for event in loop_result.trace)\nassert len(loop_events) == 3 and loop_store.count_actions() == 0\nprint(\"PASS: bounded stop after\", len(loop_events), \"tool iterations (max_tool_rounds=3); actions written:\", loop_store.count_actions())\nfor event in loop_events:\n    print(event)\nprint([event for event in loop_result.trace if event.get(\"event\") == \"safe_failure\"])\n------------------\n\n\n\u001b[31m---------------------------------------------------------------------------\u001b[39m\n\u001b[31mAssertionError\u001b[39m                            Traceback (most recent call last)\n\u001b[36mCell\u001b[39m\u001b[36m \u001b[39m\u001b[32mIn[4]\u001b[39m\u001b[32m, line 18\u001b[39m\n\u001b[32m     14\u001b[39m     loop_result = loop_app.handle_message(\u001b[33m\"Where is my order ORD-1001?\"\u001b[39m, Session())\n\u001b[32m     15\u001b[39m \u001b[38;5;28;01mfinally\u001b[39;00m:\n\u001b[32m     16\u001b[39m     set_fault({\u001b[33m\"mode\"\u001b[39m: \u001b[33m\"off\"\u001b[39m})\n\u001b[32m     17\u001b[39m loop_events = [event \u001b[38;5;28;01mfor\u001b[39;00m event \u001b[38;5;28;01min\u001b[39;00m loop_result.trace \u001b[38;5;28;01mif\u001b[39;00m event.get(\u001b[33m\"stage\"\u001b[39m) == \u001b[33m\"tools\"\u001b[39m]\n\u001b[32m---> \u001b[39m\u001b[32m18\u001b[39m \u001b[38;5;28;01massert\u001b[39;00m loop_result.status == \u001b[33m\"error\"\u001b[39m \u001b[38;5;28;01mand\u001b[39;00m any(event.get(\u001b[33m\"code\"\u001b[39m) == \u001b[33m\"tool_loop_limit\"\u001b[39m \u001b[38;5;28;01mfor\u001b[39;00m event \u001b[38;5;28;01min\u001b[39;00m loop_result.trace)\n\u001b[32m     19\u001b[39m \u001b[38;5;28;01massert\u001b[39;00m len(loop_events) == \u001b[32m3\u001b[39m \u001b[38;5;28;01mand\u001b[39;00m loop_store.count_actions() == \u001b[32m0\u001b[39m\n\u001b[32m     20\u001b[39m print(\u001b[33m\"PASS: bounded stop after\"\u001b[39m, len(loop_events), \u001b[33m\"tool iterations (max_tool_rounds=3); actions written:\"\u001b[39m, loop_store.count_actions())\n\u001b[32m     21\u001b[39m \u001b[38;5;28;01mfor\u001b[39;00m event \u001b[38;5;28;01min\u001b[39;00m loop_events:\n\n\u001b[31mAssertionError\u001b[39m: \n"
-  }
+  "error": null
 }

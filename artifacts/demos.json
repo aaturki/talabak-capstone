@@ -82,7 +82,7 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.552199992351234,
+              "latency_ms": 4.100299993297085,
               "finish_reason": "stop",
               "stage": "input_guard",
               "model": "talabak-course-primary",
@@ -108,7 +108,7 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.224299998488277,
+              "latency_ms": 4.673099989304319,
               "finish_reason": "stop",
               "stage": "route_extract",
               "model": "talabak-course-primary",
@@ -116,7 +116,7 @@
             }
           ],
           "evidence_mode": "simulator",
-          "latency_ms": 11.699900001985952
+          "latency_ms": 21.87579998280853
         }
       }
     ],
@@ -224,7 +224,7 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.712100016651675,
+              "latency_ms": 4.078199999639764,
               "finish_reason": "stop",
               "stage": "input_guard",
               "model": "talabak-course-primary",
@@ -250,7 +250,7 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.2253000061027706,
+              "latency_ms": 4.413999995449558,
               "finish_reason": "stop",
               "stage": "route_extract",
               "model": "talabak-course-primary",
@@ -276,7 +276,7 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.46840002364479,
+              "latency_ms": 4.8562999872956425,
               "finish_reason": "tool_calls",
               "stage": "tools",
               "model": "talabak-course-primary",
@@ -303,7 +303,7 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.763500000583008,
+              "latency_ms": 4.749699990497902,
               "finish_reason": "tool_calls",
               "stage": "tools",
               "model": "talabak-course-primary",
@@ -312,14 +312,14 @@
             }
           ],
           "evidence_mode": "simulator",
-          "latency_ms": 20.67410000017844
+          "latency_ms": 36.262799985706806
         }
       },
       {
         "input": "موافق",
         "output": {
           "status": "created",
-          "message": "تم تسجيل الطلب REQ-71CA10B0 بحالة قيد المعالجة.",
+          "message": "تم تسجيل الطلب REQ-9EEDBA13 بحالة قيد المعالجة.",
           "citations": [
             "policy-v1"
           ],
@@ -368,7 +368,7 @@
           ],
           "usage": [],
           "evidence_mode": "simulator",
-          "latency_ms": 1.3152000028640032
+          "latency_ms": 1.3072000001557171
         }
       }
     ],
@@ -476,7 +476,7 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.357000019401312,
+              "latency_ms": 3.687900025397539,
               "finish_reason": "stop",
               "stage": "input_guard",
               "model": "talabak-course-primary",
@@ -502,7 +502,7 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.368599991314113,
+              "latency_ms": 3.5441000072751194,
               "finish_reason": "stop",
               "stage": "route_extract",
               "model": "talabak-course-primary",
@@ -528,7 +528,7 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.3788000107742846,
+              "latency_ms": 5.104699986986816,
               "finish_reason": "tool_calls",
               "stage": "tools",
               "model": "talabak-course-primary",
@@ -555,7 +555,7 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.953699993668124,
+              "latency_ms": 5.317200004355982,
               "finish_reason": "tool_calls",
               "stage": "tools",
               "model": "talabak-course-primary",
@@ -564,14 +564,14 @@
             }
           ],
           "evidence_mode": "simulator",
-          "latency_ms": 21.080699982121587
+          "latency_ms": 35.22829999565147
         }
       },
       {
         "input": "موافق",
         "output": {
           "status": "created",
-          "message": "تم تسجيل الطلب REQ-17A530DA بحالة قيد المعالجة.",
+          "message": "تم تسجيل الطلب REQ-ECD7AA88 بحالة قيد المعالجة.",
           "citations": [
             "policy-v1"
           ],
@@ -620,7 +620,7 @@
           ],
           "usage": [],
           "evidence_mode": "simulator",
-          "latency_ms": 1.3093000161461532
+          "latency_ms": 1.9628000154625624
         }
       }
     ],
@@ -718,7 +718,7 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.317599981324747,
+              "latency_ms": 3.70989998918958,
               "finish_reason": "stop",
               "stage": "input_guard",
               "model": "talabak-course-primary",
@@ -744,7 +744,7 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.518399996915832,
+              "latency_ms": 4.509199992753565,
               "finish_reason": "stop",
               "stage": "route_extract",
               "model": "talabak-course-primary",
@@ -770,7 +770,7 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.8609999862965196,
+              "latency_ms": 4.60779998684302,
               "finish_reason": "tool_calls",
               "stage": "tools",
               "model": "talabak-course-primary",
@@ -779,14 +779,14 @@
             }
           ],
           "evidence_mode": "simulator",
-          "latency_ms": 15.476500004297122
+          "latency_ms": 27.642700006254017
         }
       },
       {
         "input": "موافق",
         "output": {
           "status": "created",
-          "message": "تم تسجيل الطلب REQ-818E9FF7 بحالة قيد المعالجة.",
+          "message": "تم تسجيل الطلب REQ-0BE815EA بحالة قيد المعالجة.",
           "citations": [
             "policy-v1"
           ],
@@ -835,7 +835,7 @@
           ],
           "usage": [],
           "evidence_mode": "simulator",
-          "latency_ms": 1.2925000046379864
+          "latency_ms": 2.0305000070948154
         }
       }
     ],
@@ -871,7 +871,7 @@
           ],
           "usage": [],
           "evidence_mode": "simulator",
-          "latency_ms": 0.6708999862894416
+          "latency_ms": 1.057999994372949
         }
       }
     ],
@@ -976,7 +976,7 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.6576999807730317,
+              "latency_ms": 4.21220000134781,
               "finish_reason": "stop",
               "stage": "input_guard",
               "model": "talabak-course-primary",
@@ -1002,7 +1002,7 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.1321999956853688,
+              "latency_ms": 3.8329999952111393,
               "finish_reason": "stop",
               "stage": "route_extract",
               "model": "talabak-course-primary",
@@ -1028,7 +1028,7 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.5325000169686973,
+              "latency_ms": 4.584699985571206,
               "finish_reason": "tool_calls",
               "stage": "tools",
               "model": "talabak-course-primary",
@@ -1055,7 +1055,7 @@
               "attempts": 1,
               "fallback_used": false,
               "alias": "primary",
-              "latency_ms": 2.709699998376891,
+              "latency_ms": 5.878800002392381,
               "finish_reason": "stop",
               "stage": "tools",
               "model": "talabak-course-primary",
@@ -1064,7 +1064,7 @@
             }
           ],
           "evidence_mode": "simulator",
-          "latency_ms": 18.30659998813644
+          "latency_ms": 32.83690000534989
         }
       }
     ],
