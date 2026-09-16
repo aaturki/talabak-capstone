@@ -1,6 +1,6 @@
 # Evaluation Report — Talabak
 
-Generated at 2026-09-16T16:37:31.346466+00:00 from an actual application run through the SDK to a local simulator.
+Generated at 2026-09-16T16:48:02.835848+00:00 from an actual application run through the SDK to a local simulator.
 
 **The simulator sections below are local evidence with zero external spend; the 'Live model runs' section reports the real-provider comparison recorded under artifacts/live.**
 
