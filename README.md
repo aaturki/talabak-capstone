@@ -24,10 +24,10 @@ python -m venv .venv
 ```
 
 ```bash
-.venv/Scripts/python -m jupyter lab Talabak_Capstone.ipynb
+.venv/Scripts/python scripts/run_all.py
 ```
 
-Python 3.11 or newer (3.12 was used). On macOS or Linux the interpreter is `.venv/bin/python`. The notebook's first cell starts the loopback simulator itself; no key, GPU or extra service is needed. `python scripts/run_all.py` reproduces the tests, evaluations, cache benchmark and both reports from the command line.
+Python 3.11 or newer (3.12 was used). On macOS or Linux the interpreter is `.venv/bin/python`. The third command reproduces the tests, evaluations, cache benchmark and both reports without any notebook front end. To use the notebook itself, open `Talabak_Capstone.ipynb` in any Jupyter front end you already have (JupyterLab, VS Code or Colab) with this virtual environment as the kernel; its first cell starts the loopback simulator itself, so no key, GPU or extra service is needed.
 
 ## Default mode and real providers
 
@@ -53,7 +53,7 @@ The default session represents fictional customer CUST-A. It is a demonstration 
 | Exchange ORD-1001 with SKU-H200 because I need another model. | Check ownership, eligibility, stock and confirmation. |
 | Book an appointment SLOT-001 for a product demonstration. | Check availability and request confirmation. |
 | What are the store hours? | Answer from the store's public source data. |
-| I want to speak to support. | End the automated path locally. |
+| I want to speak with a human agent about my order. | End the automated path locally. |
 
 Arabic examples are demonstrated in the notebook. Reset the demo store/session to try an independent action after an order has already been processed. Repeating confirmation must not create another action.
 

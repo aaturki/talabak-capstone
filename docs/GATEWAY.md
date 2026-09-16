@@ -97,7 +97,7 @@ Here `timeout` means an **immediate injected HTTP 504**, not a measured network 
 
 ## Test evidence and limits
 
-The initial run of `tests/test_llm.py` on 15 September 2026 passed 38 cases in 4.59 seconds. That historical snapshot covered real local HTTP, Arabic/English extraction, tool-result correlation, cache measurement and invalidation by TTL/prefix/model, retries, fallback, truncated outputs and malformed arguments. Current counts and times come from `artifacts/pytest.txt` and the executed notebook (375 tests on 16 September 2026); this snapshot is not a fixed performance promise.
+The initial run of `tests/test_llm.py` on 15 September 2026 passed 38 cases in 4.59 seconds. That historical snapshot covered real local HTTP, Arabic/English extraction, tool-result correlation, cache measurement and invalidation by TTL/prefix/model, retries, fallback, truncated outputs and malformed arguments. Current counts and times come from `artifacts/pytest.txt` and the executed notebook; this snapshot is not a fixed performance promise.
 
 These tests establish neither actual model understanding nor independent human judgment, commercial/open-weight comparison or GPU/LLM throughput. Those require separate evidence.
 

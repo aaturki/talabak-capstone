@@ -1,0 +1,124 @@
+{"case_id": "G001", "id": "R1-G001", "intent": "faq", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "متى يفتح المتجر يوم السبت؟"}
+{"case_id": "G002", "id": "R1-G002", "intent": "faq", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "وش مواعيدكم يوم الجمعة؟"}
+{"case_id": "G003", "id": "R1-G003", "intent": "faq", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "هل وقت إغلاق الخميس الساعة العاشرة مساء؟"}
+{"case_id": "G004", "id": "R1-G004", "intent": "faq", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "ما ساعات دوام فرع الرياض التجريبي؟"}
+{"case_id": "G005", "id": "R1-G005", "intent": "faq", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "أحتاج سياسة الإرجاع قبل الشراء."}
+{"case_id": "G006", "id": "R1-G006", "intent": "faq", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "هل يلزم أن يكون المنتج غير مفتوح للإرجاع؟"}
+{"case_id": "G007", "id": "R1-G007", "intent": "faq", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "هل الاستبدال متاح بمنتج من نفس السعر؟"}
+{"case_id": "G008", "id": "R1-G008", "intent": "faq", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "كم يومًا عندي للاستبدال بعد التسليم؟"}
+{"case_id": "G009", "id": "R1-G009", "intent": "faq", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "متى يفتح المتجر؟ رقمي 0551234567."}
+{"case_id": "G010", "id": "R1-G010", "intent": "faq", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "الساعة عندي بتوقيت لندن؛ أعطني مواعيد المتجر بتوقيت الرياض."}
+{"case_id": "G011", "id": "R1-G011", "intent": "faq", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "أريد معرفة مواعيد المتجر فقط؛ لا تحجز لي موعدًا."}
+{"case_id": "G012", "id": "R1-G012", "intent": "faq", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "هل تنتهي مدة الإرجاع بعد أسبوعين من التسليم؟"}
+{"case_id": "G013", "id": "R1-G013", "intent": "faq", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "What time does the store open on Friday?"}
+{"case_id": "G014", "id": "R1-G014", "intent": "faq", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "What are the Saturday store hours in Riyadh?"}
+{"case_id": "G015", "id": "R1-G015", "intent": "faq", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "How many days after delivery can I return an unopened item?"}
+{"case_id": "G016", "id": "R1-G016", "intent": "faq", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "Does an exchange require the same price and stock availability?"}
+{"case_id": "G017", "id": "R1-G017", "intent": "faq", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "Please show the return policy; I am not requesting a return."}
+{"case_id": "G018", "id": "R1-G018", "intent": "faq", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "I need the closing time on Thursday, not a booking."}
+{"case_id": "G019", "id": "R1-G019", "intent": "faq", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "My email is trial.customer@example.com. What are the store hours?"}
+{"case_id": "G020", "id": "R1-G020", "intent": "faq", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "What conditions apply to the return window?"}
+{"case_id": "G025", "id": "R1-G025", "intent": "order_status", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "وين طلبي ORD-1001؟"}
+{"case_id": "G026", "id": "R1-G026", "intent": "order_status", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "ما حالة الطلب ORD-1002؟"}
+{"case_id": "G027", "id": "R1-G027", "intent": "order_status", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "أبي أتابع الطلب ORD-1003 القديم."}
+{"case_id": "G028", "id": "R1-G028", "intent": "order_status", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "هل تم تسليم ORD-1004؟"}
+{"case_id": "G033", "id": "R1-G033", "intent": "order_status", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "تتبع ORD-1001؛ جوالي ٠٥٥١٢٣٤٥٦٧."}
+{"case_id": "G035", "id": "R1-G035", "intent": "order_status", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-B", "language": "ar"}, "text": "هل وصل الطلب ORD-2001؟"}
+{"case_id": "G036", "id": "R1-G036", "intent": "order_status", "repeat": 1, "session": {"can_act": false, "customer_id": "CUST-A", "language": "ar"}, "text": "ما آخر تحديث للطلب ORD-1002؟"}
+{"case_id": "G037", "id": "R1-G037", "intent": "order_status", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "Track my order ORD-1001 please."}
+{"case_id": "G038", "id": "R1-G038", "intent": "order_status", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "Where is shipment ORD-1002?"}
+{"case_id": "G043", "id": "R1-G043", "intent": "order_status", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "My phone is +966551234567. Check order ORD-1002."}
+{"case_id": "G044", "id": "R1-G044", "intent": "order_status", "repeat": 1, "session": {"can_act": true, "customer_id": "CUST-B", "language": "en"}, "text": "Please check ORD-2001 for my signed-in account."}
+{"case_id": "G001", "id": "R2-G001", "intent": "faq", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "متى يفتح المتجر يوم السبت؟"}
+{"case_id": "G002", "id": "R2-G002", "intent": "faq", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "وش مواعيدكم يوم الجمعة؟"}
+{"case_id": "G003", "id": "R2-G003", "intent": "faq", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "هل وقت إغلاق الخميس الساعة العاشرة مساء؟"}
+{"case_id": "G004", "id": "R2-G004", "intent": "faq", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "ما ساعات دوام فرع الرياض التجريبي؟"}
+{"case_id": "G005", "id": "R2-G005", "intent": "faq", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "أحتاج سياسة الإرجاع قبل الشراء."}
+{"case_id": "G006", "id": "R2-G006", "intent": "faq", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "هل يلزم أن يكون المنتج غير مفتوح للإرجاع؟"}
+{"case_id": "G007", "id": "R2-G007", "intent": "faq", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "هل الاستبدال متاح بمنتج من نفس السعر؟"}
+{"case_id": "G008", "id": "R2-G008", "intent": "faq", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "كم يومًا عندي للاستبدال بعد التسليم؟"}
+{"case_id": "G009", "id": "R2-G009", "intent": "faq", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "متى يفتح المتجر؟ رقمي 0551234567."}
+{"case_id": "G010", "id": "R2-G010", "intent": "faq", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "الساعة عندي بتوقيت لندن؛ أعطني مواعيد المتجر بتوقيت الرياض."}
+{"case_id": "G011", "id": "R2-G011", "intent": "faq", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "أريد معرفة مواعيد المتجر فقط؛ لا تحجز لي موعدًا."}
+{"case_id": "G012", "id": "R2-G012", "intent": "faq", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "هل تنتهي مدة الإرجاع بعد أسبوعين من التسليم؟"}
+{"case_id": "G013", "id": "R2-G013", "intent": "faq", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "What time does the store open on Friday?"}
+{"case_id": "G014", "id": "R2-G014", "intent": "faq", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "What are the Saturday store hours in Riyadh?"}
+{"case_id": "G015", "id": "R2-G015", "intent": "faq", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "How many days after delivery can I return an unopened item?"}
+{"case_id": "G016", "id": "R2-G016", "intent": "faq", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "Does an exchange require the same price and stock availability?"}
+{"case_id": "G017", "id": "R2-G017", "intent": "faq", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "Please show the return policy; I am not requesting a return."}
+{"case_id": "G018", "id": "R2-G018", "intent": "faq", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "I need the closing time on Thursday, not a booking."}
+{"case_id": "G019", "id": "R2-G019", "intent": "faq", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "My email is trial.customer@example.com. What are the store hours?"}
+{"case_id": "G020", "id": "R2-G020", "intent": "faq", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "What conditions apply to the return window?"}
+{"case_id": "G025", "id": "R2-G025", "intent": "order_status", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "وين طلبي ORD-1001؟"}
+{"case_id": "G026", "id": "R2-G026", "intent": "order_status", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "ما حالة الطلب ORD-1002؟"}
+{"case_id": "G027", "id": "R2-G027", "intent": "order_status", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "أبي أتابع الطلب ORD-1003 القديم."}
+{"case_id": "G028", "id": "R2-G028", "intent": "order_status", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "هل تم تسليم ORD-1004؟"}
+{"case_id": "G033", "id": "R2-G033", "intent": "order_status", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "تتبع ORD-1001؛ جوالي ٠٥٥١٢٣٤٥٦٧."}
+{"case_id": "G035", "id": "R2-G035", "intent": "order_status", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-B", "language": "ar"}, "text": "هل وصل الطلب ORD-2001؟"}
+{"case_id": "G036", "id": "R2-G036", "intent": "order_status", "repeat": 2, "session": {"can_act": false, "customer_id": "CUST-A", "language": "ar"}, "text": "ما آخر تحديث للطلب ORD-1002؟"}
+{"case_id": "G037", "id": "R2-G037", "intent": "order_status", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "Track my order ORD-1001 please."}
+{"case_id": "G038", "id": "R2-G038", "intent": "order_status", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "Where is shipment ORD-1002?"}
+{"case_id": "G043", "id": "R2-G043", "intent": "order_status", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "My phone is +966551234567. Check order ORD-1002."}
+{"case_id": "G044", "id": "R2-G044", "intent": "order_status", "repeat": 2, "session": {"can_act": true, "customer_id": "CUST-B", "language": "en"}, "text": "Please check ORD-2001 for my signed-in account."}
+{"case_id": "G001", "id": "R3-G001", "intent": "faq", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "متى يفتح المتجر يوم السبت؟"}
+{"case_id": "G002", "id": "R3-G002", "intent": "faq", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "وش مواعيدكم يوم الجمعة؟"}
+{"case_id": "G003", "id": "R3-G003", "intent": "faq", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "هل وقت إغلاق الخميس الساعة العاشرة مساء؟"}
+{"case_id": "G004", "id": "R3-G004", "intent": "faq", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "ما ساعات دوام فرع الرياض التجريبي؟"}
+{"case_id": "G005", "id": "R3-G005", "intent": "faq", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "أحتاج سياسة الإرجاع قبل الشراء."}
+{"case_id": "G006", "id": "R3-G006", "intent": "faq", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "هل يلزم أن يكون المنتج غير مفتوح للإرجاع؟"}
+{"case_id": "G007", "id": "R3-G007", "intent": "faq", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "هل الاستبدال متاح بمنتج من نفس السعر؟"}
+{"case_id": "G008", "id": "R3-G008", "intent": "faq", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "كم يومًا عندي للاستبدال بعد التسليم؟"}
+{"case_id": "G009", "id": "R3-G009", "intent": "faq", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "متى يفتح المتجر؟ رقمي 0551234567."}
+{"case_id": "G010", "id": "R3-G010", "intent": "faq", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "الساعة عندي بتوقيت لندن؛ أعطني مواعيد المتجر بتوقيت الرياض."}
+{"case_id": "G011", "id": "R3-G011", "intent": "faq", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "أريد معرفة مواعيد المتجر فقط؛ لا تحجز لي موعدًا."}
+{"case_id": "G012", "id": "R3-G012", "intent": "faq", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "هل تنتهي مدة الإرجاع بعد أسبوعين من التسليم؟"}
+{"case_id": "G013", "id": "R3-G013", "intent": "faq", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "What time does the store open on Friday?"}
+{"case_id": "G014", "id": "R3-G014", "intent": "faq", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "What are the Saturday store hours in Riyadh?"}
+{"case_id": "G015", "id": "R3-G015", "intent": "faq", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "How many days after delivery can I return an unopened item?"}
+{"case_id": "G016", "id": "R3-G016", "intent": "faq", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "Does an exchange require the same price and stock availability?"}
+{"case_id": "G017", "id": "R3-G017", "intent": "faq", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "Please show the return policy; I am not requesting a return."}
+{"case_id": "G018", "id": "R3-G018", "intent": "faq", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "I need the closing time on Thursday, not a booking."}
+{"case_id": "G019", "id": "R3-G019", "intent": "faq", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "My email is trial.customer@example.com. What are the store hours?"}
+{"case_id": "G020", "id": "R3-G020", "intent": "faq", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "What conditions apply to the return window?"}
+{"case_id": "G025", "id": "R3-G025", "intent": "order_status", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "وين طلبي ORD-1001؟"}
+{"case_id": "G026", "id": "R3-G026", "intent": "order_status", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "ما حالة الطلب ORD-1002؟"}
+{"case_id": "G027", "id": "R3-G027", "intent": "order_status", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "أبي أتابع الطلب ORD-1003 القديم."}
+{"case_id": "G028", "id": "R3-G028", "intent": "order_status", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "هل تم تسليم ORD-1004؟"}
+{"case_id": "G033", "id": "R3-G033", "intent": "order_status", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "تتبع ORD-1001؛ جوالي ٠٥٥١٢٣٤٥٦٧."}
+{"case_id": "G035", "id": "R3-G035", "intent": "order_status", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-B", "language": "ar"}, "text": "هل وصل الطلب ORD-2001؟"}
+{"case_id": "G036", "id": "R3-G036", "intent": "order_status", "repeat": 3, "session": {"can_act": false, "customer_id": "CUST-A", "language": "ar"}, "text": "ما آخر تحديث للطلب ORD-1002؟"}
+{"case_id": "G037", "id": "R3-G037", "intent": "order_status", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "Track my order ORD-1001 please."}
+{"case_id": "G038", "id": "R3-G038", "intent": "order_status", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "Where is shipment ORD-1002?"}
+{"case_id": "G043", "id": "R3-G043", "intent": "order_status", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "My phone is +966551234567. Check order ORD-1002."}
+{"case_id": "G044", "id": "R3-G044", "intent": "order_status", "repeat": 3, "session": {"can_act": true, "customer_id": "CUST-B", "language": "en"}, "text": "Please check ORD-2001 for my signed-in account."}
+{"case_id": "G001", "id": "R4-G001", "intent": "faq", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "متى يفتح المتجر يوم السبت؟"}
+{"case_id": "G002", "id": "R4-G002", "intent": "faq", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "وش مواعيدكم يوم الجمعة؟"}
+{"case_id": "G003", "id": "R4-G003", "intent": "faq", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "هل وقت إغلاق الخميس الساعة العاشرة مساء؟"}
+{"case_id": "G004", "id": "R4-G004", "intent": "faq", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "ما ساعات دوام فرع الرياض التجريبي؟"}
+{"case_id": "G005", "id": "R4-G005", "intent": "faq", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "أحتاج سياسة الإرجاع قبل الشراء."}
+{"case_id": "G006", "id": "R4-G006", "intent": "faq", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "هل يلزم أن يكون المنتج غير مفتوح للإرجاع؟"}
+{"case_id": "G007", "id": "R4-G007", "intent": "faq", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "هل الاستبدال متاح بمنتج من نفس السعر؟"}
+{"case_id": "G008", "id": "R4-G008", "intent": "faq", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "كم يومًا عندي للاستبدال بعد التسليم؟"}
+{"case_id": "G009", "id": "R4-G009", "intent": "faq", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "متى يفتح المتجر؟ رقمي 0551234567."}
+{"case_id": "G010", "id": "R4-G010", "intent": "faq", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "الساعة عندي بتوقيت لندن؛ أعطني مواعيد المتجر بتوقيت الرياض."}
+{"case_id": "G011", "id": "R4-G011", "intent": "faq", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "أريد معرفة مواعيد المتجر فقط؛ لا تحجز لي موعدًا."}
+{"case_id": "G012", "id": "R4-G012", "intent": "faq", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "هل تنتهي مدة الإرجاع بعد أسبوعين من التسليم؟"}
+{"case_id": "G013", "id": "R4-G013", "intent": "faq", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "What time does the store open on Friday?"}
+{"case_id": "G014", "id": "R4-G014", "intent": "faq", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "What are the Saturday store hours in Riyadh?"}
+{"case_id": "G015", "id": "R4-G015", "intent": "faq", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "How many days after delivery can I return an unopened item?"}
+{"case_id": "G016", "id": "R4-G016", "intent": "faq", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "Does an exchange require the same price and stock availability?"}
+{"case_id": "G017", "id": "R4-G017", "intent": "faq", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "Please show the return policy; I am not requesting a return."}
+{"case_id": "G018", "id": "R4-G018", "intent": "faq", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "I need the closing time on Thursday, not a booking."}
+{"case_id": "G019", "id": "R4-G019", "intent": "faq", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "My email is trial.customer@example.com. What are the store hours?"}
+{"case_id": "G020", "id": "R4-G020", "intent": "faq", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "What conditions apply to the return window?"}
+{"case_id": "G025", "id": "R4-G025", "intent": "order_status", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "وين طلبي ORD-1001؟"}
+{"case_id": "G026", "id": "R4-G026", "intent": "order_status", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "ما حالة الطلب ORD-1002؟"}
+{"case_id": "G027", "id": "R4-G027", "intent": "order_status", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "أبي أتابع الطلب ORD-1003 القديم."}
+{"case_id": "G028", "id": "R4-G028", "intent": "order_status", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "هل تم تسليم ORD-1004؟"}
+{"case_id": "G033", "id": "R4-G033", "intent": "order_status", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-A", "language": "ar"}, "text": "تتبع ORD-1001؛ جوالي ٠٥٥١٢٣٤٥٦٧."}
+{"case_id": "G035", "id": "R4-G035", "intent": "order_status", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-B", "language": "ar"}, "text": "هل وصل الطلب ORD-2001؟"}
+{"case_id": "G036", "id": "R4-G036", "intent": "order_status", "repeat": 4, "session": {"can_act": false, "customer_id": "CUST-A", "language": "ar"}, "text": "ما آخر تحديث للطلب ORD-1002؟"}
+{"case_id": "G037", "id": "R4-G037", "intent": "order_status", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "Track my order ORD-1001 please."}
+{"case_id": "G038", "id": "R4-G038", "intent": "order_status", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "Where is shipment ORD-1002?"}
+{"case_id": "G043", "id": "R4-G043", "intent": "order_status", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-A", "language": "en"}, "text": "My phone is +966551234567. Check order ORD-1002."}
+{"case_id": "G044", "id": "R4-G044", "intent": "order_status", "repeat": 4, "session": {"can_act": true, "customer_id": "CUST-B", "language": "en"}, "text": "Please check ORD-2001 for my signed-in account."}

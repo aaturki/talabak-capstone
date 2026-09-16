@@ -12,15 +12,12 @@ Every served prompt is a versioned file. The application selects versions explic
 - repair-v1: bounded repair using validation categories; rejected values are not echoed.
 - repair-v2 (served since 2026-09-16): states that the rejected response is not repeated and that each error carries type, location and validator message. Rejected values are still never echoed; the message text is category-level and PII-masked.
 - tools.v1.json: tool names and descriptions served in every tools-stage request (part of the prompt version digest).
+- context.v1.md (served by default since 2026-09-16, ADR-011): shared prefix with public retail facts and tool contracts placed before every stage prompt when `pipeline.stable_context` is true. Private orders and session data are excluded. Its enablement was measured first in the simulator cache benchmark; provider caching is accepted only from returned usage fields.
 
 ## Judge prompts
 
 - judge.groundedness.v1: single-dimension groundedness rubric used by the local runner.
 - judge.groundedness.v2: candidate revision prepared for the live blinded review; served by `scripts/prepare_review.py` by default and recorded per row by `rubric_sha256`. No improvement is claimed without paired human-labelled runs.
 - judge.completeness.v1: single-dimension completeness rubric.
-
-## Live preparation
-
-- `context.v1.md`: optional shared prefix with public retail facts and tool contracts. Private orders and session data are excluded. Enablement is evaluated as a separate optimization; provider caching is accepted only from returned usage fields.
 
 These are original project prompts. No improvement is claimed without paired runs.

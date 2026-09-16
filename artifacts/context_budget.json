@@ -1,0 +1,100 @@
+{
+  "generated_at_utc": "2026-09-16T15:12:31.641496+00:00",
+  "evidence_mode": "local_tokenizer_component_measurement",
+  "tokenizer": "o200k_base",
+  "max_output_tokens": 768,
+  "components": [
+    {
+      "path": "prompts/CHANGELOG.md",
+      "tokens": 500,
+      "utf8_bytes": 2419,
+      "sha256": "4e9f83190623512ccf2ca2856a1f353207ead81941329d42959e53c2aa1bb05d"
+    },
+    {
+      "path": "prompts/context.v1.md",
+      "tokens": 289,
+      "utf8_bytes": 1696,
+      "sha256": "62c4e46acc76c2a86d85a73b1755a735365d4a07cf3d89167f5a1781683e8d7c"
+    },
+    {
+      "path": "prompts/guard.v1.md",
+      "tokens": 99,
+      "utf8_bytes": 549,
+      "sha256": "4218ab32cc7a33c921de37971eb2891117802f8114e7b742113b26c364ad8016"
+    },
+    {
+      "path": "prompts/guard.v2.md",
+      "tokens": 180,
+      "utf8_bytes": 975,
+      "sha256": "3ce8c1843ffe239e552a419fc277e76e56deff6ca9ccccce3e7315af1816ff48"
+    },
+    {
+      "path": "prompts/judge.completeness.v1.md",
+      "tokens": 183,
+      "utf8_bytes": 927,
+      "sha256": "51648278d3d237f2f145e195d0fa4a584ec82db3b374310909cf6a392671b453"
+    },
+    {
+      "path": "prompts/judge.groundedness.v1.md",
+      "tokens": 233,
+      "utf8_bytes": 1181,
+      "sha256": "816f30722d3ae490b4cc78e4c32a818c27a065558be747a2466f036656f570ae"
+    },
+    {
+      "path": "prompts/judge.groundedness.v2.md",
+      "tokens": 301,
+      "utf8_bytes": 1608,
+      "sha256": "ab2c7a7e32833662a9dee0cd5caae42ce111e26d1e4ea7101b66d0d2bbcce5bc"
+    },
+    {
+      "path": "prompts/repair.v1.md",
+      "tokens": 74,
+      "utf8_bytes": 410,
+      "sha256": "788947cff3164d7337da2bf099057ccfcc938d3c22a861dd23120a2bdbde06a0"
+    },
+    {
+      "path": "prompts/repair.v2.md",
+      "tokens": 110,
+      "utf8_bytes": 584,
+      "sha256": "a1dfce18fd0d823e242e5595522cc89a005742f5431c31db42d06dc19c7d34a4"
+    },
+    {
+      "path": "prompts/router.degraded.v0.md",
+      "tokens": 144,
+      "utf8_bytes": 684,
+      "sha256": "003e925a7c5dd50420a7a225703111298577359506b8f13f774f88f7dcdd72c4"
+    },
+    {
+      "path": "prompts/router.v1.md",
+      "tokens": 145,
+      "utf8_bytes": 744,
+      "sha256": "95444803cfc7e454b3b3e867d65773417e9efe31edd091ffa72d092701918e0a"
+    },
+    {
+      "path": "prompts/tools.v1.json",
+      "tokens": 264,
+      "utf8_bytes": 1331,
+      "sha256": "77618a5a45a3a97b81a6f28d82160a2bc736ba6309ecfcc7bacd23af2c5ab74e"
+    },
+    {
+      "path": "prompts/workflow.v1.md",
+      "tokens": 136,
+      "utf8_bytes": 685,
+      "sha256": "785733d511af5c4e6907942f3a59e5ecfe67fc87cce8c6be8ff07d4514d23767"
+    },
+    {
+      "path": "data/store.v1.json",
+      "tokens": 715,
+      "utf8_bytes": 1899,
+      "sha256": "1b3b16d36469dcb8037593961abd7f71489c0ac247ae86816280f5e6b4adb663"
+    }
+  ],
+  "rendered_tool_definitions_tokens": 613,
+  "rendered_tool_definitions_sha256": "3bf99e765a8236b0a1fbaf85ea972a3eb01d3fad3ec1f8091b62d52f8f7f30fd",
+  "all_files_token_sum": 3373,
+  "limitations": [
+    "The all-files sum is inventory, not a claim that every file is sent together.",
+    "Wire messages, tool schemas and serialization overhead are measured by actual gateway usage.",
+    "No live model context-window or performance claim is made."
+  ]
+}

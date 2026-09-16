@@ -219,12 +219,24 @@ def test_repair_feedback_names_locations_and_messages_but_never_the_rejected_val
 def test_prompt_versions_are_explicit_configuration(store):
     with SDKClient() as client:
         app = Application(client, store)
-        assert app.prompt_files == {"router": "router.v1.md", "workflow": "workflow.v1.md", "guard": "guard.v2.md", "repair": "repair.v2.md"}
+        assert app.prompt_files == {"router": "router.v1.md", "workflow": "workflow.v1.md", "guard": "guard.v2.md", "repair": "repair.v2.md", "context": "context.v1.md"}
         assert app.prompts["guard"].startswith("# guard-v2") and app.prompts["repair"].startswith("# repair-v2")
+        assert "context" not in Application(client, store, stable_context=False).prompt_files
         older = Application(client, store, prompt_versions={"guard": "v1"})
         assert older.prompt_files["guard"] == "guard.v1.md" and older.prompt_version != app.prompt_version
         with pytest.raises(ValueError):
             Application(client, store, prompt_versions={"guard": "latest"})
+
+
+@pytest.mark.parametrize("prompt_file", ["router.v1.md", "context.v1.md", "guard.v2.md", "repair.v2.md"])
+def test_served_prompt_text_leaking_through_a_model_field_is_blocked(store, prompt_file):
+    leaked = (ROOT / "prompts" / prompt_file).read_text("utf-8")[:450]
+    client = Scripted(request(reason=leaked), turns=[[{"id": "c1", "name": "create_return_or_exchange",
+                       "arguments": {"kind": "return", "order_id": "ORD-1001", "replacement_sku": None, "reason": leaked}}]])
+    # The shared prefix is served only when stable_context is on; the test double has no config.
+    result = Application(client, store, stable_context=True).handle_message("Return ORD-1001", Session())
+    assert result.status == "blocked" and store.count_actions() == 0
+    assert leaked[40:120] not in result.message and leaked[40:120] not in canonical(result.to_dict())
 
 
 def test_simulator_repair_drill_requires_the_repair_message_on_the_wire(store):

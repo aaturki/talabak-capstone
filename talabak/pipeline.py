@@ -7,7 +7,7 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from pydantic import ValidationError
 from .domain import ROOT, Session, Store, canonical, digest, is_confirmation
-from .guards import detect_language, injection_reason, mask_pii, normalize, output_reason, refusal
+from .guards import detect_language, injection_reason, mask_pii, normalize, output_reason, prompt_leak, prompt_shingles, refusal
 from .schemas import Answer, DomainRequest, GuardDecision, TOOL_TYPES, tool_definitions, wire_schema
 from .llm import ModelClient, ModelError
 from .cache import SemanticCache
@@ -62,7 +62,11 @@ class Application:
         self.prompts = {name: (ROOT / "prompts" / file).read_text(encoding="utf-8") for name, file in self.prompt_files.items()}
         self.stable_context = settings.get("stable_context", False) if stable_context is None else stable_context
         if self.stable_context:
+            self.prompt_files["context"] = "context.v1.md"
             self.prompts["context"] = (ROOT / "prompts/context.v1.md").read_text(encoding="utf-8")
+        # Any 8-word run of a served prompt appearing outbound is a system-prompt leak,
+        # whether or not the model kept the canary sentence.
+        self.prompt_shingles = set().union(*(prompt_shingles(text) for text in self.prompts.values()))
         capabilities = getattr(client, "capabilities", None)
         route_capabilities = capabilities(alias) if callable(capabilities) else {}
         # Providers that cannot combine a response schema with tools get tool-only
@@ -73,6 +77,14 @@ class Application:
 
     def refresh_prompt_version(self):
         self.prompt_version = digest({"prompts": self.prompts, "tools": tool_definitions()})
+        self.prompt_shingles = set().union(*(prompt_shingles(text) for text in self.prompts.values()))
+
+    def _outbound_reason(self, text):
+        """Canary, PII, relayed instructions, internal data, then served-prompt text."""
+        reason = output_reason(text, self.canary)
+        if reason is None and prompt_leak(text, self.prompt_shingles):
+            return "system_prompt_leak"
+        return reason
 
     def _call(self, messages, result, *, stage, schema=None, tools=None, alias=None):
         if self.stable_context:
@@ -206,7 +218,7 @@ class Application:
                     raise ValueError("unknown_tool")
                 model, risk = TOOL_TYPES[name]
                 args = model.model_validate(call["arguments"])
-                if output_reason(canonical(args.model_dump()), self.canary):
+                if self._outbound_reason(canonical(args.model_dump())):
                     raise ValueError("unsafe_structured_output")
                 # The parsed request is intent context; tool args cannot change the proposed action.
                 if risk in ("side_effect", "terminal") and name != EXPECTED_ACTION_TOOL.get(request.intent):
@@ -219,7 +231,7 @@ class Application:
                     raise ValueError("tool_action_mismatch")
                 data = getattr(self.store, name)(session, **args.model_dump())
                 event.update({"code": data["code"], "executed": True, "authorized": data["code"] != "not_authorized", "args_sha256": digest(args.model_dump())})
-                reason = output_reason(canonical(data), self.canary)
+                reason = self._outbound_reason(canonical(data))
                 if reason:
                     self._blocked_tool_result(reason, session, result)
                     return
@@ -248,14 +260,14 @@ class Application:
         result.trace.append(event)
         data = getattr(self.store, name)(session, **args.model_dump())
         event.update({"code": data["code"], "executed": True, "authorized": data["code"] != "not_authorized", "args_sha256": digest(args.model_dump())})
-        reason = output_reason(canonical(data), self.canary)
+        reason = self._outbound_reason(canonical(data))
         if reason:
             self._blocked_tool_result(reason, session, result)
             return
         self._apply_tool_result(data, result)
 
     def output_guard(self, result, session):
-        reason = output_reason(canonical({"message": result.message, "citations": result.citations, "request": result.request}), self.canary)
+        reason = self._outbound_reason(canonical({"message": result.message, "citations": result.citations, "request": result.request}))
         result.trace.append({"stage": "output_guard", "blocked": bool(reason), "reason": reason})
         if reason:
             result.status, result.message, result.citations = "blocked", refusal(session.language), []
@@ -308,7 +320,7 @@ class Application:
                         result.trace.append({"stage": "route_extract", "event": "response_cache_hit", "tier": "exact" if early else "semantic"})
                     else:
                         request = self.route_extract(safe, result)
-                        if output_reason(canonical(request.model_dump()), self.canary):
+                        if self._outbound_reason(canonical(request.model_dump())):
                             raise ValueError("unsafe_structured_output")
                         result.request = request.model_dump()
                         session.last_request = result.request
@@ -330,7 +342,7 @@ class Application:
                             result.message = ("أحتاج هذه المعلومات: " if language == "ar" else "Please provide: ") + ", ".join(missing)
                         elif request.intent == "faq":
                             data = self.store.lookup_catalog(session, safe)
-                            if output_reason(canonical(data), self.canary):
+                            if self._outbound_reason(canonical(data)):
                                 raise ValueError("unsafe_structured_output")
                             self._apply_tool_result(data, result)
                             if self.cache_enabled:

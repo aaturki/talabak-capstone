@@ -792,8 +792,8 @@ def build(root: Path, output: Path) -> dict:
 
     Read the measured trade-offs and remaining gaps. Local simulator success does not establish
     live model quality, human calibration, hardware throughput or an actual Colab run.
-    Cohort dates, owner review and genuine peer review remain required. Publication and submission
-    require the owner's explicit instruction.
+    Owner review of the golden expectations and genuine peer review remain required. Publication and
+    submission require the owner's explicit instruction.
     ''')
     code('''
     display(Markdown((RUN_ROOT / "docs/DECISIONS.md").read_text("utf-8")))

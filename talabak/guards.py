@@ -149,6 +149,18 @@ def _canary_present(text, canary):
     return re.sub(r"[_\-]", "", canary).casefold() in compact or "talabakcanary" in compact
 
 
+def prompt_shingles(prompt, size=8):
+    """Word 8-grams of a served instruction prompt, used to detect its text leaking outbound."""
+    words = normalize(prompt).casefold().split()
+    return {" ".join(words[i:i + size]) for i in range(max(0, len(words) - size + 1))}
+
+
+def prompt_leak(text, shingles):
+    """True when an outbound text reproduces any 8-word run of a served prompt."""
+    folded = " ".join(normalize(text).casefold().split())
+    return any(shingle in folded for shingle in shingles)
+
+
 def output_reason(text, canary):
     """Outbound scan: no inbound length cap, so long benign payloads are inspected, not refused."""
     if _canary_present(text, canary):

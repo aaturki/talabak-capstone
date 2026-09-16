@@ -1,0 +1,1603 @@
+{
+  "status": "SELECTED",
+  "selected_threshold": 1.0,
+  "sweep": [
+    {
+      "threshold": 0.5,
+      "n": 24,
+      "positive_n": 12,
+      "negative_n": 12,
+      "true_hits": 9,
+      "missed_positive_hits": 3,
+      "wrong_hits": 0,
+      "rows": [
+        {
+          "id": "C001",
+          "expected_hit": true,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "hours_paraphrase",
+          "passed": false
+        },
+        {
+          "id": "C002",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "return_policy_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C003",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "exchange_policy_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C004",
+          "expected_hit": true,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "price_paraphrase",
+          "passed": false
+        },
+        {
+          "id": "C005",
+          "expected_hit": true,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "stock_paraphrase",
+          "passed": false
+        },
+        {
+          "id": "C006",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 1.0,
+          "reason": "catalog_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C007",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 1.0,
+          "reason": "hours_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C008",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "return_policy_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C009",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "exchange_policy_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C010",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "price_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C011",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "stock_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C012",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 1.0,
+          "reason": "catalog_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C013",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_day",
+          "passed": true
+        },
+        {
+          "id": "C014",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_intent",
+          "passed": true
+        },
+        {
+          "id": "C015",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_product",
+          "passed": true
+        },
+        {
+          "id": "C016",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_order",
+          "passed": true
+        },
+        {
+          "id": "C017",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "negated_condition",
+          "passed": true
+        },
+        {
+          "id": "C018",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "read_vs_write",
+          "passed": true
+        },
+        {
+          "id": "C019",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_day",
+          "passed": true
+        },
+        {
+          "id": "C020",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_intent",
+          "passed": true
+        },
+        {
+          "id": "C021",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_product",
+          "passed": true
+        },
+        {
+          "id": "C022",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_condition",
+          "passed": true
+        },
+        {
+          "id": "C023",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "read_vs_write",
+          "passed": true
+        },
+        {
+          "id": "C024",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_question",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "threshold": 0.65,
+      "n": 24,
+      "positive_n": 12,
+      "negative_n": 12,
+      "true_hits": 9,
+      "missed_positive_hits": 3,
+      "wrong_hits": 0,
+      "rows": [
+        {
+          "id": "C001",
+          "expected_hit": true,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "hours_paraphrase",
+          "passed": false
+        },
+        {
+          "id": "C002",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "return_policy_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C003",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "exchange_policy_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C004",
+          "expected_hit": true,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "price_paraphrase",
+          "passed": false
+        },
+        {
+          "id": "C005",
+          "expected_hit": true,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "stock_paraphrase",
+          "passed": false
+        },
+        {
+          "id": "C006",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 1.0,
+          "reason": "catalog_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C007",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 1.0,
+          "reason": "hours_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C008",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "return_policy_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C009",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "exchange_policy_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C010",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "price_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C011",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "stock_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C012",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 1.0,
+          "reason": "catalog_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C013",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_day",
+          "passed": true
+        },
+        {
+          "id": "C014",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_intent",
+          "passed": true
+        },
+        {
+          "id": "C015",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_product",
+          "passed": true
+        },
+        {
+          "id": "C016",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_order",
+          "passed": true
+        },
+        {
+          "id": "C017",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "negated_condition",
+          "passed": true
+        },
+        {
+          "id": "C018",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "read_vs_write",
+          "passed": true
+        },
+        {
+          "id": "C019",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_day",
+          "passed": true
+        },
+        {
+          "id": "C020",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_intent",
+          "passed": true
+        },
+        {
+          "id": "C021",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_product",
+          "passed": true
+        },
+        {
+          "id": "C022",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_condition",
+          "passed": true
+        },
+        {
+          "id": "C023",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "read_vs_write",
+          "passed": true
+        },
+        {
+          "id": "C024",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_question",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "threshold": 0.8,
+      "n": 24,
+      "positive_n": 12,
+      "negative_n": 12,
+      "true_hits": 9,
+      "missed_positive_hits": 3,
+      "wrong_hits": 0,
+      "rows": [
+        {
+          "id": "C001",
+          "expected_hit": true,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "hours_paraphrase",
+          "passed": false
+        },
+        {
+          "id": "C002",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "return_policy_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C003",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "exchange_policy_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C004",
+          "expected_hit": true,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "price_paraphrase",
+          "passed": false
+        },
+        {
+          "id": "C005",
+          "expected_hit": true,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "stock_paraphrase",
+          "passed": false
+        },
+        {
+          "id": "C006",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 1.0,
+          "reason": "catalog_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C007",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 1.0,
+          "reason": "hours_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C008",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "return_policy_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C009",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "exchange_policy_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C010",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "price_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C011",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "stock_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C012",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 1.0,
+          "reason": "catalog_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C013",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_day",
+          "passed": true
+        },
+        {
+          "id": "C014",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_intent",
+          "passed": true
+        },
+        {
+          "id": "C015",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_product",
+          "passed": true
+        },
+        {
+          "id": "C016",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_order",
+          "passed": true
+        },
+        {
+          "id": "C017",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "negated_condition",
+          "passed": true
+        },
+        {
+          "id": "C018",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "read_vs_write",
+          "passed": true
+        },
+        {
+          "id": "C019",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_day",
+          "passed": true
+        },
+        {
+          "id": "C020",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_intent",
+          "passed": true
+        },
+        {
+          "id": "C021",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_product",
+          "passed": true
+        },
+        {
+          "id": "C022",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_condition",
+          "passed": true
+        },
+        {
+          "id": "C023",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "read_vs_write",
+          "passed": true
+        },
+        {
+          "id": "C024",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_question",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "threshold": 0.9,
+      "n": 24,
+      "positive_n": 12,
+      "negative_n": 12,
+      "true_hits": 9,
+      "missed_positive_hits": 3,
+      "wrong_hits": 0,
+      "rows": [
+        {
+          "id": "C001",
+          "expected_hit": true,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "hours_paraphrase",
+          "passed": false
+        },
+        {
+          "id": "C002",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "return_policy_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C003",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "exchange_policy_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C004",
+          "expected_hit": true,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "price_paraphrase",
+          "passed": false
+        },
+        {
+          "id": "C005",
+          "expected_hit": true,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "stock_paraphrase",
+          "passed": false
+        },
+        {
+          "id": "C006",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 1.0,
+          "reason": "catalog_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C007",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 1.0,
+          "reason": "hours_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C008",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "return_policy_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C009",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "exchange_policy_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C010",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "price_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C011",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "stock_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C012",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 1.0,
+          "reason": "catalog_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C013",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_day",
+          "passed": true
+        },
+        {
+          "id": "C014",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_intent",
+          "passed": true
+        },
+        {
+          "id": "C015",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_product",
+          "passed": true
+        },
+        {
+          "id": "C016",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_order",
+          "passed": true
+        },
+        {
+          "id": "C017",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "negated_condition",
+          "passed": true
+        },
+        {
+          "id": "C018",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "read_vs_write",
+          "passed": true
+        },
+        {
+          "id": "C019",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_day",
+          "passed": true
+        },
+        {
+          "id": "C020",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_intent",
+          "passed": true
+        },
+        {
+          "id": "C021",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_product",
+          "passed": true
+        },
+        {
+          "id": "C022",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_condition",
+          "passed": true
+        },
+        {
+          "id": "C023",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "read_vs_write",
+          "passed": true
+        },
+        {
+          "id": "C024",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_question",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "threshold": 0.95,
+      "n": 24,
+      "positive_n": 12,
+      "negative_n": 12,
+      "true_hits": 9,
+      "missed_positive_hits": 3,
+      "wrong_hits": 0,
+      "rows": [
+        {
+          "id": "C001",
+          "expected_hit": true,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "hours_paraphrase",
+          "passed": false
+        },
+        {
+          "id": "C002",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "return_policy_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C003",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "exchange_policy_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C004",
+          "expected_hit": true,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "price_paraphrase",
+          "passed": false
+        },
+        {
+          "id": "C005",
+          "expected_hit": true,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "stock_paraphrase",
+          "passed": false
+        },
+        {
+          "id": "C006",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 1.0,
+          "reason": "catalog_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C007",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 1.0,
+          "reason": "hours_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C008",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "return_policy_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C009",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "exchange_policy_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C010",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "price_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C011",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "stock_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C012",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 1.0,
+          "reason": "catalog_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C013",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_day",
+          "passed": true
+        },
+        {
+          "id": "C014",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_intent",
+          "passed": true
+        },
+        {
+          "id": "C015",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_product",
+          "passed": true
+        },
+        {
+          "id": "C016",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_order",
+          "passed": true
+        },
+        {
+          "id": "C017",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "negated_condition",
+          "passed": true
+        },
+        {
+          "id": "C018",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "read_vs_write",
+          "passed": true
+        },
+        {
+          "id": "C019",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_day",
+          "passed": true
+        },
+        {
+          "id": "C020",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_intent",
+          "passed": true
+        },
+        {
+          "id": "C021",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_product",
+          "passed": true
+        },
+        {
+          "id": "C022",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_condition",
+          "passed": true
+        },
+        {
+          "id": "C023",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "read_vs_write",
+          "passed": true
+        },
+        {
+          "id": "C024",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_question",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "threshold": 1.0,
+      "n": 24,
+      "positive_n": 12,
+      "negative_n": 12,
+      "true_hits": 9,
+      "missed_positive_hits": 3,
+      "wrong_hits": 0,
+      "rows": [
+        {
+          "id": "C001",
+          "expected_hit": true,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "hours_paraphrase",
+          "passed": false
+        },
+        {
+          "id": "C002",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "return_policy_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C003",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "exchange_policy_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C004",
+          "expected_hit": true,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "price_paraphrase",
+          "passed": false
+        },
+        {
+          "id": "C005",
+          "expected_hit": true,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "stock_paraphrase",
+          "passed": false
+        },
+        {
+          "id": "C006",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 1.0,
+          "reason": "catalog_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C007",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 1.0,
+          "reason": "hours_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C008",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "return_policy_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C009",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "exchange_policy_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C010",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "price_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C011",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 0.9999999999999998,
+          "reason": "stock_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C012",
+          "expected_hit": true,
+          "actual_hit": true,
+          "score": 1.0,
+          "reason": "catalog_paraphrase",
+          "passed": true
+        },
+        {
+          "id": "C013",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_day",
+          "passed": true
+        },
+        {
+          "id": "C014",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_intent",
+          "passed": true
+        },
+        {
+          "id": "C015",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_product",
+          "passed": true
+        },
+        {
+          "id": "C016",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_order",
+          "passed": true
+        },
+        {
+          "id": "C017",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "negated_condition",
+          "passed": true
+        },
+        {
+          "id": "C018",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "read_vs_write",
+          "passed": true
+        },
+        {
+          "id": "C019",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_day",
+          "passed": true
+        },
+        {
+          "id": "C020",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_intent",
+          "passed": true
+        },
+        {
+          "id": "C021",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_product",
+          "passed": true
+        },
+        {
+          "id": "C022",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_condition",
+          "passed": true
+        },
+        {
+          "id": "C023",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "read_vs_write",
+          "passed": true
+        },
+        {
+          "id": "C024",
+          "expected_hit": false,
+          "actual_hit": false,
+          "score": 0.0,
+          "reason": "different_question",
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "rule": "Zero wrong hits first; maximize correct positive hits; choose highest tied threshold",
+  "limits": "Concept-set equality makes nonzero scores nearly binary. This is a conservative lexical concept cache, not an embedding-model benchmark.",
+  "holdout": {
+    "threshold": 1.0,
+    "n": 12,
+    "positive_n": 6,
+    "negative_n": 6,
+    "true_hits": 5,
+    "missed_positive_hits": 1,
+    "wrong_hits": 0,
+    "rows": [
+      {
+        "id": "C025",
+        "expected_hit": true,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "same_day_hours",
+        "passed": false
+      },
+      {
+        "id": "C026",
+        "expected_hit": true,
+        "actual_hit": true,
+        "score": 0.9999999999999998,
+        "reason": "return_policy",
+        "passed": true
+      },
+      {
+        "id": "C027",
+        "expected_hit": true,
+        "actual_hit": true,
+        "score": 0.9999999999999998,
+        "reason": "exchange_policy",
+        "passed": true
+      },
+      {
+        "id": "C028",
+        "expected_hit": true,
+        "actual_hit": true,
+        "score": 1.0,
+        "reason": "same_day_hours",
+        "passed": true
+      },
+      {
+        "id": "C029",
+        "expected_hit": true,
+        "actual_hit": true,
+        "score": 0.9999999999999998,
+        "reason": "return_policy",
+        "passed": true
+      },
+      {
+        "id": "C030",
+        "expected_hit": true,
+        "actual_hit": true,
+        "score": 0.9999999999999998,
+        "reason": "exchange_policy",
+        "passed": true
+      },
+      {
+        "id": "C031",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "day_mismatch",
+        "passed": true
+      },
+      {
+        "id": "C032",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "condition_negation",
+        "passed": true
+      },
+      {
+        "id": "C033",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "order_mismatch",
+        "passed": true
+      },
+      {
+        "id": "C034",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "sku_mismatch",
+        "passed": true
+      },
+      {
+        "id": "C035",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "intent_mismatch",
+        "passed": true
+      },
+      {
+        "id": "C036",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "negated_action",
+        "passed": true
+      }
+    ]
+  },
+  "original_near_misses": {
+    "threshold": 1.0,
+    "n": 32,
+    "positive_n": 0,
+    "negative_n": 32,
+    "true_hits": 0,
+    "missed_positive_hits": 0,
+    "wrong_hits": 0,
+    "rows": [
+      {
+        "id": "N001",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "different_order",
+        "passed": true
+      },
+      {
+        "id": "N002",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "different_owner_order",
+        "passed": true
+      },
+      {
+        "id": "N003",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "different_day",
+        "passed": true
+      },
+      {
+        "id": "N004",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "information_vs_action",
+        "passed": true
+      },
+      {
+        "id": "N005",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "information_vs_action",
+        "passed": true
+      },
+      {
+        "id": "N006",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "information_vs_action",
+        "passed": true
+      },
+      {
+        "id": "N007",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "different_availability",
+        "passed": true
+      },
+      {
+        "id": "N008",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "different_eligibility",
+        "passed": true
+      },
+      {
+        "id": "N009",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "different_stock",
+        "passed": true
+      },
+      {
+        "id": "N010",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "different_price",
+        "passed": true
+      },
+      {
+        "id": "N011",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "different_action",
+        "passed": true
+      },
+      {
+        "id": "N012",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "negation",
+        "passed": true
+      },
+      {
+        "id": "N013",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "negation",
+        "passed": true
+      },
+      {
+        "id": "N014",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "different_day",
+        "passed": true
+      },
+      {
+        "id": "N015",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "condition",
+        "passed": true
+      },
+      {
+        "id": "N016",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "different_order",
+        "passed": true
+      },
+      {
+        "id": "N017",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "different_day",
+        "passed": true
+      },
+      {
+        "id": "N018",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "negation",
+        "passed": true
+      },
+      {
+        "id": "N019",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "different_availability",
+        "passed": true
+      },
+      {
+        "id": "N020",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "different_owner_order",
+        "passed": true
+      },
+      {
+        "id": "N021",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "customer_scope",
+        "passed": true
+      },
+      {
+        "id": "N022",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "anonymous_scope",
+        "passed": true
+      },
+      {
+        "id": "N023",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "permission_scope",
+        "passed": true
+      },
+      {
+        "id": "N024",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "language",
+        "passed": true
+      },
+      {
+        "id": "N025",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "model_identity",
+        "passed": true
+      },
+      {
+        "id": "N026",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "prompt_version",
+        "passed": true
+      },
+      {
+        "id": "N027",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "policy_data_change",
+        "passed": true
+      },
+      {
+        "id": "N028",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "session_scope",
+        "passed": true
+      },
+      {
+        "id": "N029",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "full_policy_content",
+        "passed": true
+      },
+      {
+        "id": "N030",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "conversation_history",
+        "passed": true
+      },
+      {
+        "id": "N031",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "eligibility_date",
+        "passed": true
+      },
+      {
+        "id": "N032",
+        "expected_hit": false,
+        "actual_hit": false,
+        "score": 0.0,
+        "reason": "stock_or_booking_mutation",
+        "passed": true
+      }
+    ]
+  },
+  "semantic_ready": true,
+  "pairs_sha256": "4af59244ca4c254cd4af4684e2300a8496a225e423811b211e7a828a0921c17e",
+  "near_miss_sha256": "8645bb9beef6c7c098dbb56942230d6e7ceab0d3b6335e67fe0193819f108be5"
+}

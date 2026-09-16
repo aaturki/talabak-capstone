@@ -1,46 +1,46 @@
 {
   "overall": {
     "n": 144,
-    "passed": 144,
-    "pass_rate": 1.0,
-    "latency_ms_p50": 16.92259998526424,
-    "latency_ms_p95": 31.040600006235763,
-    "model_calls": 408,
-    "input_tokens": 725771,
-    "output_tokens": 14446,
-    "cached_tokens": 698670,
+    "passed": 46,
+    "pass_rate": 0.3194444444444444,
+    "latency_ms_p50": 13.421899988316,
+    "latency_ms_p95": 30.211000004783273,
+    "model_calls": 276,
+    "input_tokens": 430353,
+    "output_tokens": 5890,
+    "cached_tokens": 421574,
     "cost_usd": 0.0,
-    "simulated_cost_usd": 0.02595525,
+    "simulated_cost_usd": 0.1377325,
     "estimated_cost_usd": null,
     "usage_coverage": {
       "input_tokens": {
-        "known": 408,
+        "known": 276,
         "unknown": 0,
-        "known_total": 725771
+        "known_total": 430353
       },
       "output_tokens": {
-        "known": 408,
+        "known": 276,
         "unknown": 0,
-        "known_total": 14446
+        "known_total": 5890
       },
       "cached_tokens": {
-        "known": 408,
+        "known": 276,
         "unknown": 0,
-        "known_total": 698670
+        "known_total": 421574
       },
       "cost_usd": {
-        "known": 408,
+        "known": 276,
         "unknown": 0,
         "known_total": 0.0
       },
       "simulated_cost_usd": {
-        "known": 408,
+        "known": 276,
         "unknown": 0,
-        "known_total": 0.02595525
+        "known_total": 0.1377325
       },
       "estimated_cost_usd": {
         "known": 0,
-        "unknown": 408,
+        "unknown": 276,
         "known_total": 0
       }
     }
@@ -49,92 +49,92 @@
     "intent": {
       "appointment": {
         "n": 24,
-        "passed": 24,
-        "pass_rate": 1.0,
-        "latency_ms_p50": 16.27979998011142,
-        "latency_ms_p95": 37.01179998461157,
-        "model_calls": 66,
-        "input_tokens": 113226,
-        "output_tokens": 2391,
-        "cached_tokens": 111138,
+        "passed": 5,
+        "pass_rate": 0.20833333333333334,
+        "latency_ms_p50": 13.83660000283271,
+        "latency_ms_p95": 31.410899973707274,
+        "model_calls": 51,
+        "input_tokens": 79239,
+        "output_tokens": 1057,
+        "cached_tokens": 78285,
         "cost_usd": 0.0,
-        "simulated_cost_usd": 0.00394365,
+        "simulated_cost_usd": 0.02475325,
         "estimated_cost_usd": null,
         "usage_coverage": {
           "input_tokens": {
-            "known": 66,
+            "known": 51,
             "unknown": 0,
-            "known_total": 113226
+            "known_total": 79239
           },
           "output_tokens": {
-            "known": 66,
+            "known": 51,
             "unknown": 0,
-            "known_total": 2391
+            "known_total": 1057
           },
           "cached_tokens": {
-            "known": 66,
+            "known": 51,
             "unknown": 0,
-            "known_total": 111138
+            "known_total": 78285
           },
           "cost_usd": {
-            "known": 66,
+            "known": 51,
             "unknown": 0,
             "known_total": 0.0
           },
           "simulated_cost_usd": {
-            "known": 66,
+            "known": 51,
             "unknown": 0,
-            "known_total": 0.00394365
+            "known_total": 0.02475325
           },
           "estimated_cost_usd": {
             "known": 0,
-            "unknown": 66,
+            "unknown": 51,
             "known_total": 0
           }
         }
       },
       "exchange": {
         "n": 24,
-        "passed": 24,
-        "pass_rate": 1.0,
-        "latency_ms_p50": 22.31890000985004,
-        "latency_ms_p95": 27.582100010477006,
-        "model_calls": 78,
-        "input_tokens": 144351,
-        "output_tokens": 3453,
-        "cached_tokens": 138279,
+        "passed": 4,
+        "pass_rate": 0.16666666666666666,
+        "latency_ms_p50": 13.944399979664013,
+        "latency_ms_p95": 19.414299982599914,
+        "model_calls": 45,
+        "input_tokens": 70286,
+        "output_tokens": 951,
+        "cached_tokens": 69183,
         "cost_usd": 0.0,
-        "simulated_cost_usd": 0.005445375,
+        "simulated_cost_usd": 0.02220275,
         "estimated_cost_usd": null,
         "usage_coverage": {
           "input_tokens": {
-            "known": 78,
+            "known": 45,
             "unknown": 0,
-            "known_total": 144351
+            "known_total": 70286
           },
           "output_tokens": {
-            "known": 78,
+            "known": 45,
             "unknown": 0,
-            "known_total": 3453
+            "known_total": 951
           },
           "cached_tokens": {
-            "known": 78,
+            "known": 45,
             "unknown": 0,
-            "known_total": 138279
+            "known_total": 69183
           },
           "cost_usd": {
-            "known": 78,
+            "known": 45,
             "unknown": 0,
             "known_total": 0.0
           },
           "simulated_cost_usd": {
-            "known": 78,
+            "known": 45,
             "unknown": 0,
-            "known_total": 0.005445375
+            "known_total": 0.02220275
           },
           "estimated_cost_usd": {
             "known": 0,
-            "unknown": 78,
+            "unknown": 45,
             "known_total": 0
           }
         }
@@ -143,20 +143,20 @@
         "n": 24,
         "passed": 24,
         "pass_rate": 1.0,
-        "latency_ms_p50": 13.60400000703521,
-        "latency_ms_p95": 15.242399997077882,
+        "latency_ms_p50": 13.398000010056421,
+        "latency_ms_p95": 14.648500015027821,
         "model_calls": 40,
-        "input_tokens": 62462,
+        "input_tokens": 62582,
         "output_tokens": 880,
-        "cached_tokens": 58501,
+        "cached_tokens": 58615,
         "cost_usd": 0.0,
-        "simulated_cost_usd": 0.002210625,
+        "simulated_cost_usd": 0.02214075,
         "estimated_cost_usd": null,
         "usage_coverage": {
           "input_tokens": {
             "known": 40,
             "unknown": 0,
-            "known_total": 62462
+            "known_total": 62582
           },
           "output_tokens": {
             "known": 40,
@@ -166,7 +166,7 @@
           "cached_tokens": {
             "known": 40,
             "unknown": 0,
-            "known_total": 58501
+            "known_total": 58615
           },
           "cost_usd": {
             "known": 40,
@@ -176,7 +176,7 @@
           "simulated_cost_usd": {
             "known": 40,
             "unknown": 0,
-            "known_total": 0.002210625
+            "known_total": 0.02214075
           },
           "estimated_cost_usd": {
             "known": 0,
@@ -187,138 +187,138 @@
       },
       "handoff": {
         "n": 24,
-        "passed": 24,
-        "pass_rate": 1.0,
-        "latency_ms_p50": 16.67419998557307,
-        "latency_ms_p95": 31.040600006235763,
-        "model_calls": 67,
-        "input_tokens": 117067,
-        "output_tokens": 2271,
-        "cached_tokens": 114773,
+        "passed": 4,
+        "pass_rate": 0.16666666666666666,
+        "latency_ms_p50": 13.223500020103529,
+        "latency_ms_p95": 30.788400006713346,
+        "model_calls": 52,
+        "input_tokens": 81022,
+        "output_tokens": 1118,
+        "cached_tokens": 80057,
         "cost_usd": 0.0,
-        "simulated_cost_usd": 0.004007125,
+        "simulated_cost_usd": 0.02545125,
         "estimated_cost_usd": null,
         "usage_coverage": {
           "input_tokens": {
-            "known": 67,
+            "known": 52,
             "unknown": 0,
-            "known_total": 117067
+            "known_total": 81022
           },
           "output_tokens": {
-            "known": 67,
+            "known": 52,
             "unknown": 0,
-            "known_total": 2271
+            "known_total": 1118
           },
           "cached_tokens": {
-            "known": 67,
+            "known": 52,
             "unknown": 0,
-            "known_total": 114773
+            "known_total": 80057
           },
           "cost_usd": {
-            "known": 67,
+            "known": 52,
             "unknown": 0,
             "known_total": 0.0
           },
           "simulated_cost_usd": {
-            "known": 67,
+            "known": 52,
             "unknown": 0,
-            "known_total": 0.004007125
+            "known_total": 0.02545125
           },
           "estimated_cost_usd": {
             "known": 0,
-            "unknown": 67,
+            "unknown": 52,
             "known_total": 0
           }
         }
       },
       "order_status": {
         "n": 24,
-        "passed": 24,
-        "pass_rate": 1.0,
-        "latency_ms_p50": 19.791800004895777,
-        "latency_ms_p95": 22.615499998209998,
-        "model_calls": 74,
-        "input_tokens": 135794,
-        "output_tokens": 2052,
-        "cached_tokens": 129065,
+        "passed": 4,
+        "pass_rate": 0.16666666666666666,
+        "latency_ms_p50": 13.238899991847575,
+        "latency_ms_p95": 14.11230000667274,
+        "model_calls": 40,
+        "input_tokens": 62472,
+        "output_tokens": 880,
+        "cached_tokens": 61700,
         "cost_usd": 0.0,
-        "simulated_cost_usd": 0.004720325,
+        "simulated_cost_usd": 0.019717,
         "estimated_cost_usd": null,
         "usage_coverage": {
           "input_tokens": {
-            "known": 74,
+            "known": 40,
             "unknown": 0,
-            "known_total": 135794
+            "known_total": 62472
           },
           "output_tokens": {
-            "known": 74,
+            "known": 40,
             "unknown": 0,
-            "known_total": 2052
+            "known_total": 880
           },
           "cached_tokens": {
-            "known": 74,
+            "known": 40,
             "unknown": 0,
-            "known_total": 129065
+            "known_total": 61700
           },
           "cost_usd": {
-            "known": 74,
+            "known": 40,
             "unknown": 0,
             "known_total": 0.0
           },
           "simulated_cost_usd": {
-            "known": 74,
+            "known": 40,
             "unknown": 0,
-            "known_total": 0.004720325
+            "known_total": 0.019717
           },
           "estimated_cost_usd": {
             "known": 0,
-            "unknown": 74,
+            "unknown": 40,
             "known_total": 0
           }
         }
       },
       "return": {
         "n": 24,
-        "passed": 24,
-        "pass_rate": 1.0,
-        "latency_ms_p50": 22.82980000018142,
-        "latency_ms_p95": 38.175699999555945,
-        "model_calls": 83,
-        "input_tokens": 152871,
-        "output_tokens": 3399,
-        "cached_tokens": 146914,
+        "passed": 5,
+        "pass_rate": 0.20833333333333334,
+        "latency_ms_p50": 13.370199972996488,
+        "latency_ms_p95": 30.211000004783273,
+        "model_calls": 48,
+        "input_tokens": 74752,
+        "output_tokens": 1004,
+        "cached_tokens": 73734,
         "cost_usd": 0.0,
-        "simulated_cost_usd": 0.00562815,
+        "simulated_cost_usd": 0.0234675,
         "estimated_cost_usd": null,
         "usage_coverage": {
           "input_tokens": {
-            "known": 83,
+            "known": 48,
             "unknown": 0,
-            "known_total": 152871
+            "known_total": 74752
           },
           "output_tokens": {
-            "known": 83,
+            "known": 48,
             "unknown": 0,
-            "known_total": 3399
+            "known_total": 1004
           },
           "cached_tokens": {
-            "known": 83,
+            "known": 48,
             "unknown": 0,
-            "known_total": 146914
+            "known_total": 73734
           },
           "cost_usd": {
-            "known": 83,
+            "known": 48,
             "unknown": 0,
             "known_total": 0.0
           },
           "simulated_cost_usd": {
-            "known": 83,
+            "known": 48,
             "unknown": 0,
-            "known_total": 0.00562815
+            "known_total": 0.0234675
           },
           "estimated_cost_usd": {
             "known": 0,
-            "unknown": 83,
+            "unknown": 48,
             "known_total": 0
           }
         }
@@ -327,92 +327,92 @@
     "language": {
       "ar": {
         "n": 96,
-        "passed": 96,
-        "pass_rate": 1.0,
-        "latency_ms_p50": 16.92259998526424,
-        "latency_ms_p95": 37.01179998461157,
-        "model_calls": 246,
-        "input_tokens": 438281,
-        "output_tokens": 8849,
-        "cached_tokens": 419520,
+        "passed": 37,
+        "pass_rate": 0.3854166666666667,
+        "latency_ms_p50": 13.469600002281368,
+        "latency_ms_p95": 31.167299981461838,
+        "model_calls": 166,
+        "input_tokens": 258979,
+        "output_tokens": 3548,
+        "cached_tokens": 252358,
         "cost_usd": 0.0,
-        "simulated_cost_usd": 0.0159037,
+        "simulated_cost_usd": 0.0839025,
         "estimated_cost_usd": null,
         "usage_coverage": {
           "input_tokens": {
-            "known": 246,
+            "known": 166,
             "unknown": 0,
-            "known_total": 438281
+            "known_total": 258979
           },
           "output_tokens": {
-            "known": 246,
+            "known": 166,
             "unknown": 0,
-            "known_total": 8849
+            "known_total": 3548
           },
           "cached_tokens": {
-            "known": 246,
+            "known": 166,
             "unknown": 0,
-            "known_total": 419520
+            "known_total": 252358
           },
           "cost_usd": {
-            "known": 246,
+            "known": 166,
             "unknown": 0,
             "known_total": 0.0
           },
           "simulated_cost_usd": {
-            "known": 246,
+            "known": 166,
             "unknown": 0,
-            "known_total": 0.0159037
+            "known_total": 0.0839025
           },
           "estimated_cost_usd": {
             "known": 0,
-            "unknown": 246,
+            "unknown": 166,
             "known_total": 0
           }
         }
       },
       "en": {
         "n": 48,
-        "passed": 48,
-        "pass_rate": 1.0,
-        "latency_ms_p50": 16.27979998011142,
-        "latency_ms_p95": 31.040600006235763,
-        "model_calls": 162,
-        "input_tokens": 287490,
-        "output_tokens": 5597,
-        "cached_tokens": 279150,
+        "passed": 9,
+        "pass_rate": 0.1875,
+        "latency_ms_p50": 13.366099999984726,
+        "latency_ms_p95": 30.211000004783273,
+        "model_calls": 110,
+        "input_tokens": 171374,
+        "output_tokens": 2342,
+        "cached_tokens": 169216,
         "cost_usd": 0.0,
-        "simulated_cost_usd": 0.01005155,
+        "simulated_cost_usd": 0.05383,
         "estimated_cost_usd": null,
         "usage_coverage": {
           "input_tokens": {
-            "known": 162,
+            "known": 110,
             "unknown": 0,
-            "known_total": 287490
+            "known_total": 171374
           },
           "output_tokens": {
-            "known": 162,
+            "known": 110,
             "unknown": 0,
-            "known_total": 5597
+            "known_total": 2342
           },
           "cached_tokens": {
-            "known": 162,
+            "known": 110,
             "unknown": 0,
-            "known_total": 279150
+            "known_total": 169216
           },
           "cost_usd": {
-            "known": 162,
+            "known": 110,
             "unknown": 0,
             "known_total": 0.0
           },
           "simulated_cost_usd": {
-            "known": 162,
+            "known": 110,
             "unknown": 0,
-            "known_total": 0.01005155
+            "known_total": 0.05383
           },
           "estimated_cost_usd": {
             "known": 0,
-            "unknown": 162,
+            "unknown": 110,
             "known_total": 0
           }
         }
@@ -421,138 +421,138 @@
     "difficulty": {
       "easy": {
         "n": 23,
-        "passed": 23,
-        "pass_rate": 1.0,
-        "latency_ms_p50": 14.113100012764335,
-        "latency_ms_p95": 23.942400002852082,
-        "model_calls": 60,
-        "input_tokens": 101947,
-        "output_tokens": 1818,
-        "cached_tokens": 94323,
+        "passed": 7,
+        "pass_rate": 0.30434782608695654,
+        "latency_ms_p50": 13.533699995605275,
+        "latency_ms_p95": 14.648500015027821,
+        "model_calls": 46,
+        "input_tokens": 71909,
+        "output_tokens": 1012,
+        "cached_tokens": 67870,
         "cost_usd": 0.0,
-        "simulated_cost_usd": 0.003847675,
+        "simulated_cost_usd": 0.0250545,
         "estimated_cost_usd": null,
         "usage_coverage": {
           "input_tokens": {
-            "known": 60,
+            "known": 46,
             "unknown": 0,
-            "known_total": 101947
+            "known_total": 71909
           },
           "output_tokens": {
-            "known": 60,
+            "known": 46,
             "unknown": 0,
-            "known_total": 1818
+            "known_total": 1012
           },
           "cached_tokens": {
-            "known": 60,
+            "known": 46,
             "unknown": 0,
-            "known_total": 94323
+            "known_total": 67870
           },
           "cost_usd": {
-            "known": 60,
+            "known": 46,
             "unknown": 0,
             "known_total": 0.0
           },
           "simulated_cost_usd": {
-            "known": 60,
+            "known": 46,
             "unknown": 0,
-            "known_total": 0.003847675
+            "known_total": 0.0250545
           },
           "estimated_cost_usd": {
             "known": 0,
-            "unknown": 60,
+            "unknown": 46,
             "known_total": 0
           }
         }
       },
       "hard": {
         "n": 29,
-        "passed": 29,
-        "pass_rate": 1.0,
-        "latency_ms_p50": 1.2919000000692904,
-        "latency_ms_p95": 37.23590000299737,
-        "model_calls": 19,
-        "input_tokens": 31230,
-        "output_tokens": 537,
-        "cached_tokens": 30620,
+        "passed": 26,
+        "pass_rate": 0.896551724137931,
+        "latency_ms_p50": 1.3050000125076622,
+        "latency_ms_p95": 30.211000004783273,
+        "model_calls": 16,
+        "input_tokens": 24814,
+        "output_tokens": 326,
+        "cached_tokens": 24527,
         "cost_usd": 0.0,
-        "simulated_cost_usd": 0.0010413,
+        "simulated_cost_usd": 0.0077227500000000004,
         "estimated_cost_usd": null,
         "usage_coverage": {
           "input_tokens": {
-            "known": 19,
+            "known": 16,
             "unknown": 0,
-            "known_total": 31230
+            "known_total": 24814
           },
           "output_tokens": {
-            "known": 19,
+            "known": 16,
             "unknown": 0,
-            "known_total": 537
+            "known_total": 326
           },
           "cached_tokens": {
-            "known": 19,
+            "known": 16,
             "unknown": 0,
-            "known_total": 30620
+            "known_total": 24527
           },
           "cost_usd": {
-            "known": 19,
+            "known": 16,
             "unknown": 0,
             "known_total": 0.0
           },
           "simulated_cost_usd": {
-            "known": 19,
+            "known": 16,
             "unknown": 0,
-            "known_total": 0.0010413
+            "known_total": 0.0077227500000000004
           },
           "estimated_cost_usd": {
             "known": 0,
-            "unknown": 19,
+            "unknown": 16,
             "known_total": 0
           }
         }
       },
       "medium": {
         "n": 92,
-        "passed": 92,
-        "pass_rate": 1.0,
-        "latency_ms_p50": 20.686899981228635,
-        "latency_ms_p95": 32.5973000144586,
-        "model_calls": 329,
-        "input_tokens": 592594,
-        "output_tokens": 12091,
-        "cached_tokens": 573727,
+        "passed": 13,
+        "pass_rate": 0.14130434782608695,
+        "latency_ms_p50": 13.657799980137497,
+        "latency_ms_p95": 30.806199996732175,
+        "model_calls": 214,
+        "input_tokens": 333630,
+        "output_tokens": 4552,
+        "cached_tokens": 329177,
         "cost_usd": 0.0,
-        "simulated_cost_usd": 0.021066275,
+        "simulated_cost_usd": 0.10495525,
         "estimated_cost_usd": null,
         "usage_coverage": {
           "input_tokens": {
-            "known": 329,
+            "known": 214,
             "unknown": 0,
-            "known_total": 592594
+            "known_total": 333630
           },
           "output_tokens": {
-            "known": 329,
+            "known": 214,
             "unknown": 0,
-            "known_total": 12091
+            "known_total": 4552
           },
           "cached_tokens": {
-            "known": 329,
+            "known": 214,
             "unknown": 0,
-            "known_total": 573727
+            "known_total": 329177
           },
           "cost_usd": {
-            "known": 329,
+            "known": 214,
             "unknown": 0,
             "known_total": 0.0
           },
           "simulated_cost_usd": {
-            "known": 329,
+            "known": 214,
             "unknown": 0,
-            "known_total": 0.021066275
+            "known_total": 0.10495525
           },
           "estimated_cost_usd": {
             "known": 0,
-            "unknown": 329,
+            "unknown": 214,
             "known_total": 0
           }
         }
@@ -561,138 +561,138 @@
     "risk": {
       "high": {
         "n": 78,
-        "passed": 78,
-        "pass_rate": 1.0,
-        "latency_ms_p50": 19.111599976895377,
-        "latency_ms_p95": 38.175699999555945,
-        "model_calls": 221,
-        "input_tokens": 401552,
-        "output_tokens": 8475,
-        "cached_tokens": 388105,
+        "passed": 28,
+        "pass_rate": 0.358974358974359,
+        "latency_ms_p50": 13.34340000175871,
+        "latency_ms_p95": 31.410899973707274,
+        "model_calls": 138,
+        "input_tokens": 215158,
+        "output_tokens": 2932,
+        "cached_tokens": 212253,
         "cost_usd": 0.0,
-        "simulated_cost_usd": 0.014437325,
+        "simulated_cost_usd": 0.06769625,
         "estimated_cost_usd": null,
         "usage_coverage": {
           "input_tokens": {
-            "known": 221,
+            "known": 138,
             "unknown": 0,
-            "known_total": 401552
+            "known_total": 215158
           },
           "output_tokens": {
-            "known": 221,
+            "known": 138,
             "unknown": 0,
-            "known_total": 8475
+            "known_total": 2932
           },
           "cached_tokens": {
-            "known": 221,
+            "known": 138,
             "unknown": 0,
-            "known_total": 388105
+            "known_total": 212253
           },
           "cost_usd": {
-            "known": 221,
+            "known": 138,
             "unknown": 0,
             "known_total": 0.0
           },
           "simulated_cost_usd": {
-            "known": 221,
+            "known": 138,
             "unknown": 0,
-            "known_total": 0.014437325
+            "known_total": 0.06769625
           },
           "estimated_cost_usd": {
             "known": 0,
-            "unknown": 221,
+            "unknown": 138,
             "known_total": 0
           }
         }
       },
       "low": {
         "n": 29,
-        "passed": 29,
-        "pass_rate": 1.0,
-        "latency_ms_p50": 13.989600003696978,
-        "latency_ms_p95": 22.252900002058595,
-        "model_calls": 74,
-        "input_tokens": 125144,
-        "output_tokens": 1843,
-        "cached_tokens": 116887,
+        "passed": 18,
+        "pass_rate": 0.6206896551724138,
+        "latency_ms_p50": 13.505500013707206,
+        "latency_ms_p95": 14.648500015027821,
+        "model_calls": 58,
+        "input_tokens": 90641,
+        "output_tokens": 1276,
+        "cached_tokens": 86380,
         "cost_usd": 0.0,
-        "simulated_cost_usd": 0.004485075,
+        "simulated_cost_usd": 0.03096,
         "estimated_cost_usd": null,
         "usage_coverage": {
           "input_tokens": {
-            "known": 74,
+            "known": 58,
             "unknown": 0,
-            "known_total": 125144
+            "known_total": 90641
           },
           "output_tokens": {
-            "known": 74,
+            "known": 58,
             "unknown": 0,
-            "known_total": 1843
+            "known_total": 1276
           },
           "cached_tokens": {
-            "known": 74,
+            "known": 58,
             "unknown": 0,
-            "known_total": 116887
+            "known_total": 86380
           },
           "cost_usd": {
-            "known": 74,
+            "known": 58,
             "unknown": 0,
             "known_total": 0.0
           },
           "simulated_cost_usd": {
-            "known": 74,
+            "known": 58,
             "unknown": 0,
-            "known_total": 0.004485075
+            "known_total": 0.03096
           },
           "estimated_cost_usd": {
             "known": 0,
-            "unknown": 74,
+            "unknown": 58,
             "known_total": 0
           }
         }
       },
       "medium": {
         "n": 37,
-        "passed": 37,
-        "pass_rate": 1.0,
-        "latency_ms_p50": 17.17029997962527,
-        "latency_ms_p95": 26.25540000735782,
-        "model_calls": 113,
-        "input_tokens": 199075,
-        "output_tokens": 4128,
-        "cached_tokens": 193678,
+        "passed": 0,
+        "pass_rate": 0.0,
+        "latency_ms_p50": 13.46050002030097,
+        "latency_ms_p95": 19.23590002115816,
+        "model_calls": 80,
+        "input_tokens": 124554,
+        "output_tokens": 1682,
+        "cached_tokens": 122941,
         "cost_usd": 0.0,
-        "simulated_cost_usd": 0.00703285,
+        "simulated_cost_usd": 0.03907625,
         "estimated_cost_usd": null,
         "usage_coverage": {
           "input_tokens": {
-            "known": 113,
+            "known": 80,
             "unknown": 0,
-            "known_total": 199075
+            "known_total": 124554
           },
           "output_tokens": {
-            "known": 113,
+            "known": 80,
             "unknown": 0,
-            "known_total": 4128
+            "known_total": 1682
           },
           "cached_tokens": {
-            "known": 113,
+            "known": 80,
             "unknown": 0,
-            "known_total": 193678
+            "known_total": 122941
           },
           "cost_usd": {
-            "known": 113,
+            "known": 80,
             "unknown": 0,
             "known_total": 0.0
           },
           "simulated_cost_usd": {
-            "known": 113,
+            "known": 80,
             "unknown": 0,
-            "known_total": 0.00703285
+            "known_total": 0.03907625
           },
           "estimated_cost_usd": {
             "known": 0,
-            "unknown": 113,
+            "unknown": 80,
             "known_total": 0
           }
         }
@@ -701,17 +701,116 @@
   },
   "safety": {
     "n": 78,
-    "passed": 78,
-    "failed": 0,
-    "pass_rate": 1.0
+    "passed": 28,
+    "failed": 50,
+    "pass_rate": 0.358974358974359
   },
   "evidence_modes": [
     "simulator"
   ],
-  "failed_case_ids": [],
+  "failed_case_ids": [
+    "G025",
+    "G026",
+    "G027",
+    "G028",
+    "G029",
+    "G030",
+    "G031",
+    "G032",
+    "G033",
+    "G034",
+    "G035",
+    "G036",
+    "G037",
+    "G038",
+    "G039",
+    "G040",
+    "G041",
+    "G042",
+    "G043",
+    "G044",
+    "G049",
+    "G050",
+    "G051",
+    "G052",
+    "G053",
+    "G054",
+    "G055",
+    "G056",
+    "G057",
+    "G058",
+    "G059",
+    "G060",
+    "G061",
+    "G062",
+    "G063",
+    "G064",
+    "G065",
+    "G066",
+    "G067",
+    "G073",
+    "G074",
+    "G075",
+    "G076",
+    "G077",
+    "G078",
+    "G079",
+    "G080",
+    "G081",
+    "G082",
+    "G083",
+    "G084",
+    "G085",
+    "G086",
+    "G087",
+    "G088",
+    "G089",
+    "G090",
+    "G091",
+    "G092",
+    "G097",
+    "G098",
+    "G099",
+    "G100",
+    "G101",
+    "G102",
+    "G103",
+    "G104",
+    "G105",
+    "G106",
+    "G107",
+    "G109",
+    "G110",
+    "G111",
+    "G112",
+    "G113",
+    "G114",
+    "G115",
+    "G116",
+    "G121",
+    "G122",
+    "G123",
+    "G124",
+    "G125",
+    "G126",
+    "G127",
+    "G128",
+    "G129",
+    "G130",
+    "G131",
+    "G132",
+    "G133",
+    "G134",
+    "G135",
+    "G136",
+    "G137",
+    "G138",
+    "G139",
+    "G140"
+  ],
   "limits": "Simulator token counts/tariffs are not provider bills or real model quality. Latency is this local harness run, not a measured self-hosted LLM throughput.",
-  "created_at_utc": "2026-09-16T15:12:11.868957+00:00",
-  "alias": "open_weight",
+  "created_at_utc": "2026-09-16T15:12:14.340447+00:00",
+  "alias": "primary",
   "cache_enabled": true,
   "dataset_audit": {
     "n": 144,
