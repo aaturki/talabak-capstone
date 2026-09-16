@@ -81,7 +81,7 @@
             "attempts": 2,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 107.08489999524318,
+            "latency_ms": 106.54010000871494,
             "finish_reason": "stop",
             "stage": "input_guard",
             "model": "talabak-course-primary",
@@ -107,7 +107,7 @@
             "attempts": 1,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 3.514599986374378,
+            "latency_ms": 2.250399993499741,
             "finish_reason": "stop",
             "stage": "route_extract",
             "model": "talabak-course-primary",
@@ -115,7 +115,7 @@
           }
         ],
         "evidence_mode": "simulator",
-        "latency_ms": 120.27630000375211
+        "latency_ms": 115.7324000087101
       },
       "events": [
         {
@@ -146,7 +146,7 @@
             "attempts": 1,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 2.434
+            "latency_ms": 1.763
           },
           "reservation": "released_unbilled_rejection",
           "delay_s": 0.1
@@ -180,7 +180,7 @@
             "attempts": 2,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 107.068,
+            "latency_ms": 106.52,
             "finish_reason": "stop"
           }
         },
@@ -213,7 +213,7 @@
             "attempts": 1,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 3.5,
+            "latency_ms": 2.237,
             "finish_reason": "stop"
           }
         }
@@ -300,7 +300,7 @@
             "attempts": 3,
             "fallback_used": true,
             "alias": "fallback",
-            "latency_ms": 144.4824000063818,
+            "latency_ms": 116.75770001602359,
             "finish_reason": "stop",
             "stage": "input_guard",
             "model": "talabak-course-fallback",
@@ -326,7 +326,7 @@
             "attempts": 3,
             "fallback_used": true,
             "alias": "fallback",
-            "latency_ms": 111.49500001920387,
+            "latency_ms": 90.74399998644367,
             "finish_reason": "stop",
             "stage": "route_extract",
             "model": "talabak-course-fallback",
@@ -334,7 +334,7 @@
           }
         ],
         "evidence_mode": "simulator",
-        "latency_ms": 266.21160001377575
+        "latency_ms": 215.7971999840811
       },
       "events": [
         {
@@ -365,10 +365,10 @@
             "attempts": 1,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 2.835
+            "latency_ms": 1.647
           },
           "reservation": "released_unbilled_rejection",
-          "delay_s": 0.10946632088252169
+          "delay_s": 0.09118873610218559
         },
         {
           "event": "model_error",
@@ -398,7 +398,7 @@
             "attempts": 2,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 115.678
+            "latency_ms": 96.422
           },
           "reservation": "released_unbilled_rejection"
         },
@@ -431,7 +431,7 @@
             "attempts": 3,
             "fallback_used": true,
             "alias": "fallback",
-            "latency_ms": 144.462,
+            "latency_ms": 116.742,
             "finish_reason": "stop"
           }
         },
@@ -463,10 +463,10 @@
             "attempts": 1,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 1.74
+            "latency_ms": 1.875
           },
           "reservation": "released_unbilled_rejection",
-          "delay_s": 0.10053045559888273
+          "delay_s": 0.08381373661945006
         },
         {
           "event": "model_error",
@@ -496,7 +496,7 @@
             "attempts": 2,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 106.773
+            "latency_ms": 88.63
           },
           "reservation": "released_unbilled_rejection"
         },
@@ -529,7 +529,7 @@
             "attempts": 3,
             "fallback_used": true,
             "alias": "fallback",
-            "latency_ms": 111.473,
+            "latency_ms": 90.73,
             "finish_reason": "stop"
           }
         }
@@ -616,7 +616,7 @@
             "attempts": 3,
             "fallback_used": true,
             "alias": "fallback",
-            "latency_ms": 142.38180001848377,
+            "latency_ms": 85.93629999086261,
             "finish_reason": "stop",
             "stage": "input_guard",
             "model": "talabak-course-fallback",
@@ -642,7 +642,7 @@
             "attempts": 3,
             "fallback_used": true,
             "alias": "fallback",
-            "latency_ms": 117.61700001079589,
+            "latency_ms": 93.47420002450235,
             "finish_reason": "stop",
             "stage": "route_extract",
             "model": "talabak-course-fallback",
@@ -650,7 +650,7 @@
           }
         ],
         "evidence_mode": "simulator",
-        "latency_ms": 268.6057999962941
+        "latency_ms": 186.25950001296587
       },
       "events": [
         {
@@ -681,10 +681,10 @@
             "attempts": 1,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 1.79
+            "latency_ms": 1.777
           },
           "reservation": "released_unbilled_rejection",
-          "delay_s": 0.134083196420959
+          "delay_s": 0.07810120483098247
         },
         {
           "event": "model_error",
@@ -714,7 +714,7 @@
             "attempts": 2,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 140.068
+            "latency_ms": 82.897
           },
           "reservation": "released_unbilled_rejection"
         },
@@ -747,7 +747,7 @@
             "attempts": 3,
             "fallback_used": true,
             "alias": "fallback",
-            "latency_ms": 142.367,
+            "latency_ms": 85.92,
             "finish_reason": "stop"
           }
         },
@@ -779,10 +779,10 @@
             "attempts": 1,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 1.916
+            "latency_ms": 1.544
           },
           "reservation": "released_unbilled_rejection",
-          "delay_s": 0.1105115420459446
+          "delay_s": 0.08700642278641027
         },
         {
           "event": "model_error",
@@ -812,7 +812,7 @@
             "attempts": 2,
             "fallback_used": false,
             "alias": "primary",
-            "latency_ms": 114.992
+            "latency_ms": 90.767
           },
           "reservation": "released_unbilled_rejection"
         },
@@ -845,7 +845,7 @@
             "attempts": 3,
             "fallback_used": true,
             "alias": "fallback",
-            "latency_ms": 117.6,
+            "latency_ms": 93.455,
             "finish_reason": "stop"
           }
         }
@@ -904,7 +904,7 @@
           "attempts": 1,
           "fallback_used": false,
           "alias": "primary",
-          "latency_ms": 2.572800003690645,
+          "latency_ms": 2.6184000016655773,
           "finish_reason": "stop",
           "stage": "route_extract",
           "model": "talabak-course-primary",
@@ -930,7 +930,7 @@
           "attempts": 1,
           "fallback_used": false,
           "alias": "primary",
-          "latency_ms": 2.5716999953147024,
+          "latency_ms": 2.213200001278892,
           "finish_reason": "stop",
           "stage": "route_extract",
           "model": "talabak-course-primary",

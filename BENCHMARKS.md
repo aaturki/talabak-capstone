@@ -1,13 +1,13 @@
 # BENCHMARKS — simulator evidence only
 
-Generated: 2026-09-16T16:27:45.608914+00:00
+Generated: 2026-09-16T16:37:31.346466+00:00
 
 These are measured loopback request times and tokenizer counts. Configured tariffs are illustrative assumptions; actual external API spend is $0. No model-performance or commercial-pricing claim is made.
 
 | Route | Cases passed | p50 ms | p95 ms | Input tokens | Cached input | Actual spend | Illustrative tariff estimate |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| primary (simulator) | 144/144 | 19.83 | 40.57 | 738297 | 96.3% | $0 | $0.262902 |
-| open_weight (simulator) | 144/144 | 21.43 | 38.61 | 738251 | 96.3% | $0 | $0.026274 |
+| primary (simulator) | 144/144 | 17.21 | 32.59 | 738297 | 96.3% | $0 | $0.262902 |
+| open_weight (simulator) | 144/144 | 17.83 | 32.77 | 738251 | 96.3% | $0 | $0.026274 |
 
 ## Prompt-cache and response-cache steps
 
@@ -34,7 +34,7 @@ See artifacts/cache_benchmark.json for the fixed workload, before/after measurem
 ```json
 {
   "status": "PASS",
-  "created_at_utc": "2026-09-16T16:27:45.395790+00:00",
+  "created_at_utc": "2026-09-16T16:37:31.170333+00:00",
   "traffic_sha256": "54fb4d252ce2ec931f0b53cf2e7ec275c1479956ce095abab6de983f4dcd9853",
   "workload": "Exactly four passes of all first-turn successful read-only FAQ/status golden cases. Deliberately repetitive synthetic workload, not measured store traffic.",
   "semantic_ready": true,
