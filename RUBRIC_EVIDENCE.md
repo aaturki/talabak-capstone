@@ -75,7 +75,7 @@ Execution references: `Talabak_Capstone.ipynb`, `artifacts/report.json`, `EVALUA
 
 | ID | Weight | Evidence location | Limits |
 |---|---:|---|---|
-| 7.1 | 4 | [README](README.md), one notebook with conversation and four demonstrations with recorded state. | Full owner name is present; cohort dates are unavailable. This is a local review snapshot. Project-repository cloning and fresh Colab Run all remain pending authorized publication. |
+| 7.1 | 4 | [README](README.md) with a local run recipe, one notebook with conversation and four demonstrations with recorded state. | Owner name (Arabic and English), programme and cohort (second cohort, 13–16 September 2026) are present. Project-repository cloning and fresh Colab Run all remain pending authorized publication. |
 | 7.2 | 3 | `Talabak_Capstone.ipynb` with course-style repository cloning and a readable source manifest; `scripts/run_all.py` local entry point. | **Actual Colab execution unverified.** The real repository URL/revision and fresh hosted run remain pending. Local success establishes local execution only. |
 | 7.3 | 3 | Runner-generated `EVALUATION_REPORT.md` and `BENCHMARKS.md`, with evidence paths and limits. | Live, human, throughput, cohort and peer-review items remain incomplete wherever evidence is absent. |
 
@@ -84,6 +84,6 @@ Execution references: `Talabak_Capstone.ipynb`, `artifacts/report.json`, `EVALUA
 - A 100% green safety result is an absolute passing condition. This document awards no score even when safety passes.
 - An Arabic majority, at least eight cases per stated marginal slice, and at least 120 golden cases cover the stricter minimum between Capstone 40 and Lab 5 120. Cases must be meaningful, not padding.
 - At least 30 attacks and 30 legitimate requests, with block and false-positive rates reported together. This project uses 52 attacks and 50 legitimate requests (40 of each authored first, divided into development and holdout, plus 22 development rows added after the 2026-09-16 audit), with rates reported per layer and independence limits recorded.
-- Name, cohort, programme, SDAIA GitHub reference, decisions, report, demonstrations and local Git history. Cohort dates and peer reviews must not be invented.
+- Name, cohort, programme, SDAIA GitHub reference, decisions, report, demonstrations and local Git history. The cohort dates were supplied by the owner on 2026-09-16; peer reviews must not be invented.
 - Optional extension credit of up to five points does not compensate for weak core requirements and is not self-awarded here.
 - Actual Colab execution, a GitHub URL and submission remain pending under the user's instructions. A local bundle does not establish publication.

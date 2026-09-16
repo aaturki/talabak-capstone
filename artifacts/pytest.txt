@@ -395,4 +395,4 @@ tests/test_safety.py::test_tool_json_parse_failure_preserves_generation_meter PA
 
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
 - generated xml file: C:\Users\Turki\Documents\Codex\2026-09-15\llm-capstone-local\outputs\talabak\artifacts\pytest.xml -
-====================== 376 passed, 2 warnings in 43.15s =======================
+====================== 376 passed, 2 warnings in 35.59s =======================

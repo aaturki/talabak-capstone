@@ -58,7 +58,7 @@ The earlier encoded source archive made the notebook difficult to inspect and di
 
 The repository URL and pinned source revision must be supplied before publication and fresh Colab verification. The notebook reports an incomplete locator explicitly; it does not clone the instructor's repository as if it were Talabak or silently invent a public URL.
 
-The README uses the owner's exact supplied name, تركي أحمد الصليع. Cohort dates await the correct information. Current authorization covers local preparation and history; it does not include publication, push, submission or contacting the instructor or peers.
+The README uses the owner's exact supplied name, Turki Ahmed Alsulayyi (تركي أحمد الصليع), and the cohort the owner confirmed on 2026-09-16: second cohort, 13–16 September 2026. Authorization for publication and submission is recorded in the commit history when it is given; nothing is published before that.
 
 ## ADR-011 — The shared public prefix is on by default
 

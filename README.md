@@ -2,10 +2,10 @@
 
 An Arabic/English assistant for a fictional retail store: order status, returns, exchanges and store appointments. It checks ownership, policy and confirmation before saving an action.
 
-**Owner:** تركي أحمد الصليع  
-**Programme:** SDAIA Academy — SDA-AIE-213, LLM Application Engineering  
+**Owner:** Turki Ahmed Alsulayyi (تركي أحمد الصليع)  
+**Programme:** SDAIA Academy — SDA-AIE-213, Large Language Model Application Engineering  
 **Track:** D — Retail order support  
-**Cohort dates:** Awaiting the owner's dates.
+**Cohort:** Second cohort, 13–16 September 2026
 
 ## One notebook
 

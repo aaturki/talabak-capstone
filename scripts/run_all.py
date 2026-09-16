@@ -115,7 +115,7 @@ def generate_reports(report,root):
              "- The Track D simulator is deterministic code inspired by the course gateway contract. It is neither an unmodified Murshid implementation nor a language model.",
              "- Commercial/open-weight model quality, actual provider caching, real operating cost, and LLM hardware throughput have not been established.",
              "- Timing and illustrative cost estimates here describe HTTP requests and simulator rules. They must not be generalized to a live model.",
-             "- Cohort dates, signed peer review, an actual Colab run, and GitHub publication/submission remain incomplete. Nothing is published or submitted without the user's request.","",
+             "- Signed peer review, an actual Colab run, and GitHub publication/submission remain incomplete. Nothing is published or submitted without the user's request.","",
              "## Traceable evidence","", "- artifacts/report.json and artifacts/primary/results.jsonl: aggregate results and each case's outputs and usage.",
              "- artifacts/open_weight: the same dataset rerun using an alternative simulator configuration.",
              "- artifacts/degraded and artifacts/faults.json: deliberate regression and connection fault drills.",

@@ -30,7 +30,7 @@ Verified at UTC: 2026-09-15T18:26:46.862151+00:00. Repository revision: `de2ff3c
 - Full-mark targets include human-label agreement of κ≥0.6, an observed cache rate of at least 65%, at least 60% cost reduction with a verdict after every step, and zero semantic wrong hits.
 - A simulator can demonstrate mechanisms, tests, contracts and metering. It cannot establish live-model quality, GPU throughput or human calibration. Calling an SDK over local HTTP demonstrates SDK use only.
 - Capstone requires one notebook that supports Run all without a key by default, four executed demos, a decisions file explaining a real change of mind, and reports derived from results. A successful local run does not establish that fresh Colab has been tested.
-- The user confirmed the full name: تركي أحمد الصليع. Cohort dates are unconfirmed. Peer review and human labels must not be invented. Publication and submission await explicit user authorization.
+- The user confirmed the full name: Turki Ahmed Alsulayyi (تركي أحمد الصليع) and, on 2026-09-16, the cohort dates (second cohort, 13–16 September 2026). Peer review and human labels must not be invented. Publication and submission await explicit user authorization.
 
 ## The 32 rubric items: requirement, weight and evidence
 
@@ -190,10 +190,10 @@ The capstone is worth 100 points: passing requires 60 and distinction requires 9
 - Actual human labels/calibration
 - Self-host measured hardware throughput and cost provenance
 - Actual fresh Colab run
-- Cohort dates
+- Cohort dates (supplied by the owner on 2026-09-16; no longer pending)
 - Actual peer architecture review/red-team records
 - GitHub publication/submission only after explicit user authorization
 
 This bounded audit ended at the recorded snapshot. Implementation and testing were the next steps at that time; further research is needed only if a new source appears or a requirement changes.
 
-User-information update after the source review: the confirmed full name is **تركي أحمد الصليع**, to be included in the README. Cohort dates await the correct information.
+User-information update after the source review: the confirmed full name is **Turki Ahmed Alsulayyi (تركي أحمد الصليع)**, included in the README. On 2026-09-16 the owner confirmed the cohort: **second cohort, 13–16 September 2026**, matching the programme record of a peer project in the same cohort; the README now states it.

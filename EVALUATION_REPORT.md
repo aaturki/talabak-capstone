@@ -1,6 +1,6 @@
 # Evaluation Report — Talabak
 
-Generated at 2026-09-16T14:37:26.968339+00:00 from an actual application run through the SDK to a local simulator.
+Generated at 2026-09-16T14:49:09.587775+00:00 from an actual application run through the SDK to a local simulator.
 
 **This report contains local simulator evidence. No live commercial or open-weight language model was run. External spend is zero.**
 
@@ -78,7 +78,7 @@ Simulated judgments are saved separately for each dimension. Human labels remain
 - The Track D simulator is deterministic code inspired by the course gateway contract. It is neither an unmodified Murshid implementation nor a language model.
 - Commercial/open-weight model quality, actual provider caching, real operating cost, and LLM hardware throughput have not been established.
 - Timing and illustrative cost estimates here describe HTTP requests and simulator rules. They must not be generalized to a live model.
-- Cohort dates, signed peer review, an actual Colab run, and GitHub publication/submission remain incomplete. Nothing is published or submitted without the user's request.
+- Signed peer review, an actual Colab run, and GitHub publication/submission remain incomplete. Nothing is published or submitted without the user's request.
 
 ## Traceable evidence
 

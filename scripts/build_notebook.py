@@ -263,9 +263,9 @@ def build(root: Path, output: Path) -> dict:
     md('''
     # Talabak — Bilingual Retail Order Support
 
-    **Owner:** تركي أحمد الصليع
+    **Owner:** Turki Ahmed Alsulayyi (تركي أحمد الصليع)
 
-    **Programme:** SDAIA Academy · SDA-AIE-213 · LLM Application Engineering
+    **Programme:** SDAIA Academy · SDA-AIE-213 · Large Language Model Application Engineering · second cohort, 13–16 September 2026
 
     **Track D:** Order status, returns, exchanges and store appointments.
 
