@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-16T17:19:54.764717+00:00",
+  "generated_at_utc": "2026-09-16T17:22:56.007750+00:00",
   "evidence_mode": "local_tokenizer_component_measurement",
   "tokenizer": "o200k_base",
   "max_output_tokens": 768,
