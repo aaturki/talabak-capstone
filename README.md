@@ -1,17 +1,20 @@
-# Talabak — Retail Order Support
+# Talabak (طلبك) — a bilingual retail order-support assistant
 
-An Arabic/English assistant for a fictional retail store: order status, returns, exchanges and store appointments. It checks ownership, policy and confirmation before saving an action.
+**Capstone · Track D · retail order status, returns, exchanges and store appointments**
 
-**Owner:** Turki Ahmed Alsulayyi (تركي أحمد الصليع)  
-**Programme:** SDAIA Academy — SDA-AIE-213, Large Language Model Application Engineering  
-**Track:** D — Retail order support  
-**Cohort:** Second cohort, 13–16 September 2026
+**Turki Ahmed Alsulayyi (تركي أحمد الصليع)** — Large Language Model Application Engineering (Second cohort), run 13–16 September 2026, SDAIA Academy (course code SDA-AIE-213).
 
-## One notebook
+Talabak is the customer-support assistant of a fictional Saudi electronics store. Customers write in Arabic or English; it answers policy and catalogue questions from the store's own data, looks up only the orders the authenticated session owns, proposes returns, exchanges and store appointments through tools, and writes an action only after the customer confirms that exact action in the next message. Everything else it refuses or hands to a person.
 
-The submission is **Talabak_Capstone.ipynb**. Once the actual repository URL and source revision are configured, open its Colab link and select **Runtime → Run all**. The setup cell clones the repository, installs pinned dependencies and starts the default local backend. It needs internet but no API key or GPU. The notebook contains the bilingual conversation, four demonstrations, tests, evaluation, decisions and reports.
+Every claim about it is checkable by running it: the notebook carries its own execution history, the evaluation report, the meter output and the corpus numbers.
 
-The setup follows the course labs. Application source remains readable in the repository; no encoded project archive is embedded in the notebook. A local review uses this existing checkout. The repository URL and actual fresh-Colab execution remain pending; the notebook does not claim that either has already happened. See [Notebook setup](docs/NOTEBOOK_SETUP.md).
+## Open it
+
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/aaturki/talabak-capstone/blob/main/Talabak_Capstone.ipynb)
+
+**Runtime → Run all.** No local install and no API key. The first cell clones this repository at the pinned source commit, verifies the source hashes, installs the pinned dependencies and starts a loopback simulator that stands in for a model provider, so every number the notebook prints is a measurement of this application rather than a claim about a vendor. The notebook then runs the tests, the 144-case evaluation, the cache benchmark, four demonstrations and an interactive Arabic/English conversation. Real-provider evidence (OpenAI and DeepSeek over the same golden set) is recorded separately in [EVALUATION_REPORT.md](EVALUATION_REPORT.md) under "Live model runs".
+
+The setup follows the course labs: readable source files imported after a clone, no encoded archive inside the notebook. See [Notebook setup](docs/NOTEBOOK_SETUP.md).
 
 ### Run it locally
 
@@ -33,7 +36,7 @@ Python 3.11 or newer (3.12 was used). On macOS or Linux the interpreter is `.ven
 
 The default backend is a deterministic simulator reached through the provider SDK. It exercises schemas, tool calls, authorization, repair, retries, accounting and regression checks. Its responses and timing do not establish real-model quality or hardware performance.
 
-Real-provider support is prepared separately. Select a commercial model and an open-weight model through configuration, supply credentials through Colab Secrets, and enable the notebook's live section. Provider choice, prices and credentials are intentionally undecided. No external model call is made by default, and no existing credential is silently reused.
+Real-provider support runs through the same boundary from a separate configuration. The recorded live comparison uses OpenAI `gpt-5-mini` (commercial; `gpt-5` as judge) and DeepSeek `deepseek-flash` (open-weight; the DeepSeek-V4-Flash weights are public on Hugging Face), with keys read only from named environment variables or Colab Secrets. No external model call is made by default, and no existing credential is silently reused.
 
 - [Provider configuration](docs/PROVIDERS.md)
 - [Live evaluation and human review](docs/LIVE_EVALUATION.md)
@@ -68,7 +71,7 @@ Arabic examples are demonstrated in the notebook. Reset the demo store/session t
 | Self-host break-even | Requires the selected runtime's measured throughput and explicit economic inputs. |
 | Reproducibility | Local execution and actual Colab execution are recorded separately. |
 
-See [RUBRIC_EVIDENCE.md](RUBRIC_EVIDENCE.md), [EVALUATION_REPORT.md](EVALUATION_REPORT.md) and [BENCHMARKS.md](BENCHMARKS.md). A prepared experiment is not a completed measurement or a guaranteed grade. GitHub publication and submission await the owner's explicit instruction.
+See [RUBRIC_EVIDENCE.md](RUBRIC_EVIDENCE.md), [EVALUATION_REPORT.md](EVALUATION_REPORT.md) and [BENCHMARKS.md](BENCHMARKS.md). A prepared experiment is not a completed measurement or a guaranteed grade.
 
 ## Development files
 
