@@ -39,6 +39,34 @@ def test_colab_without_public_source_stops_before_install_or_network(monkeypatch
         exec(compile(source, "notebook-setup", "exec"), {})
 
 
+def test_colab_uses_an_uploaded_source_archive_before_publication(monkeypatch, source_checkout, tmp_path):
+    import shutil
+    manifest = builder.collect_manifest(source_checkout)
+    source = builder.bootstrap_source(builder.read_submission(source_checkout), manifest)
+    archive = Path(shutil.make_archive(str(tmp_path / "talabak-source"), "zip", root_dir=source_checkout))
+    checkout = tmp_path / "uploaded-checkout"
+    monkeypatch.setitem(sys.modules, "google.colab", SimpleNamespace())
+    monkeypatch.setenv("TALABAK_SOURCE_ARCHIVE", str(archive))
+    monkeypatch.setenv("TALABAK_UPLOADED_CHECKOUT", str(checkout))
+    monkeypatch.setattr(sys, "path", list(sys.path))
+    monkeypatch.setattr(subprocess, "run", lambda *a, **k: pytest.fail("An uploaded archive must not clone"))
+    monkeypatch.setattr(subprocess, "check_output", lambda *a, **k: pytest.fail("No network lookup"))
+    calls = []
+    monkeypatch.setattr(builder, "ensure_dependencies", lambda root: calls.append(("dependencies", root)))
+    monkeypatch.setattr(builder, "close_notebook_runtime", lambda ns: calls.append(("close", None)))
+    monkeypatch.setattr(builder, "start_notebook_runtime", lambda root: (
+        calls.append(("simulator", root)) or (SimpleNamespace(), "http://127.0.0.1:1/v1", {"routes": {}}, SimpleNamespace())))
+    namespace = {}
+    exec(compile(source, "notebook-setup", "exec"), namespace)
+    assert namespace["RUN_ROOT"] == checkout.resolve()
+    assert namespace["SOURCE_ORIGIN"].startswith("uploaded archive")
+    assert namespace["source_manifest"]["sha256"] == manifest["sha256"]
+    assert [name for name, _ in calls] == ["close", "dependencies", "simulator"]
+    monkeypatch.setenv("TALABAK_SOURCE_ARCHIVE", str(tmp_path / "missing.zip"))
+    with pytest.raises(RuntimeError, match="NOT READY FOR COLAB"):
+        exec(compile(source, "notebook-setup", "exec"), {})
+
+
 def test_local_setup_uses_checkout_and_starts_only_after_source_verification(monkeypatch, source_checkout):
     manifest = builder.collect_manifest(source_checkout)
     source = builder.bootstrap_source(builder.read_submission(source_checkout), manifest)
@@ -137,7 +165,10 @@ def test_generated_notebook_exposes_readable_source_and_has_no_hidden_payload(so
     code_cells = [cell for cell in notebook.cells if cell.cell_type == "code"]
     combined = "\n".join(cell.source for cell in code_cells)
     assert "base64" not in combined and "SOURCE_BUNDLE" not in combined
-    assert "zipfile" not in combined and "b64decode" not in combined
+    assert "b64decode" not in combined
+    # The only archive handling reads a file the owner uploads to the Colab session;
+    # nothing is decoded from the notebook's own bytes.
+    assert combined.count("zipfile.ZipFile(") == 1 and "zipfile.ZipFile(UPLOADED_SOURCE_ARCHIVE)" in combined
     assert max(len(line) for line in combined.splitlines()) < 180
     assert not any(cell.metadata.get("jupyter", {}).get("source_hidden") for cell in code_cells)
     assert not any("hide-input" in cell.metadata.get("tags", []) for cell in code_cells)

@@ -185,12 +185,27 @@ def bootstrap_source(submission: dict, manifest: dict) -> str:
     PROJECT_SUBDIRECTORY = __SUBDIRECTORY__
     EXPECTED_SOURCE_SHA256 = __SOURCE_SHA__
     IN_COLAB = "google.colab" in sys.modules
+    # Pre-publication review in Colab: the owner uploads `git archive` of the reviewed
+    # commit to the session as talabak-source.zip. The same manifest verification applies.
+    UPLOADED_SOURCE_ARCHIVE = Path(os.environ.get("TALABAK_SOURCE_ARCHIVE", "/content/talabak-source.zip"))
+    UPLOADED_CHECKOUT = Path(os.environ.get("TALABAK_UPLOADED_CHECKOUT", "/content/talabak-capstone-uploaded"))
 
-    if IN_COLAB:
+    if IN_COLAB and not (REPOSITORY_URL and SOURCE_REVISION) and UPLOADED_SOURCE_ARCHIVE.is_file():
+        import zipfile
+        if not UPLOADED_CHECKOUT.exists():
+            with zipfile.ZipFile(UPLOADED_SOURCE_ARCHIVE) as archive:
+                for member in archive.namelist():
+                    if member.startswith(("/", "\\\\")) or ".." in Path(member).parts:
+                        raise RuntimeError("The uploaded archive contains an unsafe path; rebuild it with git archive.")
+                archive.extractall(UPLOADED_CHECKOUT)
+        RUN_ROOT = UPLOADED_CHECKOUT.resolve()
+        SOURCE_ORIGIN = "uploaded archive (pre-publication review, not a published repository)"
+    elif IN_COLAB:
         if not REPOSITORY_URL or not SOURCE_REVISION:
             raise RuntimeError(
                 "NOT READY FOR COLAB: the owner's repository URL and source commit are not set. "
-                "Configure config/submission.json and rebuild after publication is authorized. "
+                "Configure config/submission.json and rebuild after publication is authorized, "
+                "or upload the reviewed source as /content/talabak-source.zip for a pre-publication review. "
                 "Local review works from the existing Talabak checkout."
             )
         checkout = Path("/content/talabak-capstone")
@@ -201,11 +216,13 @@ def bootstrap_source(submission: dict, manifest: dict) -> str:
         if actual != SOURCE_REVISION:
             raise RuntimeError("Colab checkout differs from the pinned revision. Start a fresh runtime.")
         RUN_ROOT = (checkout / PROJECT_SUBDIRECTORY).resolve()
+        SOURCE_ORIGIN = "cloned repository at the pinned revision"
     else:
         candidates = [Path.cwd(), *Path.cwd().parents, Path.cwd() / "outputs" / "talabak"]
         RUN_ROOT = next((p for p in candidates if (p / "talabak/pipeline.py").is_file()), None)
         if RUN_ROOT is None:
             raise RuntimeError("Open this local review notebook from the Talabak project checkout.")
+        SOURCE_ORIGIN = "local checkout"
 
     os.chdir(RUN_ROOT)
     if str(RUN_ROOT) not in sys.path:
@@ -222,7 +239,7 @@ def bootstrap_source(submission: dict, manifest: dict) -> str:
     from IPython.display import Markdown, display
     print("PASS: source files verified:", source_manifest["file_count"])
     print("PASS: default no-key simulator ready:", gateway_url)
-    print("Runtime:", "Colab" if IN_COLAB else "local checkout", "| Live models: NOT_RUN")
+    print("Runtime:", "Colab" if IN_COLAB else "local", "| Source:", SOURCE_ORIGIN, "| Live models: NOT_RUN")
     ''').strip().replace("__REPOSITORY__", repr(submission["repository_url"])).replace(
         "__REVISION__", repr(submission["revision"])
     ).replace("__SUBDIRECTORY__", repr(submission["project_subdirectory"])).replace(
@@ -267,15 +284,18 @@ def build(root: Path, output: Path) -> dict:
         md('''
         > **Local review version — Colab repository setup is not ready.**
         > The owner's public repository URL and pinned source commit have not been supplied.
-        > Local review works from the existing checkout. Colab setup stops before installing
-        > packages or contacting a model. No publication or actual Colab success is claimed.
+        > Local review works from the existing checkout. On Colab, either upload the reviewed
+        > source archive as `/content/talabak-source.zip` for a pre-publication review, or the
+        > setup stops before installing packages or contacting a model. No publication or
+        > actual Colab success is claimed.
         ''')
     md('''
     ## Setup — one cell
 
-    On Colab, clone this project's configured revision. Locally, locate the existing checkout.
-    Verify source hashes, install missing pinned dependencies and start the no-key backend.
-    Rerunning setup closes the previous notebook resources. Initial setup needs internet access.
+    On Colab, clone this project's configured revision (or use an uploaded `talabak-source.zip`
+    for a pre-publication review). Locally, locate the existing checkout. Verify source hashes,
+    install missing pinned dependencies and start the no-key backend. Rerunning setup closes the
+    previous notebook resources. Initial setup needs internet access.
     ''')
     code(bootstrap_source(submission, manifest))
     md('''
