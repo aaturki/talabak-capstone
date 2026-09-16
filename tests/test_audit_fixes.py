@@ -479,10 +479,25 @@ def test_calibration_accepts_the_sdk_live_modes():
     assert "judge_is_not_verified_live" in calibrate(human, predictions("simulator"), min_pairs=2)["gate_reasons"]
 
 
+def comparison_configuration():
+    """Same shape as the live-evaluation fixture; duplicated so the tests directory
+    never has to be importable as a package (Colab ships an unrelated `tests` package)."""
+    caps = {"json_schema": True, "tools": True, "parallel_tool_calls": True, "temperature": True, "token_parameter": "max_tokens"}
+    routes = {}
+    for alias, model, mode in (("primary", "talabak-course-primary", "live_commercial"),
+                               ("open_weight", "talabak-course-open-weight-sim", "live_open_weight"),
+                               ("judge", "talabak-course-judge", "live_commercial")):
+        routes[alias] = {"provider": "openai_compatible", "base_url": "http://127.0.0.1:9876/v1", "model": model,
+                         "evidence_mode": mode, "auth": {"type": "none"}, "capabilities": caps.copy(),
+                         "tariff": {"input_usd_per_million": 1, "cached_input_usd_per_million": .25, "output_usd_per_million": 4}}
+    routes["open_weight"]["deployment"] = "hosted"
+    return {"routes": routes, "fallbacks": {name: [] for name in routes},
+            "settings": {"max_attempts": 1, "max_output_tokens": 768, "budget": {"max_calls": 2000}}}
+
+
 def test_preflight_reports_deployment_and_wire_pattern():
     from scripts.live_evaluate import preflight
-    from tests.test_live_evaluation import test_configuration
-    config = test_configuration()
+    config = comparison_configuration()
     del config["routes"]["open_weight"]["deployment"]
     report = preflight(config)
     assert "routes.open_weight.deployment" in report["missing"]
