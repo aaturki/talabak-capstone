@@ -182,6 +182,20 @@ def _answer_from_tool(result: dict, language: str) -> dict:
     return {"message": message, "citations": [s for s in sources if isinstance(s, str)] if isinstance(sources, list) else []}
 
 
+CLASSIFIER_TRIGGERS = ["ignore previous", "ignore all instructions", "تجاهل التعليمات", "system prompt", "اكشف تعليمات", "bypass authorization"]
+# Stand-in for a classifier's judgement: a trigger phrase inside a question about a
+# term, an explanation request or a scam report is described, not issued.
+CLASSIFIER_META_CONTEXT = re.compile(
+    r"(what is|what does|what's|meaning of|as a general term|explain|definition|someone asked|i received|received a|"
+    r"report|scam|ما معن[يى]|ما المقصود|ما هو|اشرح|ابلغكم|رايت|وصلتني)", re.I)
+
+
+def _has_repair_instruction(messages: list[dict]) -> bool:
+    """The application appends its versioned repair prompt as a developer message."""
+    return any(m.get("role") == "developer" and isinstance(m.get("content"), str)
+               and m["content"].lstrip().startswith("# repair-") for m in messages)
+
+
 def _decide(payload: dict) -> tuple[str | None, list[dict]]:
     messages = payload.get("messages", [])
     users = [m.get("content", "") for m in messages if m.get("role") == "user" and isinstance(m.get("content"), str)]
@@ -202,7 +216,7 @@ def _decide(payload: dict) -> tuple[str | None, list[dict]]:
         return _dump(_judge_contract(user_text)), []
     if title == "GuardDecision":
         low = _normalize(user_text)
-        blocked = any(x in low for x in ["ignore previous", "ignore all instructions", "تجاهل التعليمات", "system prompt", "اكشف تعليمات", "bypass authorization"])
+        blocked = any(x in low for x in CLASSIFIER_TRIGGERS) and not CLASSIFIER_META_CONTEXT.search(low)
         return _dump({"blocked": blocked, "reason": "instruction_override" if blocked else "allowed"}), []
     if title not in {"Answer", ""}:
         raise ValueError(f"Unsupported simulator schema: {title}")
@@ -322,7 +336,7 @@ def reset() -> dict:
 
 @app.post("/admin/fault")
 def fault(payload: dict):
-    valid = {"off", "rate_limit", "overload", "server_error", "timeout", "invalid_json", "invalid_tool", "tool_loop"}
+    valid = {"off", "rate_limit", "overload", "server_error", "timeout", "invalid_json", "invalid_json_until_repair", "invalid_tool", "tool_loop"}
     if payload.get("mode", "off") not in valid:
         return JSONResponse(status_code=400, content={"error": {"message": "Unknown fault mode"}})
     with _lock:
@@ -358,6 +372,10 @@ async def complete(request: Request):
     except ValueError as exc:
         return JSONResponse(status_code=400, content={"error": {"message": str(exc)}})
     if mode == "invalid_json":
+        content, calls = '{"invalid":', []
+    if mode == "invalid_json_until_repair" and not _has_repair_instruction(payload["messages"]):
+        # Keeps answering with malformed JSON until the application actually sends
+        # its repair instruction, so the drill proves the repair message is on the wire.
         content, calls = '{"invalid":', []
     if mode == "invalid_tool":
         content, calls = None, [{"name": "delete_all_orders", "arguments": {}}]

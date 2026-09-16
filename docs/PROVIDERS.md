@@ -48,17 +48,32 @@ Default setup does not call `userdata` or reuse `OPENAI_API_KEY`. Secret-store e
 
 | Capability | Meaning |
 |---|---|
-| `json_schema` | Whether strict structured responses are supported. |
-| `tools` | Whether model tool calls are supported. |
-| `schema_with_tools` | Whether a request may combine tools and a response schema. |
+| `json_schema` | Whether strict structured responses are supported. Required. |
+| `tools` | Whether model tool calls are supported. Required. |
+| `schema_with_tools` | Whether one request may combine tools and a response schema. If false, the tools stage sends tool-only turns (`wire_pattern: tools_only` in every tools-stage usage row and in preflight); the delivered message is the tool result in both patterns. |
 | `parallel_tool_calls` | Whether to send the corresponding request option. |
 | `temperature` | Whether to send temperature. |
-| `developer_role` | If false, convert trusted developer instructions to system messages. |
+| `developer_role` | If false, leading trusted instructions are merged into one system message and later ones (repair feedback) become user turns prefixed `[Application instruction]`, because many open-weight chat templates reject a non-leading system message. |
 | `token_parameter` | Explicit `max_tokens` or `max_completion_tokens`. |
+| `deployment` (route field) | `hosted` or `self_hosted`; required on the open-weight route before a comparison, because the break-even input accepts only a hosted comparison and the value is hashed into run provenance. |
 
-Unsupported required schema/tool combinations fail before HTTP. The application requires both structured output and tools. Live fallback chains cannot cross into simulator routes; controlled comparison disables fallbacks entirely.
+A route that lacks `json_schema` or `tools` fails before HTTP. Within a fallback chain, kwargs are built per hop: a fallback that cannot serve the request shape is skipped with a recorded `capability_unsupported_hop_skipped` event, and never blocks a capable primary. Live fallback chains cannot cross into simulator routes; controlled comparison disables fallbacks entirely.
 
-Remote endpoints require HTTPS. Loopback `127.0.0.1`, `localhost` and `::1` may use HTTP. Requests are restricted to the configured origin and chat-completions path; credential-bearing URLs, queries, fragments and redirects are rejected.
+Wire schemas are restricted to the strict keyword subset (`strict_wire_schema` in `talabak/schemas.py`: no `minLength`/`maxLength`, every object closed with all properties required). Pydantic still enforces the removed length limits when the response is parsed, so nothing is relaxed. A structured-output refusal (`message.refusal`) is one failed call with `finish_reason: refusal`; it is not retried as malformed JSON. Confirm the strict subset with a single one-token request before a paid run, since OpenAI-compatible servers differ.
+
+Remote endpoints require HTTPS. Loopback `127.0.0.1`, `localhost` and `::1` may use HTTP. Requests are restricted to the configured origin and chat-completions path; credential-bearing URLs, queries, fragments and redirects are rejected. A request stopped by that guard never leaves the process: it is not retried, not counted as a wire call and not reserved against the budget.
+
+## Candidate providers (not selected)
+
+The 2026-09-16 audit checked provider documentation for the capabilities this application needs. These are candidates for the owner's decision, not selections; verify each with one request before spending.
+
+| Route | Candidate | Wire pattern | Notes from the audit |
+|---|---|---|---|
+| commercial `primary` and `judge` | OpenAI Chat Completions (`https://api.openai.com/v1`), a current small model for primary and a different, stronger model for the judge | `schema_with_tools` | Documents strict `json_schema`, strict tools, `developer` role and prompt caching reported as `usage.prompt_tokens_details.cached_tokens`; the schema-plus-tools combination is community-confirmed, so confirm it once. Use `max_completion_tokens` for reasoning-class models. |
+| hosted `open_weight` | Groq (`gpt-oss-120b`, Qwen3-class) or Fireworks/Together (Llama 3.3 70B, Qwen3) | `tools_only` | Groq documents that structured outputs cannot be combined with tools; the others do not document the combination. Groq reports cached tokens with a minimum prefix length and a cached-input discount. |
+| self-hosted `open_weight` | vLLM with `--enable-prefix-caching --enable-prompt-tokens-details --enable-auto-tool-choice --tool-call-parser hermes`, e.g. Qwen2.5-7B-Instruct-AWQ on a Colab T4 or the owner's local GPU behind loopback `auth: none` | `tools_only` | vLLM's combined structured-output-plus-tools request is still an open feature request. A rented GPU must be reached through an SSH port-forward to loopback because remote live routes require HTTPS. |
+
+Order-of-magnitude cost assumptions from the same audit, before any run: the full two-route comparison is roughly 1,000–2,000 calls and 0.7–1.4M input tokens (a few dollars with small models); the cache benchmark roughly 2,850 calls (under about $2 with small models); the judge under $0.20; self-host throughput $0 on a Colab T4 to a few dollars on a rented GPU. These are assumptions, not quotes or invoices.
 
 ## Measurement fields
 
@@ -83,11 +98,11 @@ Optional settings:
 {"budget": {"max_calls": null, "max_estimated_cost_usd": null}}
 ```
 
-`max_calls` counts HTTP attempts, including retries and fallbacks, over one client's lifetime. Reservations and reconciliation share a lock; network calls occur outside the lock so concurrent work can proceed. Inspect `client.budget_status` for remaining limits.
+`max_calls` counts HTTP attempts, including retries and fallbacks, over one client's lifetime. Reservations and reconciliation share a lock; network calls occur outside the lock so concurrent work can proceed. `client.budget_status` reports `wire_calls`, `estimated_cost_usd` (complete-usage responses only), `estimated_cost_upper_bound_usd` (every metered response, cache discounts ignored), `reserved_estimated_cost_usd` (the amount compared with the cap), `partial_usage_responses`, `unknown_usage_responses`, `retained_failure_reservations` and `stopped`.
 
-A cost limit requires all tariffs and an input bound per route. The client reserves an input/output allowance before sending and reconciles known usage afterward. Failed requests retain their reservations because their billing is unknown. Missing usage under a cost limit blocks subsequent requests. Parallel requests cannot reserve the same allowance.
+A cost limit requires all tariffs and an input bound per route. The client reserves an input/output allowance before sending and reconciles known usage afterward. An HTTP rejection (429, 4xx, 5xx) carries no billable usage, so its reservation is released and the retry or fallback hop can proceed under the cap. A timeout or connection failure may have been processed by the provider, so its reservation is retained and counted in `retained_failure_reservations`. Missing usage under a cost limit blocks subsequent requests. Parallel requests cannot reserve the same allowance.
 
-This is an estimated limit, not an invoice guarantee. Input sizing uses conservative serialized bytes and margin rather than a provider-specific tokenizer. Provider fees and billing rules may differ. Separate clients or processes require additional provider-side spending controls. GPU and hosting costs are not inferred by this client.
+This is an estimated limit, not an invoice guarantee. The input screen counts tokens with the bundled `o200k_base` vocabulary plus a small per-message margin (a byte-based fallback applies if the tokenizer cannot load); the reservation itself is `max_input_tokens` times the input rate, so set `max_input_tokens` to the real context you allow rather than a padded value. Provider fees and billing rules may differ. Separate clients or processes require additional provider-side spending controls. GPU and hosting costs are not inferred by this client.
 
 ## Validation scope
 

@@ -3,8 +3,8 @@ from __future__ import annotations
 import re
 import unicodedata
 
-CONTROLS = re.compile(r"[\x00-\x08\x0b-\x1f\x7f-\x9f\u200b-\u200f\u202a-\u202e\u2060-\u2069\ufeff]")
-AR_MARKS = re.compile(r"[\u064b-\u065f\u0670\u0640]")
+CONTROLS = re.compile(r"[\x00-\x08\x0b-\x1f\x7f-\x9f​-‏‪-‮⁠-⁩﻿]")
+AR_MARKS = re.compile(r"[ً-ٰٟـ]")
 DIGITS = str.maketrans("٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹", "01234567890123456789")
 FOLD = str.maketrans({"أ":"ا", "إ":"ا", "آ":"ا", "ى":"ي", "І":"I", "і":"i", "а":"a", "о":"o", "е":"e"})
 
@@ -15,7 +15,7 @@ def normalize(text, *, separator=""):
 
 
 def detect_language(text):
-    return "ar" if re.search(r"[\u0621-\u064a]", text) else "en"
+    return "ar" if re.search(r"[ء-ي]", text) else "en"
 
 
 PII_PATTERNS = [
@@ -32,6 +32,10 @@ def mask_pii(text):
         text = pattern.sub(f"[REDACTED_{label}]", text)
     return text
 
+
+# An Arabic imperative at the start of a clause, optionally with a one-letter
+# conjunction prefix, without matching the same letters inside a longer word.
+AR_VERB_START = r"(?:^|(?<=\s)|(?<=[،؛.!?:«»\"'])|(?<=^[وف])|(?<=\s[وف]))"
 
 PATTERNS = [
     r"\b(ignore|disregard|forget|override)\s+(all\s+)?(your\s+|the\s+)?(previous|prior|above|earlier|system|developer)\s+(instructions|rules|prompts?|messages)",
@@ -52,63 +56,107 @@ PATTERNS = [
     r"\b(bypass|disable|override|skip)\b.{0,30}\b(ownership|authorization|authentication|confirmation|guardrails|session checks)\b",
     r"\b(i am|you are now|act as)\s+(the\s+)?(administrator|admin|developer|system|root)\b",
     r"\b(reveal|show|print|repeat|display|expose|leak)\b.{0,55}\b(system|developer|hidden)\b.{0,25}\b(prompt|instructions|message|rules)\b",
-    r"\b(show|give|export|dump|reveal|list|send)\b.{0,80}\b(national id|private phone|phone number|iban|customer orders|customers?['’]? orders)\b",
-    r"\b(force)\b.{0,80}\b(out.of.stock|hide the error|skip|without)\b",
+    # Third-party record exfiltration: another customer's identifiers, or records of every customer.
+    # A customer's own phone number or the store's number is not an exfiltration target.
+    r"\b(show|give|export|dump|reveal|list|send|share|tell)\b(?:(?!\bmy\b).){0,60}\b(another|other|every|all|each)\s+customers?['’]?s?\b.{0,40}\b(national id|iban|phone|orders?|address|email)\b",
+    r"\b(show|give|export|dump|reveal|list|send|share|tell)\b.{0,60}\b(national id|private phone|phone number|iban|orders?)\b.{0,40}\b(belonging to|of (?:the )?owner|of another|of other|of every|of all|of (?:the )?customers?|owner of ORD)\b",
+    r"\b(export|dump|list|send|show|give)\b(?:(?!\bmy\b).){0,40}\b(all\s+|every\s+)?customers?['’]?s?\s+orders\b",
+    r"\b(force)\b.{0,80}\b(out.of.stock|hide the error)\b",
     r"(?:^|[\n;])\s*(system|developer)\s*:",
     r"(تجاهل|انس|انسي|اهمل).{0,35}(تعليمات|قواعد|سياس[هة]|نتيج[هة]|امتلاء|قيود|حماي[هة])",
     r"(تجاوز|عطل|الغ).{0,35}(صلاحيات|ملكي[هة]|فحص|حواجز|سجل|حماي[هة]|سياس[هة])",
-    r"(اعتبرني|انا|انت الان|تصرف ك).{0,20}(مدير النظام|مطور التطبيق|مسؤول النظام)",
+    # Role assertion: "consider me / you are now / act as" plus a privileged role, or
+    # a bare "I am the system administrator". "I want to talk to the manager" is not one.
+    r"(اعتبرني|انت الان|تصرف ك).{0,20}(مدير النظام|مطور التطبيق|مسؤول النظام)|(?<![^\s])انا\s+(مدير النظام|مطور التطبيق|مسؤول النظام)",
     r"(اكشف|اظهر|اعرض|اطبع|اعطني|هات|ارسل|سرب).{0,75}(رسال[هة] النظام|تعليمات المطور|الاسرار|اسرار العملاء|رقم الهوي[هة]|رقم جوال|ارقام الايبان|رمز الدخول|API\s*key)",
     r"(?:^|[\n؛])\s*(رسال[هة]\s*)?(النظام|نظام|المطور)\s*(جديد[هة]\s*)?:",
     r"(غير|عد[ّ]?ل).{0,15}سعر.{0,35}(النظام|قاعد[هة] البيانات|ثم استبدل)",
     r"اجب\s*كان.{0,60}(اكتمل|نجح).{0,40}(رغم|رفض)",
     r"\b(execute|run|نفذ|شغل)\b.{0,25}\b(DELETE\s+FROM|DROP\s+TABLE|UPDATE\s+\w+\s+SET|INSERT\s+INTO)\b",
+    # Prompt exfiltration anchored on the target noun rather than a fixed verb list.
+    r"\b(tell|give|write|output|paste|summari[sz]e|show|print|send|share|dump)\b(?:\s+me)?(?:\s+\w+){0,4}?\s+(your|the|this|its|these)\s+(system|developer|hidden|initial|secret|original)\s+(prompt|instructions?|message|rules|configuration)\b",
+    r"\bwhat(?:'s|\s+is|\s+are)\s+your\s+(system|developer|hidden|initial|secret)\s+(prompt|instructions?|message|rules)\b",
+    r"\bignore\s+(the\s+)?(above|everything\s+(above|before)|all\s+(that|of\s+that)|what\s+(came|was\s+said)\s+before)\b",
+    r"\b(pretend|role-?play|imagine)\b.{0,30}\b(you\s+are|you're|to\s+be|being|as)\b.{0,20}\b(the\s+|a\s+|an\s+)?(store\s+|system\s+)?(manager|admin|administrator|developer|owner|root|system)\b",
+    AR_VERB_START + r"(قل|قولي|اكتب|انسخ|لخص|شارك|ارني|اخبرني|اعطني|هات|ارسل|اطبع|اعرض|اكشف|اظهر)\s*(لي\s*)?.{0,30}(تعليمات النظام|رسال[هة] النظام|رسال[هة] المطور|تعليمات المطور|البرومبت|تعليماتك|الاسرار)",
+    r"تجاهل\s*(كل\s*)?(ما|اللي|الذي)\s*(سبق|قبل|فوق|ذكر)",
 ]
 COMPILED = [re.compile(p, re.I) for p in PATTERNS]
 
-# A quoted attack in a scam report is data. Remove only its quoted span, then
-# inspect the rest of the message. Never treat a reporting phrase as a blanket
-# exemption: a second command following the quote must still be blocked.
+# A quoted attack in a scam report is data. Only the quoted span (or one bounded
+# reported clause) is exempt; any instruction outside it, or one that crosses the
+# quote boundary, is still blocked. Straight single quotes count as quotation marks
+# only when they are not attached to letters, so contractions ("wasn't ... isn't")
+# cannot form a fake quotation around an attack.
 REPORT_CONTEXT = re.compile(
     r"(رايت.{0,20}(اعلان|رساله|رسالة)|وصلتني.{0,15}(رساله|رسالة)|ابلغكم ان|"
     r"(?:i\s+)?received.{0,25}(scam|message)|someone asked me to)", re.I)
-QUOTED = re.compile(r"«[^»]{1,1200}»|“[^”]{1,1200}”|\"[^\"\n]{1,1200}\"|'[^'\n]{1,1200}'")
+QUOTED = re.compile(r"«[^»]{1,1200}»|“[^”]{1,1200}”|\"[^\"\n]{1,1200}\"|"
+                    r"(?<![A-Za-z0-9ء-ي])'[^'\n]{1,1200}'(?![A-Za-z0-9ء-ي])")
 REPORTED_REQUEST = re.compile(
     r"(?:\bSomeone asked me to\s+(bypass|disable|override)\s+(authorization|authentication|guardrails|safety rules)\s*[.;]|"
     r"ابلغكم ان.{0,35}طلب مني\s+(تجاوز|تعطيل)\s+(الصلاحيات|الحماي[هة]|التفويض)\s*[؛.])", re.I)
 
 
-def _instruction_text(variant):
+def _exempt_spans(variant):
+    """Character spans that hold reported, non-executed text: at most one quote and one clause."""
     report = REPORT_CONTEXT.search(variant)
     if not report:
-        return variant
-    # An unquoted third-party request is removed only as its own bounded clause.
-    # Any subsequent instruction remains visible to COMPILED.
+        return []
+    spans = []
     for quote in QUOTED.finditer(variant):
         between = variant[report.end():quote.start()]
         if quote.start() >= report.end() and len(between) <= 100 and not re.search(r"[.!?؛\n]", between):
-            variant = variant[:quote.start()] + "[REPORTED_QUOTE]" + variant[quote.end():]
+            spans.append((quote.start(), quote.end()))
             break
-    return REPORTED_REQUEST.sub("[REPORTED_REQUEST].", variant)
+    clause = REPORTED_REQUEST.search(variant)
+    if clause:
+        spans.append((clause.start(), clause.end()))
+    return spans
+
+
+def _instruction_match(variant):
+    """True when an instruction pattern matches outside every exempt reported span."""
+    spans = _exempt_spans(variant)
+    for pattern in COMPILED:
+        for match in pattern.finditer(variant):
+            if not any(start <= match.start() and match.end() <= end for start, end in spans):
+                return True
+    return False
+
+
+def _relayed(text):
+    return any(_instruction_match(variant) for variant in (normalize(text), normalize(text, separator=" ")))
 
 
 def injection_reason(text):
     if len(text) > 4000:
         return "input_too_long"
-    for variant in (normalize(text), normalize(text, separator=" ")):
-        variant = _instruction_text(variant)
-        if any(pattern.search(variant) for pattern in COMPILED):
-            return "instruction_override"
-    return None
+    return "instruction_override" if _relayed(text) else None
+
+
+CANARY_SHAPE = re.compile(r"talabak[\s_\-.]*canary[\s_\-.]*[a-z0-9][a-z0-9\s_\-.]*", re.I)
+
+
+def _canary_present(text, canary):
+    if canary in text:
+        return True
+    normalized = normalize(text)
+    if re.search(re.escape(canary), normalized, re.I) or CANARY_SHAPE.search(normalized):
+        return True
+    # Letter-by-letter spacing, hyphenation or dotted obfuscation of the same token.
+    compact = re.sub(r"[\s_\-.]", "", normalized).casefold()
+    return re.sub(r"[_\-]", "", canary).casefold() in compact or "talabakcanary" in compact
 
 
 def output_reason(text, canary):
-    if canary in text or re.search(r"TALABAK_CANARY_[A-Z0-9_]+", text):
+    """Outbound scan: no inbound length cap, so long benign payloads are inspected, not refused."""
+    if _canary_present(text, canary):
         return "canary_leak"
     normalized = normalize(text)
     if any(pattern.search(normalized) for _, pattern in PII_PATTERNS):
         return "pii_leak"
-    if injection_reason(text):
+    if _relayed(text):
         return "relayed_instruction"
     if re.search(r"Traceback \(most recent|sk-proj-|Authorization:\s*Bearer|<system>", text, re.I):
         return "internal_leak"

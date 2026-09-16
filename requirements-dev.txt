@@ -1,0 +1,4 @@
+# Local notebook execution only. Colab already provides its own kernel and
+# widget packages; installing different pins into a running kernel is avoided.
+ipykernel==7.3.0
+ipywidgets==8.1.9

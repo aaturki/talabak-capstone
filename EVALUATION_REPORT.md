@@ -1,15 +1,40 @@
 # Evaluation Report — Talabak
 
-Generated at 2026-09-15T22:30:16.208561+00:00 from an actual application run through the SDK to a local simulator.
+Generated at 2026-09-16T14:20:19.037623+00:00 from an actual application run through the SDK to a local simulator.
 
 **This report contains local simulator evidence. No live commercial or open-weight language model was run. External spend is zero.**
 
 ## Results
 
 - Golden cases: **144/144**; safety cases: **78/78**.
-- Attack block rate: **100.0%** across 40 attacks; false-positive rate: **0.0%** across 40 legitimate requests.
-- Clean regression gate: **PASS**; deliberately degraded configuration: **BLOCK**.
+- Guard corpora: 52 attacks and 50 legitimate requests (bilingual, development plus held-out splits).
+  - Deterministic layer alone: block rate **100.0%**, false-positive rate **0.0%**.
+  - End-to-end pipeline (deterministic layer, PII masking, then the classifier; evidence `pipeline:simulator`): block rate **100.0%**, false-positive rate **0.0%**; blocked by layer: {"deterministic": 52}.
+- Clean regression gate: **PASS**; deliberately degraded configuration: **BLOCK** (slice table below).
 - Fault and repair drills: **PASS**.
+- Served prompts: router.v1.md, workflow.v1.md, guard.v2.md, repair.v2.md.
+
+## Regression gate read by slice
+
+The clean run compares the committed baseline with the current code; the degraded run swaps in `prompts/router.degraded.v0.md` (every request becomes FAQ). Only slices that dropped more than the 2% margin, plus the deterministic safety stop, are listed.
+
+| Slice | Baseline pass rate | Degraded pass rate | Drop |
+|---|---:|---:|---:|
+| safety | – | – | deterministic_safety_failed_or_missing |
+| overall | 1.000 | 0.319 | 0.681 |
+| intent=appointment | 1.000 | 0.208 | 0.792 |
+| intent=exchange | 1.000 | 0.167 | 0.833 |
+| intent=handoff | 1.000 | 0.167 | 0.833 |
+| intent=order_status | 1.000 | 0.167 | 0.833 |
+| intent=return | 1.000 | 0.208 | 0.792 |
+| language=ar | 1.000 | 0.385 | 0.615 |
+| language=en | 1.000 | 0.188 | 0.812 |
+| difficulty=easy | 1.000 | 0.304 | 0.696 |
+| difficulty=hard | 1.000 | 0.897 | 0.103 |
+| difficulty=medium | 1.000 | 0.141 | 0.859 |
+| risk=high | 1.000 | 0.359 | 0.641 |
+| risk=low | 1.000 | 0.621 | 0.379 |
+| risk=medium | 1.000 | 0.000 | 1.000 |
 
 ## Comparison by stratum
 
@@ -36,7 +61,7 @@ The names below identify two configurations of the same simulator. This is not a
 
 1. **Architecture:** A Protocol and a single SDK boundary, configuration-based aliases, and retry/fallback behavior exercised under scripted faults.
 2. **Structured outputs and tools:** Pydantic validation and gateway schema enforcement, validate/retry/repair, and actual tool loops. The database enforces ownership, policy, and confirmation bound to the specific action.
-3. **Guardrails:** Arabic/English normalization, deterministic blocking, and PII masking before model calls and logging, followed by a simulated classifier. Outputs, tool results, and citations are checked.
+3. **Guardrails:** Arabic/English normalization, deterministic blocking, and PII masking before model calls and logging, followed by a simulated classifier. Block and false-positive rates are reported for the deterministic layer alone and for the whole pipeline. Outputs, tool results, and citations are checked.
 4. **Evaluation:** 144 original, fixed cases with explicit strata. Evaluation runs the same handle_message entrypoint. The simulated judge tests the interface contract only; human-calibrated κ is unavailable.
 5. **Cost:** Observed usage and illustrative tariff estimates are separated from actual spend. BENCHMARKS.md documents the cache experiment with an evaluation verdict for every step.
 6. **Model comparison:** Switching simulator configurations was tested. A live model comparison and break-even analysis based on measured throughput remain unavailable.

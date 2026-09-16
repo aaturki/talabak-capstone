@@ -213,29 +213,71 @@ def regression_gate(current: dict, baseline: dict, *, max_drop: float = .02) -> 
             "failures": failures, "basis": "authored deterministic expectations; no uncalibrated judge"}
 
 
-def evaluate_guard_corpora(*, attacks_path: Path | None = None, legitimate_path: Path | None = None,
+def _pipeline_guard_row(client, case: dict, modes: set) -> dict:
+    """Send one corpus case through the real Application and record which layer decided."""
+    from talabak.domain import Session, Store
+    from talabak.pipeline import Application
+    store = Store()
+    try:
+        result = Application(client, store=store, cache_enabled=False).handle_message(case["text"], Session())
+        modes.update(item.get("evidence_mode", "unknown") for item in result.usage)
+        layer = next((event.get("layer") for event in result.trace
+                      if event.get("stage") == "input_guard" and event.get("blocked")), None)
+        outbound = any(event.get("stage") == "output_guard" and event.get("blocked") for event in result.trace)
+        blocked = result.status == "blocked"
+        return {"pipeline_status": result.status, "pipeline_blocked": blocked,
+                "pipeline_layer": layer or ("outbound" if outbound else None),
+                "pipeline_action_count": store.count_actions(),
+                "pipeline_passed": blocked == case["expected_blocked"] and store.count_actions() == case["expected_action_count"]}
+    finally:
+        store.close()
+
+
+def evaluate_guard_corpora(*, client=None, attacks_path: Path | None = None, legitimate_path: Path | None = None,
                           split: str | None = None) -> dict:
+    """Block and false-positive rates per layer: the deterministic component alone and,
+    when a client is supplied, the whole Application.handle_message path the notebook uses."""
     from talabak.guards import injection_reason
     attacks = read_jsonl(attacks_path or ROOT / "data/attacks.v1.jsonl")
     legitimate = read_jsonl(legitimate_path or ROOT / "data/legitimate.v1.jsonl")
-    rows = []
+    rows, modes = [], set()
     for kind, cases in (("attack", attacks), ("legitimate", legitimate)):
         for case in cases:
             if split and case["split"] != split:
                 continue
             reason = injection_reason(case["text"])
-            rows.append({"id": case["id"], "kind": kind, "language": case["language"],
-                         "split": case["split"], "category": case["category"],
-                         "blocked": bool(reason), "reason": reason,
-                         "passed": bool(reason) == case["expected_blocked"]})
-    attack_rows = [row for row in rows if row["kind"] == "attack"]
-    legitimate_rows = [row for row in rows if row["kind"] == "legitimate"]
-    return {"evidence_mode": "deterministic_component_test", "split": split or "all",
-            "attack_n": len(attack_rows), "legitimate_n": len(legitimate_rows),
-            "attack_block_rate": sum(row["blocked"] for row in attack_rows) / len(attack_rows) if attack_rows else None,
-            "legitimate_false_positive_rate": sum(row["blocked"] for row in legitimate_rows) / len(legitimate_rows) if legitimate_rows else None,
-            "rows": rows,
-            "limits": "Component test only; end-to-end safety is measured separately in golden. "
+            row = {"id": case["id"], "kind": kind, "language": case["language"],
+                   "split": case["split"], "category": case["category"],
+                   "blocked": bool(reason), "reason": reason,
+                   "passed": bool(reason) == case["expected_blocked"]}
+            if client is not None:
+                row.update(_pipeline_guard_row(client, case, modes))
+            rows.append(row)
+
+    def rates(flag: str, passed: str) -> dict:
+        attack_rows = [row for row in rows if row["kind"] == "attack"]
+        legitimate_rows = [row for row in rows if row["kind"] == "legitimate"]
+        return {"attack_n": len(attack_rows), "legitimate_n": len(legitimate_rows),
+                "attack_block_rate": sum(row[flag] for row in attack_rows) / len(attack_rows) if attack_rows else None,
+                "legitimate_false_positive_rate": sum(row[flag] for row in legitimate_rows) / len(legitimate_rows) if legitimate_rows else None,
+                "missed_attack_ids": [row["id"] for row in attack_rows if not row[flag]],
+                "false_positive_ids": [row["id"] for row in legitimate_rows if row[flag]],
+                "failed_ids": [row["id"] for row in rows if not row[passed]]}
+
+    layers = {"deterministic": {"evidence_mode": "deterministic_component_test", **rates("blocked", "passed")}}
+    if client is not None:
+        end_to_end = rates("pipeline_blocked", "pipeline_passed")
+        end_to_end["evidence_mode"] = "pipeline:" + ("+".join(sorted(modes)) if modes else "no_model_call")
+        end_to_end["blocked_by_layer"] = dict(Counter(row["pipeline_layer"] for row in rows if row["pipeline_blocked"]))
+        end_to_end["legitimate_error_ids"] = [row["id"] for row in rows if row["kind"] == "legitimate" and row["pipeline_status"] == "error"]
+        layers["end_to_end"] = end_to_end
+    headline = layers.get("end_to_end") or layers["deterministic"]
+    return {"evidence_mode": headline["evidence_mode"], "headline_layer": "end_to_end" if client is not None else "deterministic",
+            "split": split or "all", "attack_n": headline["attack_n"], "legitimate_n": headline["legitimate_n"],
+            "attack_block_rate": headline["attack_block_rate"],
+            "legitimate_false_positive_rate": headline["legitimate_false_positive_rate"],
+            "layers": layers, "rows": rows,
+            "limits": "Headline rates belong to the named layer; the deterministic layer alone is a component test. "
                       "If holdout examples guide a fix, subsequent runs are regression checks, not a blind test."}
 
 

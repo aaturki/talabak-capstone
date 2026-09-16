@@ -67,12 +67,26 @@ def freeze_workload(cases: list[dict], path: Path) -> list[dict]:
     return rows
 
 
+MODES = ("baseline", "stable_public_context", "exact", "semantic")
+
+
+def mode_settings(mode: str) -> dict:
+    """baseline: no prefix, no response cache. stable_public_context: shared public
+    prefix only, so provider cached tokens are measured without response-cache skips.
+    exact/semantic: the prefix plus the application's response caches."""
+    if mode not in MODES:
+        raise ValueError(f"Unknown cache benchmark mode: {mode}")
+    return {"cache_enabled": mode in {"exact", "semantic"}, "semantic_enabled": mode == "semantic",
+            "stable_context": mode != "baseline"}
+
+
 def replay(client, traffic: list[dict], *, mode: str, references: dict | None = None,
            threshold: float = 1.0) -> tuple[list[dict], dict]:
     from talabak.domain import Session, Store
     from talabak.guards import mask_pii, output_reason
     from talabak.pipeline import Application
     contexts, rows = {}, []
+    settings = mode_settings(mode)
     started = time.perf_counter()
     try:
         for event in traffic:
@@ -80,7 +94,7 @@ def replay(client, traffic: list[dict], *, mode: str, references: dict | None = 
             if key not in contexts:
                 store = Store()
                 session = Session(**event["session"])
-                app = Application(client, store, cache_enabled=mode != "baseline", semantic_enabled=mode == "semantic")
+                app = Application(client, store, **settings)
                 if app.semantic:
                     app.semantic.threshold = threshold
                 contexts[key] = (store, session, app)
@@ -114,7 +128,8 @@ def replay(client, traffic: list[dict], *, mode: str, references: dict | None = 
                "request_latency_ms_p50": percentile([row["result"]["latency_ms"] for row in rows], .5),
                "request_latency_ms_p95": percentile([row["result"]["latency_ms"] for row in rows], .95),
                "failed_ids": [row["id"] for row in rows if not row["passed"]],
-               "evidence_mode": "simulator", "semantic_threshold": threshold if mode == "semantic" else None}
+               "evidence_mode": "simulator", "semantic_threshold": threshold if mode == "semantic" else None,
+               "stable_context": settings["stable_context"], "response_cache_enabled": settings["cache_enabled"]}
     return rows, summary
 
 
@@ -138,18 +153,19 @@ def run_cache_benchmark(client, out: str | Path) -> dict:
                        pairs_sha256=file_hash(pairs_path), near_miss_sha256=file_hash(near_path))
     (out / "threshold_calibration.json").write_text(json.dumps(calibration, ensure_ascii=False, indent=2) + "\n", "utf-8")
     traffic = freeze_workload(read_jsonl(ROOT / "data/golden.v1.jsonl"), out / "traffic.v1.jsonl")
-    modes = ("baseline", "exact", "semantic") if semantic_ready else ("baseline", "exact")
+    modes = tuple(mode for mode in MODES if semantic_ready or mode != "semantic")
     steps, reference_outputs, baseline_eval = [], None, None
     for mode in modes:
+        settings = mode_settings(mode)
         rows, summary = replay(client, traffic, mode=mode, references=reference_outputs, threshold=threshold)
         if reference_outputs is None:
             reference_outputs = {row["id"]: row["reference"] for row in rows}
         def factory(client, *, store, cache_enabled, alias):
-            app = Application(client, store, cache_enabled=mode != "baseline", semantic_enabled=mode == "semantic", alias=alias)
+            app = Application(client, store, alias=alias, **settings)
             if app.semantic:
                 app.semantic.threshold = threshold
             return app
-        eval_rows, full_eval = evaluate(client, application_factory=factory, cache_enabled=mode != "baseline")
+        eval_rows, full_eval = evaluate(client, application_factory=factory, cache_enabled=settings["cache_enabled"])
         if baseline_eval is None:
             baseline_eval = full_eval
         gate = regression_gate(full_eval, baseline_eval)
@@ -164,14 +180,26 @@ def run_cache_benchmark(client, out: str | Path) -> dict:
         write_run(eval_rows, full_eval, step_dir / "golden")
         (step_dir / "traffic_results.jsonl").write_text("\n".join(json.dumps(row, ensure_ascii=False) for row in rows) + "\n", "utf-8")
         steps.append(summary)
+    stable = next((step for step in steps if step["mode"] == "stable_public_context"), None)
+    prompt_fraction = stable["provider_cache_fraction"] if stable else None
+    reduction = steps[-1].get("simulated_cost_reduction_vs_baseline")
+    targets = {"provider_input_cache_at_least_65_percent": prompt_fraction is not None and prompt_fraction >= .65,
+               "simulated_cost_reduction_at_least_60_percent": reduction is not None and reduction >= .60,
+               "every_step_quality_passed": all(x["passed"] == x["requests"] and x["regression_gate"]["status"] == "PASS" for x in steps),
+               "zero_semantic_wrong_hits": semantic_ready}
     report = {"status": "PASS" if all(x["passed"] == x["requests"] and x["regression_gate"]["status"] == "PASS" for x in steps) and semantic_ready else "REVIEW_REQUIRED",
               "created_at_utc": datetime.now(timezone.utc).isoformat(),
               "traffic_sha256": file_hash(out / "traffic.v1.jsonl"),
               "workload": "Exactly four passes of all first-turn successful read-only FAQ/status golden cases. Deliberately repetitive synthetic workload, not measured store traffic.",
               "semantic_ready": semantic_ready, "selected_threshold": threshold, "steps": steps,
+              "provider_input_cache_fraction": prompt_fraction, "simulated_cost_reduction": reduction,
+              "targets": targets,
+              "targets_basis": "simulator usage.prompt_tokens_details.cached_tokens over a 1024-token minimum prefix and illustrative tariffs; a live provider must confirm both targets",
+              "pipeline_default_stable_context": bool(getattr(client, "config", {}).get("pipeline", {}).get("stable_context", False)),
               "limitations": ["All model routes are deterministic simulators. Their tariffs are illustrative.",
                               "Actual cost is zero; no paid-provider cost saving is demonstrated.",
-                              "Provider prompt-cache tokens, if any, are separate from application response-cache hits.",
+                              "Provider prompt-cache tokens are measured in the stable_public_context step with response caching disabled; response-cache hits are a separate mechanism.",
+                              "The shared prefix adds public context to every call, so its per-call token count is higher than the baseline; the saving comes from the cached share and from response-cache skips.",
                               "A new full 144-case golden evaluation accompanies each step.",
                               "Near misses and heldout pairs test this limited concept map; results do not establish embedding-model accuracy.",
                               "Repeated holdout checks after the first are regression checks; thresholds must not be retuned to them."]}

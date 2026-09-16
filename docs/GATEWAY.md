@@ -20,6 +20,8 @@ Full responses and source-file hashes are in [STOCK_GATEWAY_PROBE.json](STOCK_GA
 
 `talabak/mock_gateway.py` is a project-specific extension inspired by the course gateway contract: deterministic Arabic/English extraction, correlated tool calls, JSON replies from tool results, fixed-prefix caching and injectable HTTP failures. It imports neither evaluation data nor the store database. Final-answer facts come from `message` and `sources` in a tool result with a matching call identifier. Student projects' quality rules or results are not copied.
 
+`GuardDecision` is a stand-in for a classifier: it blocks on a short list of trigger phrases unless the text reads as a question about a term, an explanation request or a scam report (`CLASSIFIER_META_CONTEXT`). This is a documented heuristic; the guard prompt's wording is not interpreted.
+
 `JudgeVerdict` tests the judgment contract only. An answer appearing verbatim in the evidence receives PASS; numbers absent from the evidence receive FAIL; lexical overlap alone receives PARTIAL. Each reason starts with `simulator_contract`. These explicit superficial rules do not establish judge quality or human calibration. Inputs contain only the question, trusted evidence and candidate answer.
 
 `prompts/router.degraded.v0.md` is a deliberate regression fixture. Its exact system-message header makes the simulator route requests to FAQ. The comparison run uses it to test the regression gate against the same data. It is neither the default route nor a measurement of a live model's response to prompt changes.
@@ -51,7 +53,7 @@ with running_gateway(port=0) as base_url:
         pass
 ```
 
-The context shuts the service down without opening a window or external process. Defaults live in `config/models.json`. The client ignores `OPENAI_API_KEY`, `OPENAI_BASE_URL` and environment proxy settings. It rejects external network URLs and URL credentials. A live provider requires separate configuration work and user authorization; this build accepts simulator routes only.
+The context shuts the service down without opening a window or external process. Defaults live in `config/models.json`. The client ignores `OPENAI_API_KEY`, `OPENAI_BASE_URL` and environment proxy settings. It rejects external network URLs and URL credentials for simulator routes. Live routes exist behind an explicit opt-in (`allow_live=True`, named secrets, HTTPS or loopback) described in [PROVIDERS.md](PROVIDERS.md); the default configuration and this document concern the simulator.
 
 ## Structured output, tools and reliability
 
@@ -89,13 +91,13 @@ The tokenizer vocabulary is bundled in `config/tokenizer_cache` to avoid a first
 | `POST /admin/fault` | Inject a fault scoped by model and duration/request count. |
 
 Example: `{"mode":"overload","model":"talabak-course-primary","seconds":60}`.
-Modes are `rate_limit` (429), `overload` (529), `server_error` (503), `timeout` (504), `invalid_json`, `invalid_tool`, `tool_loop` and `off`.
+Modes are `rate_limit` (429), `overload` (529), `server_error` (503), `timeout` (504), `invalid_json`, `invalid_json_until_repair` (malformed JSON until the request carries the application's `# repair-` developer message), `invalid_tool`, `tool_loop` and `off`.
 
 Here `timeout` means an **immediate injected HTTP 504**, not a measured network timeout. Connection failure is tested separately with a controlled httpx transport.
 
 ## Test evidence and limits
 
-The initial run of `tests/test_llm.py` on 15 September 2026 passed 38 cases in 4.59 seconds. That historical snapshot covered real local HTTP, Arabic/English extraction, tool-result correlation, cache measurement and invalidation by TTL/prefix/model, retries, fallback, truncated outputs and malformed arguments. Current counts and times come from the executed notebook; this snapshot is not a fixed performance promise.
+The initial run of `tests/test_llm.py` on 15 September 2026 passed 38 cases in 4.59 seconds. That historical snapshot covered real local HTTP, Arabic/English extraction, tool-result correlation, cache measurement and invalidation by TTL/prefix/model, retries, fallback, truncated outputs and malformed arguments. Current counts and times come from `artifacts/pytest.txt` and the executed notebook (375 tests on 16 September 2026); this snapshot is not a fixed performance promise.
 
 These tests establish neither actual model understanding nor independent human judgment, commercial/open-weight comparison or GPU/LLM throughput. Those require separate evidence.
 

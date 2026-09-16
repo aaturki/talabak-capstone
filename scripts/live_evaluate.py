@@ -35,7 +35,8 @@ def sanitized_config(config: dict) -> dict:
     result = {"routes": {}, "fallbacks": copy.deepcopy(config.get("fallbacks", {})),
               "settings": copy.deepcopy(config.get("settings", {}))}
     pipeline = config.get("pipeline", {})
-    result["pipeline"] = {"stable_context": copy.deepcopy(pipeline.get("stable_context", False))}
+    result["pipeline"] = {"stable_context": copy.deepcopy(pipeline.get("stable_context", False)),
+                          "prompt_versions": copy.deepcopy(pipeline.get("prompt_versions", {}))}
     result["settings"] = {k: v for k, v in result["settings"].items() if k in
                           {"max_attempts", "base_delay_s", "max_delay_s", "timeout_s",
                            "max_output_tokens", "max_input_tokens", "budget"}}
@@ -87,13 +88,13 @@ def _comparison_config(config: dict, max_calls: int = 2000) -> dict:
 
 def preflight(config: dict) -> dict:
     """Configuration-only readiness, with no environment inspection or SDK creation."""
-    missing, issues, routes = [], [], {}
+    missing, issues, warnings, routes = [], [], [], {}
     if not isinstance(config, dict):
-        return {"status": "NOT_CONFIGURED", "missing": ["configuration"], "issues": [],
+        return {"status": "NOT_CONFIGURED", "missing": ["configuration"], "issues": [], "warnings": [],
                 "credentials_checked": False, "network_calls": 0}
     if not isinstance(config.get("routes", {}), dict) or any(
             not isinstance(route, dict) for route in config.get("routes", {}).values()):
-        return {"status": "NOT_CONFIGURED", "missing": [], "issues": ["routes_must_be_a_mapping"],
+        return {"status": "NOT_CONFIGURED", "missing": [], "issues": ["routes_must_be_a_mapping"], "warnings": [],
                 "credentials_checked": False, "network_calls": 0}
     for alias, expected in (("primary", "live_commercial"), ("open_weight", "live_open_weight")):
         route = config.get("routes", {}).get(alias, {})
@@ -107,11 +108,18 @@ def preflight(config: dict) -> dict:
         for capability in ("json_schema", "tools"):
             if caps.get(capability) is not True:
                 issues.append(f"{alias}_requires_{capability}")
-        if caps.get("schema_with_tools") is False:
-            issues.append(f"{alias}_requires_schema_with_tools")
+        # schema_with_tools false is served with tool-only turns; the wire pattern is disclosed.
+        wire_pattern = "tools_only" if caps.get("schema_with_tools") is False else "schema_with_tools"
+        if alias == "open_weight":
+            deployment = route.get("deployment")
+            if deployment not in {"hosted", "self_hosted"}:
+                missing.append(f"routes.{alias}.deployment")
+            elif deployment != "hosted":
+                # The break-even input requires a hosted comparison; this cannot be patched after the run.
+                warnings.append("open_weight_deployment_is_not_hosted_so_breakeven_input_will_be_rejected")
         routes[alias] = {"evidence_mode": route.get("evidence_mode"), "model": route.get("model"),
-                         "capabilities": caps, "credential_source": auth.get("type"),
-                         "credential_name": auth.get("name")}
+                         "capabilities": caps, "wire_pattern": wire_pattern, "deployment": route.get("deployment"),
+                         "credential_source": auth.get("type"), "credential_name": auth.get("name")}
     validation = None
     if not missing and not issues:
         try:
@@ -121,7 +129,7 @@ def preflight(config: dict) -> dict:
             # Boundary errors are deliberately safe; no provider request has happened.
             issues.append(f"boundary_configuration_invalid:{type(exc).__name__}")
     return {"status": "READY_FOR_EXPLICIT_ENABLE" if not missing and not issues else "NOT_CONFIGURED",
-            "missing": missing, "issues": issues, "routes": routes, "boundary": validation,
+            "missing": missing, "issues": issues, "warnings": warnings, "routes": routes, "boundary": validation,
             "comparison_fallbacks_enabled": False,
             "credentials_checked": False, "network_calls": 0,
             "notice": "Readiness validates configuration, not credentials, endpoint availability, or provider capability."}
@@ -162,11 +170,19 @@ def wire_metrics(events: list[dict]) -> dict:
                  and math.isfinite(x) and x >= 0]
         totals[key] = sum(known) if len(known) == len(values) else None
         coverage[key] = {"known": len(known), "unknown": len(values)-len(known), "known_total": sum(known)}
+    # Cache share over responses whose usage is known: one retried or errored attempt
+    # (unknown usage) must not erase the measurement, only narrow its coverage.
+    paired = [(m["input_tokens"], m["cached_tokens"]) for m in response_meters
+              if isinstance(m.get("input_tokens"), int) and isinstance(m.get("cached_tokens"), int)]
+    known_inputs = sum(inputs for inputs, _ in paired)
+    cache_fraction = {"provider_cache_fraction_known_responses": (sum(cached for _, cached in paired) / known_inputs) if known_inputs else None,
+                      "responses_with_known_cache_usage": len(paired),
+                      "attempts_with_unknown_usage": len(meters) - len(paired)}
     return {"wire_calls": len(attempts), "received_responses": len(response_meters),
             "accepted_responses": sum(bool(e.get("accepted")) for e in attempts.values()),
             "error_attempts": sum(e.get("event") == "model_error" for e in attempts.values()),
             "invalid_responses": sum(e.get("event") == "model_response" for e in attempts.values()),
-            **totals, "usage_coverage": coverage,
+            **totals, "usage_coverage": coverage, **cache_fraction,
             "requested_models": sorted({m["requested_model"] for m in meters if m.get("requested_model")}),
             "served_models": sorted({m["served_model"] for m in response_meters if m.get("served_model")}),
             "served_model_unknown_responses": sum(not m.get("served_model_known") for m in response_meters),

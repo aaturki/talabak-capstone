@@ -22,7 +22,7 @@ SQLite stores actions and enforces uniqueness and capacity. Eligibility, stock/a
 
 ## ADR-004 — Pydantic and versioned instructions
 
-Closed domains use enums. Unspecified fields stay empty instead of being invented. JSON Schema does not replace semantic validation in Pydantic. A first failure returns specific validation errors for repair, and processing stops after bounded attempts. Tests cover success, successful repair and final failure.
+Closed domains use enums. Unspecified fields stay empty instead of being invented. JSON Schema does not replace semantic validation in Pydantic. A first failure returns specific validation errors for repair (error type, located path and the validator's message; rejected values are never echoed), and processing stops after bounded attempts. Since 2026-09-16 the simulator keeps answering with malformed JSON until the repair instruction is actually on the wire, so the drill proves the message is sent. Tests cover success, successful repair and final failure.
 
 Instructions are versioned files, and the served version is recorded. Repair and judge instructions follow the same rule; an experiment must not silently change an older version. Groundedness and completeness are separate judge dimensions so one call does not return an ambiguous combined score.
 
@@ -60,9 +60,31 @@ The repository URL and pinned source revision must be supplied before publicatio
 
 The README uses the owner's exact supplied name, تركي أحمد الصليع. Cohort dates await the correct information. Current authorization covers local preparation and history; it does not include publication, push, submission or contacting the instructor or peers.
 
+## ADR-011 — The shared public prefix is on by default
+
+Before 2026-09-16 the stable prefix (`prompts/context.v1.md` plus public policy, hours, catalogue and tool contracts) existed but was off, so every recorded run showed 0% cached input: the per-stage system prompts are 99–145 tokens, below the simulator's 1,024-token cache minimum. The simulator cache benchmark was extended with a `stable_public_context` step (prefix on, response caching off, so cached tokens come only from the provider usage field). Measured on the frozen 124-request replay with a cold simulator cache (`artifacts/cache_benchmark.json`): baseline 336 calls, 174,664 input tokens, 0% cached, illustrative cost $0.208984; with the prefix 336 calls, 577,960 input tokens of which 96.3% cached, $0.194998 (6.7% lower under the 25% cached-input tariff); with the prefix plus exact response caching 84 calls, 97.2% cached, $0.047789 (77.1% lower). Every step passed the full 144-case golden evaluation and the regression gate.
+
+Decision: `pipeline.stable_context` is `true` in `config/models.json`. The prefix is useful public context, not padding, and it keeps the dynamic content (customer text, tool receipts, repair feedback) at the tail as the course's caching discipline requires. Trade-off: each call carries about 1,200 more input tokens; the net cost depends on the provider's cached-input discount and minimum cacheable length, which the simulator cannot establish. Rule: the live cache measurement (`scripts/live_benchmark.py measure_cache`) reruns the golden set with and without the prefix; if the with-prefix step fails its evaluation verdict on a real model, or the provider reports no cached tokens, revert the default and record the measurement here.
+
+## ADR-012 — Confirmation and grounding no longer depend on byte-exact model output
+
+The audit found three places where a paraphrasing real model would turn a correct outcome into an error: the final Answer had to equal the tool message byte for byte; a confirmation turn asked the model to re-issue the identical tool call (any change in `reason` raised `tool_action_mismatch` and cleared the pending action); and the tool loop continued after a side-effect result, so a model could hide a pending confirmation behind another lookup. The simulator copies tool text verbatim, which is why 144/144 never exposed this.
+
+Decisions: (1) the delivered message is always the tool result; the model's final text is compared and recorded in the trace as `verbatim`, `normalized`, `divergent` or `unparseable`, and only an answer with no tool evidence at all is an error. (2) A confirmation word executes the digest-bound pending action directly (`Application._execute_confirmed`); no model round runs on that turn, which is both safer and cheaper. Confirmation words tolerate punctuation, case and hamza variants. (3) A side-effect or terminal tool result ends the turn. (4) Low router confidence is a clarification, not a terminal handoff; only the handoff tool ends automation. (5) The pending digest binds the action's own order, product, slot and open-action rows plus policy and date, so another customer's committed action no longer invalidates a pending confirmation. These were verified by `tests/test_audit_fixes.py` and the full simulator run; a real model has still not exercised them.
+
+## ADR-013 — Guard evidence is reported per layer and the corpora grew after a recorded miss
+
+The reported 0% false-positive rate covered only the deterministic layer; the classifier stand-in in the simulator refused three legitimate corpus cases (L013, L035, L036) end to end. The guard evaluation now runs both corpora through `Application.handle_message` and reports block and false-positive rates for the deterministic layer alone and for the whole pipeline, naming the layer that blocked each case. The classifier stand-in and `guard.v2.md` gained the same carve-outs (questions about a term, quoted or reported scams, negations).
+
+Twelve attack phrasings and ten legitimate traps were added on 2026-09-16 after a probe of the pre-fix deterministic layer recorded 9 of the 12 attacks missed and 5 of the 10 legitimate requests falsely blocked (`docs/DATASET.md`). They are development cases: the fix was made after seeing them, so they are regression checks, not a blind test. The outbound guard now inspects long payloads instead of refusing them, and detects the canary after normalization (lower case, zero-width, full-width, spaced).
+
+## ADR-014 — Provider portability: strict keyword subset and a tool-only wire pattern
+
+OpenAI's strict mode rejects `minLength`/`maxLength`; every Pydantic-generated wire schema is now filtered to the documented strict subset, while Pydantic keeps enforcing those limits on parse. Providers that cannot combine a response schema with tools (Groq documents this; vLLM has an open request) are served with tool-only turns when `schema_with_tools` is false, and the wire pattern is recorded per usage row and in run provenance. The kept-verbatim alternative, failing fast, would have excluded the course's own vLLM self-host route from the tools stage.
+
 ## Current recommendation
 
-Review local simulator results and gaps requirement by requirement. A live commercial/open-weight choice has not been established through measurements; an alias is not a deployment recommendation. When authorized access is available, rerun the same evaluation, cost and latency measurements, then derive the recommendation and break-even from that evidence.
+Review local simulator results and gaps requirement by requirement. A live commercial/open-weight choice has not been established through measurements; an alias is not a deployment recommendation. `docs/PROVIDERS.md` lists audit-checked candidates and cost assumptions for the owner's decision. When authorized access is available, rerun the same evaluation, cost and latency measurements, then derive the recommendation and break-even from that evidence.
 
 ## ADR-010 — Real evidence without replacing the default course setup
 

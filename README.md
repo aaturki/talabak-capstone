@@ -13,6 +13,22 @@ The submission is **Talabak_Capstone.ipynb**. Once the actual repository URL and
 
 The setup follows the course labs. Application source remains readable in the repository; no encoded project archive is embedded in the notebook. A local review uses this existing checkout. The repository URL and actual fresh-Colab execution remain pending; the notebook does not claim that either has already happened. See [Notebook setup](docs/NOTEBOOK_SETUP.md).
 
+### Run it locally
+
+```bash
+python -m venv .venv
+```
+
+```bash
+.venv/Scripts/python -m pip install -r requirements.txt -r requirements-dev.txt
+```
+
+```bash
+.venv/Scripts/python -m jupyter lab Talabak_Capstone.ipynb
+```
+
+Python 3.11 or newer (3.12 was used). On macOS or Linux the interpreter is `.venv/bin/python`. The notebook's first cell starts the loopback simulator itself; no key, GPU or extra service is needed. `python scripts/run_all.py` reproduces the tests, evaluations, cache benchmark and both reports from the command line.
+
 ## Default mode and real providers
 
 The default backend is a deterministic simulator reached through the provider SDK. It exercises schemas, tool calls, authorization, repair, retries, accounting and regression checks. Its responses and timing do not establish real-model quality or hardware performance.
@@ -62,4 +78,4 @@ The talabak directory contains the application; config contains model and notebo
 
 The instructor explicitly permits borrowing patterns and infrastructure from [Murshid](https://github.com/MohammadYusif/llm-application-engineering/blob/de2ff3c0d8758c77d85c944e2d6f133647b84a91/capstone.qmd#L44-L50). Talabak uses that architectural approach with its own retail domain, tools, policy data, guards and evaluation cases. Course or student benchmark numbers are not reused as Talabak's results.
 
-[Decisions](docs/DECISIONS.md) · [Dataset](docs/DATASET.md) · [Course](https://mohammadyusif.github.io/llm-application-engineering/)
+[Decisions](docs/DECISIONS.md) · [Dataset](docs/DATASET.md) · [Course](https://mohammadyusif.github.io/llm-application-engineering/) · [SDAIA Academy on GitHub](https://github.com/SDAIAAcademy)

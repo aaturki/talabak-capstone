@@ -23,9 +23,19 @@ from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 INCLUDE_DIRS = {"talabak", "config", "data", "prompts", "tests", "scripts", "docs", "eval"}
-INCLUDE_ROOT = {"README.md", "RUBRIC_EVIDENCE.md", "requirements.txt", "requirements.lock",
+INCLUDE_ROOT = {"README.md", "RUBRIC_EVIDENCE.md", "requirements.txt", "requirements-dev.txt", "requirements.lock",
                 "pyproject.toml", "pytest.ini", ".gitignore"}
 EXCLUDE_DIRS = {"__pycache__", ".pytest_cache", ".git", ".venv", "artifacts", "node_modules"}
+BINARY_SUFFIXES = {".png", ".zip", ".sqlite", ".db"}
+
+
+def manifest_bytes(path: Path) -> bytes:
+    """Hash text with LF line endings: git's eol=lf checkout on Linux and a Windows
+    working tree edited with CRLF must produce the same manifest."""
+    data = path.read_bytes()
+    if path.suffix in BINARY_SUFFIXES or "tokenizer_cache" in path.parts:
+        return data
+    return data.replace(b"\r\n", b"\n")
 
 
 def collect_manifest(root: Path) -> dict:
@@ -51,7 +61,7 @@ def collect_manifest(root: Path) -> dict:
             continue
         if len(rel.parts) > 1 and rel.parts[0] not in INCLUDE_DIRS:
             continue
-        files[rel.as_posix()] = hashlib.sha256(path.read_bytes()).hexdigest()
+        files[rel.as_posix()] = hashlib.sha256(manifest_bytes(path)).hexdigest()
     required = {"requirements.txt", "talabak/pipeline.py", "talabak/mock_gateway.py",
                 "scripts/run_all.py", "data/golden.v1.jsonl"}
     if missing := required - files.keys():
@@ -409,6 +419,18 @@ def build(root: Path, output: Path) -> dict:
     calibration = json.loads((RUN_ROOT / "artifacts/calibration.json").read_text("utf-8"))
     print("Human calibration:", calibration["status"], "pairs:", calibration["n"])
     print("Cohen's kappa:", calibration["cohen_kappa"])
+    for layer, values in run_report["guards"]["layers"].items():
+        print(f"Guard layer {layer}: block {values['attack_block_rate']:.1%} of {values['attack_n']} attacks, "
+              f"false positives {values['legitimate_false_positive_rate']:.1%} of {values['legitimate_n']} legitimate")
+    regression = run_report["regression"]
+    print("Clean gate:", regression["clean"]["status"], "| degraded-router gate:", regression["degraded"]["status"])
+    slice_rows = ["| Slice | Baseline pass rate | Degraded pass rate | Drop |", "|---|---:|---:|---:|"]
+    for failure in regression["degraded"]["failures"]:
+        if "baseline" in failure:
+            slice_rows.append(f"| {failure['metric']} | {failure['baseline']:.3f} | {failure['current']:.3f} | {failure['drop']:.3f} |")
+        else:
+            slice_rows.append(f"| {failure['metric']} | – | – | {failure.get('reason', '')} |")
+    display(Markdown("\\n".join(slice_rows)))
     display(Markdown((RUN_ROOT / "EVALUATION_REPORT.md").read_text("utf-8")))
     ''')
     md('''
@@ -443,6 +465,11 @@ def build(root: Path, output: Path) -> dict:
               round(step["request_latency_ms_p95"], 2),
               "illustrative reduction:", step.get("simulated_cost_reduction_vs_baseline"))
     print("Workload:", cache_run["workload"])
+    print("Provider cached-input share (stable_public_context step):", cache_run["provider_input_cache_fraction"])
+    print("Simulated cost reduction, final step vs baseline:", cache_run["simulated_cost_reduction"])
+    for target, met in cache_run["targets"].items():
+        print(f"{target}: {'met' if met else 'NOT met'} on the simulator")
+    print("Basis:", cache_run["targets_basis"])
     print("Actual external spend is zero. These are illustrative simulator tariff estimates.")
     print("Full benchmark and latency evidence:", RUN_ROOT / "BENCHMARKS.md")
     ''')

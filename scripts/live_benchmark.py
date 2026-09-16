@@ -61,8 +61,16 @@ def _wire_totals(client, usage, start=0):
     if wire["wire_calls"]:
         for key in ("input_tokens", "output_tokens", "cached_tokens", "estimated_cost_usd"):
             result[key] = wire[key]
-        result["provider_cache_fraction"] = (result["cached_tokens"] / result["input_tokens"]
-            if result["input_tokens"] and result["cached_tokens"] is not None else None)
+        if result["input_tokens"] and result["cached_tokens"] is not None:
+            result["provider_cache_fraction"] = result["cached_tokens"] / result["input_tokens"]
+            result["provider_cache_fraction_basis"] = "all_wire_attempts"
+        else:
+            # A retried or errored attempt has unknown usage; report the share over
+            # the known responses and disclose how many attempts were excluded.
+            result["provider_cache_fraction"] = wire["provider_cache_fraction_known_responses"]
+            result["provider_cache_fraction_basis"] = "known_responses_only"
+        result["attempts_with_unknown_usage"] = wire["attempts_with_unknown_usage"]
+        result["estimated_cost_known_lower_bound_usd"] = wire["usage_coverage"]["estimated_cost_usd"]["known_total"]
     return result
 
 

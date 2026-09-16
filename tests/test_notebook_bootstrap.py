@@ -186,6 +186,7 @@ def test_live_comparison_ignores_unused_judge_secret_auth(monkeypatch, tmp_path,
                              "parallel_tool_calls": False,
                              "temperature": False, "token_parameter": "max_tokens"},
         }
+    routes["open_weight"]["deployment"] = "hosted"
     routes["judge"] = {"auth": {"type": "secret", "name": "UNUSED_JUDGE_SECRET"}}
     config = {"routes": routes, "fallbacks": {}, "settings": {"max_output_tokens": 100}}
     profile = tmp_path / "live.json"

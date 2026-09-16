@@ -15,6 +15,8 @@ from pathlib import Path
 from typing import Any
 
 LABELS = ("PASS", "PARTIAL", "FAIL")
+# The SDK boundary reports the configured live mode, never a bare "live".
+LIVE_MODES = {"live_commercial", "live_open_weight"}
 JUDGE_SCHEMA = {
     "title": "JudgeVerdict", "type": "object", "additionalProperties": False,
     "properties": {"label": {"type": "string", "enum": list(LABELS)},
@@ -145,7 +147,7 @@ def calibrate(human_rows: list[dict], predictions: list[dict], *, min_pairs: int
         paired.append((row, prediction))
     metrics = agreement_metrics([x[0]["human_label"] for x in paired], [x[1]["label"] for x in paired])
     modes = sorted({x[1].get("evidence_mode", "unknown") for x in paired})
-    only_live = bool(paired) and all(mode == "live" for mode in modes)
+    only_live = bool(paired) and all(mode in LIVE_MODES for mode in modes)
     reasons = []
     if len(paired) < min_pairs:
         reasons.append("insufficient_human_pairs")

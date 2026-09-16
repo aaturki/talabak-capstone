@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 import json
 from pathlib import Path
 from typing import Literal
@@ -78,6 +79,59 @@ TOOL_TYPES = {
     "handoff_to_support": (HandoffArgs, "terminal"),
 }
 
+# Keywords OpenAI's documented strict subset accepts (structured outputs and
+# strict function parameters). Pydantic keeps enforcing the removed string-length
+# constraints when the response is parsed, so nothing is relaxed application-side.
+STRICT_KEYWORDS = {
+    "type", "properties", "required", "additionalProperties", "items", "anyOf", "enum", "const",
+    "title", "description", "$defs", "$ref", "pattern", "format", "minimum", "maximum",
+    "exclusiveMinimum", "exclusiveMaximum", "multipleOf", "minItems", "maxItems",
+}
+DROPPED_KEYWORDS = {"minLength", "maxLength", "default", "examples", "$schema"}
+_NAMED_CONTAINERS = {"properties", "$defs", "definitions"}
+
+
+def strict_wire_schema(schema: dict) -> dict:
+    """Return a deep copy of a Pydantic JSON schema restricted to strict-mode keywords."""
+    def walk(node, *, named=False):
+        if isinstance(node, list):
+            return [walk(item) for item in node]
+        if not isinstance(node, dict):
+            return node
+        if named:
+            return {name: walk(child) for name, child in node.items()}
+        result = {}
+        for key, value in node.items():
+            if key in DROPPED_KEYWORDS:
+                continue
+            result[key] = walk(value, named=key in _NAMED_CONTAINERS)
+        if result.get("type") == "object":
+            result.setdefault("additionalProperties", False)
+            if isinstance(result.get("properties"), dict):
+                result["required"] = list(result["properties"])
+        return result
+    return walk(copy.deepcopy(schema))
+
+
+def unsupported_strict_keywords(schema: dict) -> list[str]:
+    """List schema keywords outside the strict subset; empty means wire-ready."""
+    found = set()
+    def walk(node, *, named=False):
+        if isinstance(node, list):
+            for item in node:
+                walk(item)
+        elif isinstance(node, dict):
+            for key, value in node.items():
+                if not named and key not in STRICT_KEYWORDS:
+                    found.add(key)
+                walk(value, named=(not named) and key in _NAMED_CONTAINERS)
+    walk(schema)
+    return sorted(found)
+
+
+def wire_schema(model: type[BaseModel]) -> dict:
+    return strict_wire_schema(model.model_json_schema())
+
 
 def tool_definitions():
     metadata = json.loads((Path(__file__).resolve().parents[1] / "prompts/tools.v1.json").read_text(encoding="utf-8"))
@@ -87,5 +141,5 @@ def tool_definitions():
     if any(not isinstance(value, str) or not value.strip() for value in descriptions.values()):
         raise ValueError("Every tool requires a nonempty description")
     return [{"type": "function", "function": {
-        "name": name, "description": descriptions[name], "strict": True, "parameters": model.model_json_schema()
+        "name": name, "description": descriptions[name], "strict": True, "parameters": wire_schema(model)
     }} for name, (model, _) in TOOL_TYPES.items()]

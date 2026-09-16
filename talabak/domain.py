@@ -12,7 +12,13 @@ from dataclasses import dataclass, field
 from datetime import date, datetime, timezone
 from pathlib import Path
 
+from .guards import normalize
+
 ROOT = Path(__file__).resolve().parents[1]
+# Closed set after normalization (hamza folding, digit folding). The store's
+# confirmation prompt tells the customer the exact word to type.
+CONFIRMATION_WORDS = {"موافق", "اكد", "تاكيد", "نعم اكد", "نعم", "confirm", "yes confirm", "yes"}
+_CONFIRMATION_EDGE = " \t\r\n.!?،؛,;:\"'«»“”()[]"
 
 
 def canonical(value):
@@ -21,6 +27,12 @@ def canonical(value):
 
 def digest(value):
     return hashlib.sha256(canonical(value).encode()).hexdigest()
+
+
+def is_confirmation(text):
+    """'Confirm.' or 'موافق!' confirms; punctuation, case and hamza variants are tolerated."""
+    value = re.sub(r"\s+", " ", normalize(text).casefold().strip(_CONFIRMATION_EDGE))
+    return value in CONFIRMATION_WORDS
 
 
 def serialized(method):
@@ -49,8 +61,7 @@ class Session:
     def begin_turn(self, text):
         self.turn += 1
         self.confirmed_digest = None
-        confirm = text.strip().lower() in {"موافق", "اكد", "أكد", "تأكيد", "نعم اكد", "confirm", "yes confirm", "yes", "نعم"}
-        if confirm and self.pending and self.pending["turn"] == self.turn - 1:
+        if is_confirmation(text) and self.pending and self.pending["turn"] == self.turn - 1:
             self.confirmed_digest = self.pending["digest"]
             return self.pending["request"]
         self.pending = None
@@ -96,6 +107,29 @@ class Store:
     def count_actions(self):
         return self.db.execute("SELECT count(*) FROM actions").fetchone()[0]
 
+    def _row(self, table, key, value):
+        row = self.db.execute(f"SELECT * FROM {table} WHERE {key}=?", (value,)).fetchone()
+        return dict(row) if row else None
+
+    def action_fingerprint(self, name, args):
+        """Hash only the records this action depends on, plus policy and date.
+
+        Unrelated customers' committed actions must not invalidate a pending
+        confirmation; the action's own order, products, slot and open action rows do.
+        """
+        rows = {}
+        if name == "create_return_or_exchange":
+            order = self._row("orders", "id", args["order_id"])
+            rows["order"] = order
+            rows["original_product"] = self._row("products", "sku", order["sku"]) if order else None
+            rows["replacement_product"] = self._row("products", "sku", args["replacement_sku"]) if args.get("replacement_sku") else None
+            rows["open_action"] = self._row("actions", "order_id", args["order_id"])
+        else:
+            # Capacity and the customer's own booking are re-checked in the same
+            # transaction before persisting; the slot row carries the booked count.
+            rows["slot"] = self._row("slots", "id", args["slot_id"])
+        return digest({"policy": self.data["policy"], "hours": self.data["hours"], "date": str(self.today), "rows": rows})
+
     def result(self, session, code, ar, en, *, sources=None, **extra):
         return {"code": code, "message": ar if session.language == "ar" else en,
                 "sources": sources or [self.data["policy"]["version"]], **extra}
@@ -134,7 +168,7 @@ class Store:
 
     def _propose_or_confirm(self, s, name, args):
         action = {"tool": name, "args": args, "customer": s.customer_id, "session": s.session_id,
-                  "data": self.fingerprint()}
+                  "data": self.action_fingerprint(name, args)}
         action_digest = digest(action)
         if s.confirmed_digest == action_digest:
             return None
@@ -179,6 +213,9 @@ class Store:
             found = self.lookup_order(s, order_id)
             if found["code"] != "ok":
                 return found
+            owner = self.db.execute("SELECT customer_id FROM orders WHERE id=?", (order_id,)).fetchone()
+            if not s.authorize(owner=owner["customer_id"] if owner else None):
+                return self.denied(s)
             order = found["order"]
             policy = self.data["policy"]
             age = (self.today - date.fromisoformat(order["delivered_at"])).days if order["delivered_at"] else None

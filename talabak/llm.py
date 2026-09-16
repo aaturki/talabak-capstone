@@ -58,6 +58,48 @@ class ModelError(RuntimeError):
         self.status, self.attempts, self.usage = status, attempts, usage or {}
 
 
+class EndpointGuardError(ValueError):
+    """Raised inside the transport hook; the request never leaves the process."""
+
+
+_ENCODER = None
+
+
+def _token_count(text: str) -> int:
+    """o200k_base count when the bundled tokenizer loads; otherwise a byte-based fallback."""
+    global _ENCODER
+    if _ENCODER is None:
+        try:
+            import tiktoken
+            os.environ.setdefault("TIKTOKEN_CACHE_DIR", str(Path(__file__).resolve().parents[1] / "config" / "tokenizer_cache"))
+            _ENCODER = tiktoken.get_encoding("o200k_base")
+        except Exception:
+            _ENCODER = False
+    if _ENCODER:
+        return len(_ENCODER.encode(text, disallowed_special=()))
+    return len(text.encode("utf-8")) // 3
+
+
+def _fold_developer_messages(messages: list[dict]) -> list[dict]:
+    """Routes without a developer role: one leading system message, later trusted
+    instructions become labelled user turns instead of mid-conversation system messages."""
+    result, leading = [], True
+    for message in messages:
+        role = message.get("role")
+        if leading and role in {"system", "developer"}:
+            if result and result[-1].get("role") == "system":
+                result[-1]["content"] = f"{result[-1]['content']}\n\n{message['content']}"
+            else:
+                result.append({**message, "role": "system"})
+            continue
+        leading = False
+        if role == "developer":
+            result.append({**message, "role": "user", "content": "[Application instruction]\n" + str(message.get("content", ""))})
+        else:
+            result.append(message)
+    return result
+
+
 def _is_loopback(hostname: str) -> bool:
     try:
         return ipaddress.ip_address(hostname).is_loopback
@@ -99,9 +141,12 @@ def _guard_for(base_url: str, *, simulator: bool):
     path = _parsed_url(base_url).path.rstrip("/") + "/chat/completions"
     def guard(request: httpx.Request) -> None:
         if simulator:
-            require_loopback(str(request.url))
+            try:
+                require_loopback(str(request.url))
+            except ValueError as exc:
+                raise EndpointGuardError(str(exc)) from None
         if _origin(str(request.url)) != origin or request.url.path != path or request.method != "POST":
-            raise ValueError("Request does not match the configured provider endpoint")
+            raise EndpointGuardError("Request does not match the configured provider endpoint")
     return guard
 
 
@@ -186,6 +231,8 @@ def preflight_config(config: dict, *, allow_live: bool = False) -> dict:
             raise ValueError("Route output token limit is outside the supported range")
         if route.get("max_input_tokens") is not None and not _positive_int(route["max_input_tokens"]):
             raise ValueError("max_input_tokens must be a positive integer or null")
+        if route.get("deployment") not in {None, "hosted", "self_hosted"}:
+            raise ValueError("deployment must be hosted, self_hosted or null")
         tariff = _tariff(route)
         if mode in LIVE_MODES:
             auth = route.get("auth", {})
@@ -247,8 +294,8 @@ class SDKClient:
         self.events: list[dict] = []
         self._lock = threading.RLock()
         self._wire_calls = 0
-        self._estimated_total = self._held_total = 0.
-        self._unknown_usage = 0
+        self._estimated_total = self._held_total = self._upper_total = 0.
+        self._unknown_usage = self._partial_usage = self._retained_failures = 0
         self._budget_stopped = False
         self._budget = checked["budget"]
         settings = self.config.get("settings", {})
@@ -288,8 +335,20 @@ class SDKClient:
     def budget_status(self):
         with self._lock:
             return {"wire_calls": self._wire_calls, **self._budget,
-                    "estimated_cost_usd": self._estimated_total, "reserved_estimated_cost_usd": self._held_total,
-                    "unknown_usage_responses": self._unknown_usage, "stopped": self._budget_stopped}
+                    "estimated_cost_usd": self._estimated_total,
+                    "estimated_cost_upper_bound_usd": self._upper_total,
+                    "reserved_estimated_cost_usd": self._held_total,
+                    "unknown_usage_responses": self._unknown_usage,
+                    "partial_usage_responses": self._partial_usage,
+                    "retained_failure_reservations": self._retained_failures,
+                    "stopped": self._budget_stopped,
+                    "basis": "estimated_cost_usd sums complete-usage responses only; the upper bound "
+                             "covers every metered response; reserved is the amount compared with the cap"}
+
+    def capabilities(self, alias: str) -> dict:
+        if alias not in self.config["routes"]:
+            raise ValueError("Unknown model alias")
+        return dict(self._caps(self.config["routes"][alias]))
 
     def close(self):
         for client in self._clients.values():
@@ -314,9 +373,7 @@ class SDKClient:
             raise ModelError("Combining required tools and JSON schema is unsupported")
         wire_messages = copy.deepcopy(messages)
         if not caps.get("developer_role", True):
-            for message in wire_messages:
-                if message.get("role") == "developer":
-                    message["role"] = "system"
+            wire_messages = _fold_developer_messages(wire_messages)
         kwargs = {"model": route["model"], "messages": wire_messages,
                   caps["token_parameter"]: route.get("max_output_tokens", self.max_tokens)}
         temperature = route.get("temperature", 0 if route["evidence_mode"] == "simulator" else None)
@@ -335,8 +392,9 @@ class SDKClient:
         allowance = 0.
         cap = self._budget["max_estimated_cost_usd"]
         if cap is not None:
-            # Conservative byte screening, not a selected provider's tokenizer.
-            estimated_input = len(json.dumps(kwargs, ensure_ascii=False).encode("utf-8")) + 64 * len(kwargs["messages"]) + 128
+            # Token screening with the bundled o200k_base vocabulary plus a per-message
+            # margin; the reservation itself is the configured max_input_tokens allowance.
+            estimated_input = _token_count(json.dumps(kwargs, ensure_ascii=False)) + 8 * len(kwargs["messages"]) + 32
             if estimated_input > route["max_input_tokens"]:
                 raise ModelError("Request exceeds the configured input allowance", attempts=attempts)
             rates = _tariff(route)
@@ -352,6 +410,14 @@ class SDKClient:
             self._wire_calls += 1
             self._held_total += allowance
             return self._wire_calls, allowance
+
+    def _release(self, allowance, *, uncount_wire_call=False):
+        """Undo a reservation: an HTTP rejection carries no billable usage, and a
+        request stopped by the endpoint guard never left the process."""
+        with self._lock:
+            self._held_total -= allowance
+            if uncount_wire_call:
+                self._wire_calls -= 1
 
     def _mode(self, route):
         return "test_transport" if self._test_transport and route["evidence_mode"] in LIVE_MODES else route["evidence_mode"]
@@ -396,6 +462,10 @@ class SDKClient:
         with self._lock:
             if measured is not None:
                 self._estimated_total += measured
+            if upper is not None:
+                self._upper_total += upper
+            if meter["usage_status"] == "partial":
+                self._partial_usage += 1
             if not meter["usage_available"]:
                 self._unknown_usage += 1
                 if self._budget["max_estimated_cost_usd"] is not None:
@@ -410,25 +480,48 @@ class SDKClient:
         if alias not in self._clients:
             raise ValueError("Unknown model alias")
         chain = [alias, *self.config.get("fallbacks", {}).get(alias, [])]
-        requests = {hop: self._kwargs(self.config["routes"][hop], messages, schema, tools) for hop in chain}
-        attempts, last_status, started = 0, None, time.perf_counter()
+        attempts, last_status, started, capability_error = 0, None, time.perf_counter(), None
         for hop_index, hop in enumerate(chain):
-            route, kwargs = self.config["routes"][hop], requests[hop]
+            route = self.config["routes"][hop]
+            try:
+                # Built per hop: an incapable fallback must not block a capable primary.
+                kwargs = self._kwargs(route, messages, schema, tools)
+            except ModelError as exc:
+                capability_error = exc
+                with self._lock:
+                    self.events.append({"event": "model_error", "alias": hop, "status": None, "attempt": attempts,
+                                        "retryable": False, "reason": "capability_unsupported_hop_skipped",
+                                        "evidence_mode": self._mode(route)})
+                continue
             for attempt in range(1, self.max_attempts + 1):
                 wire_call, allowance = self._reserve(route, kwargs, attempts)
                 attempts += 1
                 try:
                     raw = self._clients[hop].chat.completions.with_raw_response.create(**kwargs)
                 except (APIConnectionError, APITimeoutError, APIStatusError) as exc:
+                    guard_rejected = isinstance(exc, APIConnectionError) and isinstance(exc.__cause__, EndpointGuardError)
                     status = exc.status_code if isinstance(exc, APIStatusError) else None
                     last_status = status
-                    retryable = status is None or status in RETRYABLE_STATUSES
+                    retryable = not guard_rejected and (status is None or status in RETRYABLE_STATUSES)
                     event = {"event": "model_error", "alias": hop, "status": status, "attempt": attempts,
                              "wire_call": wire_call, "retryable": retryable, "evidence_mode": self._mode(route)}
                     event["usage"] = self._meter(None, route, hop, hop_index, attempts, started)
                     event["usage"]["usage_status"] = "unreported_error"
+                    if guard_rejected:
+                        # Nothing was sent: not an HTTP attempt, not billable, not retried.
+                        event["reason"] = "endpoint_guard_rejected"
+                        self._release(allowance, uncount_wire_call=True)
+                    elif isinstance(exc, APIStatusError):
+                        event["reservation"] = "released_unbilled_rejection"
+                        self._release(allowance)
+                    else:
+                        event["reservation"] = "retained_unknown_billing"
+                        with self._lock:
+                            self._retained_failures += 1
                     with self._lock:
                         self.events.append(event)
+                    if guard_rejected:
+                        raise ModelError("Model transport rejected the request", attempts=attempts) from None
                     if not retryable:
                         raise ModelError("Model request rejected", status=status, attempts=attempts) from None
                     if attempt < self.max_attempts:
@@ -475,6 +568,12 @@ class SDKClient:
                 message = getattr(choice, "message", None)
                 if message is None:
                     raise ModelError("Model response has no assistant message", attempts=attempts, usage=meter)
+                refused = getattr(message, "refusal", None)
+                if isinstance(refused, str) and refused.strip():
+                    # A structured-output refusal is a decision, not malformed JSON: no repair retries.
+                    meter["finish_reason"] = "refusal"
+                    received["usage"] = dict(meter)
+                    raise ModelError("Model refused the structured request", attempts=attempts, usage=meter)
                 calls = []
                 try:
                     for call in message.tool_calls or []:
@@ -487,4 +586,6 @@ class SDKClient:
                 with self._lock:
                     received.update(event="model_success", accepted=True)
                 return ModelReply(message.content, calls, meter, meter["served_model"] or "unreported", self._mode(route))
+        if capability_error is not None and attempts == 0:
+            raise capability_error
         raise ModelError("All configured model routes unavailable", status=last_status, attempts=attempts)

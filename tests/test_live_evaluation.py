@@ -32,6 +32,9 @@ def test_configuration():
                          "capabilities": caps.copy(), "tariff": {"input_usd_per_million": 1,
                              "cached_input_usd_per_million": .25, "output_usd_per_million": 4,
                              "as_of": "2026-09-16", "source": "Synthetic implementation fixture; not a price quote"}}
+        if alias == "open_weight":
+            # The comparison profile must declare the deployment before any spend.
+            routes[alias]["deployment"] = "hosted"
     return {"routes": routes, "fallbacks": {name: [] for name in routes},
             "settings": {"max_attempts": 1, "max_output_tokens": 768, "budget": {"max_calls": 2000}}}
 
@@ -97,8 +100,8 @@ def test_provenance_distinguishes_runtime_shared_context_configuration():
     without_context = sanitized_config(config)
     config["pipeline"] = {"stable_context": True, "unrelated_secret": "DO_NOT_PERSIST"}
     with_context = sanitized_config(config)
-    assert without_context["pipeline"] == {"stable_context": False}
-    assert with_context["pipeline"] == {"stable_context": True}
+    assert without_context["pipeline"] == {"stable_context": False, "prompt_versions": {}}
+    assert with_context["pipeline"] == {"stable_context": True, "prompt_versions": {}}
     assert "DO_NOT_PERSIST" not in json.dumps(with_context)
 
 
